@@ -1,5 +1,9 @@
 = Vim tips =
+== NEW ==
+* ,<CR> pour supprimer le highlight de la recherche
+* <SPACE> pour faire une recheche (/)
+* <SHIFT><SPACE> recherche inverse (?)
 == Divers ==
 * [http://vimwiki.googlecode.com/hg/misc/vimwikiqrc.pdf vimwiki refcards]
-* 
+* `set wildmenu; set wildmode=list:longest,full "grande liste pour l'autocompletion`
 

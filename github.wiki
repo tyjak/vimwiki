@@ -2,3 +2,4 @@
 == Authentification ==
 	* fichier ~/.git-credentials TODO:command pour générer ce ficher
 	* command `git config credential.helper 'store'` pour utiliser l'authentification permanente
+	* préférer l'authentification par clefs ssh (git@github.com)

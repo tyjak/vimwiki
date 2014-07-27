@@ -1,14 +1,40 @@
 = Archlinux =
 
 Mes notes sur l'installation d'Archlinux
+ 
 
 == Installation from scratch ==
+ * Attention de ne lancer pas lancer l'utilitaire de partitionement sur une partition mais bien sur le disque lui même
+ * Pour le macbook voir https://wiki.archlinux.org/index.php/MacBook
 === Notes à propos de VMware et Virtualbox ===
+ * pb sur le driver video suite à l'upgrade -> obligé de réinstaller les anciens pilotes
 == Customisation ==
 === Les paquets indispensable ===
+ * dmenu-xft-height (pour paramétrer la couleuur/hauteur)
+ * dunst pour avoir des notifications
+ * dwb comme navigateur web
+ * feh pour gérer l'image du fond
+ * hot-solarized-vi pour un top colorisée avec raccourcis vi
+ * i3pystatus-git pour des infos dans la barre de menu
+ * slim pour avoir un écran de login
+ * llpp-git pour visualiser des pdf
+ * otf-inconsolata-powerline-git (police avec support powerline)
+ * otf-powerline-symbols-git (police avec support powerline)
+ * pinta logiciel de retouche image
+ * pommed-light pour gérer les touches mac sons/lumieres
+ * xclip & xqel pour gérer les copier/collé
 === I3 window manager ===
 === Police de caractère ===
-=== Thème Solarized et powerline ===
+=== Thème Solarized et airline ===
 === Barre de status ===
 === Barre de lancement ===
+=== Ajout de règle udev ===
+ Lancer un script à la connexion/deconnexion d'un périphérique :
+ * voir https://wiki.archlinux.org/index.php/udev
+ * créer un script se terminannt par .rules
+ * copier un script déjà existant : /usr/lib/udev/rules.d/70-power-switch.rules
+ * voir les infos du device `# udevadm info -a -p /sys/class/backlight/acpi_video0`
+ * modfier la régle copier avec les info récupérée
+ * faire `udevadm trigger` si la règle n'est pas prise en compte
+ * si la règle ne fonctionne pas faire un `# udevadm test $(udevadm info -q path -n [device name]) 2>&1`
 
