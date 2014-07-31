@@ -15,7 +15,6 @@ Mes notes sur l'installation d'Archlinux
  * dwb comme navigateur web
  * feh pour gérer l'image du fond
  * hot-solarized-vi pour un top colorisée avec raccourcis vi
- * i3pystatus-git pour des infos dans la barre de menu
  * slim pour avoir un écran de login
  * llpp-git pour visualiser des pdf
  * otf-inconsolata-powerline-git (police avec support powerline)
@@ -24,8 +23,9 @@ Mes notes sur l'installation d'Archlinux
  * pommed-light pour gérer les touches mac sons/lumieres
  * xclip & xqel pour gérer les copier/collé
 === I3 window manager ===
+ * i3pystatus-git pour des infos dans la barre de menu
 === Police de caractère ===
-=== Thème Solarized et airline ===
+=== Thème Solarized, airline et GTK ===
 === Barre de status ===
 === Barre de lancement ===
 === Ajout de règle udev ===
