@@ -1,0 +1,9 @@
+== fichier /etc/X11/xorg.conf.d/10-magicktrackpad.conf ==
+
+`Section "InputClass"
+ Identifier "Magic Trackpad"
+ MatchUSBID "05ac:030e"
+ Driver "evdev"
+ MatchIsTouchpad "on"
+ MatchDevicePath "dev/input/event/*"
+EndSection`

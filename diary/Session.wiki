@@ -1,0 +1,7 @@
+== Sessions ==
+    * :mksession PATH/TO/SESSION/mysession "enregistre la session
+    * :source PATH/TO/SESSION/mysession "ouvre la session
+    * definir un repertoire de session et 2 commandes pour enregistrer et ouvrir
+    command! -nargs=1 Mks mksession ~/sessions/<args>
+    command! -nargs=1 Ops source ~/sessions/<args>
+    

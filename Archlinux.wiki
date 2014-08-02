@@ -37,4 +37,9 @@ Mes notes sur l'installation d'Archlinux
  * modfier la régle copier avec les info récupérée
  * faire `udevadm trigger` si la règle n'est pas prise en compte
  * si la règle ne fonctionne pas faire un `# udevadm test $(udevadm info -q path -n [device name]) 2>&1`
+=== Installation Trackpad ===
+ * voir https://wiki.archlinux.org/index.php/bluetooth
+ * et voir http://support.apple.com/kb/HT2845
+ * Turn on the Magic Trackpad by pressing the on/off button until the indicator light comes on. The indicator light glows steadily for 2 to 3 seconds to indicate the batteries are good. After that, the light will blink to indicate your trackpad is in discovery mode.
+ * ajouter une [[conf X11 trackpad]]
 
