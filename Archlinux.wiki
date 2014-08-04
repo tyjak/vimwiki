@@ -4,12 +4,13 @@ Mes notes sur l'installation d'Archlinux
  
 
 == Installation from scratch ==
- * Attention de ne lancer pas lancer l'utilitaire de partitionement sur une partition mais bien sur le disque lui même
+ * Attention de ne pas lancer l'utilitaire de partitionement sur une partition mais bien sur le disque lui même
  * Pour le macbook voir https://wiki.archlinux.org/index.php/MacBook
 === Notes à propos de VMware et Virtualbox ===
  * pb sur le driver video suite à l'upgrade -> obligé de réinstaller les anciens pilotes
+   ex : `pacman -U /var/cache/pacman/pkg/xf86-video-intel-2.99.912-1-x86_64.pkg.tar.xz`
 == Customisation ==
-=== Les paquets indispensable ===
+=== Les paquets indispensables ===
  * dmenu-xft-height (pour paramétrer la couleuur/hauteur)
  * dunst pour avoir des notifications
  * dwb comme navigateur web
@@ -27,7 +28,10 @@ Mes notes sur l'installation d'Archlinux
 === Police de caractère ===
 === Thème Solarized, airline et GTK ===
 === Barre de status ===
+ * [[configuration de i3pystatus-git]]  
 === Barre de lancement ===
+ * installation de dmenu-xft-height puis customisation dans ~/.config/i3/config :
+   `bindsym $mod+d exec dmenu_run -i -nb '#859900' -nf '#eee8d5' -sb '#cb4b16' -fn 'Meslo LG S DZ for Powerline-10' -h 24`
 === Ajout de règle udev ===
  Lancer un script à la connexion/deconnexion d'un périphérique :
  * voir https://wiki.archlinux.org/index.php/udev
@@ -40,6 +44,12 @@ Mes notes sur l'installation d'Archlinux
 === Installation Trackpad ===
  * voir https://wiki.archlinux.org/index.php/bluetooth
  * et voir http://support.apple.com/kb/HT2845
- * Turn on the Magic Trackpad by pressing the on/off button until the indicator light comes on. The indicator light glows steadily for 2 to 3 seconds to indicate the batteries are good. After that, the light will blink to indicate your trackpad is in discovery mode.
+   Turn on the Magic Trackpad by pressing the on/off button until the indicator light comes on. The indicator light glows steadily for 2 to 3 seconds to indicate the batteries are good. After that, the light will blink to indicate your trackpad is in discovery mode.
  * ajouter une [[conf X11 trackpad]]
+=== Connexion Freebox OpenVPN ===
+ * copier le fichier utilisateur de la freebox  `cp ~/downloads/config_openvpn_bridge_{$USER}.ovpn /etc/openvpn/freebox.conf`
+ * créer les fichiers reseaux pour [[openvpnclient]] pour l'interface virtuel dans `/etc/netctl` voir https://wiki.archlinux.org/index.php/OpenVPN_Bridge
+ * monter l'interface `netctl enable openvpn_tap`et `netctl enable openvpn_bridge`
+ * démarrer le service `systemctl start openvpn@freebox.service`
+ * puis `dhcpd` pour obtenir une ip
 

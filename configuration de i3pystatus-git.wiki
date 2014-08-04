@@ -1,0 +1,76 @@
+=== Configuration de la barre de status dans i3w ===
+
+Pour la configuration de la barre de status j'utilise i3pystatus qui offre plus d'option que i3status.
+La configuration dans ~/.config/i3/config :
+{{{  
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+  status_command python ~/.config/i3/status.py
+	position top
+  colors {
+    separator #93a1a1
+    background #002b36
+    statusline #93a1a1
+    focused_workspace #eee8d5 #859900 #eee8d5
+    active_workspace #fdf6e3 #6c71c4 #fdf6e3
+    inactive_workspace #073642 #eee8d5 #002b36
+    urgent_workspace #d33682 #d33682 #fdf6e3
+  }
+}
+
+}}}
+
+== les élements de la barre de status ==
+Pour configurer les éléments de la barre de status, il suffit d'éditer le fichier suivant : ~/.config/i3/status.py
+
+{{{
+# -*- coding: utf-8 -*-
+
+import subprocess
+
+from i3pystatus import Status
+
+status = Status(standalone=True)
+
+# Displays clock like this:
+# Tue 30 Jul 11:59:46 PM KW31
+#                          ^-- calendar week
+status.register("clock")
+
+# Show sound
+status.register("alsa")
+
+# Show battery
+status.register("battery",
+	format="{remaining} {status}")
+
+# Show network
+status.register("network",
+	interface="wlp2s0"
+	)
+#Show backlight
+status.register("backlight",
+	format="{percentage}%")
+
+# Shows the average load of the last minute and the last 5 minutes
+# (the default value for format is used)
+status.register("load")
+
+# Shows disk usage of /
+# Format:
+# 42/128G [86G]
+status.register("disk",
+    path="/",
+    #format="{used}/{total}G [{avail}G]",)
+    format="{avail}G",)
+
+# Show weather
+status.register("weather",
+        location_code="FRXX5264",
+        colorize=True,
+        format="{current_temp} {current_wind} {humidity}%",)
+
+status.run()
+}}}

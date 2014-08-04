@@ -1,0 +1,26 @@
+=== Openvpn conf (client) ===
+
+== Ficher /etc/openvpn_tap==
+{{{
+Description='tap connection'
+Interface=tap0
+Connection=tuntap
+Mode='tap'
+User='nobody'
+Group='nobody'
+
+## Example IP configuration
+#IP=static
+#Address='10.10.1.2/16'
+}}}
+
+== Ficher /etc/openvpn_bridge==
+{{{
+Description="Bridge connection"
+Interface=br0
+Connection=bridge
+BindsToInterfaces=(eth0 eth1 tap0)
+IP=dhcp
+## Ignore (R)STP and immediately activate the bridge
+#SkipForwardingDelay=yes
+}}}
