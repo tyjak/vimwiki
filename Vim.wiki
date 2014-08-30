@@ -6,4 +6,5 @@
 == Divers ==
 * [http://vimwiki.googlecode.com/hg/misc/vimwikiqrc.pdf vimwiki refcards]
 * `set wildmenu; set wildmode=list:longest,full "grande liste pour l'autocompletion`
+* `:w !tee %` pour forcer l'enregistrement si l'utilisateur courant n'a pas les droits
 
