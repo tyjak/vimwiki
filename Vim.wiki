@@ -9,4 +9,5 @@
 * `:w !tee %` pour forcer l'enregistrement si l'utilisateur courant n'a pas les droits
 * `set ignorecase` et `set smartcase` pour des recherhes exact seulement si le motif contient un mix min/maj
 * `set gdefault` pour remplacer par défaut tous les motifs de la ligne
-* http://stevelosh.com/blog/2010/09/coming-home-to-vim/
+  http://stevelosh.com/blog/2010/09/coming-home-to-vim/
+* supprimer le message d'accueil `set shortmess=+I`
