@@ -11,3 +11,4 @@
 * `set gdefault` pour remplacer par défaut tous les motifs de la ligne
   http://stevelosh.com/blog/2010/09/coming-home-to-vim/
 * supprimer le message d'accueil `set shortmess=+I`
+* `<C-r>=` expression register

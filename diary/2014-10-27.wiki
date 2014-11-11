@@ -4,3 +4,16 @@
  * [ ] écran de démarrage, complément à NerdTRee
  * [ ] Gestion des session (TODO voir autochargement avec le dossier)
 	* [ ]  enregistrement de l'historique
+	
+
+[[pixelastic/oroshi]]
+
+grund reload
+
+c9.io
+
+
+meetup 
+	humantalks
+	docker
+	
