@@ -1,0 +1,58 @@
+= Les Entretiens du nouveau monde industriel 2014 =
+
+== Bernard Stiegler == 
+Chris Anderson – The End of theory (WIRED) 
+http://archive.wired.com/science/discoveries/magazine/16-07/pb_theory 
+
+Kevin Kelly
+
+== David Bates ==
+Jean pierre Dupuy - Aux origines de l'humanité
+
+== Jean Lassègue ==
+Le théorème de turing est avant tout le théorème d'une impossibilité :
+L'incalculable, modèle non algorithmique
+
+Le monde de l'incalculable : morphogénèse des organismes dans la nature
+
+
+Concernant la crise de 2007 à propos du 'high frequency trading' Alexandre Laumonier :
+"Certaines personnes travaillant dans de grandes écoles de finance m’ont ainsi confirmé avoir reçu en 2007 des coups de fil de banques pour les inciter à former des gens maîtrisant davantage les algorithmes. Les modèles mathématiques ayant failli, il fallait trouver une autre vache à lait."
+
+== Guiseppe Longo ==
+
+téléonomie
+
+Shannon &  Kolgomorof
+
+== Antoinette Rouvroy ==
+anomie du réel par le big data
+Le fait de ne plus avoir de normes, le temps des soumis est libéré pout mieux l'occuper à alimenter ces big data.
+
+== Domnique Cardon ==
+4 prises :
+	* lien
+	* like 
+	* vue
+	* trace
+
+Objectivité
+Lorraine Datson & Peter Galison
+
+De la visibilité, Natalie Heinich
+
+Bayesian statistics
+
+== Cedric Matthews ==
+
+Simondon
+
+La production des machines d'observations décorélé de la recherche et et donné à l'univer industriel
+
+* La machine produit plus de données, trop de donnés difficiles à exploité
+* L'industrie oriente la recherche en ce sens qu'elle décide des instruments d'observations commandés par la preommesse du profit défini.
+* la production d'outils d'observations n'est plus commandé par un projet de recherche exogène à l'instrument mais bien par des recherches indogènes visant à perfectionner les divers caractèristiques de l'observation même.
+* C'est donc l'écolution technique qui alienne l'observatuer, le chercheur
+
+== Bernard Stiegler ==
+* Question de la certification, qui passe du côté de l'industriel

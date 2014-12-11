@@ -1,4 +1,6 @@
-== Alternative to GAFA ==
+= Alternative to GAFA =
 
-= Dropbox Alt =
+== Dropbox Alt ==
 https://ind.ie/pulse/
+http://www.getsync.com
+

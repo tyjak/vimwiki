@@ -1,23 +1,31 @@
+= Postfix =
 == Trucs et astuces pour postfix ==
-* restrection de reception pour un domaine (à tester)
+
+==== restriction de reception pour un domaine (à tester) ====
 
 The instructions for doing this type of thing are documented here.
 http://www.postfix.org/RESTRICTION_CLASS_README.html
 
-try something like this
+try something like this in 
 
-/etc/postfix/main.cf:
+	`/etc/postfix/main.cf` :
+{{{class="brush: sh"
     smtpd_recipient_restrictions =
         check_client_access hash:/etc/postfix/inside_ips
         ...the usual stuff...
 
         smtpd_restriction_classes = insiders_only
         insiders_only = check_sender_access hash:/etc/postfix/insiders, reject
+}}}
 
-        /etc/postfix/inside_ips:
+	`/etc/postfix/inside_ips` : 
+{{{class="brush: sh"
             192.168.1   insiders_only
             192.168.2   insiders_only
-
-        /etc/postfix/insiders:
+  }}}
+  
+	`/etc/postfix/insiders` :
+{{{class="brush: sh"
         my.domain       OK  matches my.domain and subdomains
         another.domain  OK  matches another.domain and subdomains
+  }}} 

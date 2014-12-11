@@ -1,7 +1,12 @@
+----
+ {{http://vimwiki.googlecode.com/hg/images/vimwiki_logo.png|Vimwiki|class="center-block"}}
+ 
 = My knowledge base =
+
 	* [[Archlinux]]
 	* [[github]]
 	* [[Python]]
 	* [[Vim]]
 	* [[Postfix]]
 	* [[Open Source Alt]]
+
