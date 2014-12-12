@@ -1,3 +1,4 @@
+%title Tyjak notes
 ----
  {{http://vimwiki.googlecode.com/hg/images/vimwiki_logo.png|Vimwiki|class="center-block"}}
  
