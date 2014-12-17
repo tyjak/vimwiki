@@ -10,7 +10,16 @@ Mes notes sur l'installation d'Archlinux
  * pb sur le driver video suite à l'upgrade -> obligé de réinstaller les anciens pilotes
    ex : `pacman -U /var/cache/pacman/pkg/xf86-video-intel-2.99.912-1-x86_64.pkg.tar.xz`
 == Customisation ==
+=== Installation de yaourt ===
+Dans /etc/pacman.conf :
+{{{
+[archlinuxfr]
+SigLevel = Never
+Server = http://repo.archlinux.fr/$arch
+}}}
+puis installer avec `pacman -Sy yaourt`
 === Les paquets indispensables ===
+ * i3-wm gestionnaire de fenêtre
  * dmenu-xft-height (pour paramétrer la couleuur/hauteur)
  * dunst pour avoir des notifications
  * dwb comme navigateur web
