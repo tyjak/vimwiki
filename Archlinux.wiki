@@ -31,7 +31,8 @@ puis installer avec `pacman -Sy yaourt`
  * otf-powerline-symbols-git (police avec support powerline)
  * pinta logiciel de retouche image
  * pommed-light pour gérer les touches mac sons/lumieres
- * xclip & xqel pour gérer les copier/collé
+ * xclip & xsel pour gérer les copier/collé
+ * nuvolaplayer pour la musique en ligne
 === I3 window manager ===
  * i3pystatus-git pour des infos dans la barre de menu
 === Police de caractère ===
@@ -57,8 +58,22 @@ puis installer avec `pacman -Sy yaourt`
  * ajouter une [[conf X11 trackpad]]
 === Connexion Freebox OpenVPN ===
  * copier le fichier utilisateur de la freebox  `cp ~/downloads/config_openvpn_bridge_{$USER}.ovpn /etc/openvpn/freebox.conf`
- * créer le fichier reseau pour [[openvpnclient]] pour l'interface virtuel dans `/etc/netctl` voir https://wiki.archlinux.org/index.php/OpenVPN_Bridge (mais ne pas installé le fichier bridge que tap)
+ * créer le fichier reseau pour [[openvpnclient]] pour l'interface virtuel dans `/etc/netctl` voir https://wiki.archlinux.org/index.php/OpenVPN_Bridge (mais ne pas installer le fichier bridge que tap)
  * démarrer l'interface `netctl enable openvpn_tap`
  * démarrer le service `systemctl start openvpn@freebox.service`
  * puis `dhcpd tap0` pour obtenir une ip
  * si pb pour obtenir l'adresse ip, redémarrer faire un `systemctl restart dhcpcd`
+=======
+ * créer les fichiers reseaux pour [[openvpnclient]] pour l'interface virtuel dans `/etc/netctl` voir https://wiki.archlinux.org/index.php/OpenVPN_Bridge
+ * monter l'interface `netctl enable openvpn_tap` et `netctl enable openvpn_bridge`
+ * démarrer le service `systemctl start openvpn@freebox.service`
+ * puis `dhcpd` pour obtenir une ip
+=== Changer le navigateur web par défault ===
+ * installer `xdg-utils`
+ * créer le dossier pour les mimes types `mkdir ~/.local/share/applications`
+ * puis executer la commande `xdg-mime default dwb.desktop x-scheme-handler/http` pour avoir dwb par défaut
+ * plus d'info : https://wiki.archlinux.org/index.php/xdg-open#Set_the_default_browser
+=== Régler un pb (TODO)===
+ * journal des événements `journalctl -xn`
+ * `journalctl -f` pour voir tous ce qui se passe
+ * `journalctl -n -u bluetooth` pour voir les derniers logs concernant le bluetooth

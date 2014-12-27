@@ -1,6 +1,6 @@
 = Vim tips =
 == NEW ==
-* ,<CR> pour supprimer le highlight de la recherche
+* ,<SPACE> pour supprimer le highlight de la recherche
 * <SPACE> pour faire une recheche (/)
 * <SHIFT><SPACE> recherche inverse (?)
 == Divers ==
