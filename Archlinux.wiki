@@ -57,12 +57,14 @@ puis installer avec `pacman -Sy yaourt`
    Turn on the Magic Trackpad by pressing the on/off button until the indicator light comes on. The indicator light glows steadily for 2 to 3 seconds to indicate the batteries are good. After that, the light will blink to indicate your trackpad is in discovery mode.
  * ajouter une [[conf X11 trackpad]]
 === Connexion Freebox OpenVPN ===
- * copier le fichier utilisateur de la freebox  `cp ~/downloads/config_openvpn_bridge_{$USER}.ovpn /etc/openvpn/freebox.conf`
- * créer le fichier reseau pour [[openvpnclient]] pour l'interface virtuel dans `/etc/netctl` voir https://wiki.archlinux.org/index.php/OpenVPN_Bridge (mais ne pas installer le fichier bridge que tap)
- * démarrer l'interface `netctl enable openvpn_tap`
- * démarrer le service `systemctl start openvpn@freebox.service`
- * puis `dhcpd tap0` pour obtenir une ip
- * si pb pour obtenir l'adresse ip, redémarrer faire un `systemctl restart dhcpcd`
+    ==== Configuration ====
+     * copier le fichier utilisateur de la freebox  `cp ~/downloads/config_openvpn_bridge_{$USER}.ovpn /etc/openvpn/freebox.conf`
+     * créer le fichier reseau pour [[openvpnclient]] pour l'interface virtuel dans `/etc/netctl` voir https://wiki.archlinux.org/index.php/OpenVPN_Bridge (mais ne pas installer le fichier bridge que tap)
+     * démarrer l'interface `netctl enable openvpn_tap`
+    ==== Demarrage ====
+     * démarrer le service `systemctl start openvpn@freebox.service`
+     * puis `dhcpd tap0` pour obtenir une ip
+     * si pb pour obtenir l'adresse ip, redémarrer faire un `systemctl restart dhcpcd`
 =======
  * créer les fichiers reseaux pour [[openvpnclient]] pour l'interface virtuel dans `/etc/netctl` voir https://wiki.archlinux.org/index.php/OpenVPN_Bridge
  * monter l'interface `netctl enable openvpn_tap` et `netctl enable openvpn_bridge`
