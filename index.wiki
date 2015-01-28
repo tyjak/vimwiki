@@ -10,4 +10,5 @@
 	* [[Vim]]
 	* [[Postfix]]
 	* [[Open Source Alt]]
+	* [[Chef]]
 
