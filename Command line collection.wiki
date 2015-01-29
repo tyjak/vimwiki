@@ -1,9 +1,13 @@
 = Command line collection  =
 
 *curl*
+
 permet de tester un site sans pour autant que le nom soit dans un host ou un dns
+
 `curl -I --resolve [domain name]:80:[ip] [URL]`
 
 *connexion réseau*
+
 Nombre de connexion établie sur port 80
+
 `netstat -an | grep 80 | grep ESTA | wc -l`
