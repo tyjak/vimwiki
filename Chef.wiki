@@ -6,7 +6,7 @@ Mes notes pour Chef
 == configuration ==
 /etc/chef/solo.rb
 
-`
+```
 repo = '/etc/chef/src'
 
 cookbook_path repo + '/cookbooks'
@@ -15,8 +15,7 @@ role_path repo + '/roles'
 
 log_level :info
 log_location STDOUT
-
-`
+```
 
 
 == Les dossiers ==
@@ -27,8 +26,8 @@ mkdir /etc/chef/source /etc/chef/data_bags /etc/chef/src
 
 == Les commandes ==
 
-`
+```
 chef-solo -o recipe[{nom du rep source}(:{recipes name})]
 
 {nom du rep source} => /etc/chef/src/{nom du rep source}/recipes/{recipe name}
-`
+```
