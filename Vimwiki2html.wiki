@@ -68,7 +68,20 @@ In the directory of the project launch:
 	$ grunt build
   }}}
   
+=== Process the whole thing ===
+
+Within vim :
+* `Gw` to save and stage your wikifile
+* `Gcommit` to commit change
+* `:WikiToHTML` to have the html file
+
+Within local www folder :
+* `grunt build`
+* `git -a -m 'message' file.html`
+
+ It's done' !
+
 === TODO ===
 
-Add git commit, push into the build process
+Automate all the stuff above !
 
