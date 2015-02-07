@@ -6,10 +6,13 @@ Mes notes sur l'installation d'Archlinux
 == Installation from scratch ==
  * Attention de ne pas lancer l'utilitaire de partitionement sur une partition mais bien sur le disque lui même
  * Pour le macbook voir https://wiki.archlinux.org/index.php/MacBook
+ * 
 === Notes à propos de VMware et Virtualbox ===
  * pb sur le driver video suite à l'upgrade -> obligé de réinstaller les anciens pilotes
    ex : `pacman -U /var/cache/pacman/pkg/xf86-video-intel-2.99.912-1-x86_64.pkg.tar.xz`
+   
 == Customisation ==
+
 === Installation de yaourt ===
 Dans /etc/pacman.conf :
 {{{
@@ -18,11 +21,14 @@ SigLevel = Never
 Server = http://repo.archlinux.fr/$arch
 }}}
 puis installer avec `pacman -Sy yaourt`
+
 === Les paquets indispensables ===
+
+ * urxvt terminal + urxvt-perls
  * i3-wm gestionnaire de fenêtre
  * dmenu-xft-height (pour paramétrer la couleuur/hauteur)
  * dunst pour avoir des notifications
- * dwb comme navigateur web
+ * dwb ou vimb comme navigateur web
  * feh pour gérer l'image du fond
  * hot-solarized-vi pour un top colorisée avec raccourcis vi
  * slim pour avoir un écran de login
@@ -33,16 +39,26 @@ puis installer avec `pacman -Sy yaourt`
  * pommed-light pour gérer les touches mac sons/lumieres
  * xclip & xsel pour gérer les copier/collé
  * nuvolaplayer pour la musique en ligne
+
 === I3 window manager ===
+
  * i3pystatus-git pour des infos dans la barre de menu
+
 === Police de caractère ===
+
 === Thème Solarized, airline et GTK ===
+
 === Barre de status ===
+
  * [[configuration de i3pystatus-git]]  
+
 === Barre de lancement ===
+
  * installation de dmenu-xft-height puis customisation dans ~/.config/i3/config :
    `bindsym $mod+d exec dmenu_run -i -nb '#859900' -nf '#eee8d5' -sb '#cb4b16' -fn 'Meslo LG S DZ for Powerline-10' -h 24`
+
 === Ajout de règle udev ===
+
  Lancer un script à la connexion/deconnexion d'un périphérique :
  * voir https://wiki.archlinux.org/index.php/udev
  * créer un script se terminannt par .rules
@@ -51,29 +67,46 @@ puis installer avec `pacman -Sy yaourt`
  * modfier la régle copier avec les info récupérée
  * faire `udevadm trigger` si la règle n'est pas prise en compte
  * si la règle ne fonctionne pas faire un `# udevadm test $(udevadm info -q path -n [device name]) 2>&1`
+
 === Installation Trackpad ===
+
  * voir https://wiki.archlinux.org/index.php/bluetooth
  * et voir http://support.apple.com/kb/HT2845
    Turn on the Magic Trackpad by pressing the on/off button until the indicator light comes on. The indicator light glows steadily for 2 to 3 seconds to indicate the batteries are good. After that, the light will blink to indicate your trackpad is in discovery mode.
  * ajouter une [[conf X11 trackpad]]
+ * si le trackpad ne fonctionne pas il faut à nouveau le jumeler en lançant `bluetoothctl`
+ {{{
+    remove 60:C5:47:81:AC:AD 
+    agent on
+    default-agent
+    scan on
+    pair 60:C5:47:81:AC:AD 
+    trust 60:C5:47:81:AC:AD 
+    connect 60:C5:47:81:AC:AD 
+ }}}
+
 === Connexion Freebox OpenVPN ===
+
  * copier le fichier utilisateur de la freebox  `cp ~/downloads/config_openvpn_bridge_{$USER}.ovpn /etc/openvpn/freebox.conf`
  * créer le fichier reseau pour [[openvpnclient]] pour l'interface virtuel dans `/etc/netctl` voir https://wiki.archlinux.org/index.php/OpenVPN_Bridge (mais ne pas installer le fichier bridge que tap)
  * démarrer l'interface `netctl enable openvpn_tap`
  * démarrer le service `systemctl start openvpn@freebox.service`
  * puis `dhcpd tap0` pour obtenir une ip
  * si pb pour obtenir l'adresse ip, redémarrer faire un `systemctl restart dhcpcd`
-=======
  * créer les fichiers reseaux pour [[openvpnclient]] pour l'interface virtuel dans `/etc/netctl` voir https://wiki.archlinux.org/index.php/OpenVPN_Bridge
  * monter l'interface `netctl enable openvpn_tap` et `netctl enable openvpn_bridge`
  * démarrer le service `systemctl start openvpn@freebox.service`
  * puis `dhcpd` pour obtenir une ip
+
 === Changer le navigateur web par défault ===
+
  * installer `xdg-utils`
  * créer le dossier pour les mimes types `mkdir ~/.local/share/applications`
  * puis executer la commande `xdg-mime default dwb.desktop x-scheme-handler/http` pour avoir dwb par défaut
  * plus d'info : https://wiki.archlinux.org/index.php/xdg-open#Set_the_default_browser
+
 === Régler un pb (TODO)===
+
  * journal des événements `journalctl -xn`
  * `journalctl -f` pour voir tous ce qui se passe
  * `journalctl -n -u bluetooth` pour voir les derniers logs concernant le bluetooth
