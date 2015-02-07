@@ -12,3 +12,4 @@
   http://stevelosh.com/blog/2010/09/coming-home-to-vim/
 * supprimer le message d'accueil `set shortmess=+I`
 * `<C-r>=` expression register
+* Voir par qui a été setter une variable :verbose set cpoptions?

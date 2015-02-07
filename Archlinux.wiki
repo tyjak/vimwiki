@@ -86,13 +86,15 @@ puis installer avec `pacman -Sy yaourt`
  }}}
 
 === Connexion Freebox OpenVPN ===
-
- * copier le fichier utilisateur de la freebox  `cp ~/downloads/config_openvpn_bridge_{$USER}.ovpn /etc/openvpn/freebox.conf`
- * créer le fichier reseau pour [[openvpnclient]] pour l'interface virtuel dans `/etc/netctl` voir https://wiki.archlinux.org/index.php/OpenVPN_Bridge (mais ne pas installer le fichier bridge que tap)
- * démarrer l'interface `netctl enable openvpn_tap`
- * démarrer le service `systemctl start openvpn@freebox.service`
- * puis `dhcpd tap0` pour obtenir une ip
- * si pb pour obtenir l'adresse ip, redémarrer faire un `systemctl restart dhcpcd`
+    ==== Configuration ====
+     * copier le fichier utilisateur de la freebox  `cp ~/downloads/config_openvpn_bridge_{$USER}.ovpn /etc/openvpn/freebox.conf`
+     * créer le fichier reseau pour [[openvpnclient]] pour l'interface virtuel dans `/etc/netctl` voir https://wiki.archlinux.org/index.php/OpenVPN_Bridge (mais ne pas installer le fichier bridge que tap)
+     * démarrer l'interface `netctl enable openvpn_tap`
+    ==== Demarrage ====
+     * démarrer le service `systemctl start openvpn@freebox.service`
+     * puis `dhcpd tap0` pour obtenir une ip
+     * si pb pour obtenir l'adresse ip, redémarrer faire un `systemctl restart dhcpcd`
+=======
  * créer les fichiers reseaux pour [[openvpnclient]] pour l'interface virtuel dans `/etc/netctl` voir https://wiki.archlinux.org/index.php/OpenVPN_Bridge
  * monter l'interface `netctl enable openvpn_tap` et `netctl enable openvpn_bridge`
  * démarrer le service `systemctl start openvpn@freebox.service`

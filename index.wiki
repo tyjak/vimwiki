@@ -1,7 +1,7 @@
 %title Tyjak notes
-----
- {{http://vimwiki.googlecode.com/hg/images/vimwiki_logo.png|Vimwiki|class="center-block"}}
- 
+
+
+
 = My knowledge base =
 
 	* [[Archlinux]]
@@ -10,4 +10,14 @@
 	* [[Vim]]
 	* [[Postfix]]
 	* [[Open Source Alt]]
+	* [[Chef]]
+	* [[Vimwiki2html]]
+ 
+----
 
+<i class="fa fa-github"></i> [[http://www.github.com/tyjak|My github]]
+
+<i class="fa fa-twitter"></i> [[http://www.twitter.com/tyjak|My twitter]]
+
+ {{http://vimwiki.googlecode.com/hg/images/vimwiki_logo.png|Vimwiki|class="center-block"}}
+ 

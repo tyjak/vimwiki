@@ -1,0 +1,74 @@
+= Vimwiki as your personal website =
+
+Use vimwiki as your favorite publishing tool !
+
+== Vimwiki settings ==
+
+{{{
+"vimwiki 
+let mainWiki = {}
+let mainWiki.path = '~/vimwiki/'
+let mainWiki.template_path = '~/sites/tyjak.github.io/templates'
+let mainWiki.template_default = 'default'
+let mainWiki.template_ext = '.tpl'
+let mainWiki.path_html = '~/sites/tyjak.github.io/app' 
+
+let g:vimwiki_list = [mainWiki]
+}}}
+
+== Publish with yeoman ==
+
+Yeoman is _the web's scaffolding tool for modern webapps_.
+Built on node.js, it inludes yo, bower ans grunt
+
+=== Install yeoman ===
+{{{
+ $ npm install -g yo bower 
+  }}}
+  
+=== Install a generator ===
+
+Choose your prefer webapp environement.
+Generator-webapp is Html5boilerplate qith Jquery, Modernizer and Bootstrap
+
+{{{
+ $ npm install -g generator-webapp
+  }}}
+  
+=== Finaly get started ===
+
+Go to your project directory and run :
+
+{{{
+ $ yo webapp
+}}}
+
+=== Template ===
+
+Add a directory templates in root of the porject.
+Copy `app/index.html` to `templates/default.tpl` 
+
+Put those two vimwiki vars in your template :
+{{{
+	<title>%title</title>
+	<body>%content</body>
+}}}
+
+=== Preview your wiki ===
+
+In the directory of the project launch:
+{{{
+	$ grunt serve
+  }}}
+
+=== Release ===
+
+In the directory of the project launch:
+{{{
+	$ grunt build
+  }}}
+  
+=== TODO ===
+
+Add git commit, push into the build process
+

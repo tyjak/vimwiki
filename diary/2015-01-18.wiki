@@ -1,0 +1,16 @@
+= Vim meetup =
+
+== Actu ==
+Blog d'un type qui switch de vim à emacs
+http://blog.aaronbieber.com
+
+== Learn ==
+Anti-pattern of vimrc http://rbtnn.hateblo.jp/entry/2014/12/28/010913
+Comment bien écrire son vimrc
+
+== To test ==
+https://github.com/Wolfy87/vim-enmasse/blob/master/doc/enmasse.txt
+Plugin pour de l'édtion en masse
+
+== Question ==
+Comment faire du live update ?
