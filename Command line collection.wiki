@@ -11,3 +11,10 @@ permet de tester un site sans pour autant que le nom soit dans un host ou un dns
 Nombre de connexion établie sur port 80
 
 `netstat -an | grep 80 | grep ESTA | wc -l`
+
+Test débit
+
+`wget -O - https://raw.github.com/sivel/speedtest-cli/master/speedtest_cli.py | python`
+
+
+

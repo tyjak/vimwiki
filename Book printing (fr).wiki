@@ -1,0 +1,12 @@
+= Imposition livre =
+
+== Préparation ==
+
+* installation de latex
+* installation de xpdf
+* reprendre le script gist tyjak/pdflivre
+
+== Impression ==
+
+voit les différentes options avec `pdflivre -h`
+
