@@ -12,6 +12,7 @@
 	* [[Open Source Alt]]
 	* [[Chef]]
 	* [[Vimwiki2html]]
+	* [[Command line collection]]
  
 ----
 

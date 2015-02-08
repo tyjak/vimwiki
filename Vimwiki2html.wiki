@@ -79,7 +79,7 @@ Within local www folder :
 * `grunt build`
 * `git -a -m 'message' file.html`
 
- It's done' !
+ It's done !
 
 === TODO ===
 
