@@ -27,7 +27,7 @@ puis installer avec `pacman -Sy yaourt`
  * urxvt terminal + urxvt-perls
  * i3-wm gestionnaire de fenêtre
  * dmenu-xft-height (pour paramétrer la couleuur/hauteur)
- * dunst pour avoir des notifications
+ * dunst + libnotify pour avoir des notifications
  * dwb ou vimb comme navigateur web
  * feh pour gérer l'image du fond
  * hot-solarized-vi pour un top colorisée avec raccourcis vi
