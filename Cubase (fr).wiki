@@ -1,0 +1,15 @@
+Installation de Cubase
+======================
+
+1. Essai avec Hatari
+	Il semble malheureusement que Cubase plante sur cette version (essai avec Cubase-Lite).
+	A tester : trouver un version cracké d'un cubase
+
+2. Essai avec Nostalgia
+	Il faut trouver les versions ".st" de cubase pour le faire fonctionner
+
+3. Essai avec CubaseSX3
+	C'est la dernière version de cubase à accepter les anciens fichiers .arr
+	Cette version ne fonctionne que sur PPC, il faut trouver un crack
+	
+4. Conclusion : pas de solution à ce jour
