@@ -1,0 +1,53 @@
+= Vim meetup 150223 =
+
+Bref compte rendu du meetup.
+
+== Présentations ==
+
+* De vim à emacs, pourquoi un vimer passe à emacs : [[http://blog.aaronbieber.com]]
+* Comment bien écrire son vimrc et éviter les mauvaises pratiques : [[http://rbtnn.hateblo.jp/entry/2014/12/28/010913|Anti-pattern of vimrc]]
+* Naviguer sur le web à la sauce vim : 
+** [[http://www.vimperator.org|vimperator]] & [[http://5digits.org/home|pentadactyl]] pour Firefox
+** [[http://vimium.github.io|vimium]] pour Chrome
+** Et aussi des navigateurs : [[http://sourceforge.net/p/vimprobable/wiki/Home/|vimprobable]], [[http://www.uzbl.org|uzbl]] et [[http://fanglingsu.github.io/vimb/|vimb]]
+* Ligne de commandes pour le web : [[yubnub.org|yubnub]] à combiner avec vimperator (en moteur de recherche par défaut) ex: 
+** search yubnub on github <pre>:o gh yubnub</pre>
+** search vim on wikipedia <pre>:o wi vim</pre>
+** search ruby definition <pre>:o rdoc string</pre>
+* Remapping de touches :
+** [[https://github.com/pixelastic/oroshi/blob/master/config/xmodmap/xmodmaprc|au niveau de l'OS (par Tim)]]
+** [[https://github.com/pixelastic/oroshi/blob/master/config/vim/includes/keybindings.vim|au niveau de vim (par Tim)]]
+
+== Les plugins ==
+
+* [[https://github.com/vimwiki/vimwiki|vimwiki]]
+* [[https://github.com/mattn/calendar-vim|calendar]] 
+* [[https://github.com/vimoutliner/vimoutliner|vimoutliner]]
+* [[https://github.com/tpope/vim-fugitive|vim-fugitive]]
+* [[https://github.com/rhysd/committia.vim|committia]]
+* [[https://github.com/Rip-Rip/clang_complete|clang-complete]]
+* [[https://github.com/Rip-Rip/clang_complete|YouCompleteMe]]
+
+== Divers ==
+
+* Clavier [[http://fabi1cazenave.github.io/qwerty-lafayette|qwerty-lafayette]]
+* Git : [[https://github.com/tj/git-extras|git-extras]] & [[http://git-scm.com/blog/2010/03/08/rerere.html|git rerere]]
+* Irc : [[https://weechat.org|weechat]]
+
+== Ressources GitHub pour vim ==
+
+* https://github.com/Shougo
+* https://github.com/tpope
+* https://github.com/mattn
+
+== Quelques GitHub des participants ==
+
+* [[https://github.com/pixelastic|pixelastic]]
+* [[https://github.com/pixelastic|guillaumeseren]] 
+* [[https://github.com/Marneus68|Marneus68]]
+* [[https://github.com/tyjak|tyjak]]
+* [[https://github.com/maggick/dotfiles|maggick (fichiers de conf)]]
+
+== Misc ==
+
+Le [[https://github.com/search?utf8=✓&q=language%3AVimL&type=Repositories&ref=advsearch&l=VimL|classement]] des scripts vim les plus "étoilés"
