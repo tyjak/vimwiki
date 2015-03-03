@@ -46,6 +46,10 @@ puis installer avec `pacman -Sy yaourt`
 
 === Police de caractère ===
 
+ * ttf-meslo-powerline
+ * icons
+ * ttf-fontawesome
+
 === Thème Solarized, airline et GTK ===
 
 === Barre de status ===
