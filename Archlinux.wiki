@@ -116,3 +116,8 @@ puis installer avec `pacman -Sy yaourt`
  * journal des événements `journalctl -xn`
  * `journalctl -f` pour voir tous ce qui se passe
  * `journalctl -n -u bluetooth` pour voir les derniers logs concernant le bluetooth
+
+ === TODO ===
+
+ * ajouter les packages `perl-json-xs` et `perl-anyevent` pour pouvoir enregistrer des layout i3
+ * command pour sauvegarder un layout `i3-save-tree --workspace console > ~/.config/i3/workspace_console.json`

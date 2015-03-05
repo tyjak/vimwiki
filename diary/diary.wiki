@@ -1,6 +1,17 @@
 = Diary =
 
+== 2015 ==
+
+=== February ===
+    * [[2015-02-23|Vim meetup 150223]]
+
+=== January ===
+    * [[2015-01-18|Vim meetup]]
+
 == 2014 ==
+
+=== December ===
+    * [[2014-12-05|Les Entretiens du nouveau monde industriel 2014]]
 
 === October ===
     * [[2014-10-27|Vim meetup]]

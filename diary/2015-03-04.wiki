@@ -1,0 +1,16 @@
+= Vimb configuration =
+
+== TODO ==
+
+=== Test functionality ===
+
+* Autocommands
+* Queue
+* Socket (auto reload in dev mode)
+
+=== Enhance configuration ===
+
+* command to reload configuration
+* command to edit configuration file in the scratchpad with vimb command file split open to easily copy/paste test settings to the configuration file
+* autocommand to present twitter like on iphone (add iphone user agent)
+

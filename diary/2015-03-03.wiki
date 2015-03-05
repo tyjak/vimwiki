@@ -1,0 +1,36 @@
+= Tuppervim =
+
+`#` recherche inverse
+
+limité la coloration syntaxique
+`set synmaxcol=200`
+
+jumpé les modifs
+`g,` 
+
+Aller à la dernière modif
+`'.`
+
+change list
+`:changes`
+
+`gjk` remappé pour les lignes super longue
+
+`C-l` avec 
+
+`set list listchars` TODO ajouter les chars pour les débuts, les fins
+
+`C-u` TODO voir l'utilisation
+
+A voir Pandoc
+
+== A tester ==
+avec plugin pour autofermer les parentheses 
+voir si C-Q fonctionne pour n'insérer qu'un des caractères
+
+== A mettre ==
+gF remap pour créer le fichier qui n'existe pas
+
+
+
+
