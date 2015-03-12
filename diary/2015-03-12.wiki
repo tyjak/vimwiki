@@ -1,0 +1,6 @@
+= MOOC =
+
+* MOOC français : [[https://www.france-universite-numerique-mooc.fr/|FUN]]
+* Inscription au mooc Agroécologie - Début des cours le 28/09/2015
+* MOOC américain dont certain cours partiellement traduis en anglais [[https://www.coursera.org|Coursera]]
+* MOOC destiné en enfants : [[https://fr.khanacademy.org/coach-res|khanacademy]]

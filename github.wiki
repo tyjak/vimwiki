@@ -3,3 +3,5 @@
 	* fichier ~/.git-credentials TODO:command pour générer ce ficher
 	* command `git config credential.helper 'store'` pour utiliser l'authentification permanente
 	* préférer l'authentification par clefs ssh (git@github.com)
+== Tutorial ==
+ Excellent [[http://blog.octo.com/git-dans-la-pratique-12/|tuto]] Git 
