@@ -5,7 +5,7 @@
 = My knowledge base =
 
 	* [[Archlinux]]
-	* [[github]]
+	* [[git && github]]
 	* [[Python]]
 	* [[Vim]]
 	* [[Postfix]]
