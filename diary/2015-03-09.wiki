@@ -1,0 +1,14 @@
+= xmodmap =
+
+* mapping list `xmodmap -pke`
+* modifier key mapping `xmodmap -mp`
+
+Remap CapsLock to Mod_switch
+{{{
+
+remove mod3 = Mode_switch
+remove mod5 = Mode_switch
+keycode  66 = Mode_switch NoSymbol Mode_switch
+add lock = Mode_switch
+
+}}}

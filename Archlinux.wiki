@@ -39,6 +39,7 @@ puis installer avec `pacman -Sy yaourt`
  * pommed-light pour gérer les touches mac sons/lumieres
  * xclip & xsel pour gérer les copier/collé
  * nuvolaplayer pour la musique en ligne
+ * unclutter pour masquer la souris
 
 === I3 window manager ===
 
