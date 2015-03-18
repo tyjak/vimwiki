@@ -5,7 +5,7 @@
 = My knowledge base =
 
 	* [[Archlinux]]
-	* [[github]]
+	* [[git && github]]
 	* [[Python]]
 	* [[Vim]]
 	* [[Postfix]]
@@ -15,6 +15,11 @@
 	* [[Command line collection]]
 	* [[Book printing (fr)]]
 	* [[Cubase (fr)]]
+
+== Scratchpad ==
+	
+	* [[TO test]]
+	* [[portable vimwiki]]
  
 ----
 

@@ -1,0 +1,19 @@
+= Vimwiki on phone =
+
+Find or make a way to consult vimwiki/vimwikidiary on a mobile device.
+
+== Find ==
+ 
+ * What mobile solution exists to view github code ?
+ * Is there a way to force wikimedia language int github ?
+ * github recognize .md and render markdown file as html so why not using it as default markup in vimwiki ?
+
+== Make ==
+ 
+  [ ] input : github url repo with .wiki file extension (vimwiki repo)
+  [ ] format wikisyntax to readable html on the fly
+  [ ] output to a simple mobil website
+  
+== Solution ==
+
+    PANDOC !
