@@ -15,6 +15,7 @@
 	* [[Command line collection]]
 	* [[Book printing (fr)]]
 	* [[Cubase (fr)]]
+	* [[Docker]]
 
 == Scratchpad ==
 	

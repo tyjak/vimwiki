@@ -1,0 +1,11 @@
+= Meetup vimmortel =
+
+== Tips ==
+
+* mapping pour activer la correction
+`nmap <silent> <leader>se :set spelllang=en spell!<CR>`
+`nmap <silent> <leader>sf :set spelllang=fr spell!<CR>`
+* ajouter une ligne d'un fichier dans un autre fichier sans l'ouvrir
+`:.w !cat - >> fileyoudontwantto.open`
+
+

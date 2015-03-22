@@ -1,0 +1,21 @@
+= Docker =
+
+* create a docker folder
+* edit `Dockerfile`
+
+{{{
+FROM ubuntu:14.04
+MAINTAINER David Foucher <david@my.docker.net>
+RUN apt-get update && apt-get install -y nginx php5-fpm
+RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+EXPOSE 80
+CMD service php5-fpm start
+CMD service nginx start
+}}}
+
+* build `sudo docker build -t david/nginx:v1`
+* run the docker `sudo docker run -p 80:80 -d -t david/nginx:v1`
+* quelques commandes :
+    - `sudo docker ps -a` list of all container running or stopped
+    - `sudo docker stop [ID container]`
+    - `sudo docker rm [ID container]`

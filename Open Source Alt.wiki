@@ -1,6 +1,5 @@
 = Alternative to GAFA =
 
 == Dropbox Alt ==
-https://ind.ie/pulse/
-http://www.getsync.com
+https://syncthing.net/
 
