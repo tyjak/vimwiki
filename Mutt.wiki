@@ -1,0 +1,33 @@
+= Mutt =
+
+== How to ==
+
+*links*
+[[http://realprogrammers.com/jump_start/mutt/|Jump start]]
+[[http://sheet.shiar.nl/mutt|Mutt cheat sheet]]
+
+*Examples*
+
+_Delete all mail with SPAM in the subject_
+# Press `l` (for limit search) and enter `~s SPAM ~t admin@test.fr` (`s` for subject and `t` for to)
+# check if search is okay, inspect header by pressing `h`
+# press `T` to mark all messages matching the search (`T` mark all message of last search)
+# press `l.` to cancel limit search view
+# press `;d` to delete marked messages
+# press `$` to commit deletion
+
+_untag all tagged mail_
+just press `;t` (apply tag on all tagged mail => untagged)
+
+== TODO ==
+
+[[https://www.df7cb.de/blog/2010/Using_multiple_IMAP_accounts_with_Mutt.html|Putting passwords]] in configs isn't something I like, so I pull them from the Gnome keyring:
+
+set my_pw_example=`gnome-keyring-query get mutt_example`
+set my_pw_otherdomain=`gnome-keyring-query get mutt_otherdomain`
+account-hook example.org 'set imap_user=me imap_pass=$my_pw_example'
+account-hook otherdomain.tld 'set imap_user=myself imap_pass=$my_pw_otherdomain'
+
+example de conf : https://github.com/panthomakos/dotfiles/blob/master/.muttrc
+
+

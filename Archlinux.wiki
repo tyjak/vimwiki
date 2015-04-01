@@ -118,6 +118,15 @@ puis installer avec `pacman -Sy yaourt`
  * `journalctl -f` pour voir tous ce qui se passe
  * `journalctl -n -u bluetooth` pour voir les derniers logs concernant le bluetooth
 
+=== Boot ===
+
+ * utilisation partition 200MB en FAT32 monté sur /boot
+ * `mkinitcpio -p linux` pour génére l'image initrd - si pas présente
+ * utilisation de gummiboot `gummiboot --path=/boot/ install`
+ * créer la configarution (/boot/loader/loader.conf et /boot/loader/entries/arch.conf)
+ * voir [[https://wiki.archlinux.org/index.php/gummiboot|gummiboot]]
+ * sur OS X pour rendre bootable la partition : `mkdir /Volumes/EFI-arch && mount -t vfat /dev/sdb1 && sudo bless --mount=/Volumes/EFI-arch` (A vérifier)
+
  === TODO ===
 
  * ajouter les packages `perl-json-xs` et `perl-anyevent` pour pouvoir enregistrer des layout i3
