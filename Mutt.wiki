@@ -6,6 +6,28 @@
 [[http://realprogrammers.com/jump_start/mutt/|Jump start]]
 [[http://sheet.shiar.nl/mutt|Mutt cheat sheet]]
 
+*address book*
+# install goobook
+# make a goobookrc :
+{{{
+[DEFAULT]
+# If not given here, email and password is taken from .netrc using
+# machine google.com
+email:
+password:
+# The following are optional, defaults are shown
+cache_filename: ~/.goobook_cache
+cache_expiry_hours: 24
+filter_groupless_contacts: yes
+}}}
+# add these to muttrc :
+{{{
+#address book
+set query_command="goobook query '%s'"
+macro index,pager a "<pipe-message>goobook add<return>" "add sender to google contacts"
+bind editor <Tab> complete-query
+}}}
+
 *Examples*
 
 _Delete all mail with SPAM in the subject_
@@ -19,8 +41,11 @@ _Delete all mail with SPAM in the subject_
 _untag all tagged mail_
 just press `;t` (apply tag on all tagged mail => untagged)
 
+_Open a link_ `<C-b>`
+
 == TODO ==
 
+# *Password protection*
 [[https://www.df7cb.de/blog/2010/Using_multiple_IMAP_accounts_with_Mutt.html|Putting passwords]] in configs isn't something I like, so I pull them from the Gnome keyring:
 
 set my_pw_example=`gnome-keyring-query get mutt_example`
@@ -28,6 +53,8 @@ set my_pw_otherdomain=`gnome-keyring-query get mutt_otherdomain`
 account-hook example.org 'set imap_user=me imap_pass=$my_pw_example'
 account-hook otherdomain.tld 'set imap_user=myself imap_pass=$my_pw_otherdomain'
 
-example de conf : https://github.com/panthomakos/dotfiles/blob/master/.muttrc
+# *improvement*
+example conf : https://github.com/panthomakos/dotfiles/blob/master/.muttrc
 
+# *notification on important message*
 

@@ -22,3 +22,18 @@ l'option -nNT => sans terminal, 9000 port local et 80 le port distant
 
 `$ ssh -nNT -L 9000:imgur.com:80 user@example.com`
 
+*Un simple calcul*
+`expr 2 + 5`
+ou
+`bc <<< 2+5`
+
+*Mode caluclatrice*
+{{{ 
+bc << .
+1+2
+.+3
+.+4
+.
+}}}
+
+

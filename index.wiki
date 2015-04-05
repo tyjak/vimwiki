@@ -17,6 +17,7 @@
 	* [[Cubase (fr)]]
 	* [[Docker]]
 	* [[Mutt]]
+	* [[Weechat]]
 
 == Scratchpad ==
 	

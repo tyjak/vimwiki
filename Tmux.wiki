@@ -1,0 +1,5 @@
+= tmux =
+
+== TODO ==
+
+# configuration voir http://blog.yesmeck.com/tmuxrc/ et https://github.com/tyjak/tmuxrc

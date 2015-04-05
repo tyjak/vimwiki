@@ -40,6 +40,8 @@ puis installer avec `pacman -Sy yaourt`
  * xclip & xsel pour gérer les copier/collé
  * nuvolaplayer pour la musique en ligne
  * unclutter pour masquer la souris
+ * mutt pour les mails
+ * urlview pour les liens dans les mails
 
 === I3 window manager ===
 
