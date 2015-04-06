@@ -1,4 +1,4 @@
-= Meetup 150421 =
+= Vim meetup 150421 =
 
 == News ==
 

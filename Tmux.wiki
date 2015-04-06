@@ -2,4 +2,5 @@
 
 == TODO ==
 
+# pour attacher un session distante `ssh -t [HOTE] tmux a -t [SESSION_NAME]
 # configuration voir http://blog.yesmeck.com/tmuxrc/ et https://github.com/tyjak/tmuxrc

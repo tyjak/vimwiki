@@ -92,6 +92,13 @@ puis installer avec `pacman -Sy yaourt`
     connect 60:C5:47:81:AC:AD 
  }}}
 
+=== Installation d'une imprimante réseau ===
+
+ * installer le paquet cups
+ * éditer le fichier /etc/cups/client.conf pour ajouter l'ip de l'imprimante
+ * dans .xinitrc ajouter la varibale PRINTER={nom de l'imprimante}
+ * pour tester si l'imprimante est bien installé : `lpstat -p -d`
+ 
 === Connexion Freebox OpenVPN ===
     ==== Configuration ====
      * copier le fichier utilisateur de la freebox  `cp ~/downloads/config_openvpn_bridge_{$USER}.ovpn /etc/openvpn/freebox.conf`
@@ -101,15 +108,11 @@ puis installer avec `pacman -Sy yaourt`
      * démarrer le service `systemctl start openvpn@freebox.service`
      * puis `dhcpd tap0` pour obtenir une ip
      * si pb pour obtenir l'adresse ip, redémarrer faire un `systemctl restart dhcpcd`
-=======
- * créer les fichiers reseaux pour [[openvpnclient]] pour l'interface virtuel dans `/etc/netctl` voir https://wiki.archlinux.org/index.php/OpenVPN_Bridge
- * monter l'interface `netctl enable openvpn_tap` et `netctl enable openvpn_bridge`
- * démarrer le service `systemctl start openvpn@freebox.service`
- * puis `dhcpd` pour obtenir une ip
 
 === Changer le navigateur web par défault ===
 
  * installer `xdg-utils`
+ * mettre dans .bashrc `export BROWSER='/usr/bin/vimb`
  * créer le dossier pour les mimes types `mkdir ~/.local/share/applications`
  * puis executer la commande `xdg-mime default dwb.desktop x-scheme-handler/http` pour avoir dwb par défaut
  * plus d'info : https://wiki.archlinux.org/index.php/xdg-open#Set_the_default_browser
@@ -129,7 +132,8 @@ puis installer avec `pacman -Sy yaourt`
  * voir [[https://wiki.archlinux.org/index.php/gummiboot|gummiboot]]
  * sur OS X pour rendre bootable la partition : `mkdir /Volumes/EFI-arch && mount -t vfat /dev/sdb1 && sudo bless --mount=/Volumes/EFI-arch` (A vérifier)
 
- === TODO ===
+=== TODO ===
 
  * ajouter les packages `perl-json-xs` et `perl-anyevent` pour pouvoir enregistrer des layout i3
  * command pour sauvegarder un layout `i3-save-tree --workspace console > ~/.config/i3/workspace_console.json`
+ * voir pour utiliser gpg et automatiser le lancement de l'agent gpg ou ssh [[https://github.com/ervandew/dotfiles/blob/master/.xinitrc|example de conf]]

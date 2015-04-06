@@ -1,14 +1,21 @@
 = Weechat =
 
 == First steps ==
-# register nickname
-`/nickname foo`
-`/msg NickServ REGISTER password youremail@example.com`
+    # register nickname
+    `/nickname foo`
+    `/msg NickServ REGISTER password youremail@example.com`
+    # identify your nickname
+    `/msg NickServ IDENTIFY password`
 
-# identify your nickname
-`/msg NickServ IDENTIFY password`
+
+== Tips ==
+    # connect to a french distant tmux session `ssh -t remotehost LANG=fr_FR.UTF-8 tmux a -t sessionname`
+
 
 == Useful links ==
-# https://weechat.org/files/doc/devel/weechat_quickstart.en.html
-# https://freenode.net/faq.shtml#userregistration
-# https://github.com/seanh/infinite-fun-space/blob/master/weechat.md
+    # https://weechat.org/files/doc/devel/weechat_quickstart.en.html
+    # https://freenode.net/faq.shtml#userregistration
+    # https://github.com/seanh/infinite-fun-space/blob/master/weechat.md
+
+== TODO ==
+    [_] How to select ansd open a link in command mode
