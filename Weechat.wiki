@@ -1,21 +1,36 @@
 = Weechat =
 
 == First steps ==
-    # register nickname
+    * register nickname
     `/nickname foo`
     `/msg NickServ REGISTER password youremail@example.com`
-    # identify your nickname
+    * identify your nickname
     `/msg NickServ IDENTIFY password`
+    * script https://weechat.org/scripts/
+    `/script install {scriptname}`
+    `/script installremove {scriptname}`
+    * [[https://wiki.archlinux.org/index.php/WeeChat#Tips_and_Tricks|Smart Filter]]
+        # First, we need to enable smart filters:
+        `/set irc.look.smart_filter "on"`
+        # Next, we will create the sfilter alias:
+        `/alias sfilter filter add irc_smart_$server_$channel irc.$server.$channel irc_smart_filter *`
+        # We can now type
+        `/sfilter`
+         in any buffer, and the smart filter will only be enabled for that buffer.
+        # The following alias will remove a previously enabled smart filter in the current buffer. Add the alias:
+        `/alias rmsfilter filter del irc_smart_$server_$channel`
+        and execute it by
+        `/rmsfilter`
 
 
 == Tips ==
-    # connect to a french distant tmux session `ssh -t remotehost LANG=fr_FR.UTF-8 tmux a -t sessionname`
+    * connect to a french distant tmux session `ssh -t remotehost LANG=fr_FR.UTF-8 tmux a -t sessionname`
 
 
 == Useful links ==
-    # https://weechat.org/files/doc/devel/weechat_quickstart.en.html
-    # https://freenode.net/faq.shtml#userregistration
-    # https://github.com/seanh/infinite-fun-space/blob/master/weechat.md
+    * https://weechat.org/files/doc/devel/weechat_quickstart.en.html
+    * https://freenode.net/faq.shtml#userregistration
+    * https://github.com/seanh/infinite-fun-space/blob/master/weechat.md
 
 == TODO ==
     [_] How to select ansd open a link in command mode
