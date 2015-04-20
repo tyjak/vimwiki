@@ -7,7 +7,7 @@ Vim débarque sur Github : https://github.com/vim/vim
 == Plugins ==
 
 * A Vim plugin which shows a git diff in the gutter (sign column) and stages/reverts hunks. [[https://github.com/airblade/vim-gitgutter|airblade/vim-gitgutter]]
-* Unobtrusive scratch window. Inspired by scratch.vim, enhanced. [[https://github.com/mtth/scratch.vim|mtth/scratch]]
+* ~~Unobtrusive scratch window. Inspired by scratch.vim, enhanced. [[https://github.com/mtth/scratch.vim|mtth/scratch]]~~
 
 == Trucs ==
 
