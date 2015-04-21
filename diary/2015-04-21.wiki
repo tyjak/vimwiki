@@ -3,11 +3,17 @@
 == News ==
 
 Vim débarque sur Github : https://github.com/vim/vim
+[[http://schier.co/blog/2015/04/19/switching-from-vim-to-intellij.html|Article]] sur un vimer qui switch vers IntelliJ
 
 == Plugins ==
 
-* A Vim plugin which shows a git diff in the gutter (sign column) and stages/reverts hunks. [[https://github.com/airblade/vim-gitgutter|airblade/vim-gitgutter]]
+* Un plugin qui montre les différences avec le fichier versionné dans la colonne gutter [[https://github.com/airblade/vim-gitgutter|airblade/vim-gitgutter]]
 * ~~Unobtrusive scratch window. Inspired by scratch.vim, enhanced. [[https://github.com/mtth/scratch.vim|mtth/scratch]]~~
+* [[https://github.com/Shougo/neobundle.vim|NeoBundle]] ou [[https://github.com/gmarik/Vundle.vim|Vundle]] pour gérer ses plugin
+* [[https://github.com/mattn/gist-vim|Gist-vim]] pour gérer ses fichiers gist
+* [[https://github.com/scrooloose/nerdtree|Nerdtree]] pour naviguer sur le système de fichier
+* [[https://github.com/dagwieers/asciidoc-vim|Asciidoc]] pour formater ses documents
+* plugin [[https://github.com/tpope/vim-endwise|endwise]] pour les rubyistes pour terminer automatiquement id, do, def
 
 == Trucs ==
 
@@ -16,4 +22,11 @@ Vim débarque sur Github : https://github.com/vim/vim
 `nmap <silent> <leader>sf :set spelllang=fr spell!<CR>`
 * ajouter une ligne d'un fichier dans un autre fichier sans l'ouvrir
 `:.w !cat - >> fileyoudontwantto.open`
+* utiliser la touche espace en tant que leader key
+* remapper la touche ctrl sur la touche tab
 
+== Pour bien débuter sur vim ==
+
+* vimtutor tutoriel de 25 à 30 minutes accessibles à priori partout où vim est installé
+* [[http://vim-adventures.com/|vim-adventures]]
+* un livre [[https://vimebook.com/|vim pour les humains]]

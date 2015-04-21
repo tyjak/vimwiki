@@ -4,9 +4,10 @@
  * [ ] pandoc pour faire les conversions de différents markup
  * [ ] vim dans tmux http://rhnh.net/2011/08/20/vim-and-tmux-on-osx
  * [ ] voir quelques plugin de https://github.com/connermcd/dotfiles/blob/master/.vimrc
- * [ ] navigation vim dasn urxvt https://github.com/ervandew/urxvt-vim-scrollback
+ * [X] navigation vim dasn urxvt https://github.com/ervandew/urxvt-vim-scrollback
  * [ ] Organiser sa [[http://beets.radbox.org/|musique en ligne de commande]]
  * [ ] Des dessins sous vim http://www.thegeekstuff.com/2009/12/how-to-create-ascii-drawings-in-vim-editor-draw-boxes-lines-ellipses-arrows-inside-text-file/
 
 = TO DO =
  * [ ] thunderbolt en connexion a chaud (udevadm monitor) https://bbs.archlinux.org/viewtopic.php?id=170294
+ * [ ] improve vimrc see https://github.com/pixelastic/oroshi/blob/master/config/vim/vimrc

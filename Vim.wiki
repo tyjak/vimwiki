@@ -1,8 +1,10 @@
 = Vim tips =
+
 == NEW ==
 * ,<SPACE> pour supprimer le highlight de la recherche
 * <SPACE> pour faire une recheche (/)
 * <SHIFT><SPACE> recherche inverse (?)
+* 
 == Divers ==
 * [http://vimwiki.googlecode.com/hg/misc/vimwikiqrc.pdf vimwiki refcards]
 * `set wildmenu; set wildmode=list:longest,full "grande liste pour l'autocompletion`
@@ -13,3 +15,21 @@
 * supprimer le message d'accueil `set shortmess=+I`
 * `<C-r>=` expression register
 * Voir par qui a été setter une variable :verbose set cpoptions?
+
+== Mode vim ==
+
+=== Urxvt ===
+
+* voir doc https://github.com/ervandew/urxvt-vim-scrollback
+* Raccourcis:
+| Alt+s |         | Mode vim                                     |
+|       | hjkl    | Pour se déplacer                             |
+|       | y       | Pour copier dans *                           |
+|       | Y       | Pour copier dans +                           |
+|       | p       | Pour coller à la fin de la ligne de commande |
+|       | u/ctl-R | Pour annuler refaire                         |
+|       | gf      | ouvrir le lien/fichier                       |
+|       | /?nN*   | Pour les recherches                          |
+| Alt+p |         | Mode paste                                   |
+|       | *       | Colle le registre *                          |
+|       | +       | Colle le registre +                          |

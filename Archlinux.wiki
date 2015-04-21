@@ -42,6 +42,9 @@ puis installer avec `pacman -Sy yaourt`
  * unclutter pour masquer la souris
  * mutt pour les mails
  * urlview pour les liens dans les mails
+ * mps-youtube pour une cli youtube
+ * rainbowstream twitter cli client (via pip)
+ * [[https://github.com/ervandew/urxvt-vim-scrollback|urxvt-vim-scrollback]]
 
 === I3 window manager ===
 
