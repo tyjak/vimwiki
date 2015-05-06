@@ -1,0 +1,3 @@
+= Sphinx =
+
+A webinar about sphinx + mysql : http://www.percona.com/resources/mysql-videos/how-optimally-configure-sphinx-search-mysql

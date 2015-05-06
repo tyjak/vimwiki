@@ -1,4 +1,5 @@
 = TO test =
+
  * [X] http://ohmyz.sh
  * [ ] http://www.drumminhands.com/2014/06/15/raspberry-pi-photo-booth/
  * [ ] pandoc pour faire les conversions de différents markup
@@ -7,6 +8,7 @@
  * [X] navigation vim dasn urxvt https://github.com/ervandew/urxvt-vim-scrollback
  * [ ] Organiser sa [[http://beets.radbox.org/|musique en ligne de commande]]
  * [ ] Des dessins sous vim http://www.thegeekstuff.com/2009/12/how-to-create-ascii-drawings-in-vim-editor-draw-boxes-lines-ellipses-arrows-inside-text-file/
+ * [ ] [[http://crypto.stanford.edu/PwdHash/|Web Password Hashing]]
 
 = TO DO =
  * [ ] thunderbolt en connexion a chaud (udevadm monitor) https://bbs.archlinux.org/viewtopic.php?id=170294

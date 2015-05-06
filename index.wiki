@@ -19,6 +19,8 @@
 	* [[Mutt]]
 	* [[Weechat]]
 	* [[Tmux]]
+	* [[Synology]]
+	* [[BDD]]
 
 == Scratchpad ==
 	

@@ -19,3 +19,13 @@ CMD service nginx start
     - `sudo docker ps -a` list of all container running or stopped
     - `sudo docker stop [ID container]`
     - `sudo docker rm [ID container]`
+    -  remove all container :
+    {{{
+    sudo docker rm `sudo docker ps -qa`
+    }}}
+    - `sudo docker exec -t -i {NAME|CONTAINER_ID} bash` login the container
+    - `sudo docker run -d -P -v `pwd`/data/mysql:/var/lib/mysql {REF_NAME}`
+
+== Links ==
+* [[https://devopsu.com/blog/docker-misconceptions/|Docker misconceptions]]
+* [[https://phusion.github.io/baseimage-docker/|baseimage-docker]]

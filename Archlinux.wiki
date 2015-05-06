@@ -25,6 +25,7 @@ puis installer avec `pacman -Sy yaourt`
 === Les paquets indispensables ===
 
  * urxvt terminal + urxvt-perls
+ * [[https://github.com/ervandew/urxvt-vim-scrollback|urxvt-vim-scrollback]]
  * i3-wm gestionnaire de fenêtre
  * dmenu-xft-height (pour paramétrer la couleuur/hauteur)
  * dunst + libnotify pour avoir des notifications
@@ -44,7 +45,8 @@ puis installer avec `pacman -Sy yaourt`
  * urlview pour les liens dans les mails
  * mps-youtube pour une cli youtube
  * rainbowstream twitter cli client (via pip)
- * [[https://github.com/ervandew/urxvt-vim-scrollback|urxvt-vim-scrollback]]
+ * newsbeuter rss cli lcient
+ * iftop
 
 === I3 window manager ===
 
@@ -111,6 +113,14 @@ puis installer avec `pacman -Sy yaourt`
      * démarrer le service `systemctl start openvpn@freebox.service`
      * puis `dhcpd tap0` pour obtenir une ip
      * si pb pour obtenir l'adresse ip, redémarrer faire un `systemctl restart dhcpcd`
+
+=== Connexion VPN PPTP ===
+    ==== Configuration ====
+    * voir les fichiers dans /etc/ppp/peers 
+    * ajout d'une nouvelle conf en cli : `pptpsetup --create-tunel {nom_de_la_connecion} --server {IP_NAME} --login {login} --password {pass} encrypted`
+    ==== Démarrage ====
+    * `pon {nom_de_la_connection}`
+    * `poff` pout arréter la connexion
 
 === Changer le navigateur web par défault ===
 

@@ -5,5 +5,10 @@
 
 	- le module sera installé dans /usr/lib/python3.4/site-packages/
 	- un executable sera mis/remplacé dans /usr/bin/ (un executbale n'est qu'un fichier pyhton qui indique ou trouver le module à exécuter)
+    
+    == installation de lib ==
+    utiliser pip :
+    - pip search
+    - pip install
 	
 
