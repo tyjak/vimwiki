@@ -9,3 +9,8 @@
 == Tutorial ==
 
  Excellent [[http://blog.octo.com/git-dans-la-pratique-12/|tuto]] Git 
+ 
+== Quelques commandes utiles ==
+
+    * `git log --graph --oneline --all` graph des commit
+    * `git branch master -u {repo_distant}/master` pour indiquer le repo distant de la branche

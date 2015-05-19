@@ -4,7 +4,7 @@ Mes notes sur l'installation d'Archlinux
  
 
 == Installation from scratch ==
- * Attention de ne pas lancer l'utilitaire de partitionement sur une partition mais bien sur le disque lui même
+ * Attention de ne pas lancer l'utilitaire de partitionnement sur une partition mais bien sur le disque lui même
  * Pour le macbook voir https://wiki.archlinux.org/index.php/MacBook
   
 === Notes à propos de VMware et Virtualbox ===
@@ -47,6 +47,9 @@ puis installer avec `pacman -Sy yaourt`
  * rainbowstream twitter cli client (via pip)
  * newsbeuter rss cli lcient
  * iftop
+ * remmina
+ * wego meteo dans le terminal
+ * socat (pour utiliser les socket de vimb)
 
 === I3 window manager ===
 
@@ -60,6 +63,13 @@ puis installer avec `pacman -Sy yaourt`
 
 === Thème Solarized, airline et GTK ===
 
+=== Configuratio du clavier ===
+
+ * générer le fichier ~/.Xmodmap : `xmodmap -kpe > ~/.Xmodmap`
+ * éditer le fichier ~/.Xmodmap pour modifier les touches par défaut
+ * voir la fin du fichier pour voir comment modifier le comportement de la touche caps
+ * `xmodmap ~/.Xmodmap` pour appliquer les changements
+
 === Barre de status ===
 
  * [[configuration de i3pystatus-git]]  
@@ -68,6 +78,11 @@ puis installer avec `pacman -Sy yaourt`
 
  * installation de dmenu-xft-height puis customisation dans ~/.config/i3/config :
    `bindsym $mod+d exec dmenu_run -i -nb '#859900' -nf '#eee8d5' -sb '#cb4b16' -fn 'Meslo LG S DZ for Powerline-10' -h 24`
+
+=== Configuration des touches spéciales ===
+
+ * voir le fichier `/etc/acpi/handler.sh`
+ * pour savoir le nom de la touche a utilisé dans le handler.sh : `acpi_listen` et appuyer sur la touche
 
 === Ajout de règle udev ===
 

@@ -13,3 +13,11 @@
 = TO DO =
  * [ ] thunderbolt en connexion a chaud (udevadm monitor) https://bbs.archlinux.org/viewtopic.php?id=170294
  * [ ] improve vimrc see https://github.com/pixelastic/oroshi/blob/master/config/vim/vimrc
+ * [ ] improve delete on gmail account (TODO : mark message as d and $ to really delete -> mv to trash box)
+ * [ ] faire un raccourci dans mutt pour avoir accès directemnt au mail envoyé
+ * [X] fait que lorsque le scratchpad s'affiche le cursor de la souris soit au centre -> ajout d'une option dans i3 pour que le focus ne suive pas la souris
+ * [ ] Vimb launch a pdf viewer instead of always download the file
+ * [X] Corriger la date des mails dans mutt
+ * [ ] vimwiki : lors de l'ajout d'une entrée dans le journal, faire que l'enregistrement de l'entrée mette à jour l'index du journal
+ * [ ] vimwiki : faire que le colonne des nombres affiche autremnent et autre chose que les numéros de ligne (par exemple les niveaux de replis)
+ * [ ] vimwiki : faire que la touche tab propose l'auto-complétion des mots, les flèches droite-gauche permenettent de naviguer entre les fautes et qu'on soit automatiquement en mode correction

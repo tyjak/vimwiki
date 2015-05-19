@@ -4,3 +4,4 @@
 
 # pour attacher un session distante `ssh -t [HOTE] tmux a -t [SESSION_NAME]
 # configuration voir http://blog.yesmeck.com/tmuxrc/ et https://github.com/tyjak/tmuxrc
+# pour ne pas freezer le terminal avec <c-s> (utiliser <c-q> pour défreezer), ajouter `stty -ixon` dans bashrc pour ne plus avoir cet effet de bord. Voit ce [[http://unix.stackexchange.com/questions/72086/ctrl-s-hang-terminal-emulator|stackexchange]] pour plus d'info.
