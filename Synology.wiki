@@ -4,3 +4,7 @@
 
 * Pour la configuration voir http://pellelatarte.fr/2011/03/le-ssh-pour-tous-les-utilisateurs-sur-les-nas-synology/
 * Ne pas oublier de rendre possible la commande `su -` en faisant `chmod u+s /bin/busybox`
+
+== Syncthing ==
+
+Pour installer un version plus récente, il suffit de télécharger la dernière version sur le site de github et de remplacer le binaire.

@@ -8,7 +8,8 @@
  * [X] navigation vim dasn urxvt https://github.com/ervandew/urxvt-vim-scrollback
  * [ ] Organiser sa [[http://beets.radbox.org/|musique en ligne de commande]]
  * [ ] Des dessins sous vim http://www.thegeekstuff.com/2009/12/how-to-create-ascii-drawings-in-vim-editor-draw-boxes-lines-ellipses-arrows-inside-text-file/
- * [ ] [[http://crypto.stanford.edu/PwdHash/|Web Password Hashing]]
+ * [X] [[http://crypto.stanford.edu/PwdHash/|Web Password Hashing]]
+ * [ ] vim plugins : https://github.com/tpope/vim-abolish avec https://github.com/tpope/vim-repeat tester la fonctionalité qui permet de passer en caméliser et inversement
 
 = TO DO =
  * [ ] thunderbolt en connexion a chaud (udevadm monitor) https://bbs.archlinux.org/viewtopic.php?id=170294
@@ -21,3 +22,4 @@
  * [ ] vimwiki : lors de l'ajout d'une entrée dans le journal, faire que l'enregistrement de l'entrée mette à jour l'index du journal
  * [ ] vimwiki : faire que le colonne des nombres affiche autremnent et autre chose que les numéros de ligne (par exemple les niveaux de replis)
  * [ ] vimwiki : faire que la touche tab propose l'auto-complétion des mots, les flèches droite-gauche permenettent de naviguer entre les fautes et qu'on soit automatiquement en mode correction
+ * [ ] vim : trouver une solution pour désactiver le XON/XOFF (ctl-q/ctl-s)

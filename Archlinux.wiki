@@ -36,6 +36,7 @@ puis installer avec `pacman -Sy yaourt`
  * llpp-git pour visualiser des pdf
  * otf-inconsolata-powerline-git (police avec support powerline)
  * otf-powerline-symbols-git (police avec support powerline)
+ * ttf-bitstream-vera
  * pinta logiciel de retouche image
  * pommed-light pour gérer les touches mac sons/lumieres
  * xclip & xsel pour gérer les copier/collé
@@ -50,6 +51,7 @@ puis installer avec `pacman -Sy yaourt`
  * remmina
  * wego meteo dans le terminal
  * socat (pour utiliser les socket de vimb)
+ * googlecl
 
 === I3 window manager ===
 
@@ -159,6 +161,12 @@ puis installer avec `pacman -Sy yaourt`
  * créer la configarution (/boot/loader/loader.conf et /boot/loader/entries/arch.conf)
  * voir [[https://wiki.archlinux.org/index.php/gummiboot|gummiboot]]
  * sur OS X pour rendre bootable la partition : `mkdir /Volumes/EFI-arch && mount -t vfat /dev/sdb1 && sudo bless --mount=/Volumes/EFI-arch` (A vérifier)
+
+=== Syncthing ===
+ * pour installer le service : `sudo systemctl enable syncthing@david`
+ * pour démarrer : `systemctl start syncting`
+ * pour voir l'interface `http://127.0.0.1:8080`
+ * via un tunnel SSH `ssh -nNT -L 9999:127.0.0.1:41989 do.tyjak.net` (port 9999 pour le web)
 
 === TODO ===
 

@@ -8,6 +8,7 @@
 == Divers ==
 * [http://vimwiki.googlecode.com/hg/misc/vimwikiqrc.pdf vimwiki refcards]
 * `set wildmenu; set wildmode=list:longest,full "grande liste pour l'autocompletion`
+* `set relativenumber` pour faciliter la manip avec les lignes voisines
 * `:w !tee %` pour forcer l'enregistrement si l'utilisateur courant n'a pas les droits
 * `set ignorecase` et `set smartcase` pour des recherhes exact seulement si le motif contient un mix min/maj
 * `set gdefault` pour remplacer par défaut tous les motifs de la ligne
@@ -16,8 +17,9 @@
 * `<C-r>=` expression register
 * Voir par qui a été setter une variable :verbose set cpoptions?
 * `z=` pour avoir la liste des corrections et `1z=` pour corriger avec la premère occurence de la liste
-* voir http://blog.fedora-fr.org/metal3d/post/Correction-orthographique-et-grammaticale-avec-Vim pour plud d'info sur l'autocorrection
+* voir http://blog.fedora-fr.org/metal3d/post/Correction-orthographique-et-grammaticale-avec-Vim pour plus d'info sur l'autocorrection
 * plugin [[https://github.com/osyo-manga/vim-over|vim-over]] `:OverCommandLine`
+* vim pour écrire : http://naperwrimo.org/wiki/index.php?title=Vim_for_Writers
 
 == Mode vim ==
 
