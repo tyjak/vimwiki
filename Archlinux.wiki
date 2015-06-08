@@ -152,6 +152,12 @@ puis installer avec `pacman -Sy yaourt`
  * journal des événements `journalctl -xn`
  * `journalctl -f` pour voir tous ce qui se passe
  * `journalctl -n -u bluetooth` pour voir les derniers logs concernant le bluetooth
+ * `servicectl status acpid` pour voir l'état d'un service
+
+==== Example de résolution d'un pb ====
+acpid ne semblait ne pas fonctionner :
+ * il m'a fallu arrêter le service `sudo servicectl stop acpid`
+ * et le faire fonctionner en mode debug -d sans socket -S et en avant plan -f et en mode daemon : `sudo acpid -ldFs` et là j'ai pu voir ce qui ne fonctionnait pas.
 
 === Boot ===
 
