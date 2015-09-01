@@ -6,6 +6,7 @@ Mes notes sur l'installation d'Archlinux
 == Installation from scratch ==
  * Attention de ne pas lancer l'utilitaire de partitionnement sur une partition mais bien sur le disque lui même
  * Pour le macbook voir https://wiki.archlinux.org/index.php/MacBook
+ * Un lien plus récent avec cryptage du disque et partition LVM http://loicpefferkorn.net/2015/01/arch-linux-on-macbook-pro-retina-2014-with-dm-crypt-lvm-and-suspend-to-disk/
   
 === Notes à propos de VMware et Virtualbox ===
  * pb sur le driver video suite à l'upgrade -> obligé de réinstaller les anciens pilotes
@@ -52,6 +53,8 @@ puis installer avec `pacman -Sy yaourt`
  * wego meteo dans le terminal
  * socat (pour utiliser les socket de vimb)
  * googlecl
+ * fortune-mod
+ * pm-utils (hibernate & suspend)
 
 === I3 window manager ===
 
@@ -65,12 +68,20 @@ puis installer avec `pacman -Sy yaourt`
 
 === Thème Solarized, airline et GTK ===
 
-=== Configuratio du clavier ===
+=== Configuration du clavier ===
 
  * générer le fichier ~/.Xmodmap : `xmodmap -kpe > ~/.Xmodmap`
  * éditer le fichier ~/.Xmodmap pour modifier les touches par défaut
  * voir la fin du fichier pour voir comment modifier le comportement de la touche caps
  * `xmodmap ~/.Xmodmap` pour appliquer les changements
+
+=== Ajout d'un résolution écran ===
+
+ * `cvt 1280 1024`
+ * `xrandr --newmode "1280x1024" {suivi du reste de la 2eme ligne resultant de cvt}`
+ * `xrandr --addmode {ecran cible} 1280x1024`
+ * `xrandr --ouput {ecran cible} --mode 1280x1024`
+Plus d'info : https://wiki.archlinux.org/index.php/Xrandr
 
 === Barre de status ===
 
@@ -152,12 +163,14 @@ puis installer avec `pacman -Sy yaourt`
  * journal des événements `journalctl -xn`
  * `journalctl -f` pour voir tous ce qui se passe
  * `journalctl -n -u bluetooth` pour voir les derniers logs concernant le bluetooth
- * `servicectl status acpid` pour voir l'état d'un service
+ * `systemctl status acpid` pour voir l'état d'un service
 
 ==== Example de résolution d'un pb ====
 acpid ne semblait ne pas fonctionner :
- * il m'a fallu arrêter le service `sudo servicectl stop acpid`
+ * il m'a fallu arrêter le service `sudo systemctl stop acpid`
  * et le faire fonctionner en mode debug -d sans socket -S et en avant plan -f et en mode daemon : `sudo acpid -ldFs` et là j'ai pu voir ce qui ne fonctionnait pas.
+ * ou bien changer directement dans le fichier de service acpid (pour savoir faire un disable/enable du service)
+ * pb avec acpid pour X ne peut utiliser xrandr directement car il lui manque un context (DISPLAY et XAUTHORITY) et avec le script hotplug_monitor.sh idem voir https://bbs.archlinux.org/viewtopic.php?id=186179 pour un début de solution
 
 === Boot ===
 

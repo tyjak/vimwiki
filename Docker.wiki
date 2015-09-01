@@ -25,6 +25,17 @@ CMD service nginx start
     }}}
     - `sudo docker exec -t -i {NAME|CONTAINER_ID} bash` login the container
     - `sudo docker run -d -P -v `pwd`/data/mysql:/var/lib/mysql {REF_NAME}`
+    - `sudo docker build --no-cache .`
+
+== Example ==
+
+To write the correct Dockerfile test you have to test some commands so do :
+* run the container in daemon mode :
+ `docker run -t ansible/ubuntu14.04-ansible /bin/bash`
+* copy local file needed to docker :
+ `cd  /var/lib/docker/aufs/mnt/{ID-CONTAINER} && cp my-ansible etc/ansible`
+* login docker : `docker exec -ti {ID-CONTAINER} /bin/bash`
+* test command
 
 == Links ==
 * [[https://devopsu.com/blog/docker-misconceptions/|Docker misconceptions]]

@@ -1,3 +1,9 @@
 = Sphinx =
 
 A webinar about sphinx + mysql : http://www.percona.com/resources/mysql-videos/how-optimally-configure-sphinx-search-mysql
+
+== Xtrabackup ==
+
+Backup :
+`innbackupex --user=root -password --defaults-file=/etc/mysql/my.cnf --databases="jemepropose_project jemepropose_actu" --stream=tar . > mybackup.tar`
+
