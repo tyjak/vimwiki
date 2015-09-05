@@ -46,6 +46,8 @@ puis installer avec `pacman -Sy yaourt`
  * mutt pour les mails
  * urlview pour les liens dans les mails
  * mps-youtube pour une cli youtube
+ * pulseaudio-alsa + libpulse-raop2 (airplay)  
+ * paprefs + pavucontrol (gui control for pulseaudio)
  * rainbowstream twitter cli client (via pip)
  * newsbeuter rss cli lcient
  * iftop
@@ -168,7 +170,7 @@ Plus d'info : https://wiki.archlinux.org/index.php/Xrandr
 ==== Example de résolution d'un pb ====
 acpid ne semblait ne pas fonctionner :
  * il m'a fallu arrêter le service `sudo systemctl stop acpid`
- * et le faire fonctionner en mode debug -d sans socket -S et en avant plan -f et en mode daemon : `sudo acpid -ldFs` et là j'ai pu voir ce qui ne fonctionnait pas.
+ * et le faire fonctionner en mode debug -d sans socket -S et en avant plan -f et en mode daemon : `sudo acpid -ldfS` et là j'ai pu voir ce qui ne fonctionnait pas.
  * ou bien changer directement dans le fichier de service acpid (pour savoir faire un disable/enable du service)
  * pb avec acpid pour X ne peut utiliser xrandr directement car il lui manque un context (DISPLAY et XAUTHORITY) et avec le script hotplug_monitor.sh idem voir https://bbs.archlinux.org/viewtopic.php?id=186179 pour un début de solution
 
@@ -187,8 +189,21 @@ acpid ne semblait ne pas fonctionner :
  * pour voir l'interface `http://127.0.0.1:8080`
  * via un tunnel SSH `ssh -nNT -L 9999:127.0.0.1:41989 do.tyjak.net` (port 9999 pour le web)
 
+=== Son ===
+Mise en place du son pour une sortie sur un périphérique airplay
+==== installation ====
+installer les packets :
+ * pulseaudio-alsa + libpulse-raop2 (airplay)  
+ * paprefs + pavucontrol (gui control for pulseaudio)
+démarrage auto : `systemctl --user enable pulseaudio`
+==== utilisation ====
+régler le préférences pour pouvoir découvrir les périfériques airplay avec `paprefs` et lancer `pavucontrol` pour régler la sortie son.
+
 === TODO ===
 
  * ajouter les packages `perl-json-xs` et `perl-anyevent` pour pouvoir enregistrer des layout i3
  * command pour sauvegarder un layout `i3-save-tree --workspace console > ~/.config/i3/workspace_console.json`
  * voir pour utiliser gpg et automatiser le lancement de l'agent gpg ou ssh [[https://github.com/ervandew/dotfiles/blob/master/.xinitrc|example de conf]]
+ 
+== Tips ==
+ * visualisation de photos - images : `feh -. {rep photo}`

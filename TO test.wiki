@@ -25,3 +25,4 @@
  * [ ] vimwiki : faire que la touche tab propose l'auto-complétion des mots, les flèches droite-gauche permenettent de naviguer entre les fautes et qu'on soit automatiquement en mode correction
  * [ ] vim : trouver une solution pour désactiver le XON/XOFF (ctl-q/ctl-s)
  * [ ] mutt : améliorer la configuration voir http://www.titus-stahl.de/blog/2015/08/26/my-mutt-configuration/ et http://stevelosh.com/blog/2012/10/the-homely-mutt/#searching-email
+ * [ ] vimb : ouvrir les pdf (ne plus les télécharger)
