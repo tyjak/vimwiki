@@ -1,0 +1,24 @@
+= Recette gratin pâte rapide =
+
+== Ingrédients ==
+
+* pâtes genre torsade (200gr)
+* crême fraiche (2-3 cuillère à soupe)
+* fromage fines herbes (1-2 cuillères)
+* 4 oeufs
+* fromage rapé
+* épinards
+
+== Préparations ==
+
+* allumer le four à 175 chaleur tournante
+* cuires les épinars
+* cuires les pates
+* faire la sauce 
+* mélanger les épinards à la sauce
+* mettre les pates dans le plat
+* couvrir de sauces
+* faire 4 eplacements et y mettre les oeufs cassés
+* saupoudrer de fromage rapé
+
+%% vim:ft=vimwiki:fdl=2:tw=80:

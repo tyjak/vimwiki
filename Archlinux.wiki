@@ -28,7 +28,7 @@ puis installer avec `pacman -Sy yaourt`
  * urxvt terminal + urxvt-perls
  * [[https://github.com/ervandew/urxvt-vim-scrollback|urxvt-vim-scrollback]]
  * i3-wm gestionnaire de fenêtre
- * dmenu-xft-height (pour paramétrer la couleuur/hauteur)
+ * dmenu2
  * dunst + libnotify pour avoir des notifications
  * dwb ou vimb comme navigateur web
  * feh pour gérer l'image du fond
@@ -57,6 +57,11 @@ puis installer avec `pacman -Sy yaourt`
  * googlecl
  * fortune-mod
  * pm-utils (hibernate & suspend)
+ * inotify-tools
+ * rtv (reddit terminal viewer)
+ * pyradio
+ * blueman
+ * insync (google drive)
 
 === I3 window manager ===
 
@@ -76,6 +81,7 @@ puis installer avec `pacman -Sy yaourt`
  * éditer le fichier ~/.Xmodmap pour modifier les touches par défaut
  * voir la fin du fichier pour voir comment modifier le comportement de la touche caps
  * `xmodmap ~/.Xmodmap` pour appliquer les changements
+ * Pour ne pas eéteindre directement via la touche power : dans `/etc/systemd/logind.conf` mettre `HandlePowerKey=ignore` puis assigner pour i3 la touche 124 dans .Xmodmap (voir https://wiki.archlinux.org/index.php/I3#Shutdown.2C_reboot.2C_lock_screen )
 
 === Ajout d'un résolution écran ===
 
@@ -112,6 +118,7 @@ Plus d'info : https://wiki.archlinux.org/index.php/Xrandr
 
 === Installation Trackpad ===
 
+==== Ligne de commande ====
  * voir https://wiki.archlinux.org/index.php/bluetooth
  * et voir http://support.apple.com/kb/HT2845
    Turn on the Magic Trackpad by pressing the on/off button until the indicator light comes on. The indicator light glows steadily for 2 to 3 seconds to indicate the batteries are good. After that, the light will blink to indicate your trackpad is in discovery mode.
@@ -126,6 +133,11 @@ Plus d'info : https://wiki.archlinux.org/index.php/Xrandr
     trust 60:C5:47:81:AC:AD 
     connect 60:C5:47:81:AC:AD 
  }}}
+ 
+==== Interface graphique ====
+ * le plus simple reste de passer par une interface graphique : blueman-manager
+ * Si même pb pour reconnecter essayer `sudo hciconfig hci0 reset`
+ 
 
 === Installation d'une imprimante réseau ===
 
@@ -189,6 +201,10 @@ acpid ne semblait ne pas fonctionner :
  * pour voir l'interface `http://127.0.0.1:8080`
  * via un tunnel SSH `ssh -nNT -L 9999:127.0.0.1:41989 do.tyjak.net` (port 9999 pour le web)
 
+== Gdrive ==
+ * installation : http://beaveris.me/mount-google-drive-in-archlinux-without-syncing/
+ * mount : `google-drive-ocamlfuse -label Gdrive-archlinux ~/gdrive`
+
 === Son ===
 Mise en place du son pour une sortie sur un périphérique airplay
 ==== installation ====
@@ -198,6 +214,15 @@ installer les packets :
 démarrage auto : `systemctl --user enable pulseaudio`
 ==== utilisation ====
 régler le préférences pour pouvoir découvrir les périfériques airplay avec `paprefs` et lancer `pavucontrol` pour régler la sortie son.
+==== troubleshooting ====
+si le airplay ne s'affiche pas voir http://raspberrypi.stackexchange.com/questions/5508/redirect-audio-to-another-airplay-device
+commandes utiles :
+
+{{{
+pulseaudio --start --log-target=syslog -vvvv --log-level=debug
+pacmd load-module module-raop-discover
+pacmd list-sinks | grep name
+}}}
 
 === TODO ===
 

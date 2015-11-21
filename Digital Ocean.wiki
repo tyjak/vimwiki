@@ -1,0 +1,7 @@
+= Machine Archlinux HOWTO =
+
+ # Création Droplet basée sur Debian avec clé publique
+ # installation archlinux : `wget https://raw.githubusercontent.com/gh2o/digitalocean-debian-to-arch/debian8/install.sh && bash install.sh`
+ # pour plus de détail voir https://github.com/gh2o/digitalocean-debian-to-arch
+ # installer python2 
+ # lancer ansible pour l'installation

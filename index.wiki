@@ -5,6 +5,7 @@
 = My knowledge base =
 
 	* [[Archlinux]]
+	* [[Digital Ocean]]
 	* [[git && github]]
 	* [[Python]]
 	* [[Vim]]
@@ -21,6 +22,7 @@
 	* [[Tmux]]
 	* [[Synology]]
 	* [[BDD]]
+	* [[Work]]
 
 == Scratchpad ==
 	
