@@ -62,6 +62,7 @@ puis installer avec `pacman -Sy yaourt`
  * pyradio
  * blueman
  * insync (google drive)
+ * scrot pour les screenshot
 
 === I3 window manager ===
 
@@ -137,6 +138,8 @@ Plus d'info : https://wiki.archlinux.org/index.php/Xrandr
 ==== Interface graphique ====
  * le plus simple reste de passer par une interface graphique : blueman-manager
  * Si même pb pour reconnecter essayer `sudo hciconfig hci0 reset`
+ * Puis faire installation...
+ * pour info la connexion se fait avec Human Interface Device
  
 
 === Installation d'une imprimante réseau ===
@@ -167,10 +170,23 @@ Plus d'info : https://wiki.archlinux.org/index.php/Xrandr
 === Changer le navigateur web par défault ===
 
  * installer `xdg-utils`
- * mettre dans .bashrc `export BROWSER='/usr/bin/vimb`
- * créer le dossier pour les mimes types `mkdir ~/.local/share/applications`
- * puis executer la commande `xdg-mime default dwb.desktop x-scheme-handler/http` pour avoir dwb par défaut
- * plus d'info : https://wiki.archlinux.org/index.php/xdg-open#Set_the_default_browser
+ * mettre dans .zshrc `export BROWSER=xdg-open`
+ * créer le dossier pour les application associées au mimes types `mkdir ~/.local/share/applications`
+ * créer le fichier vimb.desktop
+    {{{
+    #!/usr/bin/env xdg-open
+    [Desktop Entry]
+    Version=1.0
+    Terminal=false
+    Type=Application
+    Name=Vimb
+    Exec=i3-msg -t command workspace 2:web; layout tabbed; exec /usr/bin/vimb
+    NoDisplay=true
+    }}}
+ * mettre ce fichier dans le dossier `applications` créer précedemment
+ * puis executer la commande `xdg-mime default vimb.desktop x-scheme-handler/http` pour avoir vimb par défaut
+ * il est possible aussi d'éditer le fichier `~/.config/mimeapps.list` pour modifier les applications par défaut lancées par `xdg-open`
+ * plus d'info : https://wiki.archlinux.org/index.php/xdg-open#Set_the_default_browser et https://wiki.archlinux.org/index.php/Default_applications#MIME_types_and_desktop_entries
 
 === Régler un pb (TODO)===
 
@@ -229,6 +245,7 @@ pacmd list-sinks | grep name
  * ajouter les packages `perl-json-xs` et `perl-anyevent` pour pouvoir enregistrer des layout i3
  * command pour sauvegarder un layout `i3-save-tree --workspace console > ~/.config/i3/workspace_console.json`
  * voir pour utiliser gpg et automatiser le lancement de l'agent gpg ou ssh [[https://github.com/ervandew/dotfiles/blob/master/.xinitrc|example de conf]]
+ * Supprimer ario et floola
  
 == Tips ==
  * visualisation de photos - images : `feh -. {rep photo}`

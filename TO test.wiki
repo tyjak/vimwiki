@@ -28,3 +28,5 @@
  * [ ] mutt : améliorer la configuration voir http://www.titus-stahl.de/blog/2015/08/26/my-mutt-configuration/ et http://stevelosh.com/blog/2012/10/the-homely-mutt/#searching-email
  * [ ] vimb : ouvrir les pdf (ne plus les télécharger) -> tentavie avec `/usr/bin/inotifywait -m -q -e create --format %f . | xargs llpp` mais marche pas !!!
  * [ ] mutt : voir http://wcm1.web.rice.edu/mutt-tips.html pour le Format-flower
+ * [ ] vifm : fair un plugin pour gérer git
+ * [ ] vifm : faire un mode preview pour que les fichiers s'ouvrent dans un scratchpad

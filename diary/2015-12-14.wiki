@@ -1,0 +1,9 @@
+== Vim mettup 151214 ==
+
+=== Présentation d'un navigateur de fichier vifm ===
+Naviguer dans ses fichiers en ligne de commande à la sauce vim.
+
+    apt-get isntall vifm
+
+Possibilité de changé le colorsheme sur le site de [[http://vifm.info|vifm]]
+
