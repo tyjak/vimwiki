@@ -240,6 +240,8 @@ pacmd load-module module-raop-discover
 pacmd list-sinks | grep name
 }}}
 
+Pour le problème du son qui se remet à 100% voir https://bbs.archlinux.org/viewtopic.php?pid=1103037#p1103037
+
 === TODO ===
 
  * ajouter les packages `perl-json-xs` et `perl-anyevent` pour pouvoir enregistrer des layout i3

@@ -30,3 +30,4 @@
  * [ ] mutt : voir http://wcm1.web.rice.edu/mutt-tips.html pour le Format-flower
  * [ ] vifm : fair un plugin pour gérer git
  * [ ] vifm : faire un mode preview pour que les fichiers s'ouvrent dans un scratchpad
+ * [ ] Faire le montage du dossier de musique sur creamy
