@@ -1,0 +1,9 @@
+= todo.txt =
+
+Search or create a vim plugin to manage todo.txt file using the todo cli [[https://github.com/ginatrapani/todo.txt-cli|TODO]]
+
+[ ] Create the coloring syntax file
+[ ] Create the mappings to the shell command line
+[ ] A quickview of the todo
+[ ] Automate the adding of label to a todo item via the current project (git) or current folder
+[ ] Extract TODO of source codefile and create todo item

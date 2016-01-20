@@ -1,4 +1,4 @@
-= Tips Github =
+= Tips Git & Github =
 
 == Authentification ==
 
@@ -17,3 +17,6 @@
     * `git reset --hard <file>` pour annuler l'ajout d'un fichier et revenir au dernier état (HEAD)
     * `git log --graph --oneline --all` graph des commit
     * `git branch master -u {repo_distant}/master` pour indiquer le repo distant de la branche
+
+== Git pour le déploiement ==
+	https://www.digitalocean.com/community/tutorials/how-to-set-up-automatic-deployment-with-git-with-a-vps

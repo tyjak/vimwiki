@@ -1,33 +1,30 @@
 = Command line collection  =
 
-*curl*
+== curl ==
 
-permet de tester un site sans pour autant que le nom soit dans un host ou un dns
-
+* permet de tester un site sans pour autant que le nom soit dans un host ou un dns
 `curl -I --resolve [domain name]:80:[ip] [URL]`
 
-*connexion réseau*
+== connexion réseau ==
 
-Nombre de connexion établie sur port 80
-
+* Nombre de connexion établie sur port 80
 `netstat -an | grep 80 | grep ESTA | wc -l`
 
-Test débit
-
+* Test débit
 `wget -O - https://raw.github.com/sivel/speedtest-cli/master/speedtest_cli.py | python`
 
-*Créer un tunnel SSH*
+* *Créer un tunnel SSH*
 
 l'option -nNT => sans terminal, 9000 port local et 80 le port distant
 
 `$ ssh -nNT -L 9000:imgur.com:80 user@example.com`
 
-*Un simple calcul*
+* *Un simple calcul*
 `expr 2 + 5`
 ou
 `bc <<< 2+5`
 
-*Mode caluclatrice*
+* *Mode caluclatrice*
 {{{ 
 bc << .
 1+2
@@ -36,8 +33,11 @@ bc << .
 .
 }}}
 
-*Impression*
+* *Impression*
 `lpstat` pour voir la liste
 `lprm -` pour effacer la liste d'attente
+
+* voir les connexions
+`sudo /usr/sbin/tcpdump -vlnettti pflog0` (ou pflog0 est l'interface reseau)
 
 
