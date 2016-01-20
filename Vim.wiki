@@ -38,3 +38,6 @@
 | Alt+p |         | Mode paste                                   |
 |       | *       | Colle le registre *                          |
 |       | +       | Colle le registre +                          |
+
+=== TODO ===
+* avoir la même presentation pour la limite du nombres de caractères dans la largeur : http://i.imgur.com/T00FgWu.png?1

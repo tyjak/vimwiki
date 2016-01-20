@@ -68,6 +68,18 @@ puis installer avec `pacman -Sy yaourt`
 
  * i3pystatus-git pour des infos dans la barre de menu
 
+==== Faire un workspace par application ====
+
+Créer un fichier executable au nom de l'application à lancer dans dmenu
+{{{
+#!/bin/sh
+ISRUNNING=$( ps -eo cmd | grep -c '[u]rxvt -title reddit' )
+i3-msg -t command "workspace reddit; exec [ $ISRUNNING -eq 0 ] && urxvt -title reddit -e rtv"
+}}}
+
+Mettre ce fichier dans un repertoire qui se trouve dans le PATH (pour moi il s'agit de ~/share/bin)
+Utiliser dmenu pour lancer l'application ou switcher dessus.
+
 === Police de caractère ===
 
  * ttf-meslo-powerline
@@ -75,6 +87,11 @@ puis installer avec `pacman -Sy yaourt`
  * ttf-fontawesome
 
 === Thème Solarized, airline et GTK ===
+
+=== Wifi démarrage auto du wifi ===
+
+ * `netctl enable {nom du profil}`
+ * pour trouver le nom du profil actif et des autres : `netctl list`
 
 === Configuration du clavier ===
 

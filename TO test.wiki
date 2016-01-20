@@ -31,3 +31,4 @@
  * [ ] vifm : fair un plugin pour gérer git
  * [ ] vifm : faire un mode preview pour que les fichiers s'ouvrent dans un scratchpad
  * [ ] Faire le montage du dossier de musique sur creamy
+ * [X] i3 et dmenu : pourvoir lancer une application personnelle et faire que le nom s'affiche comme ceux prédéfinies (console-web-etc...)

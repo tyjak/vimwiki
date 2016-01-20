@@ -37,6 +37,7 @@ _Delete all mail with SPAM in the subject_
 # press `l.` to cancel limit search view
 # press `;d` to delete marked messages
 # press `$` to commit deletion
+# press `w` to apply a mark to a message and `W` to remove a mark
 
 _untag all tagged mail_
 just press `;t` (apply tag on all tagged mail => untagged)
@@ -63,3 +64,12 @@ example conf : https://github.com/panthomakos/dotfiles/blob/master/.muttrc
 
 # *notification on important message*
 
+# Améliorer vim comme éditeur de mail : 
+    # http://www.256bit.org/~chrisbra/cms/vim_as_e-mail_editor.html
+    # https://github.com/dbeniamine/vim-mail
+
+# tester les labels : https://blitiri.com.ar/p/other/mutt-labels/
+
+# mettre en place des régles de classement :
+    # https://raymii.org/s/blog/Filtering_IMAP_mail_with_imapfilter.html
+    # http://blog.endpoint.com/2011/10/imapfilter-lua-email-mutt-filtering.html

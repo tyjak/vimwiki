@@ -12,5 +12,8 @@
  
 == Quelques commandes utiles ==
 
+    * `git commit --amend` pour modifier le dernier commit
+    * `git reset <file>` pour annuler l'ajout d'un fichier (seulement en local)
+    * `git reset --hard <file>` pour annuler l'ajout d'un fichier et revenir au dernier état (HEAD)
     * `git log --graph --oneline --all` graph des commit
     * `git branch master -u {repo_distant}/master` pour indiquer le repo distant de la branche
