@@ -1,0 +1,15 @@
+= Assos =
+
+== Amap robin des pois ==
+
+Proposition pour améliore le système de mails.
+Achat du nom de domaine robindespois.org.
+
+=== TODO ===
+
+* Proposer de s'inscrire sur https://www.adb-solidatech.fr/
+* L'inscription permettera ensuite de pouvoir avoir un compte google apps
+
+== Shakti21 ==
+
+* Proposition pour acheter le nom de domaine

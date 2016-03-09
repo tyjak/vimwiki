@@ -1,0 +1,58 @@
+= Vim meetup 160306 =
+
+[[https://vifm.info/|vifm]] est filemanger intuitif utilisant les raccourcis de vim et reprenant la
+fonctionnalité des filtres de mutt.
+
+== Premiers pas ==
+
+Le lancement de vifm :
+----------------------
+
+* sans argument : ouverture de la dernière vue utilisée
+* avec 1 ou 2 arguments: ouvre le ou les dossiers passés en argument
+
+Quelques manipulations simples :
+--------------------------------
+
+* hjkl pour se déplacer dans la vue
+* [Barre espace| pour naviguer d'une vue à l'autre
+* dd pour couper un fichier (D supprime définitivement)
+* yy pour copier un fichier
+* p pour coller un fichier
+* c, I pour modifier le nome du fichier sous le curseur
+* / pour chercher un fichier
+
+Les différents modes
+--------------------
+
+* mode normal pour naviguer et faire des manipulations simples
+* modes visuels (v, av) pour sélectionner un ensemble de fichier
+* modes command (:, /, =)
+
+Le mode filtre inspiré de mutt
+------------------------------
+
+Le mode filtre s'active avec :filter ou =
+Il permet de réduire la vue avec une expression régulière
+En mode normal il est possible de sélectionner un à un (taguer) comme dans mutt
+avec la touche t
+
+== un exemple d'utilisation ==
+
+Ranger tous les fichiers .txt dans un dossier texte. Il est facile de le faire
+avec une ligne de commande mais il ne faut pas se tromper. Vifm permet de se
+tromper, il est possible d'annuler comme dans vim avec u et ctrl-r.
+
+* utilisation d'un filtre : `=.*\.txt`
+* on coupe tous les fichiers de la vue : add
+* ou bien on sélection vG+enter puis dd
+* désactive le filtre avec :filter ou zR
+* on va dans le dossier de texte et on colle avec la touche p
+
+== Autres commandes ==
+
+* ga calcule la taille d'un dossier
+* :sort permet de trier
+* :view permet d'activer le mode preview
+* `:!find -type f  %u` permet d'avoir une vue avec tous les fichiers trouvés
+* `:sort o` pour inverser l'ordre de la vue (a-z|z-a)

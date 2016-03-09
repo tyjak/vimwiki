@@ -2,5 +2,5 @@
 
 == Pour travailler à distance ==
 
-* sudo pon adsnovo
-* sh ~/share/bin/adsnovo-forward-port-80.sh
+* ~/share/bin/adsnovo-forward-port-80.sh
+* ~/share/bin/adsnovo_vpn [start|stop]

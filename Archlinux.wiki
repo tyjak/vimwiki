@@ -63,6 +63,9 @@ puis installer avec `pacman -Sy yaourt`
  * blueman
  * insync (google drive)
  * scrot pour les screenshot
+ * cmus cli pour la musique
+ * mpd + vimpc-git cli pour la musique
+ * tig pour la gestion de dépots git
 
 === I3 window manager ===
 

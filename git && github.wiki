@@ -25,5 +25,9 @@
 
     * Voir http://www.rosipov.com/blog/use-vimdiff-as-git-mergetool/
 
+== Workflow avec git ==
+    http://nvie.com/posts/a-successful-git-branching-model/
+    Outil indispensable : [[http://jonas.nitro.dk/tig/|tig]]
+
 == TODO ==
     [ ] Maitriser les merges et les synchros
