@@ -27,6 +27,7 @@ CMD service nginx start
     - `sudo docker run -d -P -v `pwd`/data/mysql:/var/lib/mysql {REF_NAME}`
     - `sudo docker build --no-cache .`
     - `sudo docker images` list images
+    - `sudo docker rmi {ID IMAGE}`
 
 == Example ==
 

@@ -13,3 +13,19 @@ Achat du nom de domaine robindespois.org.
 == Shakti21 ==
 
 * Proposition pour acheter le nom de domaine
+
+== Nuit debout ==
+
+Info sur l'api : https://www.mediawiki.org/wiki/API:Main_page
+
+https://wiki.nuitdebout.fr/api.php?action=parse&pageid=122&prop=text&section=6
+
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> 
+
+     <div id="insertTest">test</div>
+
+     <script>
+     $.getJSON("https://wiki.nuitdebout.fr/api.php?action=parse&pageid=122&prop=text&section=6&callback=?", function(data) {
+         $("#insertTest").text(data);
+         });
+         </script>

@@ -17,13 +17,21 @@
     * `git reset --hard <file>` pour annuler l'ajout d'un fichier et revenir au dernier état (HEAD)
     * `git log --graph --oneline --all` graph des commit
     * `git branch master -u {repo_distant}/master` pour indiquer le repo distant de la branche
+    * `git fetch upstream && git checkout master && git merge upstream/master` pour [[https://www.sumonselim.com/sync-forked-github-repository-master/|synchroniser un fork]] avec le projet d'origine 
 
 == Git pour le déploiement ==
 	https://www.digitalocean.com/community/tutorials/how-to-set-up-automatic-deployment-with-git-with-a-vps
 	
 == Faire un merge ==
 
+    * `:diffget 1` pour avoir la version de son local
+    * `:diffupdate` pour mettre à jour la vue
     * Voir http://www.rosipov.com/blog/use-vimdiff-as-git-mergetool/
+
+== Supprimer tous les fichiers non suivis ==
+    
+    * `git clean -f -n` pour voir les fichiers qui vont être supprimés
+    * `git clean -f` pout supprimer les fichiers non suivis
 
 == Workflow avec git ==
     http://nvie.com/posts/a-successful-git-branching-model/

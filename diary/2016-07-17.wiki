@@ -1,0 +1,7 @@
+== Dev RTV get access token ==
+
+Pour générer un access token, il faut récupérer l'url généré par RTV sans quoi cela ne fonctionne pas.
+
+- Pour la version 1.10.0 lign 93 dans oauth.py ajouter : `(authorize_url)`
+- Lors de la connexion via la touche 'u', l'url s'affiche, la copier/coller dans le navigateur
+- La demande d'autorisation devrait s'afficher cliquer sur 'allow' et tout devrait fonctionner

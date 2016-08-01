@@ -1,0 +1,50 @@
+= Vim Meetup Paris #12 - 160306 =
+
+Le plein de plugins et d'astuces !!
+
+== Autour de vim ==
+
+* Filemanager : [[http://vifm.info|vifm]] et [[http://ranger.nongnu.org/|ranger]]
+* La [[https://gist.github.com/tyjak/511ba9fa646a2c278dcd#file-2016-03-07-wiki|présentation]] de vifm
+* Pour voir vos images dans un terminal : [[http://w3m.sourceforge.net/|w3m]]
+* [[http://jonas.nitro.dk/tig/|Tig]] text mode interface for git
+* [[http://www.vimperator.org/|Vimperator]] firefox à la sauce vim
+* Des [[https://github.com/tmux-plugins?page=1|plugins]] pour Tmux
+
+== Pour vim ==
+
+* [[https://github.com/tomtom/quickfixsigns_vim|QuickFixSign]] Ajout d'infos utiles dans la gouttière - un bon remplacement de [[https://github.com/airblade/vim-gitgutter|git-gutter]]
+* :mksession on steroids https://github.com/xolox/vim-session
+
+== La mine d'infos ==
+
+Merci à [[http://mcamuzat.github.io/|mcamuzat]] pour la demo Tig, retrouvez pas
+mal d'infos pratiques sur son [[http://mcamuzat.github.io/|blog]].
+
+Merci à [[https://github.com/GuillaumeSeren|Guillaume]] pour le partage de
+plugins et d'outils vraiment très cool, rendez-vous sur son
+[[http://mcamuzat.github.io/|git]] pour le plein de ressources indispensables.
+
+Quelques liens sur sa présentation de vimperator:
+* Vimperator vs Pentadactyl https://www.wikivs.com/wiki/Pentadactyl_vs_Vimperator
+* vimperator http://www.vimperator.org/vimperator
+* son vimpertorrc https://github.com/GuillaumeSeren/vimperatorrc/blob/master/.vimperatorrc
+
+Et aussi :
+* A command-line fuzzy finder written in Go https://github.com/junegunn/fzf
+* [[https://github.com/ryanoasis/nerd-fonts|nerd-fonts]] : Collection of over
+20 patched fonts (over 2,000 variations) & FontForge font patcher python script
+for Powerline, Font Awesome, Octicons, Devicons, and Vim Devicons. Includes:
+Droid Sans, Meslo, Source Code, AnonymousPro, Hack, ProFont, Inconsolata, and
+many more
+
+== Pour le fun ==
+
+Merci à [[https://github.com/teddywing|Ted]] pour sa présentation bien délirante !
+
+* https://github.com/teddywing/auditory.vim Faire du son de la guerre des
+étoiles avec vim
+* https://github.com/teddywing/vim-space-vlaze Et un petit jeu pour s'amuser
+entre 2 lignes de code.
+
+

@@ -12,8 +12,10 @@
  * [X] [[http://crypto.stanford.edu/PwdHash/|Web Password Hashing]]
  * [ ] vim plugins : https://github.com/tpope/vim-abolish avec https://github.com/tpope/vim-repeat tester la fonctionalité qui permet de passer en caméliser et inversement
  * [ ] GTD Taskwrrior http://taskwarrior.org/docs/start.html -> possibilité de le configurer avec mutt http://www.titus-stahl.de/blog/2015/08/13/a-better-taskwarrior-integration-for-mutt/
+ * [ ] Acheter des noms de domaine avec des bitcoin : www.namecheap.com
 
 = TO DO =
+ * [ ] vimperator pour firefox, module pour gérer les passwords comme vimb
  * [ ] thunderbolt en connexion a chaud (udevadm monitor) https://bbs.archlinux.org/viewtopic.php?id=170294
  * [ ] ameliorer la detection des ecrans http://superuser.com/questions/970024/system-doesnt-detect-hot-plugged-display-portthrough-thunderbolt-connector
  * [ ] improve vimrc see https://github.com/pixelastic/oroshi/blob/master/config/vim/vimrc
@@ -26,6 +28,7 @@
  * [ ] vimwiki : faire que le colonne des nombres affiche autremnent et autre chose que les numéros de ligne (par exemple les niveaux de replis)
  * [ ] vimwiki : faire que la touche tab propose l'auto-complétion des mots, les flèches droite-gauche permenettent de naviguer entre les fautes et qu'on soit automatiquement en mode correction
  * [ ] vim : trouver une solution pour désactiver le XON/XOFF (ctl-q/ctl-s)
+ * [ ] Imaginer un raccourci qui permetterai d'ouvrir une fenetre mail supplémentaire pour par exemple pouvoir écrire un mail en même temps que pouvoir aller sur la liste des mails
  * [ ] mutt : améliorer la configuration voir http://www.titus-stahl.de/blog/2015/08/26/my-mutt-configuration/ et http://stevelosh.com/blog/2012/10/the-homely-mutt/#searching-email
  * [ ] vimb : ouvrir les pdf (ne plus les télécharger) -> tentavie avec `/usr/bin/inotifywait -m -q -e create --format %f . | xargs llpp` mais marche pas !!!
  * [ ] mutt : voir http://wcm1.web.rice.edu/mutt-tips.html pour le Format-flower
@@ -35,3 +38,6 @@
  * [X] i3 et dmenu : pourvoir lancer une application personnelle et faire que le nom s'affiche comme ceux prédéfinies (console-web-etc...)
  * [ ] i3 : faire que les layouts restent persistant entre chaque changement d'écran (peut-être via un backup auto du layouts rattachés à la fenêtre au moment de son changement
  * [ ] i3 : dernier écran -> aller à l'écran précédant
+ * [ ] mutt confugurer le gpg
+ * [ ] utiliser lr gpg comme agent
+ * [ ] https://pwmt.org/ à tester : document viewer

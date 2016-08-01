@@ -40,7 +40,7 @@ puis installer avec `pacman -Sy yaourt`
  * ttf-bitstream-vera
  * pinta logiciel de retouche image
  * pommed-light pour gérer les touches mac sons/lumieres
- * xclip & xsel pour gérer les copier/collé
+ * xclip & xsel & xclipboard & clipmenud pour gérer les copier/collé
  * nuvolaplayer pour la musique en ligne
  * unclutter pour masquer la souris
  * mutt pour les mails
@@ -66,6 +66,13 @@ puis installer avec `pacman -Sy yaourt`
  * cmus cli pour la musique
  * mpd + vimpc-git cli pour la musique
  * tig pour la gestion de dépots git
+ * FontManager pour visualiser les polices installées
+ * Xbindkeys pour mapper des touches du clavier sous session X
+
+==== Faire le ménage ====
+
+- Voir la place libérée : `sudo paccache -d`
+- Supprime le cache et garde les 3 dernières versions : `sudo paccache -r`
 
 === I3 window manager ===
 
@@ -88,6 +95,7 @@ Utiliser dmenu pour lancer l'application ou switcher dessus.
  * ttf-meslo-powerline
  * icons
  * ttf-fontawesome
+ * utilitaire de gestion/visualisation de police : FontManager
 
 === Thème Solarized, airline et GTK ===
 
@@ -168,6 +176,7 @@ Plus d'info : https://wiki.archlinux.org/index.php/Xrandr
  * éditer le fichier /etc/cups/client.conf pour ajouter l'ip de l'imprimante
  * dans .xinitrc ajouter la varibale PRINTER={nom de l'imprimante}
  * pour tester si l'imprimante est bien installé : `lpstat -p -d`
+ * pour imprimer un fichier `lpr filename`
  
 === Connexion Freebox OpenVPN ===
     ==== Configuration ====
@@ -204,7 +213,7 @@ Plus d'info : https://wiki.archlinux.org/index.php/Xrandr
     NoDisplay=true
     }}}
  * mettre ce fichier dans le dossier `applications` créer précedemment
- * puis executer la commande `xdg-mime default vimb.desktop x-scheme-handler/http` pour avoir vimb par défaut
+ * puis executer la commande `dg-mime default vimb.desktop x-scheme-handler/http` pour avoir vimb par défaut
  * il est possible aussi d'éditer le fichier `~/.config/mimeapps.list` pour modifier les applications par défaut lancées par `xdg-open`
  * plus d'info : https://wiki.archlinux.org/index.php/xdg-open#Set_the_default_browser et https://wiki.archlinux.org/index.php/Default_applications#MIME_types_and_desktop_entries
 
@@ -251,6 +260,7 @@ démarrage auto : `systemctl --user enable pulseaudio`
 ==== utilisation ====
 régler le préférences pour pouvoir découvrir les périfériques airplay avec `paprefs` et lancer `pavucontrol` pour régler la sortie son.
 ==== troubleshooting ====
+il faut que le daemon avahi-daemon soit démarré pour que les périphériques puissent être découvrables
 si le airplay ne s'affiche pas voir http://raspberrypi.stackexchange.com/questions/5508/redirect-audio-to-another-airplay-device
 commandes utiles :
 
@@ -261,6 +271,17 @@ pacmd list-sinks | grep name
 }}}
 
 Pour le problème du son qui se remet à 100% voir https://bbs.archlinux.org/viewtopic.php?pid=1103037#p1103037
+
+=== Teamviewer ===
+Pour lancer teamviewer il faut tout d'abord lancer le daemon :
+`teamview --daemon start`
+Puis le client par la suite via dmenu
+
+=== Montage de disque ===
+
+Si problème pour monter un disque distant, s'assurer que rpcbind.service est démarré
+`sudo systemctl enable rpcbind.service`
+`sudo systemctl start rpcbind.service`
 
 === TODO ===
 

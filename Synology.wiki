@@ -9,3 +9,7 @@
 == Syncthing ==
 
 Pour installer un version plus récente, il suffit de télécharger la dernière version sur le site de github et de remplacer le binaire.
+
+=== Montage de disque ===
+
+`sudo mount 192.168.0.20:/volume1/video /mnt/video/`
