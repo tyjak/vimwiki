@@ -17,7 +17,7 @@
 = TO DO =
  * [ ] vimperator pour firefox, module pour gérer les passwords comme vimb
  * [ ] thunderbolt en connexion a chaud (udevadm monitor) https://bbs.archlinux.org/viewtopic.php?id=170294
- * [ ] ameliorer la detection des ecrans http://superuser.com/questions/970024/system-doesnt-detect-hot-plugged-display-portthrough-thunderbolt-connector
+ * [ ] ameliorer la detection des ecrans http://superuser.com/questions/970024/system-doesn't-detect-hot-plugged-display-portthrough-thunderbolt-connector
  * [ ] improve vimrc see https://github.com/pixelastic/oroshi/blob/master/config/vim/vimrc
  * [ ] improve delete on gmail account (TODO : mark message as d and $ to really delete -> mv to trash box)
  * [ ] faire un raccourci dans mutt pour avoir accès directemnt au mail envoyé
