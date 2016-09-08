@@ -35,7 +35,7 @@ Generator-webapp is Html5boilerplate qith Jquery, Modernizer and Bootstrap
  $ npm install -g generator-webapp
   }}}
   
-=== Finaly get started ===
+=== Finally get started ===
 
 Go to your project directory and run :
 
