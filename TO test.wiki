@@ -36,7 +36,7 @@
  * [ ] vifm : faire un mode preview pour que les fichiers s'ouvrent dans un scratchpad
  * [X] Faire le montage du dossier de musique sur creamy (fait avec syncthing)
  * [X] i3 et dmenu : pourvoir lancer une application personnelle et faire que le nom s'affiche comme ceux prédéfinies (console-web-etc...)
- * [ ] i3 : faire que les layouts restent persistant entre chaque changement d'écran (peut-être via un backup auto du layouts rattachés à la fenêtre au moment de son changement
+ * [ ] i3 : faire que les layouts restent persistent entre chaque changement d'écran (peut-être via un backup auto du layouts rattachés à la fenêtre au moment de son changement
  * [ ] i3 : dernier écran -> aller à l'écran précédant
  * [ ] mutt confugurer le gpg
  * [ ] utiliser lr gpg comme agent
