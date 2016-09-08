@@ -5,7 +5,7 @@ Blog d'un type qui switch de vim à emacs
 http://blog.aaronbieber.com
 
 Qualité du code : vim un énorme spaghetti, tout est sous le controle de Bram Moolinar
-En attendant que NeoVim soit aboutit, Emacs en mode Evil est une autre alterantive viable à vim.
+En attendant que NeoVim soit about it, Emacs en mode Evil est une autre alterantive viable à vim.
 Emacs : Richard Stallman inititateur du projet, gérer de façon plus contributive en 2008 il passe son role de mainteneur principal à 2 contributeurs très actifs. Emacs ne repose pas sur une personne. 
 
 == Learn ==
