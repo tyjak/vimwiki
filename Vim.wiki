@@ -16,7 +16,7 @@
 * supprimer le message d'accueil `set shortmess=+I`
 * `<C-r>=` expression register
 * Voir par qui a été setter une variable :verbose set cpoptions?
-* `z=` pour avoir la liste des corrections et `1z=` pour corriger avec la premère occurence de la liste
+* `z=` pour avoir la liste des corrections et `1z=` pour corriger avec la premère occurrence de la liste
 * voir http://blog.fedora-fr.org/metal3d/post/Correction-orthographique-et-grammaticale-avec-Vim pour plus d'info sur l'autocorrection
 * plugin [[https://github.com/osyo-manga/vim-over|vim-over]] `:OverCommandLine`
 

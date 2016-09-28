@@ -99,7 +99,7 @@ Utiliser dmenu pour lancer l'application ou switcher dessus.
 
 === Thème Solarized, airline et GTK ===
 
-=== Wifi démarrage auto du wifi ===
+=== Wifi démarriage auto du wifi ===
 
  * `netctl enable {nom du profil}`
  * pour trouver le nom du profil actif et des autres : `netctl list`
@@ -192,7 +192,7 @@ Plus d'info : https://wiki.archlinux.org/index.php/Xrandr
     ==== Configuration ====
     * voir les fichiers dans /etc/ppp/peers 
     * ajout d'une nouvelle conf en cli : `pptpsetup --create-tunel {nom_de_la_connecion} --server {IP_NAME} --login {login} --password {pass} encrypted`
-    ==== Démarrage ====
+    ==== Démarriage ====
     * `pon {nom_de_la_connection}`
     * `poff` pout arréter la connexion
 
@@ -256,7 +256,7 @@ Mise en place du son pour une sortie sur un périphérique airplay
 installer les packets :
  * pulseaudio-alsa + libpulse-raop2 (airplay)  
  * paprefs + pavucontrol (gui control for pulseaudio)
-démarrage auto : `systemctl --user enable pulseaudio`
+démarriage auto : `systemctl --user enable pulseaudio`
 ==== utilisation ====
 régler le préférences pour pouvoir découvrir les périfériques airplay avec `paprefs` et lancer `pavucontrol` pour régler la sortie son.
 ==== troubleshooting ====
