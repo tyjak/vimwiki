@@ -11,6 +11,11 @@ Mes notes sur l'installation d'Archlinux
 === Notes à propos de VMware et Virtualbox ===
  * pb sur le driver video suite à l'upgrade -> obligé de réinstaller les anciens pilotes
    ex : `pacman -U /var/cache/pacman/pkg/xf86-video-intel-2.99.912-1-x86_64.pkg.tar.xz`
+
+=== En cas de plantage durant une installation ===
+ * voir les paquets à réinstaller : `sudo ldconfig 2>&1 | cut -d' ' -f3 | xargs pacman -Qo`
+ * réinstaller avec les dépendances si nécessiare : `pactree -d1 -u {nom du paquet} | sudo pacman -S --force -`
+ * avec toutes les dépendances `pactree -u {nom du paquet} | sudo pacman -S --force -`
    
 == Customisation ==
 
@@ -38,6 +43,7 @@ puis installer avec `pacman -Sy yaourt`
  * otf-inconsolata-powerline-git (police avec support powerline)
  * otf-powerline-symbols-git (police avec support powerline)
  * ttf-bitstream-vera
+ * ttf-weather-icons
  * pinta logiciel de retouche image
  * pommed-light pour gérer les touches mac sons/lumieres
  * xclip & xsel & xclipboard & clipmenud pour gérer les copier/collé
@@ -51,6 +57,7 @@ puis installer avec `pacman -Sy yaourt`
  * rainbowstream twitter cli client (via pip)
  * newsbeuter rss cli lcient
  * iftop
+ * nethogs (voir ce qui consomme la bande passante)
  * remmina
  * wego meteo dans le terminal
  * socat (pour utiliser les socket de vimb)
@@ -62,12 +69,16 @@ puis installer avec `pacman -Sy yaourt`
  * pyradio
  * blueman
  * insync (google drive)
- * scrot pour les screenshot
+ * maim + slop pour les screenshot
  * cmus cli pour la musique
  * mpd + vimpc-git cli pour la musique
  * tig pour la gestion de dépots git
  * FontManager pour visualiser les polices installées
  * Xbindkeys pour mapper des touches du clavier sous session X
+ * powertop et tlp (gérer la batterie)
+ * ranger (file manager)
+ * gnu-netcat (pour i3pystatus anybar)
+ * compton (transistion entre les fenetres)
 
 ==== Faire le ménage ====
 
@@ -98,6 +109,8 @@ Utiliser dmenu pour lancer l'application ou switcher dessus.
  * utilitaire de gestion/visualisation de police : FontManager
 
 === Thème Solarized, airline et GTK ===
+
+ * lxappearance pour changer l'apparence des applications
 
 === Wifi démarrage auto du wifi ===
 
@@ -245,6 +258,10 @@ acpid ne semblait ne pas fonctionner :
  * pour démarrer : `systemctl start syncting`
  * pour voir l'interface `http://127.0.0.1:8080`
  * via un tunnel SSH `ssh -nNT -L 9999:127.0.0.1:41989 do.tyjak.net` (port 9999 pour le web)
+
+=== Divers ===
+ * Theme sympa : gtk-theme-arc-git
+ * `screenfetch` pour avoir des infos sur la configuration
 
 == Gdrive ==
  * installation : http://beaveris.me/mount-google-drive-in-archlinux-without-syncing/

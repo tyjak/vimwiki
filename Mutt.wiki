@@ -3,8 +3,10 @@
 == How to ==
 
 *links*
+[[http://stevelosh.com/blog/2012/10/the-homely-mutt/|The homely mutt]]
 [[http://realprogrammers.com/jump_start/mutt/|Jump start]]
 [[http://sheet.shiar.nl/mutt|Mutt cheat sheet]]
+[[http://wcm1.web.rice.edu/mutt-tips.html|Some tips]]
 
 *address book*
 # install goobook
@@ -47,6 +49,10 @@ _Open a link_ `<C-b>`
 _Attach files_ 
 press "a" and for multiple file at once use "t" to tag the files you want 
 pree "enter" to add files
+
+== Tips ==
+
+# si l'url ne s'affiche pas dans la pager (vim par ex.) alors se positionner sur le mail dans l'index et faire un ctrl-b pour voir toutes les urls du mail
 
 
 == TODO ==

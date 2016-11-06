@@ -36,6 +36,7 @@ bc << .
 * *Impression*
 `lpstat` pour voir la liste
 `lprm -` pour effacer la liste d'attente
+`lpr -o lansdcape myfile.txt` pour imprimer en mode paysage
 
 * voir les connexions
 `sudo /usr/sbin/tcpdump -vlnettti pflog0` (ou pflog0 est l'interface reseau)

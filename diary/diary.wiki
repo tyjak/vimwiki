@@ -1,12 +1,28 @@
 = Diary =
 
+== 2016 ==
+
+=== July ===
+    * [[2016-07-17|Dev RTV get access token]]
+
+=== March ===
+    * [[2016-03-09|Vim Meetup Paris #12 - 160306]]
+    * [[2016-03-07|Vim meetup 160306]]
+
 == 2015 ==
+
+=== December ===
+    * [[2015-12-14|Vim mettup 151214]]
+
+=== October ===
+    * [[2015-10-17|Ars Industrialis sam. 17 oct. 2015 14:29:08 CEST]]
 
 === May ===
     * [[2015-05-31|Recette gratin pâte rapide]]
 
 === April ===
     * [[2015-04-21|Vim meetup 150421]]
+    * [[2015-04-20]]
     * [[2015-04-06]]
 
 === March ===
