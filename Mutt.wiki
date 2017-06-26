@@ -30,6 +30,11 @@ macro index,pager a "<pipe-message>goobook add<return>" "add sender to google co
 bind editor <Tab> complete-query
 }}}
 
+*Motif pour les recherches*
+
+http://www.mutt.org/doc/manual/#patterns
+# avec % en début pour faire une recherche par groupe : `%L team` => recherche les messages 'de' et 'pour' un membre du groupe 'team'
+
 *Examples*
 
 _Delete all mail with SPAM in the subject_

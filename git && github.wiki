@@ -18,6 +18,7 @@
     * `git log --graph --oneline --all` graph des commit
     * `git branch master -u {repo_distant}/master` pour indiquer le repo distant de la branche
     * `git fetch upstream && git checkout master && git merge upstream/master` pour [[https://www.sumonselim.com/sync-forked-github-repository-master/|synchroniser un fork]] avec le projet d'origine 
+    * `git push -u origin <branch>` pour pousser la branche local sur le repo d'origin et la suivre
 
 == Git pour le déploiement ==
 	https://www.digitalocean.com/community/tutorials/how-to-set-up-automatic-deployment-with-git-with-a-vps
@@ -35,7 +36,58 @@
 
 == Workflow avec git ==
     http://nvie.com/posts/a-successful-git-branching-model/
+    https://jayenashar.wordpress.com/2012/11/18/yagbm-yet-another-git-branching-model/
     Outil indispensable : [[http://jonas.nitro.dk/tig/|tig]]
+    
+=== Workflow étape par étape ===
+    
+===== une feature =====
+
+    `git checkout -b {feature} origin/master` => on crée la branche
+    Faire son dev ET commiter
+    `git merge --no-ff origin/master` => une fois le travail terminé et comité sur la branche, on merge sur le master 
+    `git push origin {feature}:master :{feature}` => on pousse le merge sur le master (on omet le dernier param si branch non distante)
+
+===== une release =====
+
+    *Création de la release*
+    `git checkout -b release-1.2 master`
+    à cette étape on met le numéro de version à jours, on recompile, etc...
+    `git commit -a -m "Version 1.2"` on commit la version
+
+    *Déploiement de la release*
+    `git tag -a 1.2.0` => une fois la release prete au deploiement
+    `git checkout master` 
+    `git merge --no-ff release-1.2`
+    `git push origin master release-1.2`
+    `git checkout release-1.2` => on se replace sur la dernière release
+    `git branch -d master` => on efface le master
+
+==== hotfixes ====
+
+    `git checkout -b release-1.2`
+    Fix the code and
+    `git commit -m "Fixed severe production problem"`
+    On change le numero de version
+    `git commit -a -m "Version 1.2.1"`
+    `git tag -a 1.2.1`
+    `git checkout master`
+    `git merge --no-ff release-1.2`
+
+
+== Déploiement ==
+    
+    Voir : https://grimoire.ca/git/stop-using-git-pull-to-deploy 
+    My deployment process, given a dedicated clone at $DEPLOY_TREE, is as follows:
+
+    cd "${DEPLOY_TREE}"
+    git fetch --all
+    git checkout --force "${TARGET}" #${TARGET} peut être une branche ou un tag
+    # Following two lines only required if you use submodules
+    # git submodule sync
+    # git submodule update --init --recursive
+    # # Follow with actual deployment steps (run fabric/capistrano/make/etc)
+
 
 == TODO ==
     [ ] Maitriser les merges et les synchros
