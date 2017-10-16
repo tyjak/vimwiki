@@ -1,5 +1,9 @@
 = Vim tips =
 
+== Simple calc ==
+Visual seletion on the operation todo and :
+:'<,'>!bc
+
 == NEW ==
 * ,<SPACE> pour supprimer le highlight de la recherche
 * <SPACE> pour faire une recheche (/)

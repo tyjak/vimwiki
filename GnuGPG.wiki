@@ -1,0 +1,14 @@
+= HOWTO GnuGPG =
+
+== Gestion d'une/des clé(s) ==
+
+Les clés sont stockées dans le répertoire ~/.gnugpg
+
+- `gpg --list-keys` Lister les clés présente
+- `gpg --full-gen-key` Pour créer une cléc
+- `gpg --edit-key {ID de la clé}` Pour éditer la clé dans l'id peut être l'UID complet, l'adress mail, l'ID chiffré
+
+== Quelques liens utiles ==
+
+- http://linuxfr.org/users/gouttegd/journaux/de-la-gestion-des-clefs-openpgp
+- https://www.sylvainlasnier.fr/blog/crypter-vos-donnees-avec-gnupg-sous-linux-ubuntu

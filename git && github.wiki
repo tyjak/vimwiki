@@ -27,6 +27,7 @@
 
     * `:diffget 1` pour avoir la version de son local
     * `:diffupdate` pour mettre à jour la vue
+    * `:only` pour garder que la partie mergé
     * Voir http://www.rosipov.com/blog/use-vimdiff-as-git-mergetool/
 
 == Supprimer tous les fichiers non suivis ==

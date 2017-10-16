@@ -13,6 +13,8 @@
  * [ ] vim plugins : https://github.com/tpope/vim-abolish avec https://github.com/tpope/vim-repeat tester la fonctionalité qui permet de passer en caméliser et inversement
  * [ ] GTD Taskwrrior http://taskwarrior.org/docs/start.html -> possibilité de le configurer avec mutt http://www.titus-stahl.de/blog/2015/08/13/a-better-taskwarrior-integration-for-mutt/
  * [ ] Acheter des noms de domaine avec des bitcoin : www.namecheap.com
+ * [ ] Tester la technique pomodoro
+ * [ ] Trouver le moyen d'avoir l'icone syncthong affichée dasn la barre de menu
 
 = TO DO =
  * [ ] vimperator pour firefox, module pour gérer les passwords comme vimb
@@ -41,3 +43,7 @@
  * [ ] mutt confugurer le gpg
  * [ ] utiliser lr gpg comme agent
  * [ ] https://pwmt.org/ à tester : document viewer
+ * [ ] Un plugin pour pour i3pystatus pour voir le nombre de mise à jours -> voir https://github.com/ultrabug/py3status/blob/master/py3status/modules/arch_updates.py
+ * [ ] mettre des icones sur les menus courants 
+ * [ ] i3 -> dossier share/bin -> lance autmotiquement dans une fentre nommée du nom de l'appli (suppression à terme du dosser i3 dans share/bin/i3)
+ * [ ] Un système de backup (voir https://www.sysnove.fr/blog/2016/06/backupninja-borg.html)

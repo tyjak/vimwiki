@@ -10,6 +10,23 @@
 
 Pour installer un version plus récente, il suffit de télécharger la dernière version sur le site de github et de remplacer le binaire.
 
+Pour avoir un répertoir de musique syncthing dans le serveur audio  il faut monter ce dernier :
+`mount -o bind /usr/local/syncthing/var/share/Music /volume1/music/last`
+
 === Montage de disque ===
 
-`sudo mount 192.168.0.20:/volume1/video /mnt/video/`
+Sur le syno se connecter en root et editer /etc/export :
+`/volume1/video  192.168.0.17(rw,async,no_wdelay,crossmnt,insecure,all_squash,insecure_locks,sec=sys,anonuid=1026,anongid=100)`
+
+ensuite exécuter `/usr/sbin/exportfs -a`
+
+Sur le client: 
+`sudo mount -t nfs4 192.168.0.20:/volume1/video ~/video`
+
+
+=== Réindexation de fichier ===
+
+`/usr/syno/bin/synoindex -R music`
+voir https://plus.google.com/+KivavaChang/posts/QnjZgJMiPoZ
+
+

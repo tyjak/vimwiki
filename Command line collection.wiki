@@ -13,6 +13,8 @@
 * Test débit
 `wget -O - https://raw.github.com/sivel/speedtest-cli/master/speedtest_cli.py | python`
 
+== divers ==
+
 * *Créer un tunnel SSH*
 
 l'option -nNT => sans terminal, 9000 port local et 80 le port distant

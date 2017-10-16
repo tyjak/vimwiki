@@ -6,6 +6,8 @@ Mes notes sur l'installation d'Archlinux
 == Installation from scratch ==
  * Attention de ne pas lancer l'utilitaire de partitionnement sur une partition mais bien sur le disque lui même
  * Pour le macbook voir https://wiki.archlinux.org/index.php/MacBook
+ * Un autre lien pour une installation pas à pas https://medium.com/@philpl/arch-linux-running-on-my-macbook-2ea525ebefe3
+ * ou encore https://mchladek.me/post/arch-mbp
  * Un lien plus récent avec cryptage du disque et partition LVM http://loicpefferkorn.net/2015/01/arch-linux-on-macbook-pro-retina-2014-with-dm-crypt-lvm-and-suspend-to-disk/
   
 === Notes à propos de VMware et Virtualbox ===
@@ -30,7 +32,7 @@ puis installer avec `pacman -Sy yaourt`
 
 === Les paquets indispensables ===
 
- * urxvt terminal + urxvt-perls
+ * termite en remplacement de urxvt terminal + urxvt-perls
  * [[https://github.com/ervandew/urxvt-vim-scrollback|urxvt-vim-scrollback]]
  * i3-wm gestionnaire de fenêtre
  * dmenu2
@@ -71,7 +73,7 @@ puis installer avec `pacman -Sy yaourt`
  * insync (google drive)
  * maim + slop pour les screenshot
  * cmus cli pour la musique
- * mpd + vimpc-git cli pour la musique
+ * mpd + ncmcpp + cli-visualizer pour la musique
  * tig pour la gestion de dépots git
  * FontManager pour visualiser les polices installées
  * Xbindkeys pour mapper des touches du clavier sous session X
@@ -79,6 +81,9 @@ puis installer avec `pacman -Sy yaourt`
  * ranger (file manager)
  * gnu-netcat (pour i3pystatus anybar)
  * compton (transistion entre les fenetres)
+ * pal calendrier cli
+ * acpilight (et faire sudo chmod a+w /sys/class/backlight/intel_backlight/brightness)
+ * arandr pour la gestion des écrans
 
 ==== Faire le ménage ====
 
@@ -123,7 +128,7 @@ Utiliser dmenu pour lancer l'application ou switcher dessus.
  * éditer le fichier ~/.Xmodmap pour modifier les touches par défaut
  * voir la fin du fichier pour voir comment modifier le comportement de la touche caps
  * `xmodmap ~/.Xmodmap` pour appliquer les changements
- * Pour ne pas eéteindre directement via la touche power : dans `/etc/systemd/logind.conf` mettre `HandlePowerKey=ignore` puis assigner pour i3 la touche 124 dans .Xmodmap (voir https://wiki.archlinux.org/index.php/I3#Shutdown.2C_reboot.2C_lock_screen )
+ * Pour ne pas éteindre directement via la touche power : dans `/etc/systemd/logind.conf` mettre `HandlePowerKey=ignore` puis assigner pour i3 la touche 124 dans .Xmodmap (voir https://wiki.archlinux.org/index.php/I3#Shutdown.2C_reboot.2C_lock_screen )
 
 === Ajout d'un résolution écran ===
 
@@ -165,6 +170,7 @@ Plus d'info : https://wiki.archlinux.org/index.php/Xrandr
  * et voir http://support.apple.com/kb/HT2845
    Turn on the Magic Trackpad by pressing the on/off button until the indicator light comes on. The indicator light glows steadily for 2 to 3 seconds to indicate the batteries are good. After that, the light will blink to indicate your trackpad is in discovery mode.
  * ajouter une [[conf X11 trackpad]]
+ * modifier dans le fichier /etc/bluetooth/main.conf mettre à true AutoEnable
  * si le trackpad ne fonctionne pas il faut à nouveau le jumeler en lançant `bluetoothctl`
  {{{
     remove 60:C5:47:81:AC:AD 
@@ -182,6 +188,10 @@ Plus d'info : https://wiki.archlinux.org/index.php/Xrandr
  * Puis faire installation...
  * pour info la connexion se fait avec Human Interface Device
  
+==== Pb reglage ====
+J'ai eu un pb avec le pad qui ne cliquait plus : un autre pad a été activé, il suffisait de le désactiver
+ * `xinput --list`
+ * `xinput disable X`
 
 === Installation d'une imprimante réseau ===
 
@@ -190,7 +200,7 @@ Plus d'info : https://wiki.archlinux.org/index.php/Xrandr
  * dans .xinitrc ajouter la varibale PRINTER={nom de l'imprimante}
  * pour tester si l'imprimante est bien installé : `lpstat -p -d`
  * pour imprimer un fichier `lpr filename`
- 
+
 === Connexion Freebox OpenVPN ===
     ==== Configuration ====
      * copier le fichier utilisateur de la freebox  `cp ~/downloads/config_openvpn_bridge_{$USER}.ovpn /etc/openvpn/freebox.conf`
@@ -243,6 +253,16 @@ acpid ne semblait ne pas fonctionner :
  * et le faire fonctionner en mode debug -d sans socket -S et en avant plan -f et en mode daemon : `sudo acpid -ldfS` et là j'ai pu voir ce qui ne fonctionnait pas.
  * ou bien changer directement dans le fichier de service acpid (pour savoir faire un disable/enable du service)
  * pb avec acpid pour X ne peut utiliser xrandr directement car il lui manque un context (DISPLAY et XAUTHORITY) et avec le script hotplug_monitor.sh idem voir https://bbs.archlinux.org/viewtopic.php?id=186179 pour un début de solution
+ * la solution est de mettre le code qui suit en début de fichier /etc/acpi/handler.sh
+ {{{
+		function GetXuser()
+		{
+		  #Guess the user logged on server $1
+		  w|grep " $1 "|cut -d " " -f 1|head -n 1
+		}
+		export DISPLAY=:0.0
+		export XAUTHORITY=/home/$(GetXuser $DISPLAY)/.Xauthority
+ }}}
 
 === Boot ===
 
@@ -252,6 +272,12 @@ acpid ne semblait ne pas fonctionner :
  * créer la configarution (/boot/loader/loader.conf et /boot/loader/entries/arch.conf)
  * voir [[https://wiki.archlinux.org/index.php/gummiboot|gummiboot]]
  * sur OS X pour rendre bootable la partition : `mkdir /Volumes/EFI-arch && mount -t vfat /dev/sdb1 && sudo bless --mount=/Volumes/EFI-arch` (A vérifier)
+ 
+=== Batterie / secteur ===
+
+* utilisation de `tlp` avec paramétrage de son fichier de conf `/etc/default/tlp`
+* pour voir si un montage est passé en ro : `findmnt`
+* pour lister les devices usb : `lsusb`
 
 === Syncthing ===
  * pour installer le service : `sudo systemctl enable syncthing@david`
@@ -262,6 +288,8 @@ acpid ne semblait ne pas fonctionner :
 === Divers ===
  * Theme sympa : gtk-theme-arc-git
  * `screenfetch` pour avoir des infos sur la configuration
+ * Termite : pour le faire reconnaitre sur des serveurs distant : https://www.reddit.com/r/unixporn/comments/4u2uvz/open_terminal_failed_missing_or_unsuitable/
+ * clipmenu : dans le code supprimer `--log /dev/stderr` pour que çà fonctionne
 
 == Gdrive ==
  * installation : http://beaveris.me/mount-google-drive-in-archlinux-without-syncing/
@@ -300,12 +328,56 @@ Si problème pour monter un disque distant, s'assurer que rpcbind.service est d�
 `sudo systemctl enable rpcbind.service`
 `sudo systemctl start rpcbind.service`
 
+=== Musique (mpd) ===
+
+Il faut installer à la main le service : créer le fichier `~/.config/systemd/user/mpd.service`
+{{{
+    [Unit]
+    Description=Music Player Daemon
+
+    [Service]
+    ExecStart=/usr/bin/mpd --no-daemon
+
+    [Install]
+    WantedBy=default.target
+}}}
+Ensuite installer de façon classique `service --user mpd enable`
+Utilisation de `ncmpcpp` comme client de mpd
+Pour les notification utiliser `mpd-notification` et demarrer le en service
+Pout les touches multimédias : mettres les commandes dans i3 :
+{{{
+    bindsym XF86AudioNext exec mpc next
+    bindsym XF86AudioPrev exec mpc prev
+    bindsym XF86AudioPause exec mpc toggle
+}}}
+
+===== ncmpcpp =====
+* playlist : espace pour ajouter / fn+backspace pour effacer, [v] pour inverser la selection
+* mise à jour de la base : touche "u"
+* cheatsheat : https://pkgbuild.com/~jelle/ncmpcpp/
+* pour que le visualizer fonctionne il faut dans mpd ajouter cette sortie audio en plus de la sortie ALSA :
+{{{
+audio_output {
+        type                    "fifo"
+        name                    "FIFO"
+        path                    "/tmp/mpd.fifo"
+		format                  "44100:16:2"
+}
+}}}
+
+=== wine ===
+
+* `wine control` pour voir les applis (pas toutes à priori)
+* `wine start /path/to/app.exe` pour lance une application installée
+
 === TODO ===
 
  * ajouter les packages `perl-json-xs` et `perl-anyevent` pour pouvoir enregistrer des layout i3
  * command pour sauvegarder un layout `i3-save-tree --workspace console > ~/.config/i3/workspace_console.json`
  * voir pour utiliser gpg et automatiser le lancement de l'agent gpg ou ssh [[https://github.com/ervandew/dotfiles/blob/master/.xinitrc|example de conf]]
  * Supprimer ario et floola
+ * tester iphone tethering : https://wiki.archlinux.org/index.php/IPhone_tethering
+ * mettre en place un vrai backup (voir https://www.sysnove.fr/blog/2016/06/backupninja-borg.html)
  
 == Tips ==
  * visualisation de photos - images : `feh -. {rep photo}`

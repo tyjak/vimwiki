@@ -7,6 +7,7 @@
 [[http://realprogrammers.com/jump_start/mutt/|Jump start]]
 [[http://sheet.shiar.nl/mutt|Mutt cheat sheet]]
 [[http://wcm1.web.rice.edu/mutt-tips.html|Some tips]]
+[[http://www.calmar.ws/mutt/|Some other good tips]]
 
 *address book*
 # install goobook
