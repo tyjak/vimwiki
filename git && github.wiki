@@ -9,16 +9,22 @@
 == Tutorial ==
 
  Excellent [[http://blog.octo.com/git-dans-la-pratique-12/|tuto]] Git 
+ Plein de [[https://orga.cat/posts/most-useful-git-commands|commandes utiles]]
  
 == Quelques commandes utiles ==
 
+    * `git branch` pour lister les branches
+    * `git branch -r` pour lister les branches trackées du remote
     * `git commit --amend` pour modifier le dernier commit
     * `git reset <file>` pour annuler l'ajout d'un fichier (seulement en local)
     * `git reset --hard <file>` pour annuler l'ajout d'un fichier et revenir au dernier état (HEAD)
+    * `git reset HEAD~` annule un commit sans modification des fichiers
+    * `git checkout -- filename` annule les modifications d'un fichier local
     * `git log --graph --oneline --all` graph des commit
     * `git branch master -u {repo_distant}/master` pour indiquer le repo distant de la branche
     * `git fetch upstream && git checkout master && git merge upstream/master` pour [[https://www.sumonselim.com/sync-forked-github-repository-master/|synchroniser un fork]] avec le projet d'origine 
     * `git push -u origin <branch>` pour pousser la branche local sur le repo d'origin et la suivre
+    * `git update-index --assume-unchanged config/config.php` pour ne prendre en compte les modifs de config
 
 == Git pour le déploiement ==
 	https://www.digitalocean.com/community/tutorials/how-to-set-up-automatic-deployment-with-git-with-a-vps
@@ -54,6 +60,7 @@
     *Création de la release*
     `git checkout -b release-1.2 master`
     à cette étape on met le numéro de version à jours, on recompile, etc...
+    voir http://teotti.com/a-successful-deploy-workflow-using-git-tags-and-a-changelog/ pour la maintenance d'un "CHANGELOG.md"
     `git commit -a -m "Version 1.2"` on commit la version
 
     *Déploiement de la release*
@@ -89,6 +96,41 @@
     # git submodule update --init --recursive
     # # Follow with actual deployment steps (run fabric/capistrano/make/etc)
 
+== Git svn ==
+
+   Exemple de fichier de conf :
+   {{{
+    [core]
+        repositoryformatversion = 0
+        filemode = false
+        bare = false
+        logallrefupdates = true
+        symlinks = false
+        ignorecase = true
+    [svn-remote "svn"]
+        url = https://srvnovo:8443/svn/adsnovo/projects/jemepropose
+        fetch = recette:refs/remotes/origin/master
+        fetch = prod:refs/remotes/origin/release
+        ignore-paths = config/*|adbox/*
+    [filter "git-crypt"]
+        smudge = \"/usr/bin/git-crypt\" smudge
+        clean = \"/usr/bin/git-crypt\" clean
+        required = true
+    [diff "git-crypt"]
+        textconv = \"/usr/bin/git-crypt\" diff
+    [remote "origin"]
+        url = ssh://bitbucket.org/jemepropose/jemepropose.git
+        fetch = +refs/heads/*:refs/remotes/origin/*
+    [branch "master"]
+        remote = origin
+        merge = refs/heads/master
+   }}}
+   
+   Si oublie d'un dossier dans le ignore-paths, alors obligé de faire un reset
+   à la révision pour laquelle le dossier a été ajouté puis faire fetch.
+   `git svn reset -r {REVISION}`
+   `git svn fetch`
+   `git rebase onto origin/master` # si sur git branch master existe
 
 == TODO ==
     [ ] Maitriser les merges et les synchros

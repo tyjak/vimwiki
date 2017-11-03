@@ -23,6 +23,7 @@ Visual seletion on the operation todo and :
 * `z=` pour avoir la liste des corrections et `1z=` pour corriger avec la premère occurence de la liste
 * voir http://blog.fedora-fr.org/metal3d/post/Correction-orthographique-et-grammaticale-avec-Vim pour plus d'info sur l'autocorrection
 * plugin [[https://github.com/osyo-manga/vim-over|vim-over]] `:OverCommandLine`
+* plugin [[https://github.com/vim-scripts/DrawIt|DrawIt]] pour faire des diagrammes ascii
 
 ==== Mode vim pour écrire et prendre de note ====
 * vim pour écrire : http://naperwrimo.org/wiki/index.php?title=Vim_for_Writers et aussi https://afterdraft.co/~aardvark/writing-with-vim

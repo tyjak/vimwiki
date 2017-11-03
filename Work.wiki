@@ -4,3 +4,15 @@
 
 * ~/share/bin/adsnovo-forward-port-80.sh
 * ~/share/bin/adsnovo_vpn [start|stop]
+
+== Faire un merge en CLI ==
+
+#TODO : dans le commit ajouté l'ID du ticket et commité et voir aussi comment commiter les infos de merge sur les dossiers concernés
+
+Exemple d'un merge: 
+
+`svn log --verbose -l 50 https://srvnovo:8443/svn/adsnovo/projects/jemepropose/recette`
+`svn merge -c 36269 https://srvnovo:8443/svn/adsnovo/projects/jemepropose/recette`
+`svn ci -m "ajout image pour flux" web/www/images/logo/import/ifsa.jpg` 
+`cp --parents web/www/images/logo/import/ifsa.jpg /adsnovo/delta-jemepropose/` 
+
