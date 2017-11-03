@@ -108,7 +108,7 @@
         symlinks = false
         ignorecase = true
     [svn-remote "svn"]
-        url = https://srvnovo:8443/svn/adsnovo/projects/jemepropose
+        url = https://srvnovo:8443/svn/adsnovo/projects/myawesomeproject
         fetch = recette:refs/remotes/origin/master
         fetch = prod:refs/remotes/origin/release
         ignore-paths = config/*|adbox/*
@@ -119,7 +119,7 @@
     [diff "git-crypt"]
         textconv = \"/usr/bin/git-crypt\" diff
     [remote "origin"]
-        url = ssh://bitbucket.org/jemepropose/jemepropose.git
+        url = ssh://bitbucket.org/myawesomeproject/myawesomeproject.git
         fetch = +refs/heads/*:refs/remotes/origin/*
     [branch "master"]
         remote = origin
@@ -131,6 +131,9 @@
    `git svn reset -r {REVISION}`
    `git svn fetch`
    `git rebase onto origin/master` # si sur git branch master existe
+   
+   Pour trouver le numéro de révision du premier commit d'un fichier :
+   `svn log -r 1:HEAD --limit 1 <REPO_URL>` 
 
 == TODO ==
     [ ] Maitriser les merges et les synchros
