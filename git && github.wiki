@@ -26,6 +26,20 @@
     * `git push -u origin <branch>` pour pousser la branche local sur le repo d'origin et la suivre
     * `git update-index --assume-unchanged config/config.php` pour ne prendre en compte les modifs de config
 
+=== création d'un bare repo ===
+
+    * `git clone --bare {URL/PATH} myrepo.git` 
+    * `git fetch {URL/PATH} branch_local:branch_distante`
+    
+    Voir ce pastebin pour plus de détail sur le wrklow avec un bare git :
+    https://pastebin.com/dSbpedLV
+
+=== Clone avec fichiers sources séparés ===
+
+    * `git init --separate-git-dir=. /home/myrepo`
+    * `git remote add origin bitbucket.org:myrepo/myrepo.git`
+    * `git checkout -b release --track origin/release`
+
 == Git pour le déploiement ==
 	https://www.digitalocean.com/community/tutorials/how-to-set-up-automatic-deployment-with-git-with-a-vps
 	
