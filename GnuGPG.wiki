@@ -4,11 +4,104 @@
 
 Les clés sont stockées dans le répertoire ~/.gnugpg
 
-- `gpg --list-keys` Lister les clés présente
+- `gpg --list-keys` Lister les clés présentes
 - `gpg --full-gen-key` Pour créer une cléc
 - `gpg --edit-key {ID de la clé}` Pour éditer la clé dans l'id peut être l'UID complet, l'adress mail, l'ID chiffré
 
+=== en mode console ===
+
+- `uid {numéro à côté de l'adresse mails}` Pour séléctinoner un uid
+- `key {numéro à côté d'une clé}` Pour sélectionner une clé
+- `primary` Pour désigner l'uid sélectionner par défaut pour signer
+
 == Quelques liens utiles ==
 
+- https://gnupg.org/documentation/howtos.html
+- [[https://www.linode.com/docs/security/gpg-key-for-ssh-authentication|ssh with gnu gpg]]
 - http://linuxfr.org/users/gouttegd/journaux/de-la-gestion-des-clefs-openpgp
 - https://www.sylvainlasnier.fr/blog/crypter-vos-donnees-avec-gnupg-sous-linux-ubuntu
+- https://www.futureboy.us/pgp.html
+
+== Pour plus de sécurité ==
+
+- https://en.wikipedia.org/wiki/OpenPGP_card
+- https://www.floss-shop.de/en/security-privacy/smartcard-reader/3/gemalto-shell-token-black?c=39
+
+== Pour signer ses commit git ==
+
+- https://git-scm.com/book/en/v2/Git-Tools-Signing-Your-Work
+
+== Scripts pour pouvoir signer des clés si la clé privé primaire n'est pas présente ==
+
+Si la clé privé primaire est stockée sur une clé USB. Alors voici un script qui permet de monter la clé, faire un lien symbolique sur la clé privé puis signé l'adresse mail donnée en argument.
+
+Le script :
+{{{
+
+#!/bin/sh
+
+KEYTOSIGN=$1
+USER={{ VOTRE NOM D'UTILISATEUR }}
+PRIVMASTERKEYFILE={{ REMPLACER PAR LE NOM DU FICHER DE VOTRE CLÉ PRIVÉE PRIMAIRE }}
+USBKEY={{ NOM DU POINT DE MONTAGE }}
+DEV={{ NOM DE LA RESSOURCE À MONTER }}
+GPGDIR={{ REPERTOIRE DANS LEQUEL SE TROUVE LA CLÉ PRIVÉE SUR LE SUPPORT USB }}
+
+# monrage de la clé
+mkdir -p ~/$USBKEY
+sudo mount -o gid=$USER,fmask=113,dmask=002 /dev/$DEV ~/$USBKEY
+
+# création du lien symbolique vers la clé privée
+cd ~/.gnupg/private-keys-v1.d/
+ln -s ~/$USBKEY/$GPGDIR/$PRIVMASTERKEYFILE
+
+# signture de la clé
+gpg --sign-key $1
+
+# suppression et démontage
+rm $PRIVMASTERKEYFILE
+sudo umount ~/$USBKEY
+rmdir ~/$USBKEY
+
+}}}
+
+Pour signer une clé (la clé aura été importé auparavant avec `gpg --import lenomdelacle.asc`:
+`./signkey lenom@delac.le`
+
+== certifier et envoyer la clé  signée/certifiée ==
+Suite à une gnupg party j'ai envoyé aux participant leur clé signé par mes soins en utilisant cette commande :
+`pius -s 85A83DBAB1D50286 "Citoyen Candide <citoyen.candide@riseup.net>" -r .gnupg/pubring.kbx -H smtp.gmail.com -m david@tyjak.net -u david.foucher@gmail.com`
+
+== Utilisation de gnupg-agent pour les connections ssh ==
+
+=== installation ===
+
+Il faut pré-alablement avoir une clé type [A] pour permettre l'authentification
+
+- Créer le fichier ~/.gnupg/sshcontrol et y mettre le keygrip de la clé d'authenfication :
+- Créer le fichier ~/.gnupg/gpg-agent.conf avec :
+{{{
+enable-ssh-support
+pinentry-program /usr/bin/pinentry
+default-cache-ttl-ssh 10800
+max-cache-ttl-ssh 10800
+}}}
+- Dans le bashrc ou zshrc :
+{{{
+unset SSH_AGENT_PID
+if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+    export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+fi
+echo "UPDATESTARTUPTTY" | gpg-connect-agent > /dev/null 2&>1
+}}}
+- redémarer gpg-agent : `systemctl --user restart gpg-agent.service`
+
+Pour plus de détail voir : https://linuxfr.org/users/spack/journaux/gnupg-et-authentification-ssh
+
+=== Ajout des clés privés SSH ===
+
+Possiblité d'ajouté ses clés privés SSH dans gnugpg: elles sont cryptées et protégées par mot de passe
+`ssh-add ~/.ssh/id_rsa` => ajout de la clé id_rsa (ajouté en crypté dans ~/.gnupg/private-keys-v1.d/
+
+
+

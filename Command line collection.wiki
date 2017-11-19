@@ -13,6 +13,10 @@
 * Test débit
 `wget -O - https://raw.github.com/sivel/speedtest-cli/master/speedtest_cli.py | python`
 
+* Afficher son ip
+`dig +short myip.opendns.com @resolver1.opendns.com`
+
+
 == divers ==
 
 * *Créer un tunnel SSH*

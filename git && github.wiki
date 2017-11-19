@@ -11,11 +11,22 @@
  Excellent [[http://blog.octo.com/git-dans-la-pratique-12/|tuto]] Git 
  Plein de [[https://orga.cat/posts/most-useful-git-commands|commandes utiles]]
  
+== Github ==
+
+Créer un projet sur github et le tracker en local
+
+{{{
+    $ git init
+    $ git remote add origin git@github.com:username/new_repo
+    $ git push -u origin master
+}}}
+
 == Quelques commandes utiles ==
 
     * `git branch` pour lister les branches
     * `git branch -r` pour lister les branches trackées du remote
     * `git commit --amend` pour modifier le dernier commit
+    * `git commit --amend --no-edit` pour ajouter un/des fichiers oubliés au dernier commit
     * `git reset <file>` pour annuler l'ajout d'un fichier (seulement en local)
     * `git reset --hard <file>` pour annuler l'ajout d'un fichier et revenir au dernier état (HEAD)
     * `git reset HEAD~` annule un commit sans modification des fichiers

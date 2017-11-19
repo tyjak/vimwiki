@@ -84,6 +84,8 @@ puis installer avec `pacman -Sy yaourt`
  * pal calendrier cli
  * acpilight (et faire sudo chmod a+w /sys/class/backlight/intel_backlight/brightness)
  * arandr pour la gestion des écrans
+ * udiskie pour le montage automatique des diks (TODO: ansible déploiement)
+ * jq pour parser du json en ligne de commande
 
 ==== Faire le ménage ====
 
@@ -162,6 +164,17 @@ Plus d'info : https://wiki.archlinux.org/index.php/Xrandr
  * modfier la régle copier avec les info récupérée
  * faire `udevadm trigger` si la règle n'est pas prise en compte
  * si la règle ne fonctionne pas faire un `# udevadm test $(udevadm info -q path -n [device name]) 2>&1`
+ 
+ Exemple de règle :
+ {{{
+    ACTION=="add"
+    SUBSYSTEM=="usb"
+    ENV{ID_FS_UUID}=="679752b5-4bbb-40ec-b7e7-fde992d07151"
+    ENV{UDISKS_SYSTEM}="0"
+    ENV{UDISKS_AUTO}="1"
+    RUN+="/usr/bin/logger --tag my-usbkey Attached"
+ }}}
+
 
 === Installation Trackpad ===
 
@@ -248,6 +261,20 @@ J'ai eu un pb avec le pad qui ne cliquait plus : un autre pad a été activé, i
    }}}
  
 
+=== Gestionnaire de mot de passe ===
+
+Utilisation de [[https://www.passwordstore.org/|pass]] avec cryptage GPG pour la gestion des mots de passe
+
+- `pass -c web/skype` pour obtenir le mot de passe de skype 45sec. dans le presse papier
+- `pass web/skype | qrencode -t UTF8` pour afficher le qrcode du mot de passe
+
+
+=== Modifier les options de démarrages d'un daemon ===
+
+* `systemctl edit [nom du daemon]` pour un paramétrage personaliser
+* `systemctl remove [nom du daemon]` pour revenir à l'état d'origine
+* plus d'info : https://wiki.archlinux.org/index.php/Systemd#Editing_provided_units
+
 === Régler un pb (TODO)===
 
  * journal des événements `journalctl -xn`
@@ -292,6 +319,24 @@ acpid ne semblait ne pas fonctionner :
  * pour démarrer : `systemctl start syncting`
  * pour voir l'interface `http://127.0.0.1:8080`
  * via un tunnel SSH `ssh -nNT -L 9999:127.0.0.1:41989 do.tyjak.net` (port 9999 pour le web)
+
+=== Clé USB Crypté ===
+ * formatter la clé avec fdisk
+ * `cryptsetup luksFormat /dev/sxx` Créer le volume crypté avec un passphrase
+ * `cryptsetup open /dev/sxx nom_du_device_ouvert` Map le volume crypté sur le un volume décrypté
+ * `mkfs.ext4 /dev/mapper/nom_du_device_ouvert` On format le nouveau volume
+ * `mount /dev/mapper/nom_du_device_ouvert /media` On monte enfin le nouveau volume
+
+Les étapes de montage sont :
+ # `cryptsetup open /dev/sxx nom_du_device_ouvert`
+ # `mount /dev/mapper/nom_du_device_ouvert /media`
+
+Les étapes de démontages :
+ # `umount /media`
+ # `cryptsetup close nom_du_device_ouvert`
+
+Plus de détail : https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_a_non-root_file_system
+Utilsation de udiskie pour le montage automatique
 
 === Divers ===
  * Theme sympa : gtk-theme-arc-git

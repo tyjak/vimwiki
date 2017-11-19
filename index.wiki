@@ -18,6 +18,7 @@
 	* [[Cubase (fr)]]
 	* [[Docker]]
 	* [[Mutt]]
+	* [[GnuGPG]]
 	* [[Weechat]]
 	* [[Tmux]]
 	* [[Synology]]
