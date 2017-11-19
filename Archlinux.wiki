@@ -239,6 +239,14 @@ J'ai eu un pb avec le pad qui ne cliquait plus : un autre pad a été activé, i
  * puis executer la commande `dg-mime default vimb.desktop x-scheme-handler/http` pour avoir vimb par défaut
  * il est possible aussi d'éditer le fichier `~/.config/mimeapps.list` pour modifier les applications par défaut lancées par `xdg-open`
  * plus d'info : https://wiki.archlinux.org/index.php/xdg-open#Set_the_default_browser et https://wiki.archlinux.org/index.php/Default_applications#MIME_types_and_desktop_entries
+ * autre solution : installer mimeo :
+   {{{
+   mimeo --mimean-help
+   mimeo --mimetype #liste des mimetype
+   mimoe --app2desk #liste des application desktop
+   mimeo --prefer "x-scheme-handler/http" vimb.desktop
+   }}}
+ 
 
 === Régler un pb (TODO)===
 
