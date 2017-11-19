@@ -70,7 +70,7 @@ Pour signer une clé (la clé aura été importé auparavant avec `gpg --import 
 
 == certifier et envoyer la clé  signée/certifiée ==
 Suite à une gnupg party j'ai envoyé aux participant leur clé signé par mes soins en utilisant cette commande :
-`pius -s 85A83DBAB1D50286 "Citoyen Candide <citoyen.candide@riseup.net>" -r .gnupg/pubring.kbx -H smtp.gmail.com -m david@tyjak.net -u david.foucher@gmail.com`
+`pius -s 85A83DBAB1D50286 "Dupont Marc <marc@dupont.fr>" -r .gnupg/pubring.kbx -H smtp.gmail.com -m david@mymail.fr -u david.foucher@mysmtpusermail.com`
 
 == Utilisation de gnupg-agent pour les connections ssh ==
 
