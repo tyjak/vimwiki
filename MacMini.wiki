@@ -1,0 +1,9 @@
+= Archlinux on dual boot MacMini with 32bit UEFI =
+
+The Archlinux dual-boot live cd doesn't boot on my macmini so I had to boot on an Ubuntu liveCD to bootstrap archlinux installation.
+
+== Prepare Ubuntu LiveCD on USB stick ==
+
+== Install arch-bootstrap and pacstrap archlinux from ubuntu ==
+
+
