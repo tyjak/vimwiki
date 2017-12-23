@@ -35,6 +35,7 @@ puis installer avec `pacman -Sy yaourt`
  * termite en remplacement de urxvt terminal + urxvt-perls
  * [[https://github.com/ervandew/urxvt-vim-scrollback|urxvt-vim-scrollback]]
  * i3-wm gestionnaire de fenêtre
+ * xss-lock + i3lock-blur pour locker l'écran
  * dmenu2
  * dunst + libnotify pour avoir des notifications
  * dwb ou vimb comme navigateur web
@@ -86,6 +87,44 @@ puis installer avec `pacman -Sy yaourt`
  * arandr pour la gestion des écrans
  * udiskie pour le montage automatique des diks (TODO: ansible déploiement)
  * jq pour parser du json en ligne de commande
+
+=== SLIM avec clavier azerty ===
+
+Cette ligne : `Option "XkbLayout" "fr"` doit être ajouté dans la section du
+clavier de X11.
+
+Exemple pour `/etc/X11/xorg.conf.d/40-libinput.conf` :
+
+{{{
+# Match on all types of devices but joysticks
+Section "InputClass"
+        Identifier "libinput pointer catchall"
+        MatchIsPointer "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "libinput"
+EndSection
+
+Section "InputClass"
+        Identifier "libinput keyboard catchall"
+        MatchIsKeyboard "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "libinput"
+        Option "XkbLayout" "fr"
+EndSection
+
+Section "InputClass"
+        Identifier "libinput touchpad catchall"
+        MatchIsTouchpad "on"
+        MatchDevicePath "/dev/input/event*"
+        Option "Tapping" "1"
+        Driver "libinput"
+EndSection
+}}}
+
+=== Ajout d'un écran de lock à la suspension ===
+
+Installer le package `xss-lock` et ajouter dans `.xinitrc` :
+`xss-lock i3lock -f &`
 
 ==== Faire le ménage ====
 
