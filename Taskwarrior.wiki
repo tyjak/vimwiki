@@ -1,0 +1,34 @@
+= Taskwarrior =
+
+Lien utiles : /home/david/vimwiki/Taskwarrior.wiki
+
+== Quelques commandes ==
+
+    * `task calendar` pour afficher un calendrier des taches
+    * `task 1 modify due:eoww` modification de la date au denier jour de travail de la semaine
+    * `task 1 modify wait:due` la tache ne sera pas présente dans la due list mais afficher le jour de la date
+
+== Synonymes dates ==
+    * now 						Current local date and time.
+    * today 					Current local date, with time 00:00:00.
+    * sod 						Local date of the start of the next day, with time 00:00:00. Same as tomorrow.
+    * eod 						Current local date, with time 23:59:59.
+    * yesterday                 Local date for yesterday, with time 00:00:00.
+    * tomorrow 					Local date for tomorrow, with time 00:00:00. Same as sod.
+    * monday,tuesday ...        Local date for the specified day, after today, with time 00:00:00.
+    * january,february ...      Local date for the specified month, 1st day, with time 00:00:00.
+    * later,someday             Local 2038-01-18, with time 00:00:00. A date far away, with semantically meaningful to GTD users.
+    * soy 						Local date for the next year, January 1st, with time 00:00:00.
+    * eoy 						Local date for this year, December 31st, with time 00:00:00.
+    * soq 						Local date for the start of the next quarter (January, April, July, October), 1st, with time 00:00:00.
+    * eoq 						Local date for the end of the current quarter (March, June, September, December), last day of the month, with time 23:59:59.
+    * som 						Local date for the 1st day of the next month, with time 00:00:00.
+    * socm 						Local date for the 1st day of the current month, with time 00:00:00.
+    * eom,eocm                  Local date for the last day of the current month, with time 23:59:59.
+    * sow 						Local date for the next Sunday, with time 00:00:00.
+    * socw 						Local date for the last Sunday, with time 00:00:00.
+    * eow,eocw                  Local date for the end of the week, Saturday night, with time 00:00:00.
+    * soww 						Local date for the start of the work week, next Monday, with time 00:00:00.
+    * eoww 						Local date for the end of the work week, Friday night, with time 23:59:59.
+    * 1st,2nd, ...              Local date for the next Nth day, with time 00:00:00.
+
