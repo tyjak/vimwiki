@@ -7,6 +7,7 @@ Lien utiles : /home/david/vimwiki/Taskwarrior.wiki
     * `task calendar` pour afficher un calendrier des taches
     * `task 1 modify due:eoww` modification de la date au denier jour de travail de la semaine
     * `task 1 modify wait:due` la tache ne sera pas présente dans la due list mais afficher le jour de la date
+    * `task $(task end.before:today-4wk uuids) delete` supprime les taches complétées de plus de 4 semaines
 
 == Synonymes dates ==
     * now 						Current local date and time.
