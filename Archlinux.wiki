@@ -162,6 +162,13 @@ Utiliser dmenu pour lancer l'application ou switcher dessus.
 
  * `netctl enable {nom du profil}`
  * pour trouver le nom du profil actif et des autres : `netctl list`
+ * si pb "network not found" alors essayer `sudo rfkill unblock all`
+
+
+=== Réglage horloge ===
+
+ * `timedatectl set-local-rtc 1` # 0 pour la remettre sur UTC
+ * plus d'info : https://wiki.archlinux.fr/Horloge
 
 === Configuration du clavier ===
 
@@ -270,6 +277,13 @@ J'ai eu un pb avec le pad qui ne cliquait plus : un autre pad a été activé, i
     ==== Démarrage ====
     * `pon {nom_de_la_connection}`
     * `poff` pout arréter la connexion
+
+=== Connexion modem WWAN 4G ===
+
+ * https://wiki.archlinux.org/index.php/ThinkPad_mobile_internet
+ * peut aider : https://lists.freedesktop.org/archives/modemmanager-devel/2017-September/005804.html
+ * http://www.embeddedpi.com/documentation/3g-4g-modems/raspberry-pi-sierra-wireless-mc7304-modem-qmi-interface-setup
+ * https://forums.lenovo.com/t5/Linux-Discussion/Mobile-Broadband-X1-Ubuntu-16-04/td-p/3720487
 
 === Changer le navigateur web par défault ===
 

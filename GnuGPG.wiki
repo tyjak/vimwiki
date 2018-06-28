@@ -47,7 +47,7 @@ USBKEY={{ NOM DU POINT DE MONTAGE }}
 DEV={{ NOM DE LA RESSOURCE À MONTER }}
 GPGDIR={{ REPERTOIRE DANS LEQUEL SE TROUVE LA CLÉ PRIVÉE SUR LE SUPPORT USB }}
 
-# monrage de la clé
+# montage de la clé
 mkdir -p ~/$USBKEY
 sudo mount -o gid=$USER,fmask=113,dmask=002 /dev/$DEV ~/$USBKEY
 

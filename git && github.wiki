@@ -25,6 +25,7 @@ Créer un projet sur github et le tracker en local
 
     * `git branch` pour lister les branches
     * `git branch -r` pour lister les branches trackées du remote
+    * `git branch -m <oldname> <newname>` pour renommer un branche
     * `git checkout -b {nom de la branche}` pour créer une nouvelle branche
     * `git commit --amend` pour modifier le dernier commit
     * `git commit --amend --no-edit` pour ajouter un/des fichiers oubliés au dernier commit
@@ -39,6 +40,7 @@ Créer un projet sur github et le tracker en local
     * `git push -u origin <branch>` pour pousser la branche local sur le repo d'origin et la suivre
     * `git update-index --assume-unchanged config/config.php` pour ne prendre en compte les modifs de config
     * `git stash apply` pour appliquer le dernier stash
+    * `git merge v1.0 --no-commit --no-ff` merge sans auto-commit
 
 === Revert les modifications de droits sur les fichiers ===
 
@@ -88,6 +90,24 @@ Créer un projet sur github et le tracker en local
     * sélectionner la branche depuis laquelle prendre le commit souhaité
     * selectioner le commit désiré puis appuyer sur `P`
     * le commit sera mis sur la branche
+
+== Gitlab : mise en place d'un hook custom ==
+
+    * créer un dossier `/var/opt/gitlab/git-data/repositories/labonneformation/labonneformation.git/custom_hooks/post-receive`
+    * dans le fichier :
+    {{{
+		#!/bin/bash
+		while read oldrev newrev refname
+		do
+			branch=$(git rev-parse --symbolic --abbrev-ref $refname)
+			if [ "develop" == "$branch" ]; then
+				ssh -Ct livraison@192.168.4.100 "cd /home/www/labonneformation &&  git pull origin develop"
+			fi
+		done
+    }}}
+	* faire un `su gitlab-runner`
+	* créer une clé passwordless `ssh-keygen -t rsa`
+	* copier la clé sur le serveur sur lequel faire le pull `ssh-copy -i .ssh/id_rsa dest@serveur`
 
 == Workflow avec git ==
     http://nvie.com/posts/a-successful-git-branching-model/
