@@ -167,6 +167,8 @@ Utiliser dmenu pour lancer l'application ou switcher dessus.
 
 === Réglage horloge ===
 
+ * pour voir les horloges : `timedatectl`
+ * pour régler UTC : ` sudo ntpd -qg`
  * `timedatectl set-local-rtc 1` # 0 pour la remettre sur UTC
  * plus d'info : https://wiki.archlinux.fr/Horloge
 
