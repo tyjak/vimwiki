@@ -19,6 +19,11 @@
 
 == divers ==
 
+* Virtual Box
+
+unregister all vm :
+`vboxmanage list vms | cut -d" " -f2 | sed 's/{\(.*\)}$/vboxmanage unregistervm \1/g' | sh`
+
 * *Créer un tunnel SSH*
 
 l'option -nNT => sans terminal, 9000 port local et 80 le port distant
