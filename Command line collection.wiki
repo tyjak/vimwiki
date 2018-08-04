@@ -16,7 +16,6 @@
 * Afficher son ip
 `dig +short myip.opendns.com @resolver1.opendns.com`
 
-
 == divers ==
 
 * Virtual Box
@@ -29,6 +28,9 @@ unregister all vm :
 l'option -nNT => sans terminal, 9000 port local et 80 le port distant
 
 `$ ssh -nNT -L 9000:imgur.com:80 user@example.com`
+
+* Copier sa clé publique depuis vim
+`:read !curl -sL {URL TO PUBLIC KEY}`
 
 * *Un simple calcul*
 `expr 2 + 5`

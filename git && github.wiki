@@ -80,7 +80,7 @@ Créer un projet sur github et le tracker en local
     * Voir http://www.rosipov.com/blog/use-vimdiff-as-git-mergetool/
 
 == Supprimer tous les fichiers non suivis ==
-    
+
     * `git clean -f -n` pour voir les fichiers qui vont être supprimés
     * `git clean -f` pout supprimer les fichiers non suivis
 
@@ -90,6 +90,11 @@ Créer un projet sur github et le tracker en local
     * sélectionner la branche depuis laquelle prendre le commit souhaité
     * selectioner le commit désiré puis appuyer sur `P`
     * le commit sera mis sur la branche
+
+== Git : historique plat avec rebase ==
+
+    * Pour avoir un historique plat utiliser : `git rebase {nom de la branche avec laquelle synchorniser`
+    * Et pout push fair un `git push --force` <= attention portentielement destructif ne pas le faire sur branche partagée ou bien prévenir !!!
 
 == Gitlab : mise en place d'un hook custom ==
 

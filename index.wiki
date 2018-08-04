@@ -17,6 +17,7 @@
 	* [[Book printing (fr)]]
 	* [[Cubase (fr)]]
 	* [[Docker]]
+	* [[LXC]]
 	* [[Mutt]]
 	* [[Taskwarrior]]
 	* [[GnuGPG]]

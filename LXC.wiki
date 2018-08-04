@@ -1,0 +1,42 @@
+== simple tuto ==
+
+https://blog.ubuntu.com/2015/03/20/installing-lxd-and-the-command-line-tool
+
+* Suite à l'intallation :
+    `lxc remote add images images.linuxcontainers.org`
+
+* Lancer une image :
+    `lxc launch ubuntu:16.4 {name of the container}`
+
+* Lister les conteneurs :
+    `lxc list`
+
+* Entrer dans un conteneur
+    `lxc exec {nom du conteneur} -- /bin/bash`
+
+== LXC Cheat sheet ==
+
+lxc-ls           # List existing containers
+
+# Note: all commands take -n  as parameter to specify the container 
+lxc-start        # Start and attach
+lxc-start -d     # Start in background
+lxc-console      # Attach to running container
+lxc-stop
+
+lxc-clone <source> <target>
+lxc-create -t <template> -f <config file>
+lxc-destroy
+
+lxc-execute -n <name> -- <command>  # Run command in new container
+lxc-attach  -n <name> -- <command>  # Run command in running container
+
+lxc-monitor    # Monitor containers for state changes
+lxc-wait       # Wait for a state change
+lxc-info       # Give details on a container
+
+lxc-freeze
+lxc-unfreeze
+
+lxc-netstat
+lxc-ps
