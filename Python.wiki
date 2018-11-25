@@ -26,6 +26,8 @@ utiliser pip :
 # vérification que python utilisé est bien celui de l'env
 `which python`
 
+# lien pour doc rapide ipdb : http://www.georgejhunt.com/olpc/pydebug/pydebug/ipdb.html
+
 === Projet trefle ===
 
 # clonage du projet

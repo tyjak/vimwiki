@@ -5,6 +5,9 @@
 * permet de tester un site sans pour autant que le nom soit dans un host ou un dns
 `curl -I --resolve [domain name]:80:[ip] [URL]`
 
+* suivre les redirections et silencieusement avec sortie sur STDIN
+`curl -sL [URL]`
+
 == connexion réseau ==
 
 * Nombre de connexion établie sur port 80

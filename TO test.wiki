@@ -18,7 +18,6 @@
  * [ ] Mettre de la couleur dans le terminal : https://unix.stackexchange.com/questions/148/colorizing-your-terminal-and-shell-environment  #40962580
 
 = TO DO =
- * [ ] vimperator pour firefox, module pour gérer les passwords comme vimb  #e09b3455
  * [ ] thunderbolt en connexion a chaud (udevadm monitor) https://bbs.archlinux.org/viewtopic.php?id=170294  #4ee8c72a
  * [ ] ameliorer la detection des ecrans http://superuser.com/questions/970024/system-doesnt-detect-hot-plugged-display-portthrough-thunderbolt-connector  #53035b75
  * [ ] improve vimrc see https://github.com/pixelastic/oroshi/blob/master/config/vim/vimrc  #f8ad8a6c
@@ -51,3 +50,5 @@
  * [ ] Re-synchroniser ansible-archlinux pour être à jour de la conf actuel, faire des tests de déploiment  #7183e0c8
  * [ ] Voir les dépendances du dossier partagé share pour faire un bootstrap de gnugpg et pass  #f85f8387
  * [ ] Faire un logger d'activiter avec dmenu => raccourci pour saisir du texte qui aura se mettre dans un fichier calendrier wiki avec un horodatage  #67e81bbd
+ * [ ] Ajouter une option dans clipmenud pour que les mots de passes s'éffacent (ajout d'une fonctionalité : effacement de la derniere entrer si copie vide)  #1548fd43
+ * [ ] tester et voir si rofy peut remplacer dmenu  #0efead2d
