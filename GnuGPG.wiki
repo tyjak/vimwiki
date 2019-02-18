@@ -48,7 +48,7 @@ USBKEY={{ NOM DU POINT DE MONTAGE }}
 DEV={{ NOM DE LA RESSOURCE À MONTER }}
 GPGDIR={{ REPERTOIRE DANS LEQUEL SE TROUVE LA CLÉ PRIVÉE SUR LE SUPPORT USB }}
 
-# monrage de la clé
+# montage de la clé
 mkdir -p ~/$USBKEY
 sudo mount -o gid=$USER,fmask=113,dmask=002 /dev/$DEV ~/$USBKEY
 
@@ -71,7 +71,7 @@ Pour signer une clé (la clé aura été importé auparavant avec `gpg --import 
 
 == certifier et envoyer la clé  signée/certifiée ==
 Suite à une gnupg party j'ai envoyé aux participant leur clé signé par mes soins en utilisant cette commande :
-`pius -s 85A83DBAB1D50286 "Citoyen Candide <citoyen.candide@riseup.net>" -r .gnupg/pubring.kbx -H smtp.gmail.com -m david@tyjak.net -u david.foucher@gmail.com`
+`pius -s 85A83DBAB1D50286 "Dupont Marc <marc@dupont.fr>" -r .gnupg/pubring.kbx -H smtp.gmail.com -m david@mymail.fr -u david.foucher@mysmtpusermail.com`
 
 == Utilisation de gnupg-agent pour les connections ssh ==
 
@@ -103,6 +103,26 @@ Pour plus de détail voir : https://linuxfr.org/users/spack/journaux/gnupg-et-au
 
 Possiblité d'ajouté ses clés privés SSH dans gnugpg: elles sont cryptées et protégées par mot de passe
 `ssh-add ~/.ssh/id_rsa` => ajout de la clé id_rsa (ajouté en crypté dans ~/.gnupg/private-keys-v1.d/
+
+==== Utiliser les clés ssh ajouté dans gnupgp ====
+
+- Ajouter la clé publique à installer sur le serveur distant dans le .ssh du serveur hote :
+
+`ssh-add -L | grep nom-de-ma-clé > ~/.ssh/nom-de-ma-clé.pub`
+
+- Ajout de la conf dans .ssh/config :
+
+{{{
+Host nom-serveur-distant
+    Hostname 192.168.0.1
+    User username
+    IdentitiesOnly yes
+    IdentityFile ~/.ssh/nom-de-ma-clé.pub
+}}}
+
+- Copie de la clé sur le serveur distant :
+`ssh-copy-id -f -i ~/.ssh/nom-de-ma-clé.pub username@Hostname-serveur-distant`
+
 
 
 

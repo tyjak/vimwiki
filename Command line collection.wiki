@@ -5,6 +5,9 @@
 * permet de tester un site sans pour autant que le nom soit dans un host ou un dns
 `curl -I --resolve [domain name]:80:[ip] [URL]`
 
+* suivre les redirections et silencieusement avec sortie sur STDIN
+`curl -sL [URL]`
+
 == connexion réseau ==
 
 * Nombre de connexion établie sur port 80
@@ -16,11 +19,15 @@
 * Afficher son ip
 `dig +short myip.opendns.com @resolver1.opendns.com`
 
-
 == divers ==
 
 * créer des liens symboliques pour tous les fichiers d'un dossier
 `ln -s ~/src/phpqa/bin/* -t .` #se mettre dans le dosser de destination
+
+* Virtual Box
+
+unregister all vm :
+`vboxmanage list vms | cut -d" " -f2 | sed 's/{\(.*\)}$/vboxmanage unregistervm \1/g' | sh`
 
 * *Créer un tunnel SSH*
 
@@ -37,6 +44,9 @@ Host host
   IdentityFile ~/.ssh/id_rsa
   ProxyCommand ssh hostwithpubkeytoconnecto -W %h:%p
 }}}
+
+* Copier sa clé publique depuis vim
+`:read !curl -sL {URL TO PUBLIC KEY}`
 
 * *Un simple calcul*
 `expr 2 + 5`
@@ -67,4 +77,26 @@ bc << .
 * joindre des lignes d'une sortie de commande comme 'grep' par exemple
 `paste -s -d","` #séparer par des virgules
 
+== xterm-termite ==
+
+manual : https://github.com/thestinger/termite
+
+* Insert mode
+`ctrl-shift-x` activate url hints mode
+`ctrl-shift-r` reload configuration file
+`ctrl-shift-c` copy to CLIPBOARD
+`ctrl-shift-v` paste from CLIPBOARD
+`ctrl-shift-u` unicode input (standard GTK binding)
+`ctrl-shift-e` emoji (standard GTK binding)
+`ctrl-tab` start scrollback completion
+`ctrl-shift-space` start selection mode
+`ctrl-shift-t` open terminal in the current directory [1]
+`ctrl-shift-up` scroll up a line
+`ctrl-shift-down` scroll down a line
+`shift-pageup` scroll up a page
+`shift-pagedown` scroll down a page
+`ctrl-shift-l` reset and clear
+`ctrl-+` increase font size
+`ctrl--` decrease font size
+`ctrl-=` reset font size to default
 

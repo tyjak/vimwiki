@@ -2,19 +2,18 @@
 
 == Authentification ==
 
-	* fichier ~/.git-credentials TODO:command pour générer ce ficher
-	* command `git config credential.helper 'store'` pour utiliser l'authentification permanente
-	* préférer l'authentification par clefs ssh (git@github.com)
+    * fichier ~/.git-credentials TODO:command pour générer ce ficher
+    * command `git config credential.helper 'store'` pour utiliser l'authentification permanente
+    * préférer l'authentification par clefs ssh (git@github.com)
 
 == Tutorial ==
 
  Excellent [[http://blog.octo.com/git-dans-la-pratique-12/|tuto]] Git 
  Plein de [[https://orga.cat/posts/most-useful-git-commands|commandes utiles]]
- 
+
 == Github ==
 
 Créer un projet sur github et le tracker en local
-
 {{{
     $ git init
     $ git remote add origin git@github.com:username/new_repo
@@ -25,24 +24,36 @@ Créer un projet sur github et le tracker en local
 
     * `git branch` pour lister les branches
     * `git branch -r` pour lister les branches trackées du remote
+    * `git branch -m <oldname> <newname>` pour renommer un branche
+    * `git checkout -b {nom de la branche}` pour créer une nouvelle branche
     * `git commit --amend` pour modifier le dernier commit
     * `git commit --amend --no-edit` pour ajouter un/des fichiers oubliés au dernier commit
     * `git reset <file>` pour annuler l'ajout d'un fichier (seulement en local)
     * `git reset --hard <file>` pour annuler l'ajout d'un fichier et revenir au dernier état (HEAD)
     * `git reset HEAD~` annule un commit sans modification des fichiers
     * `git reset --keep HEAD@{1}` pour annuler le merge et le dernier pull
+    * `git reset --merge ORIG_HEAD` annule le dernier merge sans modifier les fichiers locaux modifiés (dans le cas d'un merge non pushé)
     * `git checkout -- filename` annule les modifications d'un fichier local
     * `git log --graph --oneline --all` graph des commit
     * `git branch master -u {repo_distant}/master` pour indiquer le repo distant de la branche
     * `git fetch upstream && git checkout master && git merge upstream/master` pour [[https://www.sumonselim.com/sync-forked-github-repository-master/|synchroniser un fork]] avec le projet d'origine 
     * `git push -u origin <branch>` pour pousser la branche local sur le repo d'origin et la suivre
     * `git update-index --assume-unchanged config/config.php` pour ne prendre en compte les modifs de config
+    * `git stash apply` pour appliquer le dernier stash
+    * `git merge v1.0 --no-commit --no-ff` merge sans auto-commit
+
+=== Revert les modifications de droits sur les fichiers ===
+
+{{{
+    git diff --summary | grep --color 'mode change 100755 => 100644' | cut -d' ' -f7- | xargs -d'\n' chmod +x
+    git diff --summary | grep --color 'mode change 100644 => 100755' | cut -d' ' -f7- | xargs -d'\n' chmod -x
+}}}
 
 === création d'un bare repo ===
 
-    * `git clone --bare {URL/PATH} myrepo.git` 
+    * `git clone --bare {URL/PATH} myrepo.git`
     * `git fetch {URL/PATH} branch_local:branch_distante`
-    
+
     Voir ce pastebin pour plus de détail sur le wrklow avec un bare git :
     https://pastebin.com/dSbpedLV
 
@@ -52,9 +63,15 @@ Créer un projet sur github et le tracker en local
     * `git remote add origin bitbucket.org:myrepo/myrepo.git`
     * `git checkout -b release --track origin/release`
 
+=== Ne prendre que certain fichier/dossier lors du checkout ===
+    * `git init && git remote add -f origin <url>`
+    * `git config core.sparseCheckout true`
+    * `echo "sys" > .git/info/sparse-chekcout`
+    * `git pull origin master`
+
 == Git pour le déploiement ==
-	https://www.digitalocean.com/community/tutorials/how-to-set-up-automatic-deployment-with-git-with-a-vps
-	
+    https://www.digitalocean.com/community/tutorials/how-to-set-up-automatic-deployment-with-git-with-a-vps
+
 == Faire un merge ==
 
     * `:diffget 1` pour avoir la version de son local
@@ -63,18 +80,48 @@ Créer un projet sur github et le tracker en local
     * Voir http://www.rosipov.com/blog/use-vimdiff-as-git-mergetool/
 
 == Supprimer tous les fichiers non suivis ==
-    
+
     * `git clean -f -n` pour voir les fichiers qui vont être supprimés
     * `git clean -f` pout supprimer les fichiers non suivis
+
+== Tig et cherry pick ==
+
+    * touche `b` pour voir toute les branches
+    * sélectionner la branche depuis laquelle prendre le commit souhaité
+    * selectioner le commit désiré puis appuyer sur `P`
+    * le commit sera mis sur la branche
+
+== Git : historique plat avec rebase ==
+
+    * Pour avoir un historique plat utiliser : `git rebase {nom de la branche avec laquelle synchorniser`
+    * Et pout push fair un `git push --force` <= attention portentielement destructif ne pas le faire sur branche partagée ou bien prévenir !!!
+
+== Gitlab : mise en place d'un hook custom ==
+
+    * créer un dossier `/var/opt/gitlab/git-data/repositories/labonneformation/labonneformation.git/custom_hooks/post-receive`
+    * dans le fichier :
+    {{{
+        #!/bin/bash
+        while read oldrev newrev refname
+        do
+            branch=$(git rev-parse --symbolic --abbrev-ref $refname)
+            if [ "develop" == "$branch" ]; then
+                ssh -Ct livraison@192.168.4.100 "cd /home/www/labonneformation &&  git pull origin develop"
+            fi
+        done
+    }}}
+    * faire un `su gitlab-runner`
+    * créer une clé passwordless `ssh-keygen -t rsa`
+    * copier la clé sur le serveur sur lequel faire le pull `ssh-copy -i .ssh/id_rsa dest@serveur`
 
 == Workflow avec git ==
     http://nvie.com/posts/a-successful-git-branching-model/
     https://jayenashar.wordpress.com/2012/11/18/yagbm-yet-another-git-branching-model/
     Outil indispensable : [[http://jonas.nitro.dk/tig/|tig]]
     voir https://devhints.io/tig
-    
+
 === Workflow étape par étape ===
-    
+
 ===== une feature =====
 
     `git checkout -b {feature} origin/master` => on crée la branche
@@ -111,7 +158,7 @@ Créer un projet sur github et le tracker en local
 
 
 == Déploiement ==
-    
+
     Voir : https://grimoire.ca/git/stop-using-git-pull-to-deploy 
     My deployment process, given a dedicated clone at $DEPLOY_TREE, is as follows:
 
@@ -122,6 +169,75 @@ Créer un projet sur github et le tracker en local
     # git submodule sync
     # git submodule update --init --recursive
     # # Follow with actual deployment steps (run fabric/capistrano/make/etc)
+
+== Résoudre un conflit d'une branche ==
+
+    On récupère les branches distantes (sans chercher à merger)
+    git fetch origin
+
+    # On met le diff entre notre version et la version distante en conflit
+    dans un fichier temporaire
+    `git diff origin/hauts-de-france > /tmp/hautsdefrance.diff`
+
+    # On se réaligne sur la branche distante
+    `git reset --hard origin/hauts-de-france `
+
+    # On applique le diff
+    `git apply /tmp/hautsdefrance.diff`
+
+    # Bonus, voir les changements mots à mots au lieu de ligne à ligne (très
+      utile pour les diffs dans du texte (vs du code), par exemple les fichier
+      de règles)
+    `git diff --word-diff`
+
+    # Ça marche dans n'importe quel situation où on consulte un diff, par
+      exemple
+    `git show HEAD --word-diff`
+
+== Réécrire l'historique ==
+
+    Ne doit être fait que sur une branche en local ou sur une branche privée si
+    elle est distante.
+
+    Réécrire les 3 derniers comit
+    `git rebase -i HEAD~3`
+
+
+== Manipuler les commit ==
+
+    Lorsqu'on travaille sur une branche, on peut avoir besoin de réorganiser les commit
+    
+    # Trouver le point à partir duquel on va rebaser
+    `git log --graph --oneline --all`
+
+    # Commencer le rebase
+    `git rebase -i {hash du commit}`
+
+    # Editer un commit pour le spliter : remplacer 'pick' par 'edit'
+    
+    # Faire un reset pour choisir ce qu'on va commiter
+    `git reset HEAD~`
+    
+    # Si besoin de faire ligne à ligne sur un fichier
+    `git add -p {chemin/du/fichier}`
+    
+    # Faire autant de commit que nécessaire et vérifier que tout est bien commité
+
+    # continuer le rebase jusqu'à la fin
+    `git rebase --continue`
+
+    # si trop de conflit alors annuler le rebase
+    `git rebase --abort`
+
+== Faire un patch et l'appliquer ==
+
+    # Faire le diff et le mettre dans un fichier
+    `git diff origin/{branch} > patch.diff`
+    
+    # Editer au besoin le fichier de diff pour suppimer des lignes à ne pas patcher
+    
+    # Appliquer le patch
+    `git apply patch.diff`
 
 == Git svn ==
 
@@ -152,13 +268,13 @@ Créer un projet sur github et le tracker en local
         remote = origin
         merge = refs/heads/master
    }}}
-   
+
    Si oublie d'un dossier dans le ignore-paths, alors obligé de faire un reset
    à la révision pour laquelle le dossier a été ajouté puis faire fetch.
    `git svn reset -r {REVISION}`
    `git svn fetch`
    `git rebase onto origin/master` # si sur git branch master existe
-   
+
    Pour trouver le numéro de révision du premier commit d'un fichier :
    `svn log -r 1:HEAD --limit 1 <REPO_URL>` 
 

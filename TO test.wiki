@@ -18,35 +18,39 @@
  * [ ] Mettre de la couleur dans le terminal : https://unix.stackexchange.com/questions/148/colorizing-your-terminal-and-shell-environment  #d846568c
  * [ ] Un plugin pour pour i3pystatus pour voir le nombre de mise à jours -> voir https://github.com/ultrabug/py3status/blob/master/py3status/modules/arch_updates.py  #21c3397f
 
+
 = TO DO =
- * [X] vimperator pour firefox, module pour gérer les passwords comme vimb  #2f55f17b
- * [ ] thunderbolt en connexion a chaud (udevadm monitor) https://bbs.archlinux.org/viewtopic.php?id=170294  #ade057d0
- * [ ] ameliorer la detection des ecrans http://superuser.com/questions/970024/system-doesnt-detect-hot-plugged-display-portthrough-thunderbolt-connector  #5bc1585d
- * [ ] improve vimrc see https://github.com/pixelastic/oroshi/blob/master/config/vim/vimrc  #f6b10f70
- * [ ] improve delete on gmail account (TODO : mark message as d and $ to really delete -> mv to trash box)  #b2424a51
- * [ ] faire un raccourci dans mutt pour avoir accès directemnt au mail envoyé  #860aefc6
- * [X] fait que lorsque le scratchpad s'affiche le cursor de la souris soit au centre -> ajout d'une option dans i3 pour que le focus ne suive pas la souris  #b5ca167b
- * [ ] Vimb launch a pdf viewer instead of always download the file  #c01d87b4
- * [X] Corriger la date des mails dans mutt  #9486b714
- * [ ] vimwiki : lors de l'ajout d'une entrée dans le journal, faire que l'enregistrement de l'entrée mette à jour l'index du journal  #794c4e32
- * [ ] vimwiki : faire que le colonne des nombres affiche autremnent et autre chose que les numéros de ligne (par exemple les niveaux de replis)  #bdba5125
- * [ ] vim : trouver une solution pour désactiver le XON/XOFF (ctl-q/ctl-s)  #d69ff277
- * [ ] Imaginer un raccourci qui permetterai d'ouvrir une fenetre mail supplémentaire pour par exemple pouvoir écrire un mail en même temps que pouvoir aller sur la liste des mails  #5eab273b
- * [ ] mutt : améliorer la configuration voir http://www.titus-stahl.de/blog/2015/08/26/my-mutt-configuration/ et http://stevelosh.com/blog/2012/10/the-homely-mutt/#searching-email  #eb1ffd7d
- * [ ] vimb : ouvrir les pdf (ne plus les télécharger) -> tentavie avec `/usr/bin/inotifywait -m -q -e create !!!  #163833cd
- * [ ] mutt : voir http://wcm1.web.rice.edu/mutt-tips.html pour le Format-flower  #2ab2a4bd
- * [ ] vifm : fair un plugin pour gérer git  #a920170d
- * [ ] vifm : faire un mode preview pour que les fichiers s'ouvrent dans un scratchpad  #44cfe688
- * [X] Faire le montage du dossier de musique sur creamy (fait avec syncthing)  #3d398b73
- * [X] i3 et dmenu : pourvoir lancer une application personnelle et faire que le nom s'affiche comme ceux prédéfinies (console-web-etc...)  #57b41aa9
- * [ ] i3 : faire que les layouts restent persistant entre chaque changement d'écran (peut-être via un backup auto du layouts rattachés à la fenêtre au moment de son changement  #4b93cf76
- * [ ] i3 : dernier écran -> aller à l'écran précédant  #13597d11
- * [X] mutt configurer le gpg  #cea5ce86
- * [X] utiliser le gpg comme agent  #8fd20ea2
- * [ ] https://pwmt.org/ à tester : document viewer  #e3cd5149
- * [X] mettre des icones sur les menus courants  #c877ccd6
- * [ ] i3 -> dossier share/bin -> lance autmotiquement dans une fentre nommée du nom de l'appli (suppression à terme du dosser i3 dans share/bin/i3)  #76677c67
- * [ ] Un système de backup (voir https://www.sysnove.fr/blog/2016/06/backupninja-borg.html)  #2896ccaf
- * [ ] Re-synchroniser ansible-archlinux pour être à jour de la conf actuel, faire des tests de déploiment  #9c927505
- * [ ] Voir les dépendances du dossier partagé share pour faire un bootstrap de gnugpg et pass  #aa77ed53
- * [ ] Trouver une solution pour pouvoir facilement trouver une définition dans un dictionnaire francais et/ou anglais  #bc3c3901
+ * [ ] thunderbolt en connexion a chaud (udevadm monitor) https://bbs.archlinux.org/viewtopic.php?id=170294  #4ee8c72a
+ * [ ] ameliorer la detection des ecrans http://superuser.com/questions/970024/system-doesnt-detect-hot-plugged-display-portthrough-thunderbolt-connector  #53035b75
+ * [ ] improve vimrc see https://github.com/pixelastic/oroshi/blob/master/config/vim/vimrc  #f8ad8a6c
+ * [ ] improve delete on gmail account (TODO : mark message as d and $ to really delete -> mv to trash box)  #31500431
+ * [ ] faire un raccourci dans mutt pour avoir accès directemnt au mail envoyé  #37e41a2e
+ * [X] fait que lorsque le scratchpad s'affiche le cursor de la souris soit au centre -> ajout d'une option dans i3 pour que le focus ne suive pas la souris  #2a73642c
+ * [ ] Vimb launch a pdf viewer instead of always download the file  #2b71946b
+ * [X] Corriger la date des mails dans mutt  #210bfa3c
+ * [ ] vimwiki : lors de l'ajout d'une entrée dans le journal, faire que l'enregistrement de l'entrée mette à jour l'index du journal  #973e2996
+ * [ ] vimwiki : faire que le colonne des nombres affiche autremnent et autre chose que les numéros de ligne (par exemple les niveaux de replis)  #ac593720
+ * [ ] vimwiki : faire que la touche tab propose l'auto-complétion des mots, les flèches droite-gauche permenettent de naviguer entre les fautes et qu'on soit automatiquement en mode correction  #fca50eb6
+ * [ ] vim : trouver une solution pour désactiver le XON/XOFF (ctl-q/ctl-s)  #8f06c95c
+ * [ ] Imaginer un raccourci qui permetterai d'ouvrir une fenetre mail supplémentaire pour par exemple pouvoir écrire un mail en même temps que pouvoir aller sur la liste des mails  #e111a671
+ * [ ] mutt : améliorer la configuration voir http://www.titus-stahl.de/blog/2015/08/26/my-mutt-configuration/ et http://stevelosh.com/blog/2012/10/the-homely-mutt/#searching-email  #a046cca7
+ * [ ] vimb : ouvrir les pdf (ne plus les télécharger) -> tentavie avec `/usr/bin/inotifywait -m -q -e create !!!  #56be3c5b
+ * [ ] mutt : voir http://wcm1.web.rice.edu/mutt-tips.html pour le Format-flower  #dcc5a63f
+ * [ ] vifm : fair un plugin pour gérer git  #b0b0a863
+ * [ ] vifm : faire un mode preview pour que les fichiers s'ouvrent dans un scratchpad  #9f9952c5
+ * [X] Faire le montage du dossier de musique sur creamy (fait avec syncthing)  #a5904463
+ * [X] i3 et dmenu : pourvoir lancer une application personnelle et faire que le nom s'affiche comme ceux prédéfinies (console-web-etc...)  #e8938dcf
+ * [ ] i3 : faire que les layouts restent persistant entre chaque changement d'écran (peut-être via un backup auto du layouts rattachés à la fenêtre au moment de son changement  #451112bd
+ * [ ] i3 : dernier écran -> aller à l'écran précédant  #c656df9c
+ * [X] mutt configurer le gpg  #659e3742
+ * [ ] utiliser lr gpg comme agent  #4c1c0240
+ * [ ] https://pwmt.org/ à tester : document viewer  #970d218d
+ * [ ] Un plugin pour pour i3pystatus pour voir le nombre de mise à jours -> voir https://github.com/ultrabug/py3status/blob/master/py3status/modules/arch_updates.py  #af5719ef
+ * [X] mettre des icones sur les menus courants  #d64d6522
+ * [ ] i3 -> dossier share/bin -> lance autmotiquement dans une fentre nommée du nom de l'appli (suppression à terme du dosser i3 dans share/bin/i3)  #8d19843d
+ * [ ] Un système de backup (voir https://www.sysnove.fr/blog/2016/06/backupninja-borg.html)  #df639c5a
+ * [ ] Re-synchroniser ansible-archlinux pour être à jour de la conf actuel, faire des tests de déploiment  #7183e0c8
+ * [ ] Voir les dépendances du dossier partagé share pour faire un bootstrap de gnugpg et pass  #f85f8387
+ * [ ] Faire un logger d'activiter avec dmenu => raccourci pour saisir du texte qui aura se mettre dans un fichier calendrier wiki avec un horodatage  #67e81bbd
+ * [ ] Ajouter une option dans clipmenud pour que les mots de passes s'éffacent (ajout d'une fonctionalité : effacement de la derniere entrer si copie vide)  #1548fd43
+ * [ ] tester et voir si rofy peut remplacer dmenu  #0efead2d

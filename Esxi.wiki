@@ -1,0 +1,6 @@
+= Esxi tips =
+
+* lister toutes les machines : `vim-cmd vmsvc/getallvms`
+* lister toutes les machines démarré : `esxcli vm process list`
+* stopper une machine : `esxcli vm process kill --type=soft --world-id=XXX` (World ID donné par la précédente commande)
+* démarrer une machine : `vim-cmd vmsc/power.on {ID}` (ID donné par la première commande)
