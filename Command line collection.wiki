@@ -19,11 +19,24 @@
 
 == divers ==
 
+* créer des liens symboliques pour tous les fichiers d'un dossier
+`ln -s ~/src/phpqa/bin/* -t .` #se mettre dans le dosser de destination
+
 * *Créer un tunnel SSH*
 
 l'option -nNT => sans terminal, 9000 port local et 80 le port distant
 
 `$ ssh -nNT -L 9000:imgur.com:80 user@example.com`
+
+* ssh config avec commande de proxy
+
+{{{
+Host host
+  Hostname host.name
+  User myname
+  IdentityFile ~/.ssh/id_rsa
+  ProxyCommand ssh hostwithpubkeytoconnecto -W %h:%p
+}}}
 
 * *Un simple calcul*
 `expr 2 + 5`

@@ -30,6 +30,7 @@ Créer un projet sur github et le tracker en local
     * `git reset <file>` pour annuler l'ajout d'un fichier (seulement en local)
     * `git reset --hard <file>` pour annuler l'ajout d'un fichier et revenir au dernier état (HEAD)
     * `git reset HEAD~` annule un commit sans modification des fichiers
+    * `git reset --keep HEAD@{1}` pour annuler le merge et le dernier pull
     * `git checkout -- filename` annule les modifications d'un fichier local
     * `git log --graph --oneline --all` graph des commit
     * `git branch master -u {repo_distant}/master` pour indiquer le repo distant de la branche
@@ -70,6 +71,7 @@ Créer un projet sur github et le tracker en local
     http://nvie.com/posts/a-successful-git-branching-model/
     https://jayenashar.wordpress.com/2012/11/18/yagbm-yet-another-git-branching-model/
     Outil indispensable : [[http://jonas.nitro.dk/tig/|tig]]
+    voir https://devhints.io/tig
     
 === Workflow étape par étape ===
     

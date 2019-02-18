@@ -65,7 +65,9 @@ pree "enter" to add files
 == Tips ==
 
 # si l'url ne s'affiche pas dans la pager (vim par ex.) alors se positionner sur le mail dans l'index et faire un ctrl-b pour voir toutes les urls du mail
-# AccusÃ© rÃ©ception : `Disposition-Notification-To: <myemailaddress@domain>` dans le header
+# Accusé réception : `Disposition-Notification-To: <myemailaddress@domain>` dans le header
+# voir https://gitlab.com/muttmua/mutt/wikis/ConfigTricks
+# the vim way : https://www.ryanlue.com/posts/2017-05-21-mutt-the-vim-way
 
 
 == TODO ==
