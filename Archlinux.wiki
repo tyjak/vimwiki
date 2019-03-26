@@ -30,6 +30,8 @@ Server = http://repo.archlinux.fr/$arch
 }}}
 puis installer avec `pacman -Sy yaourt`
 
+pour désinstaller un packet ainsi que ses dépendances : yaourt -Rsc {nom du paquet)
+
 === Les paquets indispensables ===
 
  * termite en remplacement de urxvt terminal + urxvt-perls
@@ -87,6 +89,11 @@ puis installer avec `pacman -Sy yaourt`
  * arandr pour la gestion des écrans
  * udiskie pour le montage automatique des diks (TODO: ansible déploiement)
  * jq pour parser du json en ligne de commande
+ * vimiv pour visualiser/modifier des images mode vim
+ * wuzz commande interactive pour inspecter des requetes http
+ * screenfetch pour avoir des infos sur le system
+ * dmidecode -> system info via `sudo dmidecode -t system`
+ * glances -> system monitoring tool
 
 === SLIM avec clavier azerty ===
 
@@ -335,6 +342,7 @@ Utilisation de [[https://www.passwordstore.org/|pass]] avec cryptage GPG pour la
  * journal des événements `journalctl -xn`
  * `journalctl -f` pour voir tous ce qui se passe
  * `journalctl -n -u bluetooth` pour voir les derniers logs concernant le bluetooth
+ * `journalctl -p err -b` pour voir les erreurs du dernier boot
  * `systemctl status acpid` pour voir l'état d'un service
 
 ==== Example de résolution d'un pb ====
@@ -368,6 +376,25 @@ acpid ne semblait ne pas fonctionner :
 * utilisation de `tlp` avec paramétrage de son fichier de conf `/etc/default/tlp`
 * pour voir si un montage est passé en ro : `findmnt`
 * pour lister les devices usb : `lsusb`
+* NOTE remplacement de la batterie le 16/02/2019
+  févr. 17 23:03:38 archy.local upowerd[3135]: energy_full (54,582400) is greater than energy_full_design (53,280000)
+
+==== Hibernate ====
+
+TODO: résussir à faire fonctionner l'hibernation
+Le mode hibernate ne fonctionne pas. Peut-être à cause du fait que le fichier swap est sur la mémoire usb.
+
+Ci après l'installation pour le mode hibernate:
+ * Utilisation du mode swapfile voir [[https://wiki.archlinux.org/index.php/Swap#Manually|doc]] 
+ * `sudo fallocate -l 4096M /home/swapfile`
+ * `sudo chmod 600 /home/swapfile`
+ * `sudo mkswap /home/swapfile`
+ * `sudo swapon /home/swapfile`
+ * ajout de `/swapfile none swap defaults 0 0` dans `/etc/fstab`
+ * ajout de [[https://wiki.archlinux.org/index.php/Power_management/Suspend_and_hibernate#Hibernation_into_swap_file|paramétrage dans le noyau]]
+ * et enfin ajout de `resume` dans le hook de `/etc/mkinitcpio.conf`
+ 
+Etudier le wiki : https://wiki.archlinux.org/index.php/Power_management#Sleep_hooks
 
 === Syncthing ===
  * pour installer le service : `sudo systemctl enable syncthing@david`
@@ -414,9 +441,10 @@ Utilsation de udiskie pour le montage automatique
 Mise en place du son pour une sortie sur un périphérique airplay
 ==== installation ====
 installer les packets :
- * pulseaudio-alsa + libpulse-raop2 (airplay)
+ * pulseaudio-alsa + libpulse
  * paprefs + pavucontrol (gui control for pulseaudio)
 démarrage auto : `systemctl --user enable pulseaudio`
+NOTE : plus besoin du package pusleaudio-raop2 car supporté nativement par pulseaudio à présent
 ==== utilisation ====
 régler le préférences pour pouvoir découvrir les périfériques airplay avec `paprefs` et lancer `pavucontrol` pour régler la sortie son.
 ==== troubleshooting ====
@@ -494,10 +522,18 @@ audio_output {
 
  * [ ] ajouter les packages `perl-json-xs` et `perl-anyevent` pour pouvoir enregistrer des layout i3
  * [ ] command pour sauvegarder un layout `i3-save-tree --workspace console > ~/.config/i3/workspace_console.json`
- * [X] voir pour utiliser gpg et automatiser le lancement de l'agent gpg ou ssh [[https://github.com/ervandew/dotfiles/blob/master/.xinitrc|example de conf]]
+ * [ ] voir pour utiliser gpg et automatiser le lancement de l'agent gpg ou ssh [[https://github.com/ervandew/dotfiles/blob/master/.xinitrc|example de conf]]
  * [ ] Supprimer ario et floola
  * [ ] tester iphone tethering : https://wiki.archlinux.org/index.php/IPhone_tethering
  * [ ] mettre en place un vrai backup (voir https://www.sysnove.fr/blog/2016/06/backupninja-borg.html)
+ * [ ] Débug my-crypt-usbkey dans journalctl -xe après être sortie du mode veille
+ * [ ] Réussir à pouvoir mettre en hibernation
+
+=== ANSIBLE TODO ===
+
+* [ ] faire que termite soir le terminal par défaut (avec i3-sensible-terminal)
+* [ ] Installer oh-my-zsh
+* [ ] Régler le pb des polices de caractères
 
 == Tips ==
  * visualisation de photos - images : `feh -. {rep photo}`

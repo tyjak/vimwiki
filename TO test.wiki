@@ -1,21 +1,23 @@
 = TO test =
 
- * [ ] Offline imap mail see http://blog.tshirtman.fr/2013/3/17/mutt-offlineimap-notmuch-nottoomuch  #6ccf67e0
- * [X] http://ohmyz.sh  #3aa40fbc
- * [ ] http://www.drumminhands.com/2014/06/15/raspberry-pi-photo-booth/  #9ba2ec45
- * [ ] pandoc pour faire les conversions de différents markup  #7104d878
- * [ ] vim dans tmux http://rhnh.net/2011/08/20/vim-and-tmux-on-osx  #361a8774
- * [ ] voir quelques plugin de https://github.com/connermcd/dotfiles/blob/master/.vimrc  #0443c75d
- * [X] navigation vim dasn urxvt https://github.com/ervandew/urxvt-vim-scrollback  #2ab8511b
- * [ ] Organiser sa [[http://beets.radbox.org/|musique en ligne de commande]]  #56aad41d
- * [ ] Des dessins sous vim http://www.thegeekstuff.com/2009/12/how-to-create-ascii-drawings-in-vim-editor-draw-boxes-lines-ellipses-arrows-inside-text-file/  #e99264b2
- * [X] [[http://crypto.stanford.edu/PwdHash/|Web Password Hashing]]  #e1215dc5
- * [ ] vim plugins : https://github.com/tpope/vim-abolish avec https://github.com/tpope/vim-repeat tester la fonctionalité qui permet de passer en caméliser et inversement  #b07ccb19
- * [ ] GTD Taskwrrior http://taskwarrior.org/docs/start.html -> possibilité de le configurer avec mutt http://www.titus-stahl.de/blog/2015/08/13/a-better-taskwarrior-integration-for-mutt/  #6878367f
- * [ ] Acheter des noms de domaine avec des bitcoin : www.namecheap.com  #82b5dd28
- * [X] Tester la technique pomodoro  #db14b82a
- * [ ] Trouver le moyen d'avoir l'icone syncthing affichée dasn la barre de menu  #e5ca9276
- * [ ] Mettre de la couleur dans le terminal : https://unix.stackexchange.com/questions/148/colorizing-your-terminal-and-shell-environment  #40962580
+ * [ ] Offline imap mail see http://blog.tshirtman.fr/2013/3/17/mutt-offlineimap-notmuch-nottoomuch  #7d8a0ee4
+ * [X] http://ohmyz.sh  #96119f90
+ * [ ] http://www.drumminhands.com/2014/06/15/raspberry-pi-photo-booth/  #864aff35
+ * [ ] pandoc pour faire les conversions de différents markup  #62b67889
+ * [ ] vim dans tmux http://rhnh.net/2011/08/20/vim-and-tmux-on-osx  #0ea0391e
+ * [ ] voir quelques plugin de https://github.com/connermcd/dotfiles/blob/master/.vimrc  #aa3b262e
+ * [X] navigation vim dasn urxvt https://github.com/ervandew/urxvt-vim-scrollback  #35974618
+ * [ ] Organiser sa [[http://beets.radbox.org/|musique en ligne de commande]]  #bd79ae22
+ * [ ] Des dessins sous vim http://www.thegeekstuff.com/2009/12/how-to-create-ascii-drawings-in-vim-editor-draw-boxes-lines-ellipses-arrows-inside-text-file/  #91abec59
+ * [X] [[http://crypto.stanford.edu/PwdHash/|Web Password Hashing]]  #ea941cb4
+ * [ ] vim plugins : https://github.com/tpope/vim-abolish avec https://github.com/tpope/vim-repeat tester la fonctionalité qui permet de passer en caméliser et inversement  #4a50a1d9
+ * [ ] GTD Taskwrrior http://taskwarrior.org/docs/start.html -> possibilité de le configurer avec mutt http://www.titus-stahl.de/blog/2015/08/13/a-better-taskwarrior-integration-for-mutt/  #685b007f
+ * [ ] Acheter des noms de domaine avec des bitcoin : www.namecheap.com  #b06d6e46
+ * [X] Tester la technique pomodoro  #acca2dec
+ * [ ] Trouver le moyen d'avoir l'icone syncthing affichée dasn la barre de menu  #befea9e9
+ * [ ] Mettre de la couleur dans le terminal : https://unix.stackexchange.com/questions/148/colorizing-your-terminal-and-shell-environment  #d846568c
+ * [ ] Un plugin pour pour i3pystatus pour voir le nombre de mise à jours -> voir https://github.com/ultrabug/py3status/blob/master/py3status/modules/arch_updates.py  #21c3397f
+
 
 = TO DO =
  * [ ] thunderbolt en connexion a chaud (udevadm monitor) https://bbs.archlinux.org/viewtopic.php?id=170294  #4ee8c72a

@@ -13,6 +13,7 @@ Les clés sont stockées dans le répertoire ~/.gnugpg
 - `uid {numéro à côté de l'adresse mails}` Pour séléctinoner un uid
 - `key {numéro à côté d'une clé}` Pour sélectionner une clé
 - `primary` Pour désigner l'uid sélectionner par défaut pour signer
+- exporter une seule clé privée : `gpg --export-secret-keys -a [KEYGRIP]!`
 
 == Quelques liens utiles ==
 
