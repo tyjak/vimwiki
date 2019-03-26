@@ -1,7 +1,7 @@
 = Archlinux =
 
 Mes notes sur l'installation d'Archlinux
- 
+
 
 == Installation from scratch ==
  * Attention de ne pas lancer l'utilitaire de partitionnement sur une partition mais bien sur le disque lui même
@@ -9,7 +9,7 @@ Mes notes sur l'installation d'Archlinux
  * Un autre lien pour une installation pas à pas https://medium.com/@philpl/arch-linux-running-on-my-macbook-2ea525ebefe3
  * ou encore https://mchladek.me/post/arch-mbp
  * Un lien plus récent avec cryptage du disque et partition LVM http://loicpefferkorn.net/2015/01/arch-linux-on-macbook-pro-retina-2014-with-dm-crypt-lvm-and-suspend-to-disk/
-  
+
 === Notes à propos de VMware et Virtualbox ===
  * pb sur le driver video suite à l'upgrade -> obligé de réinstaller les anciens pilotes
    ex : `pacman -U /var/cache/pacman/pkg/xf86-video-intel-2.99.912-1-x86_64.pkg.tar.xz`
@@ -18,7 +18,7 @@ Mes notes sur l'installation d'Archlinux
  * voir les paquets à réinstaller : `sudo ldconfig 2>&1 | cut -d' ' -f3 | xargs pacman -Qo`
  * réinstaller avec les dépendances si nécessiare : `pactree -d1 -u {nom du paquet} | sudo pacman -S --force -`
  * avec toutes les dépendances `pactree -u {nom du paquet} | sudo pacman -S --force -`
-   
+
 == Customisation ==
 
 === Installation de yaourt ===
@@ -55,7 +55,7 @@ puis installer avec `pacman -Sy yaourt`
  * mutt pour les mails
  * urlview pour les liens dans les mails
  * mps-youtube pour une cli youtube
- * pulseaudio-alsa + libpulse-raop2 (airplay)  
+ * pulseaudio-alsa + libpulse-raop2 (airplay)
  * paprefs + pavucontrol (gui control for pulseaudio)
  * rainbowstream twitter cli client (via pip)
  * newsbeuter rss cli lcient
@@ -190,7 +190,7 @@ Plus d'info : https://wiki.archlinux.org/index.php/Xrandr
 
 === Barre de status ===
 
- * [[configuration de i3pystatus-git]]  
+ * [[configuration de i3pystatus-git]]
 
 === Barre de lancement ===
 
@@ -212,7 +212,7 @@ Plus d'info : https://wiki.archlinux.org/index.php/Xrandr
  * modfier la régle copier avec les info récupérée
  * faire `udevadm trigger` si la règle n'est pas prise en compte
  * si la règle ne fonctionne pas faire un `# udevadm test $(udevadm info -q path -n [device name]) 2>&1`
- 
+
  Exemple de règle :
  {{{
     ACTION=="add"
@@ -234,21 +234,21 @@ Plus d'info : https://wiki.archlinux.org/index.php/Xrandr
  * modifier dans le fichier /etc/bluetooth/main.conf mettre à true AutoEnable
  * si le trackpad ne fonctionne pas il faut à nouveau le jumeler en lançant `bluetoothctl`
  {{{
-    remove 60:C5:47:81:AC:AD 
+    remove 60:C5:47:81:AC:AD
     agent on
     default-agent
     scan on
-    pair 60:C5:47:81:AC:AD 
-    trust 60:C5:47:81:AC:AD 
-    connect 60:C5:47:81:AC:AD 
+    pair 60:C5:47:81:AC:AD
+    trust 60:C5:47:81:AC:AD
+    connect 60:C5:47:81:AC:AD
  }}}
- 
+
 ==== Interface graphique ====
  * le plus simple reste de passer par une interface graphique : blueman-manager
  * Si même pb pour reconnecter essayer `sudo hciconfig hci0 reset`
  * Puis faire installation...
  * pour info la connexion se fait avec Human Interface Device
- 
+
 ==== Pb reglage ====
 J'ai eu un pb avec le pad qui ne cliquait plus : un autre pad a été activé, il suffisait de le désactiver
  * `xinput --list`
@@ -274,7 +274,7 @@ J'ai eu un pb avec le pad qui ne cliquait plus : un autre pad a été activé, i
 
 === Connexion VPN PPTP ===
     ==== Configuration ====
-    * voir les fichiers dans /etc/ppp/peers 
+    * voir les fichiers dans /etc/ppp/peers
     * ajout d'une nouvelle conf en cli : `pptpsetup --create-tunel {nom_de_la_connecion} --server {IP_NAME} --login {login} --password {pass} encrypted`
     ==== Démarrage ====
     * `pon {nom_de_la_connection}`
@@ -314,7 +314,7 @@ J'ai eu un pb avec le pad qui ne cliquait plus : un autre pad a été activé, i
    mimoe --app2desk #liste des application desktop
    mimeo --prefer "x-scheme-handler/http" vimb.desktop
    }}}
- 
+
 
 === Gestionnaire de mot de passe ===
 
@@ -345,13 +345,13 @@ acpid ne semblait ne pas fonctionner :
  * pb avec acpid pour X ne peut utiliser xrandr directement car il lui manque un context (DISPLAY et XAUTHORITY) et avec le script hotplug_monitor.sh idem voir https://bbs.archlinux.org/viewtopic.php?id=186179 pour un début de solution
  * la solution est de mettre le code qui suit en début de fichier /etc/acpi/handler.sh
  {{{
-		function GetXuser()
-		{
-		  #Guess the user logged on server $1
-		  w|grep " $1 "|cut -d " " -f 1|head -n 1
-		}
-		export DISPLAY=:0.0
-		export XAUTHORITY=/home/$(GetXuser $DISPLAY)/.Xauthority
+        function GetXuser()
+        {
+          #Guess the user logged on server $1
+          w|grep " $1 "|cut -d " " -f 1|head -n 1
+        }
+        export DISPLAY=:0.0
+        export XAUTHORITY=/home/$(GetXuser $DISPLAY)/.Xauthority
  }}}
 
 === Boot ===
@@ -362,7 +362,7 @@ acpid ne semblait ne pas fonctionner :
  * créer la configarution (/boot/loader/loader.conf et /boot/loader/entries/arch.conf)
  * voir [[https://wiki.archlinux.org/index.php/gummiboot|gummiboot]]
  * sur OS X pour rendre bootable la partition : `mkdir /Volumes/EFI-arch && mount -t vfat /dev/sdb1 && sudo bless --mount=/Volumes/EFI-arch` (A vérifier)
- 
+
 === Batterie / secteur ===
 
 * utilisation de `tlp` avec paramétrage de son fichier de conf `/etc/default/tlp`
@@ -374,6 +374,13 @@ acpid ne semblait ne pas fonctionner :
  * pour démarrer : `systemctl start syncting`
  * pour voir l'interface `http://127.0.0.1:8080`
  * via un tunnel SSH `ssh -nNT -L 9999:127.0.0.1:41989 do.tyjak.net` (port 9999 pour le web)
+
+=== Systemd ===
+ * /etc/systemd/system/docker.service.d/env.conf => ajout de variable d'environement pour le daemon docker
+ * systemctl dameon-reload
+ * systemclt cat docker.service
+ * systemctl restart docker
+
 
 === Clé USB Crypté ===
  * formatter la clé avec fdisk
@@ -407,7 +414,7 @@ Utilsation de udiskie pour le montage automatique
 Mise en place du son pour une sortie sur un périphérique airplay
 ==== installation ====
 installer les packets :
- * pulseaudio-alsa + libpulse-raop2 (airplay)  
+ * pulseaudio-alsa + libpulse-raop2 (airplay)
  * paprefs + pavucontrol (gui control for pulseaudio)
 démarrage auto : `systemctl --user enable pulseaudio`
 ==== utilisation ====
@@ -418,9 +425,9 @@ si le airplay ne s'affiche pas voir http://raspberrypi.stackexchange.com/questio
 commandes utiles :
 
 {{{
-pulseaudio --start --log-target=syslog -vvvv --log-level=debug
-pacmd load-module module-raop-discover
-pacmd list-sinks | grep name
+    pulseaudio --start --log-target=syslog -vvvv --log-level=debug
+    pacmd load-module module-raop-discover
+    pacmd list-sinks | grep name
 }}}
 
 Pour le problème du son qui se remet à 100% voir https://bbs.archlinux.org/viewtopic.php?pid=1103037#p1103037
@@ -469,9 +476,14 @@ audio_output {
         type                    "fifo"
         name                    "FIFO"
         path                    "/tmp/mpd.fifo"
-		format                  "44100:16:2"
+        format                  "44100:16:2"
 }
 }}}
+
+==== podcast ====
+* logiciel : gpodder
+* utilisé avec mplayer en mode slave (création d'un FIFO `mkfifo /tmp/mplayer` dans .xinitrc
+* commande pour lecture/pause etc. définie dans i3
 
 === wine ===
 
@@ -480,12 +492,12 @@ audio_output {
 
 === TODO ===
 
- * ajouter les packages `perl-json-xs` et `perl-anyevent` pour pouvoir enregistrer des layout i3
- * command pour sauvegarder un layout `i3-save-tree --workspace console > ~/.config/i3/workspace_console.json`
- * voir pour utiliser gpg et automatiser le lancement de l'agent gpg ou ssh [[https://github.com/ervandew/dotfiles/blob/master/.xinitrc|example de conf]]
- * Supprimer ario et floola
- * tester iphone tethering : https://wiki.archlinux.org/index.php/IPhone_tethering
- * mettre en place un vrai backup (voir https://www.sysnove.fr/blog/2016/06/backupninja-borg.html)
- 
+ * [ ] ajouter les packages `perl-json-xs` et `perl-anyevent` pour pouvoir enregistrer des layout i3
+ * [ ] command pour sauvegarder un layout `i3-save-tree --workspace console > ~/.config/i3/workspace_console.json`
+ * [X] voir pour utiliser gpg et automatiser le lancement de l'agent gpg ou ssh [[https://github.com/ervandew/dotfiles/blob/master/.xinitrc|example de conf]]
+ * [ ] Supprimer ario et floola
+ * [ ] tester iphone tethering : https://wiki.archlinux.org/index.php/IPhone_tethering
+ * [ ] mettre en place un vrai backup (voir https://www.sysnove.fr/blog/2016/06/backupninja-borg.html)
+
 == Tips ==
  * visualisation de photos - images : `feh -. {rep photo}`

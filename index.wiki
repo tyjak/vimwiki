@@ -1,40 +1,39 @@
 %title Tyjak notes
 
 
-
 = My knowledge base =
 
-	* [[Archlinux]]
-	* [[Digital Ocean]]
-	* [[git && github]]
-	* [[Python]]
-	* [[Vim]]
-	* [[Postfix]]
-	* [[Open Source Alt]]
-	* [[Chef]]
-	* [[Vimwiki2html]]
-	* [[Command line collection]]
-	* [[Book printing (fr)]]
-	* [[Cubase (fr)]]
-	* [[Docker]]
-	* [[LXC]]
-	* [[Mutt]]
-	* [[Taskwarrior]]
-	* [[GnuGPG]]
-	* [[Weechat]]
-	* [[Tmux]]
-	* [[Synology]]
-	* [[BDD]]
-	* [[Vultr]]
-	* [[Work]]
-	* [[Asso]]
-	* [[Mao]]
+    * [[Archlinux]]
+    * [[Digital Ocean]]
+    * [[git && github]]
+    * [[Python]]
+    * [[Vim]]
+    * [[Postfix]]
+    * [[Open Source Alt]]
+    * [[Chef]]
+    * [[Vimwiki2html]]
+    * [[Command line collection]]
+    * [[Book printing (fr)]]
+    * [[Cubase (fr)]]
+    * [[Docker]]
+    * [[LXC]]
+    * [[Mutt]]
+    * [[Taskwarrior]]
+    * [[GnuGPG]]
+    * [[Weechat]]
+    * [[Tmux]]
+    * [[Synology]]
+    * [[BDD]]
+    * [[Vultr]]
+    * [[Work]]
+    * [[Asso]]
+    * [[Mao]]
 
 == Scratchpad ==
-	
-	* [[TO test]]
-	* [[portable vimwiki]]
- 
+
+    * [[TO test]]
+    * [[portable vimwiki]]
+
 ----
 
 <i class="fa fa-github"></i> [[http://www.github.com/tyjak|My github]]
@@ -42,4 +41,4 @@
 <i class="fa fa-twitter"></i> [[http://www.twitter.com/tyjak|My twitter]]
 
  {{http://vimwiki.googlecode.com/hg/images/vimwiki_logo.png|Vimwiki|class="center-block"}}
- 
+

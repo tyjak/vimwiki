@@ -20,7 +20,7 @@ utiliser pip :
 # activation de l'environement (pour pouvoir lancer les binaires de l'env)
 `source bin/activate`
 
-# désactivation de l'env 
+# désactivation de l'env
 `deactivate`
 
 # vérification que python utilisé est bien celui de l'env
@@ -44,10 +44,12 @@ utiliser pip :
 `trefle simulate --url /engager-les-demarches?a=LO%3DCuLbCGVeKYcg4TkJiTM9-ilWssy5LQ4ssllQssEO0q1K-sX1Q2mIluH6NOHSim28IdeSGyyRpo-oYyiiskGIUi3vN50KK4N8kkGLDjYqBCB%3DR6ttFu1RmB3CHsQu5v2%3DgyKJ-AaPAPbJgvIhtFbuwkpCHW2xId7iYX%3D2JJLBrA0cqJnxeCHniI3t24Yc%3DH2MUdnsPEKmDIcxWPyEABgLMWgtycPV-PskYFYKU%3D0bveevpimdV512%3DH7jcL_0cAX1TX9Whe5rdDZWQsvPPXwmj2ZDX2mKxskLLMG8e0kHwEMmDVQIANFVyZy9htf3oeBHFVnJALkO020w8lgqHgXgRG1x48lQz\n`
 
 # setting de la var enc nécessaire pour l'appli
-`export LBF_CHARMAP=sA,4B,RC,cD,oE,gF,yG,wH,mI,HJ,7K,EL,aM,YN,XO,8P,GQ,BR,kS,iT,IU,AV,TW,DX,pY,JZ,2a,Lb,Mc,=d,de,Cf,Qg,fh,ri,Pj,Nk,Vl,vm,0n,Ko,ep,jq,Zr,9s,ht,Fu,tv,-w,Ux,1y,xz,30,u1,52,q3,W4,S5,66,n7,b8,O9,_+,l/,z=\n`
+`export LBF_CHARMAP=XXXXX`
 
 # lancement des tests
-`py.test -vx`
+`py.test -vvx`
 
+# test avec debug
+`py.test -s`
 # installation de la console python avec completion
 `pip install ipython`

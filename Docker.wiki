@@ -29,7 +29,12 @@ CMD service nginx start
     - `sudo docker images` list images
     - `sudo docker rmi {ID IMAGE}`
 * TO TEST : https://lebkowski.name/docker-volumes/ (clean up docker to reclaim disk space)
-* `docker volume ls -qf dangling=true | xargs -r docker volume rm` pour effacer tout
+* `docker volume ls -qf dangling=true | xargs -r docker volume rm` pour effacer touto
+* `docker inspect` pour aller chercher des infos précises
+
+== TO DODO ==
+
+* [ ] Voir l'option PID comment çà fonctionne
 
 == Example ==
 

@@ -122,6 +122,6 @@ Host nom-serveur-distant
 - Copie de la clé sur le serveur distant :
 `ssh-copy-id -f -i ~/.ssh/nom-de-ma-clé.pub username@Hostname-serveur-distant`
 
-
+source : https://github.com/drduh/YubiKey-Guide
 
 

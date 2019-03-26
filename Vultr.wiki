@@ -1,16 +1,7 @@
 = Archlinux on vultr =
 
-Use Firefox vor the NoVNC console otherwise webkit navigotor like vimb i use doesn't work.
+Install cent OS and bootstrap archlinux with https://gitlab.com/drizzt/vps2arch/raw/master/vps2arch
 
-Don't use vi or you will not be able to quit ! So just do echo things to file...
+Just configure a new centos server with startup script archlinux bootsrap
 
-First difficulties : azerty keyboard !!! Takes me long minutes to find wich key to tap to get the point symbol...
-The first symbol to get is the tiret : [altgr]ç
-So on my french keyboard with `loadkeys fr-pc` is : [altgr][shift]z 
-And to get the slash : [shift]<
-And to get ' : $
-And to get > : [altgr][shift]<
-
-
-There is a minimal start guide here : https://www.vultr.com/docs/installing-arch-linux-on-a-vultr-server
-
+NOTE : can't use ipv6 only instance since github.com does not support IPV6

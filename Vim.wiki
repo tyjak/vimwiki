@@ -5,10 +5,10 @@ Visual seletion on the operation todo and :
 :'<,'>!bc
 
 == NEW ==
-* ,<SPACE> pour supprimer le highlight de la recherche
-* <SPACE> pour faire une recheche (/)
-* <SHIFT><SPACE> recherche inverse (?)
-* 
+* ,n pour supprimer le highlight de la recherche
+* <SPACE> pour ouvrir un fichier
+* ,<SPACE> pour faire une recheche du mot sous le cusreur (/)
+
 == Divers ==
 * [http://vimwiki.googlecode.com/hg/misc/vimwikiqrc.pdf vimwiki refcards]
 * `set wildmenu; set wildmode=list:longest,full "grande liste pour l'autocompletion`
@@ -50,4 +50,5 @@ Visual seletion on the operation todo and :
 |       | +       | Colle le registre +                          |
 
 === TODO ===
-* avoir la même presentation pour la limite du nombres de caractères dans la largeur : http://i.imgur.com/T00FgWu.png?1
+* [X] avoir la même presentation pour la limite du nombres de caractères dans la largeur : http://i.imgur.com/T00FgWu.png?1
+* [ ] Refaire la config en utiliser la structure des dossiers de configuration
