@@ -39,6 +39,8 @@ pour désinstaller un packet ainsi que ses dépendances : yaourt -Rsc {nom du pa
  * i3-wm gestionnaire de fenêtre
  * xss-lock + i3lock-blur pour locker l'écran
  * dmenu2
+ * pass
+ * passdmenu
  * dunst + libnotify pour avoir des notifications
  * dwb ou vimb comme navigateur web
  * feh pour gérer l'image du fond
@@ -141,6 +143,18 @@ Installer le package `xss-lock` et ajouter dans `.xinitrc` :
 === I3 window manager ===
 
  * i3pystatus-git pour des infos dans la barre de menu
+
+==== Gestion remplissage de mot de passe ====
+ * avoir `passdmenu.py`
+ * passer les arguments à passdmenu.py via un script shell :
+   {{{
+        #!/bin/sh
+        DMENU_HEIGHT=${DMENU_HEIGHT:=24}
+        DMENU_FONT=${DMENU_FONT:=MesloLGSDZ Nerd Font-10}
+        /usr/bin/dmenu -i -nb '#002b24' -nf '#eee8d5' -sb '#b58900' -fn "$DMENU_FONT" -h $DMENU_HEIGHT
+        }}}
+ * Pour avoir le login et mdp rempli dans i3 : `passdmenu.py -u -x p,s -P --type -r -D ~/share/bin/mypassdmenu`
+ * passdmenu.py : https://github.com/klaasb/passdmenu
 
 ==== Faire un workspace par application ====
 
@@ -327,8 +341,8 @@ J'ai eu un pb avec le pad qui ne cliquait plus : un autre pad a été activé, i
 
 Utilisation de [[https://www.passwordstore.org/|pass]] avec cryptage GPG pour la gestion des mots de passe
 
-- `pass -c web/skype` pour obtenir le mot de passe de skype 45sec. dans le presse papier
-- `pass web/skype | qrencode -t UTF8` pour afficher le qrcode du mot de passe
+* `pass -c web/skype` pour obtenir le mot de passe de skype 45sec. dans le presse papier
+* `pass web/skype | qrencode -t UTF8` pour afficher le qrcode du mot de passe
 
 
 === Modifier les options de démarrages d'un daemon ===
@@ -426,6 +440,7 @@ Les étapes de démontages :
 
 Plus de détail : https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_a_non-root_file_system
 Utilsation de udiskie pour le montage automatique
+Récupérer l'UUID d'une partition : `lsblk -no NAME,UUID /dev/sdc1`
 
 === Divers ===
  * Theme sympa : gtk-theme-arc-git
@@ -528,6 +543,7 @@ audio_output {
  * [ ] mettre en place un vrai backup (voir https://www.sysnove.fr/blog/2016/06/backupninja-borg.html)
  * [ ] Débug my-crypt-usbkey dans journalctl -xe après être sortie du mode veille
  * [ ] Réussir à pouvoir mettre en hibernation
+ * [X] régler le pb du mot de passe stocké sur le presse papier voir https://github.com/cdown/clipmenu/issues/57#issuecomment-443242089
 
 === ANSIBLE TODO ===
 
