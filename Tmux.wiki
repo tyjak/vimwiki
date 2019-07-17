@@ -7,3 +7,10 @@
 # pour ne pas freezer le terminal avec <c-s> (utiliser <c-q> pour défreezer), ajouter `stty -ixon` dans bashrc pour ne plus avoir cet effet de bord. Voit ce [[http://unix.stackexchange.com/questions/72086/ctrl-s-hang-terminal-emulator|stackexchange]] pour plus d'info.
 # pour s'attacher à une session dékà attachée `tmux attach -d`
 # tmux useful commands http://www.dayid.org/os/notes/tm.html
+
+== Hack ==
+
+https://launchpad.net/byobu
+Byobu is a configuration layer, originally written to sit on top of GNU Screen, but now also works on top of Tmux.
+info : https://superuser.com/questions/423310/byobu-vs-gnu-screen-vs-tmux-usefulness-and-transferability-of-skills/423397#423397
+

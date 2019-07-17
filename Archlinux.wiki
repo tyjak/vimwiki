@@ -21,16 +21,26 @@ Mes notes sur l'installation d'Archlinux
 
 == Customisation ==
 
-=== Installation de yaourt ===
-Dans /etc/pacman.conf :
-{{{
-[archlinuxfr]
-SigLevel = Never
-Server = http://repo.archlinux.fr/$arch
-}}}
-puis installer avec `pacman -Sy yaourt`
+=== Installation de yaourt (obsolète) ===
 
-pour désinstaller un packet ainsi que ses dépendances : yaourt -Rsc {nom du paquet)
+#Dans /etc/pacman.conf :
+#{{{
+#[archlinuxfr]
+#SigLevel = Never
+#Server = http://repo.archlinux.fr/$arch
+#}}}
+#puis installer avec `pacman -Sy yaourt`
+#
+#pour désinstaller un packet ainsi que ses dépendances : yaourt -Rsc {nom du paquet)
+
+=== Utiliser Yay pour gérer les packages ===
+
+ * `yay -Syu` pour tous mettre à jours
+ * `yay -Syu --repo` uniquement pout les repos (hors aur)
+ * `yay -Syu --aur` uniquement pout AUR
+ * `yay -Qua` voir les packages AU à mettre à jours
+ * `yay -Yc` pour supprimer les dépendances inutilisées
+
 
 === Les paquets indispensables ===
 
@@ -95,7 +105,9 @@ pour désinstaller un packet ainsi que ses dépendances : yaourt -Rsc {nom du pa
  * wuzz commande interactive pour inspecter des requetes http
  * screenfetch pour avoir des infos sur le system
  * dmidecode -> system info via `sudo dmidecode -t system`
- * glances -> system monitoring tool
+ * gotop -> system monitoring tool
+ * stack && herms (cli for cook recipes managment)
+ * apvlv pdv viewer with vim command
 
 === SLIM avec clavier azerty ===
 
@@ -350,6 +362,8 @@ Utilisation de [[https://www.passwordstore.org/|pass]] avec cryptage GPG pour la
 * `systemctl edit [nom du daemon]` pour un paramétrage personaliser
 * `systemctl remove [nom du daemon]` pour revenir à l'état d'origine
 * plus d'info : https://wiki.archlinux.org/index.php/Systemd#Editing_provided_units
+* voir également https://naftuli.wtf/2017/12/28/systemd-user-environment/ pour l'environement user
+* un tuto :https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files
 
 === Régler un pb (TODO)===
 
@@ -421,6 +435,7 @@ Etudier le wiki : https://wiki.archlinux.org/index.php/Power_management#Sleep_ho
  * systemctl dameon-reload
  * systemclt cat docker.service
  * systemctl restart docker
+ * pour les services utilisateurs qui sont dépendants de X11 (dunst ou redshift) ajouter dans .xinitrc : `systemctl --user import-environment DISPLAY` pour qu'ils puissent démarrer
 
 
 === Clé USB Crypté ===
@@ -544,6 +559,7 @@ audio_output {
  * [ ] Débug my-crypt-usbkey dans journalctl -xe après être sortie du mode veille
  * [ ] Réussir à pouvoir mettre en hibernation
  * [X] régler le pb du mot de passe stocké sur le presse papier voir https://github.com/cdown/clipmenu/issues/57#issuecomment-443242089
+ * [ ] voir pour mutt comment fonctionne LBDB https://www.spinnaker.de/lbdb/
 
 === ANSIBLE TODO ===
 
