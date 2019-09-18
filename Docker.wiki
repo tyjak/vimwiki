@@ -1,5 +1,29 @@
 = Docker =
 
+== docker swarm ==
+Attention l'utilisation de docker-compose.yml ne permet pas d'utiliser de fichier .env comme avec docker-compose
+
+=== Mode mono node ===
+
+Sans registry, il faut builder les images (`docker build . -t [nom de l'image]`)
+
+* initialisation : `docker swarm init --advertise-addr=[adresse publique]`
+* m
+
+== docker-compose ==
+
+{NOM DU SERVICE} est optionnel, sans alors tous les services décrits dans docker-compose sont concernés
+* `docker-compose build {NOM DU SERVICE}`
+* `docker-compose up -d {NOM DU SERVICE}`
+* `docker-compose logs {NOM DU SERVICE}`
+
+Le principe :
+1. construction de l'image en couche, pour chaque couche une instrcution du dockerfile
+2. création du container avec l'image buildé
+
+Chaque modification du dockerfile implique la reconstruction de l'image.
+
+== docker ==
 * create a docker folder
 * edit `Dockerfile`
 

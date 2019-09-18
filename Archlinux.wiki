@@ -108,6 +108,9 @@ Mes notes sur l'installation d'Archlinux
  * gotop -> system monitoring tool
  * stack && herms (cli for cook recipes managment)
  * apvlv pdv viewer with vim command
+ * glances -> system monitoring tool
+ * gotop pour monitorer le système
+ * hey pour faire des tests de charges http
 
 === SLIM avec clavier azerty ===
 
@@ -195,7 +198,9 @@ Utiliser dmenu pour lancer l'application ou switcher dessus.
 
  * `netctl enable {nom du profil}`
  * pour trouver le nom du profil actif et des autres : `netctl list`
- * si pb "network not found" alors essayer `sudo rfkill unblock all`
+ * si pb "network not found" alors essayer :
+     * `sudo rfkill unblock all`
+     * `sudo ip addr flush dev enp60s0u1u1`
 
 
 === Réglage horloge ===
@@ -287,6 +292,10 @@ J'ai eu un pb avec le pad qui ne cliquait plus : un autre pad a été activé, i
  * `xinput --list`
  * `xinput disable X`
 
+=== Fingerprint ===
+
+Voir https://wiki.archlinux.org/index.php/Fingerprint_GUI
+
 === Installation d'une imprimante réseau ===
 
  * installer le paquet cups
@@ -294,6 +303,10 @@ J'ai eu un pb avec le pad qui ne cliquait plus : un autre pad a été activé, i
  * dans .xinitrc ajouter la varibale PRINTER={nom de l'imprimante}
  * pour tester si l'imprimante est bien installé : `lpstat -p -d`
  * pour imprimer un fichier `lpr filename`
+
+=== Reconnection automatique de réseau ===
+
+Il faut s'assurer que le service dhcpcd est bien démarré. C'est ce service qui redémarre un connexion réseau automatiquement si cett dernière faire partie des connexions à démarrer (via netctl enable {nom interface reseau})
 
 === Connexion Freebox OpenVPN ===
     ==== Configuration ====
@@ -560,6 +573,7 @@ audio_output {
  * [ ] Réussir à pouvoir mettre en hibernation
  * [X] régler le pb du mot de passe stocké sur le presse papier voir https://github.com/cdown/clipmenu/issues/57#issuecomment-443242089
  * [ ] voir pour mutt comment fonctionne LBDB https://www.spinnaker.de/lbdb/
+ * [ ] Remplacer Slim pour SDDM https://wiki.archlinux.fr/SDDM ou LighDM https://wiki.archlinux.fr/LightDM
 
 === ANSIBLE TODO ===
 
