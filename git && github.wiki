@@ -2,7 +2,7 @@
 
 == Authentification ==
 
-    * fichier ~/.git-credentials TODO:command pour générer ce ficher
+    * fichier ~/.git-credentials TODO: command pour générer ce ficher
     * command `git config credential.helper 'store'` pour utiliser l'authentification permanente
     * préférer l'authentification par clefs ssh (git@github.com)
 
@@ -25,6 +25,8 @@ Créer un projet sur github et le tracker en local
     * `git branch` pour lister les branches
     * `git branch -r` pour lister les branches trackées du remote
     * `git branch -m <oldname> <newname>` pour renommer un branche
+    * `git branch -d <name>` pour effacer une branche
+    * `git push origin --delete <name>` pour effacer la branch origin distante
     * `git checkout -b {nom de la branche}` pour créer une nouvelle branche
     * `git commit --amend` pour modifier le dernier commit
     * `git commit --amend --no-edit` pour ajouter un/des fichiers oubliés au dernier commit
