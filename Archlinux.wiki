@@ -501,6 +501,21 @@ Si problème pour monter un disque distant, s'assurer que rpcbind.service est d�
 `sudo systemctl enable rpcbind.service`
 `sudo systemctl start rpcbind.service`
 
+==== Montage auto grace un systemd ====
+
+Pour monter un disque nfs4 automatiquement, ajouter dans fstab :
+{{{
+    # syno music
+    creamy.local:/volume1/music			/creamy/music   nfs4		rw,sync,noauto,x-systemd.automount,_netdev,noatime 0 0
+}}}
+
+Pour monter un disque mac automatiquement :
+{{{
+
+    # /dev/sdb4
+    UUID=575e1f1f-31a6-3993-988c-5008c2f2bac0      /Divers	        hfsplus      	rw,sync,force,noauto,x-systemd.automount	0 2
+}}}
+
 === Musique (mpd) ===
 
 Il faut installer à la main le service : créer le fichier `~/.config/systemd/user/mpd.service`

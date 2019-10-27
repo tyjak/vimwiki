@@ -34,6 +34,9 @@ Les clés sont stockées dans le répertoire ~/.gnugpg
 
 == Scripts pour pouvoir signer des clés si la clé privé primaire n'est pas présente ==
 
+= Avoir sur une clé usb la clé privé primaire, et un lien symbolique vers cette clé primaire, alors il suffit juste de monter la clé pour avoir la clé primaire disponible. =
+
+Obsolete :
 Si la clé privé primaire est stockée sur une clé USB. Alors voici un script qui permet de monter la clé, faire un lien symbolique sur la clé privé puis signé l'adresse mail donnée en argument.
 
 Le script :

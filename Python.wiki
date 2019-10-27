@@ -53,3 +53,14 @@ utiliser pip :
 `py.test -s`
 # installation de la console python avec completion
 `pip install ipython`
+
+=== Projet i3pystatus ===
+
+Pour tester avec i3pystatus dans un environement virtuel :
+
+# cloner le projet dans le répertoire src
+# `mkvirtualenv i3pystatus`
+# modifier le fichier `~/.config/i3/dev.py` pour le module à tester
+# Faire pointer vers le python du virtual env dans le config de i3 : `status_command ~/.virtualenvs/i3pystatus/bin/python ~/.config/i3/status-dev.py`
+
+Autre méthodes : https://github.com/enkore/i3pystatus/issues/613
