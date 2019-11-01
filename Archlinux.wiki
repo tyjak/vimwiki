@@ -434,7 +434,7 @@ Ci après l'installation pour le mode hibernate:
  * ajout de `/swapfile none swap defaults 0 0` dans `/etc/fstab`
  * ajout de [[https://wiki.archlinux.org/index.php/Power_management/Suspend_and_hibernate#Hibernation_into_swap_file|paramétrage dans le noyau]]
  * et enfin ajout de `resume` dans le hook de `/etc/mkinitcpio.conf`
- 
+
 Etudier le wiki : https://wiki.archlinux.org/index.php/Power_management#Sleep_hooks
 
 === Syncthing ===

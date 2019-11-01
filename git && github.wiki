@@ -38,11 +38,14 @@ Créer un projet sur github et le tracker en local
     * `git checkout -- filename` annule les modifications d'un fichier local
     * `git log --graph --oneline --all` graph des commit
     * `git branch master -u {repo_distant}/master` pour indiquer le repo distant de la branche
-    * `git fetch upstream && git checkout master && git merge upstream/master` pour [[https://www.sumonselim.com/sync-forked-github-repository-master/|synchroniser un fork]] avec le projet d'origine 
+    * `git fetch upstream && git checkout master && git merge upstream/master` pour [[https://www.sumonselim.com/sync-forked-github-repository-master/|synchroniser un fork]] avec le projet d'origine
     * `git push -u origin <branch>` pour pousser la branche local sur le repo d'origin et la suivre
     * `git update-index --assume-unchanged config/config.php` pour ne prendre en compte les modifs de config
     * `git stash apply` pour appliquer le dernier stash
     * `git merge v1.0 --no-commit --no-ff` merge sans auto-commit
+
+=== Avoir un fichier gitignore global ===
+    * `git config --global core.excludesfile '~/.gitignore'`
 
 === Revert les modifications de droits sur les fichiers ===
 
@@ -96,7 +99,7 @@ Créer un projet sur github et le tracker en local
 == Git : historique plat avec rebase ==
 
     * Pour avoir un historique plat utiliser : `git rebase {nom de la branche avec laquelle synchorniser`
-    * Et pout push fair un `git push --force` <= attention portentielement destructif ne pas le faire sur branche partagée ou bien prévenir !!!
+    * Et pour pusher fair un `git push --force` <= attention portentielement destructif ne pas le faire sur branche partagée ou bien prévenir !!!
 
 == Gitlab : mise en place d'un hook custom ==
 
@@ -128,7 +131,7 @@ Créer un projet sur github et le tracker en local
 
     `git checkout -b {feature} origin/master` => on crée la branche
     Faire son dev ET commiter
-    `git merge --no-ff origin/master` => une fois le travail terminé et comité sur la branche, on merge sur le master 
+    `git merge --no-ff origin/master` => une fois le travail terminé et comité sur la branche, on merge sur le master
     `git push origin {feature}:master :{feature}` => on pousse le merge sur le master (on omet le dernier param si branch non distante)
 
 ===== une release =====
