@@ -41,6 +41,10 @@ Mes notes sur l'installation d'Archlinux
  * `yay -Qua` voir les packages AU à mettre à jours
  * `yay -Yc` pour supprimer les dépendances inutilisées
 
+=== Note pour python ===
+
+    Lors d'une mise à jour majeur de python, il est nécessaire de recompiler les packages pythons installés.
+ * `yay -S $(pacman -Qqo /usr/lib/python3.7/)`
 
 === Les paquets indispensables ===
 
