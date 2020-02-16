@@ -11,13 +11,18 @@ Mes notes sur l'installation d'Archlinux
  * Un lien plus récent avec cryptage du disque et partition LVM http://loicpefferkorn.net/2015/01/arch-linux-on-macbook-pro-retina-2014-with-dm-crypt-lvm-and-suspend-to-disk/
 
 === Notes à propos de VMware et Virtualbox ===
- * pb sur le driver video suite à l'upgrade -> obligé de réinstaller les anciens pilotes
-   ex : `pacman -U /var/cache/pacman/pkg/xf86-video-intel-2.99.912-1-x86_64.pkg.tar.xz`
+    * pb sur le driver video suite à l'upgrade -> obligé de réinstaller les anciens pilotes
+      ex : `pacman -U /var/cache/pacman/pkg/xf86-video-intel-2.99.912-1-x86_64.pkg.tar.xz`
 
 === En cas de plantage durant une installation ===
- * voir les paquets à réinstaller : `sudo ldconfig 2>&1 | cut -d' ' -f3 | xargs pacman -Qo`
- * réinstaller avec les dépendances si nécessiare : `pactree -d1 -u {nom du paquet} | sudo pacman -S --force -`
- * avec toutes les dépendances `pactree -u {nom du paquet} | sudo pacman -S --force -`
+    * voir les paquets à réinstaller : `sudo ldconfig 2>&1 | cut -d' ' -f3 | xargs pacman -Qo`
+    * réinstaller avec les dépendances si nécessiare : `pactree -d1 -u {nom du paquet} | sudo pacman -S --force -`
+    * avec toutes les dépendances `pactree -u {nom du paquet} | sudo pacman -S --force -`
+
+=== En cas de conflit lors de l'upgrade du system ===
+    * Si l'upgrade s'arrête à cause d'une erreur : fichier déjà présent dans le système
+    * mettre de côté les fichiers qui pose pb avec un `tar -cvf -T liste-fichiers.txt`
+    * supprimer les fichiers `cat liste-fichiers.txt | sudo rm`
 
 == Customisation ==
 
@@ -115,6 +120,7 @@ Mes notes sur l'installation d'Archlinux
  * glances -> system monitoring tool
  * gotop pour monitorer le système
  * hey pour faire des tests de charges http
+ * xfburn pour graver des blu ray
 
 === SLIM avec clavier azerty ===
 
@@ -533,6 +539,16 @@ Pour monter un disque mac automatiquement :
     UUID=575e1f1f-31a6-3993-988c-5008c2f2bac0      /Divers	        hfsplus      	rw,sync,force,noauto,x-systemd.automount	0 2
 }}}
 
+=== Créer et soumettre un paquet ===
+
+* Avoir un compte avec sa clé publique sur aur.archlinux.fr
+* Initialiser le repo `git clone ssh://aur@aur.archlinux.org/{nom du package}.git`
+* Ajouter un .gitignore qui ignore tout
+* Créer un PKGBUILD ex: https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=proxyman-git
+* lancer `makepkg --printsrcinfo > .SRCINFO`
+* forcer l'ajout des fichier .gitignore, .SRCINFO et PKGBUILD
+* tester et si ok fair un push
+
 === Musique (mpd) ===
 
 Il faut installer à la main le service : créer le fichier `~/.config/systemd/user/mpd.service`
@@ -593,6 +609,7 @@ audio_output {
  * [X] régler le pb du mot de passe stocké sur le presse papier voir https://github.com/cdown/clipmenu/issues/57#issuecomment-443242089
  * [ ] voir pour mutt comment fonctionne LBDB https://www.spinnaker.de/lbdb/
  * [ ] Remplacer Slim pour SDDM https://wiki.archlinux.fr/SDDM ou LighDM https://wiki.archlinux.fr/LightDM
+ * [ ] Ajouter un menu pour faire des recherches internet avec surfraw
 
 === ANSIBLE TODO ===
 

@@ -11,22 +11,22 @@
 [[http://shebangthedolphins.net/mutt.html|Other good tips]]
 
 *address book*
-# install goobook
-# make a goobookrc :
+* install goobook
+* make a goobookrc :
 {{{
 [DEFAULT]
-# If not given here, email and password is taken from .netrc using
-# machine google.com
+* If not given here, email and password is taken from .netrc using
+* machine google.com
 email:
 password:
-# The following are optional, defaults are shown
+* The following are optional, defaults are shown
 cache_filename: ~/.goobook_cache
 cache_expiry_hours: 24
 filter_groupless_contacts: yes
 }}}
-# add these to muttrc :
+* add these to muttrc :
 {{{
-#address book
+*address book
 set query_command="goobook query '%s'"
 macro index,pager a "<pipe-message>goobook add<return>" "add sender to google contacts"
 bind editor <Tab> complete-query
@@ -35,18 +35,18 @@ bind editor <Tab> complete-query
 *Motif pour les recherches*
 
 http://www.mutt.org/doc/manual/#patterns
-# avec % en début pour faire une recherche par groupe : `%L team` => recherche les messages 'de' et 'pour' un membre du groupe 'team'
+* avec % en début pour faire une recherche par groupe : `%L team` => recherche les messages 'de' et 'pour' un membre du groupe 'team'
 
 *Examples*
 
 _Delete all mail with SPAM in the subject_
-# Press `l` (for limit search) and enter `~s SPAM ~t admin@test.fr` (`s` for subject and `t` for to)
-# check if search is okay, inspect header by pressing `h`
-# press `T` to mark all messages matching the search (`T` mark all message of last search)
-# press `l.` to cancel limit search view
-# press `;d` to delete marked messages
-# press `$` to commit deletion
-# press `w` to apply a mark to a message and `W` to remove a mark
+* Press `l` (for limit search) and enter `~s SPAM ~t admin@test.fr` (`s` for subject and `t` for to)
+* check if search is okay, inspect header by pressing `h`
+* press `T` to mark all messages matching the search (`T` mark all message of last search)
+* press `l.` to cancel limit search view
+* press `;d` to delete marked messages
+* press `$` to commit deletion
+* press `w` to apply a mark to a message and `W` to remove a mark
 
 _untag all tagged mail_
 just press `;t` (apply tag on all tagged mail => untagged)
@@ -54,8 +54,8 @@ just press `;t` (apply tag on all tagged mail => untagged)
 _Open a link_ `<C-b>`
 
 _Move mail in a folder_
-# `T` Tag messages to move
-# `;s` to move messages
+* `T` Tag messages to move
+* `;s` to move messages
 
 
 _Attach files_
@@ -65,33 +65,33 @@ press "D" to delete attached file
 
 == Tips ==
 
-# si l'url ne s'affiche pas dans la pager (vim par ex.) alors se positionner sur le mail dans l'index et faire un ctrl-b pour voir toutes les urls du mail
-# Accusé réception : `Disposition-Notification-To: <myemailaddress@domain>` dans le header
-# voir https://gitlab.com/muttmua/mutt/wikis/ConfigTricks
-# the vim way : https://www.ryanlue.com/posts/2017-05-21-mutt-the-vim-way
+* `D` pour supprimer une pièce jointe de la liste des pièces
+* si l'url ne s'affiche pas dans la pager (vim par ex.) alors se positionner sur le mail dans l'index et faire un ctrl-b pour voir toutes les urls du mail
+* Accusé réception : `Disposition-Notification-To: <myemailaddress@domain>` dans le header
+* voir https://gitlab.com/muttmua/mutt/wikis/ConfigTricks
+* the vim way : https://www.ryanlue.com/posts/2017-05-21-mutt-the-vim-way
 
+
+
+* *Password protection*
+Très simple avec pass :
+{{{
+    set imap_pass   = `pass show mutt/gmail`
+}}}
 
 == TODO ==
 
-# *Password protection*
-[[https://www.df7cb.de/blog/2010/Using_multiple_IMAP_accounts_with_Mutt.html|Putting passwords]] in configs isn't something I like, so I pull them from the Gnome keyring:
-
-set my_pw_example=`gnome-keyring-query get mutt_example`
-set my_pw_otherdomain=`gnome-keyring-query get mutt_otherdomain`
-account-hook example.org 'set imap_user=me imap_pass=$my_pw_example'
-account-hook otherdomain.tld 'set imap_user=myself imap_pass=$my_pw_otherdomain'
-
-# *improvement*
+* *improvement*
 example conf : https://github.com/panthomakos/dotfiles/blob/master/.muttrc
 
-# *notification on important message*
+* *notification on important message*
 
-# Améliorer vim comme éditeur de mail : 
+* Améliorer vim comme éditeur de mail :
     # http://www.256bit.org/~chrisbra/cms/vim_as_e-mail_editor.html
     # https://github.com/dbeniamine/vim-mail
 
-# tester les labels : https://blitiri.com.ar/p/other/mutt-labels/
+* tester les labels : https://blitiri.com.ar/p/other/mutt-labels/
 
-# mettre en place des régles de classement :
+* mettre en place des régles de classement :
     # https://raymii.org/s/blog/Filtering_IMAP_mail_with_imapfilter.html
     # http://blog.endpoint.com/2011/10/imapfilter-lua-email-mutt-filtering.html
