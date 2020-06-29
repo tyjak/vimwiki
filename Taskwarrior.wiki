@@ -2,6 +2,10 @@
 
 Lien utiles : /home/david/vimwiki/Taskwarrior.wiki
 
+== Synchro avec Teello ==
+
+voir https://github.com/ogarcia/trellowarrior
+
 == Quelques commandes ==
 
     * `task calendar` pour afficher un calendrier des taches

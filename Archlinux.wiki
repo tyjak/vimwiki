@@ -45,6 +45,7 @@ Mes notes sur l'installation d'Archlinux
  * `yay -Syu --aur` uniquement pout AUR
  * `yay -Qua` voir les packages AU à mettre à jours
  * `yay -Yc` pour supprimer les dépendances inutilisées
+ * `yay -D --asexplicit yay` pour marquer le paquet comme installé explicitement
 
 === Note pour python ===
 
@@ -121,6 +122,7 @@ Mes notes sur l'installation d'Archlinux
  * gotop pour monitorer le système
  * hey pour faire des tests de charges http
  * xfburn pour graver des blu ray
+ * eg alternative to man page
 
 === SLIM avec clavier azerty ===
 
@@ -164,6 +166,14 @@ Installer le package `xss-lock` et ajouter dans `.xinitrc` :
 
 - Voir la place libérée : `sudo paccache -d`
 - Supprime le cache et garde les 3 dernières versions : `sudo paccache -r`
+
+=== Extinction auto de l'écran ===
+
+- installer xorg-xset et paramétrer selon les indications : https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling
+- `xset -display :0 q` liste les paramêtres pour l'écran cible
+- `xset -display :0 s off -dpms` désactive la suspension de l'écran
+
+Note: l'option `-display :0` n'est utile que si l'on est execute la commande dans un terminal qui n'est pas sur l'écran ciblé
 
 === I3 window manager ===
 
@@ -227,6 +237,22 @@ Utiliser dmenu pour lancer l'application ou switcher dessus.
  * voir la fin du fichier pour voir comment modifier le comportement de la touche caps
  * `xmodmap ~/.Xmodmap` pour appliquer les changements
  * Pour ne pas éteindre directement via la touche power : dans `/etc/systemd/logind.conf` mettre `HandlePowerKey=ignore` puis assigner pour i3 la touche 124 dans .Xmodmap (voir https://wiki.archlinux.org/index.php/I3#Shutdown.2C_reboot.2C_lock_screen )
+
+=== Configuration de la souris ===
+
+ * Sous gnome le scroll de la souris est très lent pour résoudre le pb voir cet article : http://www.webupd8.org/2015/12/how-to-change-mouse-scroll-wheel-speed.html
+ * installer imwheel
+ * mettre le bon réglage en place dans ~/.imwheelrc :
+ {{{
+    ".*"
+    None,      Up,   Button4, 3 # <- Ici est le réglage de la vitesse de scroll (3 lignes)
+    None,      Down, Button5, 3 # <- Idem
+    Control_L, Up,   Control_L|Button4
+    Control_L, Down, Control_L|Button5
+    Shift_L,   Up,   Shift_L|Button4
+    Shift_L,   Down, Shift_L|Button5
+ }}}
+ * Voir https://wiki.archlinux.org/index.php/IMWheel pour l'installation
 
 === Ajout d'un résolution écran ===
 
@@ -345,30 +371,30 @@ Il faut s'assurer que le service dhcpcd est bien démarré. C'est ce service qui
 
 === Changer le navigateur web par défault ===
 
- * installer `xdg-utils`
+ * installer `mimeo`
  * mettre dans .zshrc `export BROWSER=xdg-open`
  * créer le dossier pour les application associées au mimes types `mkdir ~/.local/share/applications`
  * créer le fichier vimb.desktop
     {{{
-    #!/usr/bin/env xdg-open
-    [Desktop Entry]
-    Version=1.0
-    Terminal=false
-    Type=Application
-    Name=Vimb
-    Exec=i3-msg -t command workspace 2:web; layout tabbed; exec /usr/bin/vimb
-    NoDisplay=true
+        #!/usr/bin/env xdg-open
+        [Desktop Entry]
+        Version=1.0
+        Terminal=false
+        Type=Application
+        Name=Vimb
+        Exec=i3-msg -t command workspace 2:web; layout tabbed; exec /usr/bin/vimb
+        NoDisplay=true
     }}}
  * mettre ce fichier dans le dossier `applications` créer précedemment
- * puis executer la commande `dg-mime default vimb.desktop x-scheme-handler/http` pour avoir vimb par défaut
+ * puis executer la commande `xdg-mime default vimb.desktop x-scheme-handler/http` pour avoir vimb par défaut
  * il est possible aussi d'éditer le fichier `~/.config/mimeapps.list` pour modifier les applications par défaut lancées par `xdg-open`
  * plus d'info : https://wiki.archlinux.org/index.php/xdg-open#Set_the_default_browser et https://wiki.archlinux.org/index.php/Default_applications#MIME_types_and_desktop_entries
- * autre solution : installer mimeo :
+ * autre solution : installer mimeo et xdg-utils-mimeo
    {{{
-   mimeo --mimean-help
-   mimeo --mimetype #liste des mimetype
-   mimoe --app2desk #liste des application desktop
-   mimeo --prefer "x-scheme-handler/http" vimb.desktop
+       mimeo --mimean-help
+       mimeo --mimetype #liste des mimetype
+       mimoe --app2desk #liste des application desktop
+       mimeo --prefer "x-scheme-handler/http" vimb.desktop
    }}}
 
 
@@ -513,6 +539,17 @@ commandes utiles :
 
 Pour le problème du son qui se remet à 100% voir https://bbs.archlinux.org/viewtopic.php?pid=1103037#p1103037
 
+Pour pouvoir se connecter aux hauts-parleurs d'un autre ordi avec avahi et pulseaudio : ouvrir papref et permettre la connexion réseau anonyme dans les réglages.
+
+==== Mauvase qualité sur macbook air ====
+
+Sur le macbookair le son en bluetooth est de très mauvase qualité.
+Test avec un réglage pour forcer en AD2P SBC High dans /etc/pulse/default.pa
+`load-module module-bluetooth-discover a2dp_config="ldac_eqmid=hq"`
+mais le son n'est pas amélioré.
+TODO: tester avec une clé bluetooth
+resource : https://github.com/EHfive/pulseaudio-modules-bt
+
 === Teamviewer ===
 Pour lancer teamviewer il faut tout d'abord lancer le daemon :
 `teamview --daemon start`
@@ -526,10 +563,20 @@ Si problème pour monter un disque distant, s'assurer que rpcbind.service est d�
 
 ==== Montage auto grace un systemd ====
 
+Mapper le user de session :
+Dans /etc/idmapd.conf décommenter :
+{{{
+    [Mapping]
+
+    Nobody-User = david
+    Nobody-Group = david
+}}}
+et dans le ligne /etc/fstab ajouter "noexec,user" dans les options (permet de monter le volume en non root)
+
 Pour monter un disque nfs4 automatiquement, ajouter dans fstab :
 {{{
     # syno music
-    creamy.local:/volume1/music			/creamy/music   nfs4		rw,sync,noauto,x-systemd.automount,_netdev,noatime 0 0
+    creamy.local:/volume1/music			/creamy/music   nfs4		rw,noexec,user,sync,noauto,x-systemd.automount,_netdev,noatime 0 0
 }}}
 
 Pour monter un disque mac automatiquement :
@@ -586,6 +633,12 @@ audio_output {
 }
 }}}
 
+===== beet =====
+
+Pour organiser sa librairie musicale, permet de tagger et ranger dans des dossier la musique en fonction des tags et/ou de l'empreinte musicale (si pas de tag)
+
+* `beet import {music folder}` -> va imorter dans l'emplacement de la libray la musique et la taguer correctement ainsi qu'importer l'image de la couv de l'album
+
 ==== podcast ====
 * logiciel : gpodder
 * utilisé avec mplayer en mode slave (création d'un FIFO `mkfifo /tmp/mplayer` dans .xinitrc
@@ -596,26 +649,15 @@ audio_output {
 * `wine control` pour voir les applis (pas toutes à priori)
 * `wine start /path/to/app.exe` pour lance une application installée
 
-=== TODO ===
-
- * [ ] ajouter les packages `perl-json-xs` et `perl-anyevent` pour pouvoir enregistrer des layout i3
- * [ ] command pour sauvegarder un layout `i3-save-tree --workspace console > ~/.config/i3/workspace_console.json`
- * [ ] voir pour utiliser gpg et automatiser le lancement de l'agent gpg ou ssh [[https://github.com/ervandew/dotfiles/blob/master/.xinitrc|example de conf]]
- * [ ] Supprimer ario et floola
- * [ ] tester iphone tethering : https://wiki.archlinux.org/index.php/IPhone_tethering
- * [ ] mettre en place un vrai backup (voir https://www.sysnove.fr/blog/2016/06/backupninja-borg.html)
- * [ ] Débug my-crypt-usbkey dans journalctl -xe après être sortie du mode veille
- * [ ] Réussir à pouvoir mettre en hibernation
- * [X] régler le pb du mot de passe stocké sur le presse papier voir https://github.com/cdown/clipmenu/issues/57#issuecomment-443242089
- * [ ] voir pour mutt comment fonctionne LBDB https://www.spinnaker.de/lbdb/
- * [ ] Remplacer Slim pour SDDM https://wiki.archlinux.fr/SDDM ou LighDM https://wiki.archlinux.fr/LightDM
- * [ ] Ajouter un menu pour faire des recherches internet avec surfraw
+=== [[To test.wiki|TODO]] ===
 
 === ANSIBLE TODO ===
 
-* [ ] faire que termite soir le terminal par défaut (avec i3-sensible-terminal)
-* [ ] Installer oh-my-zsh
-* [ ] Régler le pb des polices de caractères
+* [X] faire que termite soir le terminal par défaut (avec i3-sensible-terminal)  #b4c1a45e
+* [X] Installer oh-my-zsh  #e7483098
+* [ ] Régler le pb des polices de caractères  #cbbc46f3
 
 == Tips ==
  * visualisation de photos - images : `feh -. {rep photo}`
+* [ ] ameliorer la detection des ecrans http://superuser.com/questions/970024/system-doesnt-detect-hot-plugged-display-portthrough-thunderbolt-connector  #53035b75
+ * avoir le model de l'ordinateur : `sudo dmidecode -s system-product-name`

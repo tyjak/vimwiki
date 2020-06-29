@@ -1,0 +1,63 @@
+# Install Archlinux on Mac mini 2,1
+
+Note : on the mac mini 2,1 only grub seems to work for booting linux 64bit sys with UEFI 32bit,  systemd-boot is apprently not working on UEFI 32 bit.
+
+On the usb live you can start sshd to connect just:
+- setup a root password
+- enter export TERM=vt100 to have full functional keyboard
+- launch dhcpcd to have an internet connection
+
+You have to build bootia32.efi with grub and place it in /efi/boot, grub will generate a grub.efi so you have to renameit to bootia32.efi
+
+## Prepare Archlinux livs USB stick
+
+### Create partition
+Just create the partitions for ARchlinux as usual, nothing specific, here hence the mac EFI partition will be mount in the /boot part of arch.
+
+
+### Copy iso image
+Grab the last archlinux iso image, and modify it with the great tool provide by Matt Gadient. You can find this tool and process to excute it on his page : https://mattgadient.com/linux-dvd-images-and-how-to-for-32-bit-efi-macs-late-2006-models/
+
+### Install and configure grub
+Mount efi partition in /tmp/ESD
+and install grub on it :
+`sudo grub-install --target=i386-efi --removable --boot-directory=/tmp/ESD/boot/ --efi-directory=/tmp/ESD`
+
+Add to */mnt/ESD*/efi/boot/grub.cfg :
+```
+    insmod part_gpt
+    insmod part_msdos
+    insmod fat
+
+    insmod all_video
+
+    insmod font
+
+    if loadfont "${prefix}/fonts/unicode.pf2" ; then
+        insmod gfxterm
+        set gfxmode="1024x768x32;auto"
+        terminal_input console
+        terminal_output gfxterm
+    fi
+
+    menuentry "Arch Linux archiso x86_64 UEFI USB" {
+        set gfxpayload=keep
+        search --no-floppy --set=root --label ARCH_YYYYMM
+        linux /arch/boot/x86_64/vmlinuz archisobasedir=arch archisolabel=ARCH_YYYYMM add_efi_memmap
+        initrd /arch/boot/intel_ucode.img /arch/boot/x86_64/archiso.img
+    }
+```
+
+Rename */mnt/ESD*/efi/boot/grub.efi to */mnt/ESD*/efi/boot/bootia32.efi
+
+Refer to this guide (part Booting 64-bit kernel on 32-bit UEFI) to get things work : https://wiki.archlinux.org/index.php/Unified_Extensible_Firmware_Interface#UEFI_bootable_media
+
+## Install Archlinux with live USB stick created
+Boot to your USB archlinux, and pacstrap Archlinux.
+Final step is to install grub in the EFI mac partition that you will have mount on /boot/efi.
+
+Proceed with those commands :
+- `grub-install --target=i386-efi --efi-directory=/boot/efi --bootloader-id=BOOT --recheck --debug`
+- `grub-mkconfig -o /boot/grub/grub.cfg`
+
+Refer to this more detailed guide here : https://wiki.archlinux.org/index.php/Mac#Post-installation (Installing GRUB to EFI partition)
