@@ -1,0 +1,14 @@
+= Installation de LightDM =
+
+En vu de remplacer Slim par LightDM, il faut :
+
+* intaller lightDM et parcourir le wiki
+* recopier ~/.xinitrc en ~/.xprofile et supprimer les lignes devenues inutiles
+* pour avoir le même designe que Slim, je ne trouvé que le greeter lightdm-mini-greeter qui ne permet pas le multiuser, j'ai du le forker pour avoir une version permettant de position l'input du mot de passe, et donc je l'ai installé manuellement en suivi le README.
+
+TODO :
+
+* [ ] voir s'il est possible de supprimer le curseur de la souris au démarrage  #b8a4ccc9
+* [ ] suivre le projet lightdm-mini-greeter pour voir si le multiuser et le positionement de la fenêtre seront intégrés  #a45ab037
+* [ ] autre alternative à partir d'un fork de web-greeter refaire un greeter qui correspond au besoin  #5fb727fa
+* [ ] intégrer la solution finale dans le ansible  #6b2d1153

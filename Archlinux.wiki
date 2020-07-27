@@ -10,6 +10,69 @@ Mes notes sur l'installation d'Archlinux
  * ou encore https://mchladek.me/post/arch-mbp
  * Un lien plus récent avec cryptage du disque et partition LVM http://loicpefferkorn.net/2015/01/arch-linux-on-macbook-pro-retina-2014-with-dm-crypt-lvm-and-suspend-to-disk/
 
+== Installation sur un disque crypté ==
+
+    * Une seule pratition, la partition de boot sera sur la partition EFI
+    * Formatter la partition avec gdisk avec Linux filesystem
+    * crypter la partition (methode [[https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#LVM_on_LUKS|LUKS on LVM]]) : `cryptsetup -v -y luksFormat /dev/sdXX` (tape YES to confirmation)
+    * création du volume LVM
+{{{
+    $ cryptsetup luksOpen /dev/sda4 lvm
+    $ pvcreate /dev/mapper/lvm
+    $ vgcreate vgcrypt /dev/mapper/lvm
+    $ lvcreate --extents +100%FREE -n root vgcrypt
+    $ mkfs.ext4 /dev/mapper/vgcrypt-root
+}}}
+    * montage des volumes pour le / et le /boot
+{{{
+    $ mount /dev/mapper/vgcrypt-root /mnt
+    $ mkdir /mnt/boot
+    $ mount /dev/sda1 /mnt/boot
+}}}
+    * installation d'archlinux et generation du fstab
+{{{
+    $ pacstrap /mnt base base-devel linux linux-firmware
+    $ genfstab -L -p /mnt >> /mnt/etc/fstab
+
+    # /etc/fstab
+    /dev/mapper/vgcrypt-root	/      	ext4     	rw,relatime	0 1
+}}}
+    * réglage du système à minima
+{{{
+    echo archee > /etc/hostname
+    ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
+    vi /etc/locale.gen
+    locale-gen
+    echo LANG=fr_FR.UTF-8 > /etc/locale.conf
+
+    # /etc/vconsole.conf
+    KEYMAP=fr-latin1
+}}}
+    * mise à jour de la ligne HOOK dans le fichier mkinitcpio.conf
+{{{
+    # /etc/mkinitcpio.conf
+    HOOKS="base udev autodetect modconf block keymap keyboard encrypt lvm2 filesystems fsck"
+}}}
+    * installation de lvm2 `sudo pacman -S lvm2`
+    * si l'intallation de lvm2 n'a pas mis a jour initramfs alors faire `mkinitcpio -p lunx`
+    * installation du boot manager
+{{{
+    $ mkdir -p /boot/loader/entries
+
+    # /boot/loader/loader.conf
+    default arch
+    timeout 4
+
+    # /boot/loader/entries/arch.conf
+    title        Arch Linux
+    linux       /vmlinuz-linux
+    initrd      /initramfs-linux.img
+    options     cryptdevice=PARTUUID={{partuuid}}:lvm root=/dev/vgcrypt/root rw
+
+    $ bootctl install
+}}}
+    * mettre un mot de passe pour le root et ce sera prêt, ne reste plus qu'à rebooter
+
 === Notes à propos de VMware et Virtualbox ===
     * pb sur le driver video suite à l'upgrade -> obligé de réinstaller les anciens pilotes
       ex : `pacman -U /var/cache/pacman/pkg/xf86-video-intel-2.99.912-1-x86_64.pkg.tar.xz`
@@ -157,6 +220,10 @@ Section "InputClass"
 EndSection
 }}}
 
+=== Remplacement de Slim par LightDM ===
+
+Note à propos du [[remplacement de Slim par LightDM]] (work in progress)
+
 === Ajout d'un écran de lock à la suspension ===
 
 Installer le package `xss-lock` et ajouter dans `.xinitrc` :
@@ -221,6 +288,10 @@ Utiliser dmenu pour lancer l'application ou switcher dessus.
  * si pb "network not found" alors essayer :
      * `sudo rfkill unblock all`
      * `sudo ip addr flush dev enp60s0u1u1`
+
+=== Réseau / wifi migration netctl vers iwd + systemd-networkd ===
+
+voir [[installation iwd et systemd-networkd]] (work in progress)
 
 
 === Réglage horloge ===
@@ -361,6 +432,18 @@ Il faut s'assurer que le service dhcpcd est bien démarré. C'est ce service qui
     ==== Démarrage ====
     * `pon {nom_de_la_connection}`
     * `poff` pout arréter la connexion
+
+=== DNS ===
+Si systemd-resolved est utilisé et qu'on veux manuellement définir un DNS (pour ne pas utilsé celui du DHCP) faire ce qui suit : 
+{{{
+    /etc/systemd/resolved.conf.d/dns_servers.conf
+    [Resolve]
+    DNS=192.168.35.1 fd7b:d0bd:7a6e::1
+    Domains=~.
+}}}
+Attention: ne pas oublier le paramètre 'Domains=~.'
+Voir : https://wiki.archlinux.org/index.php/Systemd-resolved
+
 
 === Connexion modem WWAN 4G ===
 
@@ -649,7 +732,7 @@ Pour organiser sa librairie musicale, permet de tagger et ranger dans des dossie
 * `wine control` pour voir les applis (pas toutes à priori)
 * `wine start /path/to/app.exe` pour lance une application installée
 
-=== [[To test.wiki|TODO]] ===
+=== [[TO test|TODO]] ===
 
 === ANSIBLE TODO ===
 
@@ -661,3 +744,9 @@ Pour organiser sa librairie musicale, permet de tagger et ranger dans des dossie
  * visualisation de photos - images : `feh -. {rep photo}`
 * [ ] ameliorer la detection des ecrans http://superuser.com/questions/970024/system-doesnt-detect-hot-plugged-display-portthrough-thunderbolt-connector  #53035b75
  * avoir le model de l'ordinateur : `sudo dmidecode -s system-product-name`
+ 
+ == Troubleshooting ==
+
+Message d'erreur dans dmesg : `Support for cores revisions 0x17 and 0x18 disabled by module param allhwsupport=0. Try b43.allhwsupport=1`
+pour le régler tenter : `Uncommented '#RuntimeWatchdogSec=0' in /etc/systemd/system.conf `
+voir : https://bbs.archlinux.org/viewtopic.php?id=170588

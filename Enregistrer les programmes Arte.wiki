@@ -1,0 +1,50 @@
+= Enregistrer les programmes d'arte.tv =
+
+== Script pour downloader ==
+
+./download-arte.sh
+{{{
+    dir=($dirname "$1")
+    cat "$1" | xargs -L 1 bash -c 'ffmpeg -i $0 -c copy "'"$dir"'/$1.mp4"'
+}}}
+
+== Obtenir les urls dans firefox pour créer le fichier d'url à collecter ==
+
+1. Ouvrir la console developpeur
+2. Aller sur la page du programme à télécharger
+3. Filtrer les requetes sur "index_1_av.m3u8"
+4. toujours sur la même page, pour une série cliquer sur les différents épisodes pour qu'il démarre et que leur url s'afficher
+5. une fois toutes les urls voulues affichées, ctr-droit pour tout copier
+6. créer un fichier arte.txt dans vim et isoler les URL
+7. ajouter le titre
+
+Format d'une ligne dans le fichier (pas de "/" dans les trires):
+`{URL} "[{nom d'un dossier de desitnation}/]{titre}"`
+
+Ex. de fichier brut :
+{{{
+    XHRGEThttps://arteptweb-vh.akamaihd.net/i/am/ptweb/043000/043300/043396-001-A_0_VO-STF_AMM-PTWEB_XQ.1MP65gAWcr.smil/index_1_av.m3u8
+    [HTTP/1.1 200 OK 36ms]
+
+    XHRGEThttps://arteptweb-vh.akamaihd.net/i/am/ptweb/043000/043300/043396-002-A_0_VO-STF_AMM-PTWEB_XQ.1MPBqgAYdP.smil/index_1_av.m3u8
+    [HTTP/1.1 200 OK 14ms]
+
+    XHRGEThttps://arteptweb-vh.akamaihd.net/i/am/ptweb/043000/043300/043396-003-A_0_VO-STF_AMM-PTWEB_XQ.1MPK3gAdOB.smil/index_1_av.m3u8
+    [HTTP/1.1 200 OK 12ms]
+
+    XHRGEThttps://arteptweb-vh.akamaihd.net/i/am/ptweb/043000/043300/043396-004-A_0_VO-STF_AMM-PTWEB_XQ.1MPHagAbUr.smil/index_1_av.m3u8
+    [HTTP/1.1 200 OK 13ms]
+}}}
+
+Ex. de fichier final :
+{{{
+https://arteptweb-vh.akamaihd.net/i/am/ptweb/043000/043300/043396-001-A_0_VO-STF_AMM-PTWEB_XQ.1MP65gAWcr.smil/index_1_av.m3u8 "The Killing - Saison 2 (1-10)"
+https://arteptweb-vh.akamaihd.net/i/am/ptweb/043000/043300/043396-002-A_0_VO-STF_AMM-PTWEB_XQ.1MPBqgAYdP.smil/index_1_av.m3u8 "The Killing - Saison 2 (2-10)"
+https://arteptweb-vh.akamaihd.net/i/am/ptweb/043000/043300/043396-003-A_0_VO-STF_AMM-PTWEB_XQ.1MPK3gAdOB.smil/index_1_av.m3u8 "The Killing - Saison 2 (3-10)"
+https://arteptweb-vh.akamaihd.net/i/am/ptweb/043000/043300/043396-004-A_0_VO-STF_AMM-PTWEB_XQ.1MPHagAbUr.smil/index_1_av.m3u8 "The Killing - Saison 2 (4-10)"
+}}}
+
+== downloader les programmes de la liste créée ==
+
+1. copier le fichier arte.txt dans le répertoire de destination des téléchargements
+2. lancer `./download-arte.sh {chemin répertoir de destination}/arte.txt

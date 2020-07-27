@@ -1,0 +1,21 @@
+= Installation systemd-netwokd et iwd =
+
+netctl n'est plus une solution envisagé car elle est viellissante.
+NetworkManager fonctionne très bien mais pas dans la philosophie archlinux, c'est un peu une boite niore.
+
+Je tente donc l'intallation systemd-networkd + iwd.
+De ce que j'ai pu lire sur thread reddit https://www.reddit.com/r/archlinux/comments/hmqn2y/byebye_wifimenu/fx8hgfn wifi-menu est amené à disparaitre dans la distribution de base archlinux au profit de iwd.
+
+Iwd n'est malheureusement pas aussi simple d'utilisation que wifi-menu.
+
+Il faut faire plusieurs opérations avant d'arriver à avoir une connection.
+
+`iwctl station wlan0 connect <nom du réseau>` -> commande pour se connecter si on connait le nom de l'interface et le nom du reseau wifi.
+
+Il est possible d'utiliser `iwctl` pour scanner les réseaux, et trouver le nom de la carte.
+
+Pour faire fonctionner tout çà il faut lancer :
+
+* `systemctl enable --now systemd-networkd`
+* `systemctl enable --now systemd-resolved`
+* `systemctl enable --now iwd.servce`
