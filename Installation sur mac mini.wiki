@@ -61,3 +61,5 @@ Proceed with those commands :
 - `grub-mkconfig -o /boot/grub/grub.cfg`
 
 Refer to this more detailed guide here : https://wiki.archlinux.org/index.php/Mac#Post-installation (Installing GRUB to EFI partition)
+
+[modeline]: # ( vim: set filetype=markdown: )

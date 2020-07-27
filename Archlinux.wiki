@@ -2,13 +2,14 @@
 
 Mes notes sur l'installation d'Archlinux
 
-
 == Installation from scratch ==
  * Attention de ne pas lancer l'utilitaire de partitionnement sur une partition mais bien sur le disque lui même
  * Pour le macbook voir https://wiki.archlinux.org/index.php/MacBook
  * Un autre lien pour une installation pas à pas https://medium.com/@philpl/arch-linux-running-on-my-macbook-2ea525ebefe3
  * ou encore https://mchladek.me/post/arch-mbp
  * Un lien plus récent avec cryptage du disque et partition LVM http://loicpefferkorn.net/2015/01/arch-linux-on-macbook-pro-retina-2014-with-dm-crypt-lvm-and-suspend-to-disk/
+
+== [[Installation sur mac mini|Installation sur MacMini 2,1]] ==
 
 == Installation sur un disque crypté ==
 
