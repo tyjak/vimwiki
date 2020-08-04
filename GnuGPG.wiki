@@ -120,7 +120,7 @@ Host nom-serveur-distant
     Hostname 192.168.0.1
     User username
     IdentitiesOnly yes
-    IdentityFile ~/.ssh/nom-de-ma-clé.pub
+    IdentityFile ~/.ssh/nom-de-ma-clé
 }}}
 
 - Copie de la clé sur le serveur distant :
