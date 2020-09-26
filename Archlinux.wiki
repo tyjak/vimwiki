@@ -664,6 +664,9 @@ Pour monter un disque nfs4 automatiquement, ajouter dans fstab :
 }}}
 
 Pour monter un disque mac automatiquement :
+
+NOTE: pour pouvoir écrire dessus il faut installer hfsprog et mettre l'option 'force' des les options de montage avec hfsplus chargé préalablement comme module avec `modprobe hfsplus`
+
 {{{
 
     # /dev/sdb4
@@ -728,6 +731,11 @@ Pour organiser sa librairie musicale, permet de tagger et ranger dans des dossie
 * utilisé avec mplayer en mode slave (création d'un FIFO `mkfifo /tmp/mplayer` dans .xinitrc
 * commande pour lecture/pause etc. définie dans i3
 
+==== iPod ====
+* installer le logiciel Rhythmebox et gvfs-afc
+* il faut avoir configurer également le montage pour hfsplus en écriture (voir plus haut)
+* il est possible de synchroniser l'iPod via Rhythmebox
+
 === wine ===
 
 * `wine control` pour voir les applis (pas toutes à priori)
@@ -746,7 +754,7 @@ Pour organiser sa librairie musicale, permet de tagger et ranger dans des dossie
 * [ ] ameliorer la detection des ecrans http://superuser.com/questions/970024/system-doesnt-detect-hot-plugged-display-portthrough-thunderbolt-connector  #53035b75
  * avoir le model de l'ordinateur : `sudo dmidecode -s system-product-name`
  
- == Troubleshooting ==
+== Troubleshooting ==
 
 Message d'erreur dans dmesg : `Support for cores revisions 0x17 and 0x18 disabled by module param allhwsupport=0. Try b43.allhwsupport=1`
 pour le régler tenter : `Uncommented '#RuntimeWatchdogSec=0' in /etc/systemd/system.conf `

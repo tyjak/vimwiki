@@ -1,0 +1,24 @@
+= My blockchain notes =
+
+== Testing ==
+
+=== Wallet ===
+
+- [[https://gnosis-safe.io/|gnosis-safe]]
+- Argent (iOS)
+
+=== Blockchain ===
+
+- Etherum
+- Polkadot
+- Algorand
+
+=== networks ===
+
+- https://filecoin.io/store/
+- moonbeam -> build apps across chains (polkadot, algorand)
+
+=== dApps ===
+
+- splinterlands (game)
+- leagueofkingdoms (game)

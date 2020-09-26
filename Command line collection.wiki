@@ -21,6 +21,8 @@
 
 == divers ==
 
+* un lien sympa pour quelques astuces sur ansible : https://www.data-essential.com/ansible-how-to-collect-information-about-remote-hosts-with-gathers-facts/
+
 * créer des liens symboliques pour tous les fichiers d'un dossier
 `ln -s ~/src/phpqa/bin/* -t .` #se mettre dans le dosser de destination
 

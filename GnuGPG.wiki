@@ -104,7 +104,7 @@ Pour plus de détail voir : https://linuxfr.org/users/spack/journaux/gnupg-et-au
 
 === Ajout des clés privés SSH ===
 
-Possiblité d'ajouté ses clés privés SSH dans gnugpg: elles sont cryptées et protégées par mot de passe
+Possiblité d'ajouter ses clés privés SSH dans gnugpg: elles sont cryptées et protégées par mot de passe
 `ssh-add ~/.ssh/id_rsa` => ajout de la clé id_rsa (ajouté en crypté dans ~/.gnupg/private-keys-v1.d/
 
 ==== Utiliser les clés ssh ajouté dans gnupgp ====
@@ -120,7 +120,7 @@ Host nom-serveur-distant
     Hostname 192.168.0.1
     User username
     IdentitiesOnly yes
-    IdentityFile ~/.ssh/nom-de-ma-clé
+    IdentityFile ~/.ssh/nom-de-ma-clé #need to only have the pub key in .ssh/
 }}}
 
 - Copie de la clé sur le serveur distant :
