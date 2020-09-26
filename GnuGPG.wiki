@@ -5,7 +5,7 @@
 Les clés sont stockées dans le répertoire ~/.gnugpg
 
 - `gpg --list-keys` Lister les clés présentes
-- `gpg --full-gen-key` Pour créer une cléc
+- `gpg --full-gen-key` Pour créer une clé
 - `gpg --edit-key {ID de la clé}` Pour éditer la clé dont l'id peut être l'UID complet, l'adress mail, l'ID chiffré
 
 === en mode console ===
@@ -15,6 +15,18 @@ Les clés sont stockées dans le répertoire ~/.gnugpg
 - `primary` Pour désigner l'uid sélectionner par défaut pour signer
 - exporter une seule clé privée : `gpg --export-secret-keys -a [KEYGRIP]!`
 
+=== GPG type flag ===
+
+Flag   gpg character   Description
+0x01   “C”   Key Certification
+0x02   “S”   Sign Data
+0x04   “E”   Encrypt Communications
+0x08   “E”   Encrypt Storage
+0x10       Split key
+0x20   “A”   Authentication
+0x80       Held by more than one person
+
+
 == Quelques liens utiles ==
 
 - https://gnupg.org/documentation/howtos.html
@@ -22,6 +34,7 @@ Les clés sont stockées dans le répertoire ~/.gnugpg
 - http://linuxfr.org/users/gouttegd/journaux/de-la-gestion-des-clefs-openpgp
 - https://www.sylvainlasnier.fr/blog/crypter-vos-donnees-avec-gnupg-sous-linux-ubuntu
 - https://www.futureboy.us/pgp.html
+- https://davesteele.github.io/gpg/2014/09/20/anatomy-of-a-gpg-key/
 
 == Pour plus de sécurité ==
 
@@ -34,7 +47,7 @@ Les clés sont stockées dans le répertoire ~/.gnugpg
 
 == Scripts pour pouvoir signer des clés si la clé privé primaire n'est pas présente ==
 
-= Avoir sur une clé usb la clé privé primaire, et un lien symbolique vers cette clé primaire, alors il suffit juste de monter la clé pour avoir la clé primaire disponible. =
+*Avoir sur une clé usb la clé privé primaire, et un lien symbolique vers cette clé primaire, alors il suffit juste de monter la clé pour avoir la clé primaire disponible.*
 
 Obsolete :
 Si la clé privé primaire est stockée sur une clé USB. Alors voici un script qui permet de monter la clé, faire un lien symbolique sur la clé privé puis signé l'adresse mail donnée en argument.
@@ -128,4 +141,42 @@ Host nom-serveur-distant
 
 source : https://github.com/drduh/YubiKey-Guide
 
+
+== Utilisation d'une carte (ledger) ==
+
+=== WIP ===
+
+Admin pin default : 12345678
+Pin default : 123456
+
+Liens :
+https://github.com/LedgerHQ/openpgp-card-app/blob/master/doc/user/blue-app-openpgp-card.pdf
+https://www.gnupg.org/howtos/card-howto/en/ch03.html
+https://wiki.archlinux.org/index.php/GnuPG#Smartcards
+
+
+== Gestion des mots de passe ==
+
+les applications:
+- password-store
+- passforios
+
+=== Password-store ===
+
+Créer une subkey unquement pour gérer l'encryptage des mots de passe, il est conseillé de reserver l'usage de cette clé uniqument pour le cryptage des mots de passe.
+
+Pour désigner la clé utilsée par pass, il suffit de mettre son identifiant dans :
+`.password-store/.gpg-id
+
+=== passforioss ===
+
+Il faut initialiser la fonctionnalité git sur password-store:
+`pass git init`
+
+- créer un bare repositorie dédié pour la synchro avec l'iphone
+- exporter la clé privé/publique (possible avec un gif de qrcode).
+- créer une clé ssh privé/publique pour pouvoir se connecter à la machine qui héberge le bare repo git de password-store
+- ajouté un hook dans le git du password-store de la machine pour pusher automatiquement les changements de mots de passe vers le bare repo
+
+Pour faire le gif des qrcode : https://github.com/yishilin14/asc-key-to-qr-code-gif
 

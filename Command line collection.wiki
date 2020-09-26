@@ -70,8 +70,7 @@ bc << .
 `lpr -o lansdcape myfile.txt` pour imprimer en mode paysage
 
 * téléchargé un fichier en ligne de commande depuis le ftp
-`wget ftp://seojmp:cg0_t6ko@ftp.jobintree.com/sitemap.xml` 
-
+`wget ftp://seojmp:mdp@ftp.jobintree.com/sitemap.xml`
 
 * voir les connexions
 `sudo /usr/sbin/tcpdump -vlnettti pflog0` (ou pflog0 est l'interface reseau)
