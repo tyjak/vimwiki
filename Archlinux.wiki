@@ -68,11 +68,12 @@ Mes notes sur l'installation d'Archlinux
     title        Arch Linux
     linux       /vmlinuz-linux
     initrd      /initramfs-linux.img
-    options     cryptdevice=PARTUUID={{partuuid}}:lvm root=/dev/vgcrypt/root rw
+    options     cryptdevice=UUID={{uuid}}:lvm root=/dev/vgcrypt/root rw
 
     $ bootctl install
 }}}
     * mettre un mot de passe pour le root et ce sera prêt, ne reste plus qu'à rebooter
+
 
 === Notes à propos de VMware et Virtualbox ===
     * pb sur le driver video suite à l'upgrade -> obligé de réinstaller les anciens pilotes
@@ -121,7 +122,7 @@ Mes notes sur l'installation d'Archlinux
  * termite en remplacement de urxvt terminal + urxvt-perls
  * [[https://github.com/ervandew/urxvt-vim-scrollback|urxvt-vim-scrollback]]
  * i3-wm gestionnaire de fenêtre
- * xss-lock + i3lock-blur pour locker l'écran
+ * i3lock-fancy-git
  * dmenu2
  * pass
  * passdmenu
@@ -225,8 +226,33 @@ EndSection
 
 Note à propos du [[remplacement de Slim par LightDM]] (work in progress)
 
+=== Mot de passe de decryption et autologin session ===
+
+L'idée est de n'entrer qu'une seule fois son mot de passe par la decryption du volume et d'autologuer la session.
+
+Prérequis:
+* lightdm
+* plymouth
+* disque encrypté
+
+Suivre les instruction pour l'installation de plymouth:
+1. installation de plymouty `yay -S plymouth`
+2. ajout de `plymouth` et remplacement de `encrypt` par `pymouth-encrypt` dans `/etc/mkinitcpio.conf`
+    `HOOKS=(base udev plymouth autodetect modconf block keymap keyboard plymouth-encrypt lvm2 filesystems fsck)`
+3. recréer lesramdisks `mkinitcpio -P`
+4. configurer plymouth dans `/etc/plymouth/plymouthd.conf`
+5. configurer autologin dans `/etc/lightdm/lightdm.con` suivant la doc : https://wiki.archlinux.fr/LightDM
+6. deactivate lightdm service and activate lightdm-plymouth service
+
+L'installation détaillé ici : https://wiki.archlinux.org/index.php/plymouth
+
+Tip: `sudo plymouth-set-default-theme -R` pour choisir le thème et reconstrir les ramdisk
+
 === Ajout d'un écran de lock à la suspension ===
 
+Voir : https://github.com/meskarune/i3lock-fancy
+
+Obsolète: 
 Installer le package `xss-lock` et ajouter dans `.xinitrc` :
 `xss-lock i3lock -f &`
 
@@ -277,6 +303,7 @@ Utiliser dmenu pour lancer l'application ou switcher dessus.
  * icons
  * ttf-fontawesome
  * utilitaire de gestion/visualisation de police : FontManager
+ * installation pour les emoji en couleur : https://chrpaul.de/2019/07/Enable-colour-emoji-support-on-Manjaro-Linux.html
 
 === Thème Solarized, airline et GTK ===
 
@@ -293,6 +320,18 @@ Utiliser dmenu pour lancer l'application ou switcher dessus.
 === Réseau / wifi migration netctl vers iwd + systemd-networkd ===
 
 voir [[installation iwd et systemd-networkd]] (work in progress)
+
+=== Supprimer les connections sur le port 5355 ===
+
+Le port 5355 est utiliser pour la résolution de nom LNMR de microsoft.
+Par défaut c'est activé sur le service systemd-resolved.
+Pour le désactiver il suffit d'éditer `/etc/systemd/resolved.conf` et mettre `LLMNR=no`
+Et rédémarrer le service `sudo systemctl reload systemd-resolved`
+
+=== Quelques outils pour surveiller le réseau ===
+
+* nethogs -> `nethogs -C`
+* iftop -> `iftop -n` (pour ne pas avoir la resolution dns)
 
 
 === Réglage horloge ===
@@ -501,6 +540,7 @@ Utilisation de [[https://www.passwordstore.org/|pass]] avec cryptage GPG pour la
 === Régler un pb (TODO)===
 
  * journal des événements `journalctl -xn`
+ * `journalctl --user -fu kunst` suivre les logs du service utlisateur kunst
  * `journalctl -f` pour voir tous ce qui se passe
  * `journalctl -n -u bluetooth` pour voir les derniers logs concernant le bluetooth
  * `journalctl -p err -b` pour voir les erreurs du dernier boot
@@ -569,6 +609,10 @@ Etudier le wiki : https://wiki.archlinux.org/index.php/Power_management#Sleep_ho
  * systemclt cat docker.service
  * systemctl restart docker
  * pour les services utilisateurs qui sont dépendants de X11 (dunst ou redshift) ajouter dans .xinitrc : `systemctl --user import-environment DISPLAY` pour qu'ils puissent démarrer
+ * pour voir les arcanes de systemd via le réglage de la session utilisateur : https://www.immae.eu/blog/2014/05/26/manage-your-session-with-systemd/
+ * documentation : https://www.freedesktop.org/wiki/Software/systemd/
+ * Une bonne documentation en français: https://lea-linux.org/documentations/Systemd
+ * Tips: `systemd-analyze blame` pour voir l'ordre et le temps de démarrage
 
 
 === Clé USB Crypté ===
@@ -602,19 +646,24 @@ Récupérer l'UUID d'une partition : `lsblk -no NAME,UUID /dev/sdc1`
 
 === Son ===
 Mise en place du son pour une sortie sur un périphérique airplay
+
 ==== installation ====
 installer les packets :
- * pulseaudio-alsa + libpulse
+ * pulseaudio-alsa
+ * pulseaudio-zeroconf
  * paprefs + pavucontrol (gui control for pulseaudio)
-démarrage auto : `systemctl --user enable pulseaudio`
-NOTE : plus besoin du package pusleaudio-raop2 car supporté nativement par pulseaudio à présent
-==== utilisation ====
-régler le préférences pour pouvoir découvrir les périfériques airplay avec `paprefs` et lancer `pavucontrol` pour régler la sortie son.
-==== troubleshooting ====
-il faut que le daemon avahi-daemon soit démarré pour que les périphériques puissent être découvrables
-si le airplay ne s'affiche pas voir http://raspberrypi.stackexchange.com/questions/5508/redirect-audio-to-another-airplay-device
-commandes utiles :
+démarrage auto : `systemctl --user enable pulseaudio.socket`
+dans papref onglet "Network" coher les 2 cases "Make discoverable [...]"
 
+==== utilisation ====
+lancer `pavucontrol` pour régler la sortie son.
+
+==== troubleshooting ====
+il faut que le daemon avahi-daemon soit démarré sur l'appareil qui diffuse le son pour que les périphériques puissent être découvrables
+si le airplay ne s'affiche pas voir http://raspberrypi.stackexchange.com/questions/5508/redirect-audio-to-another-airplay-device
+
+
+commandes utiles (obsolète pour la partie raop mais à vérifier):
 {{{
     pulseaudio --start --log-target=syslog -vvvv --log-level=debug
     pacmd load-module module-raop-discover
@@ -741,6 +790,26 @@ Pour organiser sa librairie musicale, permet de tagger et ranger dans des dossie
 * `wine control` pour voir les applis (pas toutes à priori)
 * `wine start /path/to/app.exe` pour lance une application installée
 
+=== qemu, packer, vagrant ===
+
+Installation d'une machine virtuel sous qemu via packer et vagrant.
+
+1. intaller vagrant, vagrant-libvirt, qemu, virt-manager
+1bis. For network connectivity, install:
+ebtables, and dnsmasq for the default NAT/DHCP networking.
+bridge-utils for bridged networking.
+openbsd-netcat for remote management over SSH.
+See https://wiki.archlinux.org/index.php/libvirt#Set_up_authentication
+2. `vagrant plugin install vagrant-libvirt`
+3. `git clone https://github.com/elasticdog/packer-arch.git`
+4. `./wrapacker --provider=qemu`
+5. `vagrant box add arch output/packer_arch_libvirt-2020.11.01.box`
+6. modifier la conf Vagrantfile pour le réseau : `  config.vm.network "private_network", ip: "192.168.33.10", dev: "wlan0"`
+
+Voir également pour le clé privé : https://martincarstenbach.wordpress.com/2019/12/12/tipsntricks-finding-the-injected-private-key-pair-used-in-vagrant-boxes/
+
+Si pb de clavier alors dans pref de virt-manger autoriser edition XML et changer le clavier dans la conf XML pour "fr"
+
 === [[TO test|TODO]] ===
 
 === ANSIBLE TODO ===
@@ -750,8 +819,10 @@ Pour organiser sa librairie musicale, permet de tagger et ranger dans des dossie
 * [ ] Régler le pb des polices de caractères  #cbbc46f3
 
 == Tips ==
+
+ * faire une screencast en gif : byzanz
  * visualisation de photos - images : `feh -. {rep photo}`
-* [ ] ameliorer la detection des ecrans http://superuser.com/questions/970024/system-doesnt-detect-hot-plugged-display-portthrough-thunderbolt-connector  #53035b75
+ * [ ] ameliorer la detection des ecrans http://superuser.com/questions/970024/system-doesnt-detect-hot-plugged-display-portthrough-thunderbolt-connector  #53035b75
  * avoir le model de l'ordinateur : `sudo dmidecode -s system-product-name`
  
 == Troubleshooting ==

@@ -6,6 +6,8 @@ see page https://wiki.archlinux.org/index.php/Broadcom_wireless#b43
 
 
 = TODO | project:archlinux -VISIBLE !-COMPLETED =
+* [X] Add a feature to make password menu generate a pass if it's not existing
+* [ ] Improve i3menu openvpn -> be sure the connection is initialized, put in orange when the connection is started but the sequence not yet fully initialized
 * [ ] improve delete on gmail account (TODO : mark message as d and $ to really delete -> mv to trash box)  #31500431
 * [ ] improve vimrc see https://github.com/pixelastic/oroshi/blob/master/config/vim/vimrc  #f8ad8a6c
 * [ ] vim : trouver une solution pour désactiver le XON/XOFF (ctl-q/ctl-s)  #8f06c95c

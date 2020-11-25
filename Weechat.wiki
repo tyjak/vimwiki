@@ -1,14 +1,16 @@
 = Weechat =
 
+good config guide : https://www.bfoliver.com/2017/07/15/weechat/
+
 == First steps ==
     * register nickname
-    `/nickname foo`
+    `/nick foo`
     `/msg NickServ REGISTER password youremail@example.com`
     * identify your nickname
     `/msg NickServ IDENTIFY password`
     * script https://weechat.org/scripts/
     `/script install {scriptname}`
-    `/script installremove {scriptname}`
+    `/script remove {scriptname}`
     * [[https://wiki.archlinux.org/index.php/WeeChat#Tips_and_Tricks|Smart Filter]]
         # First, we need to enable smart filters:
         `/set irc.look.smart_filter "on"`
@@ -22,15 +24,51 @@
         and execute it by
         `/rmsfilter`
 
+Il est fortement recommander de crypter les données sensibles stockées de weechat via la commande :
+`/secure passphrase {ceci est ma phrase secrète}`
+
+== bitlbee ==
+
+- installer bitlbee-libpurple (avec extension pour se connecter à des services type skype)
+- dans weechat faire `/server add bitlbee localhost`
+- `/buffer biltlee`
+- puis se connecter `/connect bitlebee`
+- `/oper register {password}`
+- pour connecter facebook (avec installation préalble de bitlbee-facebook) voir: https://wiki.bitlbee.org/HowtoFacebookMQTT
+
+== Customisation ==
+
+More color:
+`/set weechat.color.chat_nick_colors "cyan,magenta,green,brown,lightblue,default,lightcyan,lightmagenta,lightgreen,blue,31,35,38,40,49,63,70,80,92,99,112,126,130,138,142,148,160,162,167,169,174,176,178,184,186,210,212,215,247"`
+
+Vertical bar for pseudo list:
+`/set weechat.look.prefix_suffix "│"`
+
+Some slack settings:
+`/set weechat.completion.default_template "%(nicks)|%(irc_channels)|%(emoji)"`
+`/set plugins.var.python.slack.files_download_location = "~/Downloads/"`
+
 
 == Tips ==
     * connect to a french distant tmux session `ssh -t remotehost LANG=fr_FR.UTF-8 tmux a -t sessionname`
+    * auto join channel : https://weechat.org/files/doc/devel/weechat_faq.en.html#edit_autojoin
+    * alt+j + number to go to a chan with number > 10
+    * ctrl+r pour faire une recherche
+    * alt+s pour activer la vérification orthographique
+    * alt+a pour aller au prochain tampon avec activité
+    * alt+n se positionner sur le highlight suivant (alt+p pour le précédent)
+    * /fset pour les réglages
+    * alt+shift+b masquer la liste des buffers
+    * /buffer {name} to switch to the buffer name
 
 
 == Useful links ==
     * https://weechat.org/files/doc/devel/weechat_quickstart.en.html
     * https://freenode.net/faq.shtml#userregistration
     * https://github.com/seanh/infinite-fun-space/blob/master/weechat.md
+    * https://gist.github.com/pascalpoitras/8406501 -> the goal to get
+    * https://alexjj.com/blog/2016/setting-up-weechat/
+    * https://thoughtbot.com/blog/weechat-for-slacks-irc-gateway
 
 == TODO ==
     [_] How to select ansd open a link in command mode

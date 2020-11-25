@@ -15,10 +15,14 @@ Pour avoir un répertoir de musique syncthing dans le serveur audio  il faut mon
 
 === Montage de disque ===
 
-Sur le syno se connecter en root et editer /etc/export :
-`/volume1/video  192.168.0.17(rw,async,no_wdelay,crossmnt,insecure,all_squash,insecure_locks,sec=sys,anonuid=1026,anongid=100)`
+Sur le syno se connecter en root et editer /etc/exports :
+`/volume1/video  192.168.0.0/24(rw,async,insecure,all_squash,insecure,sec=sys,anonuid=1024,anongid=100)`
 
+Pas sure de savoir utiliser exportfs (voir https://www.tutorialspoint.com/unix_commands/exportfs.htm )
 ensuite exécuter `/usr/sbin/exportfs -a`
+redémarrer nfsd : `sudo /usr/syno/etc.defaults/rc.sysv/S83nfsd.sh restart`
+
+see https://www.garethrees.co.uk/2019/08/20/restart-nfs-synology-diskstation-dsm-6-2/
 
 Sur le client: 
 `sudo mount -t nfs4 192.168.0.20:/volume1/video ~/video`
