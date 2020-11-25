@@ -5,7 +5,7 @@
 Les clés sont stockées dans le répertoire ~/.gnugpg
 
 - `gpg --list-keys` Lister les clés présentes
-- `gpg --full-gen-key` Pour créer une clé
+- `gpg --full-gen-key` Pour créer une clée
 - `gpg --edit-key {ID de la clé}` Pour éditer la clé dont l'id peut être l'UID complet, l'adress mail, l'ID chiffré
 
 === en mode console ===

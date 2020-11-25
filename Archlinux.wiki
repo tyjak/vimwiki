@@ -1,4 +1,4 @@
-= Archlinux =
+= Archlinu =
 
 Mes notes sur l'installation d'Archlinux
 
@@ -91,23 +91,12 @@ Mes notes sur l'installation d'Archlinux
 
 == Customisation ==
 
-=== Installation de yaourt (obsolète) ===
-
-#Dans /etc/pacman.conf :
-#{{{
-#[archlinuxfr]
-#SigLevel = Never
-#Server = http://repo.archlinux.fr/$arch
-#}}}
-#puis installer avec `pacman -Sy yaourt`
-#
-#pour désinstaller un packet ainsi que ses dépendances : yaourt -Rsc {nom du paquet)
-
 === Utiliser Yay pour gérer les packages ===
 
  * `yay -Syu` pour tous mettre à jours
  * `yay -Syu --repo` uniquement pout les repos (hors aur)
  * `yay -Syu --aur` uniquement pout AUR
+ * `yay -Si` pour avoir des infos sur la package
  * `yay -Qua` voir les packages AU à mettre à jours
  * `yay -Yc` pour supprimer les dépendances inutilisées
  * `yay -D --asexplicit yay` pour marquer le paquet comme installé explicitement
@@ -131,7 +120,7 @@ Mes notes sur l'installation d'Archlinux
  * feh pour gérer l'image du fond
  * hot-solarized-vi pour un top colorisée avec raccourcis vi
  * slim pour avoir un écran de login
- * llpp-git pour visualiser des pdf
+ * zathura pour visualiser des pdf
  * otf-inconsolata-powerline-git (police avec support powerline)
  * otf-powerline-symbols-git (police avec support powerline)
  * ttf-bitstream-vera
@@ -159,6 +148,7 @@ Mes notes sur l'installation d'Archlinux
  * inotify-tools
  * rtv (reddit terminal viewer)
  * pyradio
+ * mpsyt
  * blueman
  * insync (google drive)
  * maim + slop pour les screenshot
@@ -188,6 +178,11 @@ Mes notes sur l'installation d'Archlinux
  * hey pour faire des tests de charges http
  * xfburn pour graver des blu ray
  * eg alternative to man page
+ * unclutter pour faire disparaitre le curseur lorsqu'il n'est pas utilisé
+ * ifuse pour accéder aux donnés d'un iphone
+ * libmobileidevice dépendance pour ifuse et ideviceinstaller et plus
+ * ideviceinstaller pour avoir les id des application ios
+ * pick-colour-picker
 
 === SLIM avec clavier azerty ===
 
@@ -256,7 +251,12 @@ Obsolète:
 Installer le package `xss-lock` et ajouter dans `.xinitrc` :
 `xss-lock i3lock -f &`
 
-==== Faire le ménage ====
+=== Faire disparaitre le curseur lorsque la souris n'est pas utilisée ===
+
+Installer le package `unclutter`  et ajouter dans `.xinitrc` :
+`unclutter -idle 1 -jitter 2 -root &`
+
+=== Faire le ménage ===
 
 - Voir la place libérée : `sudo paccache -d`
 - Supprime le cache et garde les 3 dernières versions : `sudo paccache -r`
@@ -308,6 +308,10 @@ Utiliser dmenu pour lancer l'application ou switcher dessus.
 === Thème Solarized, airline et GTK ===
 
  * lxappearance pour changer l'apparence des applications
+ * utilisation d'un thème pour les couleurs de ls (dans ~/.config/color/dircolors.256dark)
+   - `eval (dircolors ~/.config/color/dircolors.256dark)` dans .zhrc pour exporter LS_COLORS
+   - TODO: soucis avec les couleurs qui sont différentes avec `ls [TAB]` et `ls [RETURN]`
+   - source du thème : https://github.com/seebi/dircolors-solarized
 
 === Wifi démarrage auto du wifi ===
 
@@ -441,7 +445,8 @@ J'ai eu un pb avec le pad qui ne cliquait plus : un autre pad a été activé, i
 
 === Fingerprint ===
 
-Voir https://wiki.archlinux.org/index.php/Fingerprint_GUI
+Voir https://wiki.archlinux.org/index.php/Fprint
+TODO: mettre la procédure pour enregistrer les empruntes si un jour `fprintd-enroll -f left-index-finger {{usrename}}` fonctionne...
 
 === Installation d'une imprimante réseau ===
 
@@ -485,12 +490,24 @@ Attention: ne pas oublier le paramètre 'Domains=~.'
 Voir : https://wiki.archlinux.org/index.php/Systemd-resolved
 
 
-=== Connexion modem WWAN 4G ===
+=== Connexion modem WWAN 3G 4G ===
 
  * https://wiki.archlinux.org/index.php/ThinkPad_mobile_internet
  * peut aider : https://lists.freedesktop.org/archives/modemmanager-devel/2017-September/005804.html
  * http://www.embeddedpi.com/documentation/3g-4g-modems/raspberry-pi-sierra-wireless-mc7304-modem-qmi-interface-setup
  * https://forums.lenovo.com/t5/Linux-Discussion/Mobile-Broadband-X1-Ubuntu-16-04/td-p/3720487
+ * Se demande de code PIN, pour desactiver : `mmcli --sim={num|path modem} --pin={pin code} --disable-pin`
+
+=== Connection iPhone ===
+
+    * Installer libimobiledevice
+    * Faire reconnaitre le téléphone: `sudo idevicepair pair`
+    * Monter le système de fichier: `sudo ifuse mount iphone`
+    * Récupérer l'id d'une app: `ideviceinstaller -l -o xml | grep -A1 "application-identifier" | grep "firefox"`
+    * Monter les fichiers partagé de l'app: `ifuse --documents org.mozilla.ios.Firefox iPhone_firefox`
+    
+    Fair le pairage permet d'utilise le modem via l'usb
+    
 
 === Changer le navigateur web par défault ===
 
@@ -562,6 +579,16 @@ acpid ne semblait ne pas fonctionner :
         export DISPLAY=:0.0
         export XAUTHORITY=/home/$(GetXuser $DISPLAY)/.Xauthority
  }}}
+
+==== Blocage machine ====
+
+Il est possible de la rebooter "proprement" avec les sysRq, des combinaisons de touches interprétées directement par le kernel qui permettent d'executer des actions de sauvetage, la séquence la plus commune étant :
+
+alt + impr ecran + s : sync les données sur les disques
+alt + impr ecran + u : démonte proprement les disques
+alt + impr ecran + b : reboot la machine
+Attendre quelques secondes entre chaque combinaison pour laisser le temps de syncho/umount, et avec ca, le reboot se fera sans fsck au démarrage et plus de risque d'inodes perdus du a une activité élevée au moment du crash.
+Il existe plein d'autres combinaisons sysrq, wikipedia en liste une bonne partie : https://fr.wikipedia.org/wiki/Magic_SysRq_key
 
 === Boot ===
 
@@ -731,6 +758,7 @@ NOTE: pour pouvoir écrire dessus il faut installer hfsprog et mettre l'option '
 * lancer `makepkg --printsrcinfo > .SRCINFO`
 * forcer l'ajout des fichier .gitignore, .SRCINFO et PKGBUILD
 * tester et si ok fair un push
+* un tuto https://www.vultr.com/docs/building-packages-on-arch-linux
 
 === Musique (mpd) ===
 
@@ -758,6 +786,8 @@ Pout les touches multimédias : mettres les commandes dans i3 :
 ===== ncmpcpp =====
 * playlist : espace pour ajouter / fn+backspace pour effacer, [v] pour inverser la selection
 * mise à jour de la base : touche "u"
+* c pour effacer le contenu de la playlist
+* s pour sauvegarder la playlist
 * cheatsheat : https://pkgbuild.com/~jelle/ncmpcpp/
 * pour que le visualizer fonctionne il faut dans mpd ajouter cette sortie audio en plus de la sortie ALSA :
 {{{
@@ -784,6 +814,13 @@ Pour organiser sa librairie musicale, permet de tagger et ranger dans des dossie
 * installer le logiciel Rhythmebox et gvfs-afc
 * il faut avoir configurer également le montage pour hfsplus en écriture (voir plus haut)
 * il est possible de synchroniser l'iPod via Rhythmebox
+
+==== mpsyt ====
+
+Pb d'erreur 403 et de clé API non reconnu
+1. Créer une clé API
+2. Mettre une fonction dans .zhrc pour effacer le cache à chaque démarrage
+Voir : https://github.com/mps-youtube/mps-youtube/issues/1063#issuecomment-620481243
 
 === wine ===
 
@@ -824,6 +861,7 @@ Si pb de clavier alors dans pref de virt-manger autoriser edition XML et changer
  * visualisation de photos - images : `feh -. {rep photo}`
  * [ ] ameliorer la detection des ecrans http://superuser.com/questions/970024/system-doesnt-detect-hot-plugged-display-portthrough-thunderbolt-connector  #53035b75
  * avoir le model de l'ordinateur : `sudo dmidecode -s system-product-name`
+ * les références du model de l'ordinateur : `sudo dmidecode | grep -A3 '^System Information'`
  
 == Troubleshooting ==
 

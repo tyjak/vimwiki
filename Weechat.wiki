@@ -69,6 +69,7 @@ Some slack settings:
     * https://gist.github.com/pascalpoitras/8406501 -> the goal to get
     * https://alexjj.com/blog/2016/setting-up-weechat/
     * https://thoughtbot.com/blog/weechat-for-slacks-irc-gateway
+    * http://510x.se/notes/posts/Install_and_setup_BitlBee/
 
 == TODO ==
     [_] How to select ansd open a link in command mode

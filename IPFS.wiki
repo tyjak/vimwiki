@@ -1,0 +1,18 @@
+= IPFS =
+
+Ce que j'ai fait : 
+
+* installé le binaire ipfs-go
+    * démaré en mode daemon et lancé le client web
+* installé le plugun firefox
+    * se connect au démon
+* avec l'interface web  : uploadé le fichier de bookmark : https://ipfs.io/ipfs/QmPbqk15isc1fAaqCkkfmP8BZqE2yEKjmsN1cKqzBTCERj?filename=bookmark
+
+Docs : https://docs.ipfs.io/how-to/command-line-quick-start/#install-ipfs
+
+TODO: 
+* [ ] héberger mon site web (https://docs.ipfs.io/how-to/host-single-page-site/#create-your-site)
+
+Alternative à suivre :
+* https://beakerbrowser.com/
+* zeronet (systemctel start zeronet puis http://127.0.0.1:43110)
