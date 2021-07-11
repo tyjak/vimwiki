@@ -1,4 +1,4 @@
-=== Configuration de la barre de status dans i3w ===
+== Configuration de la barre de status dans i3w ==
 
 Pour la configuration de la barre de status j'utilise i3pystatus qui offre plus d'option que i3status.
 La configuration dans ~/.config/i3/config :
@@ -74,3 +74,11 @@ status.register("weather",
 
 status.run()
 }}}
+
+== installation version de developpement ==
+
+* Repo dans src/i3Pystatus
+* dans un environement virtuel
+* dans la config i3 pointer l'env virtuelle : `status_command ~/.virtualenvs/i3pystatus/bin/python ~/.config/i3/status.py`
+* lors d'un changement de code faire un `./setup.py install` pour depléoyer le changement dans l'environement virtuel
+

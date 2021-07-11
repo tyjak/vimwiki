@@ -141,6 +141,9 @@ Host nom-serveur-distant
 
 source : https://github.com/drduh/YubiKey-Guide
 
+== Avoir des mots de passes différents pour les sous clé ==
+
+To test: https://superuser.com/a/1574615
 
 == Utilisation d'une carte (ledger) ==
 

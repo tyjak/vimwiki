@@ -54,6 +54,8 @@ utiliser pip :
 # installation de la console python avec completion
 `pip install ipython`
 
+# pour faire des test unitaires (mock) voir : https://fgimian.github.io/blog/2014/04/10/using-the-python-mock-library-to-fake-regular-functions-during-tests/
+
 === Projet i3pystatus ===
 
 Pour tester avec i3pystatus dans un environement virtuel :
@@ -64,3 +66,5 @@ Pour tester avec i3pystatus dans un environement virtuel :
 # Faire pointer vers le python du virtual env dans le config de i3 : `status_command ~/.virtualenvs/i3pystatus/bin/python ~/.config/i3/status-dev.py`
 
 Autre méthodes : https://github.com/enkore/i3pystatus/issues/613
+
+

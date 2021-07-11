@@ -36,6 +36,12 @@ Il est fortement recommander de crypter les données sensibles stockées de weec
 - `/oper register {password}`
 - pour connecter facebook (avec installation préalble de bitlbee-facebook) voir: https://wiki.bitlbee.org/HowtoFacebookMQTT
 
+== weechat en mode relay ==
+
+- Pour le paramètrage voir : https://gist.github.com/miblodelcarpio/20da48bcdfb55c0860c44fd42d1b9647
+- Si pb de certificat avec server relay sans domaine voir :
+https://github.com/ubergeek42/weechat-android/issues/316#issuecomment-259486800
+
 == Customisation ==
 
 More color:

@@ -1,4 +1,4 @@
-= Archlinu =
+= Archlinux =
 
 Mes notes sur l'installation d'Archlinux
 
@@ -73,6 +73,22 @@ Mes notes sur l'installation d'Archlinux
     $ bootctl install
 }}}
     * mettre un mot de passe pour le root et ce sera prêt, ne reste plus qu'à rebooter
+
+== Installtion UEFISTUB ==
+pas besoin de boot manager :
+- avant le pacstrap, monter la partition EFI sur /boot
+- une fois arch-chroot, et le noyau généré suite à l'installation, utilisé efibootmgr
+- le noyau et initramfs doivent être sur /boot et donc sur la partition EFI
+- lancer la commande : `efibootmgr --disk /dev/{disque de l'efi) --part {numero de partition ou réside l'efi} --create --label "Arch Linux" --loader /vmlinuz-linux --unicode 'root=PARTUUID={ identifiant partition pour le /} rw initrd=\initramfs-linux.img' --verbose`
+- pour trouver le PARTUUID : `lsblk -o NAME,PARTUUID`
+- il préconnisé de mettre la commande dans un script avec suppression de la conf avant création afin de pouvoir facilement regénérer la conf si changement de paramètrage du noyau
+
+INCONVENIANTS :
+- obligé d'effacer et recréer la conf efi pour changer un paramètre du noyau
+- pas de possibilité de faire changer de noyau si pb avec le nouveau noyau (peut-être faut-il faire une conf dédiée pour booter sur un autre noyau)
+
+
+
 
 
 === Notes à propos de VMware et Virtualbox ===
@@ -183,6 +199,7 @@ Mes notes sur l'installation d'Archlinux
  * libmobileidevice dépendance pour ifuse et ideviceinstaller et plus
  * ideviceinstaller pour avoir les id des application ios
  * pick-colour-picker
+ * bandwhich pour consulter l'utilisation reseau
 
 === SLIM avec clavier azerty ===
 
@@ -379,7 +396,7 @@ Plus d'info : https://wiki.archlinux.org/index.php/Xrandr
 
 === Barre de status ===
 
- * [[configuration de i3pystatus-git]]
+ * [[configuration de i3pystatus-git]] (voir également installation d'une version de dev)
 
 === Barre de lancement ===
 
@@ -553,6 +570,7 @@ Utilisation de [[https://www.passwordstore.org/|pass]] avec cryptage GPG pour la
 * plus d'info : https://wiki.archlinux.org/index.php/Systemd#Editing_provided_units
 * voir également https://naftuli.wtf/2017/12/28/systemd-user-environment/ pour l'environement user
 * un tuto :https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files
+* explication sur les différences entre Wants, Requires, et After dans un Unit file du systemd : https://fedoramagazine.org/systemd-unit-dependencies-and-order/
 
 === Régler un pb (TODO)===
 
@@ -811,9 +829,9 @@ Pour organiser sa librairie musicale, permet de tagger et ranger dans des dossie
 * commande pour lecture/pause etc. définie dans i3
 
 ==== iPod ====
-* installer le logiciel Rhythmebox et gvfs-afc
+* installer le logiciel Rhythmbox et gvfs-afc
 * il faut avoir configurer également le montage pour hfsplus en écriture (voir plus haut)
-* il est possible de synchroniser l'iPod via Rhythmebox
+* il est possible de synchroniser l'iPod via Rhythmbox
 
 ==== mpsyt ====
 
