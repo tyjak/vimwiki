@@ -149,6 +149,10 @@ Créer un projet sur github et le tracker en local
     `git push origin master release-1.2`
     `git checkout release-1.2` => on se replace sur la dernière release
     `git branch -d master` => on efface le master
+    
+    *Note à propos des tag*
+    `git tag -f "git-$(git rev-parse --short HEAD)"` => utilisé le hash court comme version
+
 
 ==== hotfixes ====
 

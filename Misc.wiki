@@ -1,0 +1,9 @@
+= Misc = 
+
+== Javascript ==
+
+WIP bookmarket pour page html index de fichier : https://radiozinzine.org/emissions/SPX/2021/
+```
+javascript:(function(){const elem=[...document.querySelectorAll('a[href$=".mp3"]')]; console.log(elem); const link=elem.map((item)=>{let {href,innerText}=item; return {href,innerText};}); console.log(link); document.;})();
+```
+

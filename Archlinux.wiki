@@ -117,6 +117,12 @@ INCONVENIANTS :
  * `yay -Yc` pour supprimer les dépendances inutilisées
  * `yay -D --asexplicit yay` pour marquer le paquet comme installé explicitement
 
+
+NOTE : si erreur "yay: error while loading shared libraries: libalpm.so.14:"
+alors la solution : i
+* `sudo pacman -R yay-bin`
+* `cd ~/.cache/yay/yay && makepkg -Csfi`
+
 === Note pour python ===
 
     Lors d'une mise à jour majeur de python, il est nécessaire de recompiler les packages pythons installés.
@@ -180,6 +186,7 @@ INCONVENIANTS :
  * pal calendrier cli
  * acpilight (et faire sudo chmod a+w /sys/class/backlight/intel_backlight/brightness)
  * arandr pour la gestion des écrans
+ * autorandr pour enregister les configurations d'écrans et les activer automatiquement
  * udiskie pour le montage automatique des diks (TODO: ansible déploiement)
  * jq pour parser du json en ligne de commande
  * vimiv pour visualiser/modifier des images mode vim
@@ -200,6 +207,8 @@ INCONVENIANTS :
  * ideviceinstaller pour avoir les id des application ios
  * pick-colour-picker
  * bandwhich pour consulter l'utilisation reseau
+ * mopidy (remplace mpd pour streamer depuis le cloud)
+ * inotify-tools
 
 === SLIM avec clavier azerty ===
 
@@ -250,11 +259,11 @@ Prérequis:
 Suivre les instruction pour l'installation de plymouth:
 1. installation de plymouty `yay -S plymouth`
 2. ajout de `plymouth` et remplacement de `encrypt` par `pymouth-encrypt` dans `/etc/mkinitcpio.conf`
-    `HOOKS=(base udev plymouth autodetect modconf block keymap keyboard plymouth-encrypt lvm2 filesystems fsck)`
+    `HOOKS=(base udev plymouth autodetect modconf block keymap keyboard encrypt lvm2 filesystems fsck)`
 3. recréer lesramdisks `mkinitcpio -P`
 4. configurer plymouth dans `/etc/plymouth/plymouthd.conf`
 5. configurer autologin dans `/etc/lightdm/lightdm.con` suivant la doc : https://wiki.archlinux.fr/LightDM
-6. deactivate lightdm service and activate lightdm-plymouth service
+6. activer lightdm service
 
 L'installation détaillé ici : https://wiki.archlinux.org/index.php/plymouth
 
@@ -468,7 +477,7 @@ TODO: mettre la procédure pour enregistrer les empruntes si un jour `fprintd-en
 === Installation d'une imprimante réseau ===
 
  * installer le paquet cups
- * éditer le fichier /etc/cups/client.conf pour ajouter l'ip de l'imprimante
+ * éditer le fichier /etc/cups/client.conf pour ajouter la ligne : `ServerName {IP du serveur d'impression ou de l'imprimante}`
  * dans .xinitrc ajouter la varibale PRINTER={nom de l'imprimante}
  * pour tester si l'imprimante est bien installé : `lpstat -p -d`
  * pour imprimer un fichier `lpr filename`
@@ -624,6 +633,12 @@ Il existe plein d'autres combinaisons sysrq, wikipedia en liste une bonne partie
 * pour lister les devices usb : `lsusb`
 * NOTE remplacement de la batterie le 16/02/2019
   févr. 17 23:03:38 archy.local upowerd[3135]: energy_full (54,582400) is greater than energy_full_design (53,280000)
+* NOTE remplacement de batterie le 20/11/2023:
+    energy-full:         60,6556 Wh
+    energy-full-design:  59,28 Wh
+    energy-rate:         13,8244 W
+    voltage:             7,488 V
+
 
 ==== Hibernate ====
 
@@ -658,6 +673,7 @@ Etudier le wiki : https://wiki.archlinux.org/index.php/Power_management#Sleep_ho
  * documentation : https://www.freedesktop.org/wiki/Software/systemd/
  * Une bonne documentation en français: https://lea-linux.org/documentations/Systemd
  * Tips: `systemd-analyze blame` pour voir l'ordre et le temps de démarrage
+ * Un bon exemple en anglais https://www.thegeeksearch.com/how-to-control-start-stop-mask-unmask-services-using-systemd/
 
 
 === Clé USB Crypté ===
@@ -777,6 +793,8 @@ NOTE: pour pouvoir écrire dessus il faut installer hfsprog et mettre l'option '
 * forcer l'ajout des fichier .gitignore, .SRCINFO et PKGBUILD
 * tester et si ok fair un push
 * un tuto https://www.vultr.com/docs/building-packages-on-arch-linux
+* un paquet ne peut pas être installé dans le home normallement
+* Notes utiles : https://madskjeldgaard.dk/posts/aur-package-workflow/#an-aur-package-cannot-touch-a-users-home-directory
 
 === Musique (mpd) ===
 
@@ -806,6 +824,7 @@ Pout les touches multimédias : mettres les commandes dans i3 :
 * mise à jour de la base : touche "u"
 * c pour effacer le contenu de la playlist
 * s pour sauvegarder la playlist
+* z pour le shuffle et R pour le mode "consume" -> les morceaux lus sont retirés de la playlist
 * cheatsheat : https://pkgbuild.com/~jelle/ncmpcpp/
 * pour que le visualizer fonctionne il faut dans mpd ajouter cette sortie audio en plus de la sortie ALSA :
 {{{
@@ -875,6 +894,7 @@ Si pb de clavier alors dans pref de virt-manger autoriser edition XML et changer
 
 == Tips ==
 
+ * voir le process qui bouffe du disque : atop puis touche "d" colonne "wrdsk"
  * faire une screencast en gif : byzanz
  * visualisation de photos - images : `feh -. {rep photo}`
  * [ ] ameliorer la detection des ecrans http://superuser.com/questions/970024/system-doesnt-detect-hot-plugged-display-portthrough-thunderbolt-connector  #53035b75
@@ -883,6 +903,52 @@ Si pb de clavier alors dans pref de virt-manger autoriser edition XML et changer
  
 == Troubleshooting ==
 
-Message d'erreur dans dmesg : `Support for cores revisions 0x17 and 0x18 disabled by module param allhwsupport=0. Try b43.allhwsupport=1`
+=== Pb installation i3pystatus ===
+* modifier la source du package vers tyjak
+* et faire `makepkg -i --skippgpcheck --noprepare --nosign`
+
+=== Pb installation et clé corrompue ===
+
+Solution radicale: 
+* `rm -rf /etc/pacman.d/gnupg`
+* `sudo pacman-key --init`
+* `sudo pacman-key populate`
+
+=== Pb pacman cassé ===
+Contexte suite un installation de curl et un grand gap dans les maj, pacman était cassé, obligé de revenir en arrière.
+* Regarder dans les log de pacman qu'elle install à cassé pacman (ici curl)
+* réinstallé la version précédente de curl via :
+    * `sudo tar -xvpf /var/cache/pacman/pkg/curl-8.0.1-1-x86_64.pkg.tar.zst -C / --exclude .INSTALL --exclude .PKGINFO`
+* source : https://bbs.archlinux.org/viewtopic.php?id=95007
+
+=== Pb de calibrage colotrimetrique sur moniteur externe ===
+
+Sur le moniteur LG IPS235 il faut parémétrer xrandr pour avoir les bonnes couleurs :
+xrandr --output HDMI1 --set "Broadcast RGB" "Full"
+
+=== Pb dockerd ne démarre pas ===
+L'erreur : `failed to start daemon: error initializing graphdriver: [graphdriver] ERROR: the overlay storage-driver has been deprecated and removed`
+
+Solution : changer l'option storage du daemon en surcharger la configuration systemctl de démarrage du daemon
+
+Pour surcharcher la conf :
+1. On édite : `sudo systemctl edit docker`
+Ajouter les lignes suivantes :
+ {{{
+ [Service] #indiquer la section à réécrire
+ ExecStart= # réinitialiser la variable pour la réécrire complétement ou bien ajouter juste l'option supplémentaire 
+ ExecStart=/usr/bin/dockerd -s overlay2 -H fd:// --containerd=/run/containerd/containerd.sock
+ }}}
+2. On recharce la conf : `sudo systemctl daemon-reload`
+
+
+== [[Backup]] ==
+
+=== boot ===
+
+* Message d'erreur dans dmesg : `Support for cores revisions 0x17 and 0x18 disabled by module param allhwsupport=0. Try b43.allhwsupport=1`
 pour le régler tenter : `Uncommented '#RuntimeWatchdogSec=0' in /etc/systemd/system.conf `
 voir : https://bbs.archlinux.org/viewtopic.php?id=170588
+
+* fstab corrompu ou avec la mauvaise entrée:
+    ajouté aprés rw dans les argument passé au noyau au moment du démarrage : "init=/bin/bash" pour pouvoir éditer le fichier fstab et le corriger (dans grub au momen du démarrage appuyer sur e pour editer la configuration)

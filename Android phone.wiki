@@ -4,8 +4,18 @@ Les outils sur (arch)linux pour rooter un téléphone android (Samsung J3 - 2016
 * [[https://glassechidna.com.au/heimdall/|heimdall]]
 * android-tools
 
+== backup ==
+
+* http://papy-tux.legtux.org/doc1280/index.html#mozTocId960020
+* `adb backup -all -apk -f BU_data_apk.ab`
+
+
 == Passer le téléphone en mode développeur ==
 
+
+== Xiaomi ==
+Unlock: https://www.getdroidtips.com/unlock-bootloader-any-xiaomi-devices/
+lineage on redmi: https://www.getdroidtips.com/lineage-os-xiaomi-redmi-7a/
 
 == Lancer wrtp mode rescue ==
 

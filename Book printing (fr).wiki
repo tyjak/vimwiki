@@ -2,11 +2,16 @@
 
 == Préparation ==
 
-* installation de latex
+* installation de latex -> yay -S textlive-core pdfjam-extras
 * installation de xpdf
 * reprendre le script gist tyjak/pdflivre
 
 == Impression ==
+1. imprimer les pages impaires
+2. remettre les feuilles dans l'imprimente face imprimé visible, haut de page sur le côté gauche de l'imprimante
+3. imprimer les page paires
 
 voit les différentes options avec `pdflivre -h`
+
+TODO : fixer le script
 

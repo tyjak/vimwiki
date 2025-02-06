@@ -8,6 +8,13 @@
 * suivre les redirections et silencieusement avec sortie sur STDIN
 `curl -sL [URL]`
 
+== tar ==
+
+`tar -acvf monarchive.zst folder/`
+l'option -a permet d'uiliser l'algorythme de compression reconnu dans l'extension du fichier
+
+zstandard est l'algorithme utilisé pour la compression de l'image system de boot sous archlinux
+
 == connexion réseau ==
 
 * Nombre de connexion établie sur port 80

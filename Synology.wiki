@@ -6,6 +6,16 @@
 * Ne pas oublier de rendre possible la commande `su -` en faisant `chmod u+s /bin/busybox`
 * Si besoin de ractiver le root -> passer par telnet, le mt de passe root est le même que pour admin et ensuite éditer le fichier sshd_config pour reactiver root
 
+== OpenVPN ==
+
+Ajout d'une ip statique pour les users :
+* ajout d'un réportoire ccd dans `/usr/syno/etc/packages/VPNCenter/openvpn`
+* ajout d'une conf dans ce répertoire ccd avec le nom du user de connection : david
+  `ifconfig-push 10.8.0.4 255.255.255.0`
+* modification dans `/var/packages/VPNCenter/target/etc/openvpn/radiusplugin.cnf`
+  `overwriteccfiles=false` (par defaut 'true')
+$ redémarrage : `sudo -i && synoservice --restart pkgctl-VPNCenter`
+
 == Syncthing ==
 
 Pour installer un version plus récente, il suffit de télécharger la dernière version sur le site de github et de remplacer le binaire.
@@ -13,7 +23,7 @@ Pour installer un version plus récente, il suffit de télécharger la dernière
 Pour avoir un répertoir de musique syncthing dans le serveur audio  il faut monter ce dernier :
 `mount -o bind /usr/local/syncthing/var/share/Music /volume1/music/last`
 
-=== Montage de disque ===
+== Montage de disque ==
 
 Sur le syno se connecter en root et editer /etc/exports :
 `/volume1/video  192.168.0.0/24(rw,async,insecure,all_squash,insecure,sec=sys,anonuid=1024,anongid=100)`
@@ -28,9 +38,20 @@ Sur le client:
 `sudo mount -t nfs4 192.168.0.20:/volume1/video ~/video`
 
 
-=== Réindexation de fichier ===
+== Réindexation de fichier ==
 
 `/usr/syno/bin/synoindex -R music`
 voir https://plus.google.com/+KivavaChang/posts/QnjZgJMiPoZ
+
+== Redémarrage d'un service et + ==
+sudo -i #pour passer en root
+synoservicecfg --list
+synoservice --status
+synoservicecfg --stop <service>
+synoservicecfg --hard-stop <service>
+synoservicecfg --start <service>
+synoservicecfg --hard-start <service>
+synoservice --restart <service>
+synoservicectl --restart <service>
 
 

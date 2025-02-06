@@ -1,8 +1,12 @@
 = Weechat =
 
 good config guide : https://www.bfoliver.com/2017/07/15/weechat/
+very complete configuration : https://gist.github.com/pascalpoitras/8406501
+see [[#Init setup for solarize theme]] part below for from scratch setting
 
 == First steps ==
+    * `/connect {servernma}` to connect to a server
+    * `/list` to list channes of the server
     * register nickname
     `/nick foo`
     `/msg NickServ REGISTER password youremail@example.com`
@@ -23,6 +27,10 @@ good config guide : https://www.bfoliver.com/2017/07/15/weechat/
         `/alias rmsfilter filter del irc_smart_$server_$channel`
         and execute it by
         `/rmsfilter`
+    * [[https://blog.weechat.org/post/2008/10/25/Smart-IRC-join-part-quit-message-filter|Smart IRC join/part/quit]] more simple than above
+    * [[https://libera.chat/guides/findingchannels#finding-channels-on-liberachat|Finding channels on libera]]
+    * `/connect {servernma}` to connect to a server
+    * `/list` to list channes of the server
 
 Il est fortement recommander de crypter les données sensibles stockées de weechat via la commande :
 `/secure passphrase {ceci est ma phrase secrète}`
@@ -44,7 +52,26 @@ https://github.com/ubergeek42/weechat-android/issues/316#issuecomment-259486800
 
 == Customisation ==
 
-More color:
+=== Init setup for solarize theme ===
+{{{
+/set weechat.bar.status.color_bg 0
+/set weechat.bar.title.color_bg 0
+/set weechat.color.chat_nick_colors 1,2,3,4,5,6
+/set weechat.color.chat_highlight 7
+/set buflist.format.hotlist_message "${color:7}"
+/set buflist.format.buffer_current "${color:,7}${format_buffer}"
+/set weechat.bar.buflist.position top
+/set weechat.bar.buflist.items "buflist"
+/set weechat.look.prefix_align_max 15
+/set weechat.look.buffer_notify_default message
+/set irc.look.smart_filter on
+/filter add irc_smart * irc_smart_filter *
+/filter add irc_join_names * irc_366,irc_332,irc_333,irc_329,irc_324 *
+}}}
+
+
+
+=== More color: ===
 `/set weechat.color.chat_nick_colors "cyan,magenta,green,brown,lightblue,default,lightcyan,lightmagenta,lightgreen,blue,31,35,38,40,49,63,70,80,92,99,112,126,130,138,142,148,160,162,167,169,174,176,178,184,186,210,212,215,247"`
 
 Vertical bar for pseudo list:
@@ -69,6 +96,7 @@ Some slack settings:
 
 
 == Useful links ==
+    * [[https://gist.github.com/xero/2d6e4b061b4ecbeb9f99|IRC Reference]]
     * https://weechat.org/files/doc/devel/weechat_quickstart.en.html
     * https://freenode.net/faq.shtml#userregistration
     * https://github.com/seanh/infinite-fun-space/blob/master/weechat.md

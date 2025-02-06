@@ -1,58 +1,123 @@
-= TOFIX =
+= TOFIX | project:archlinux +tofix -VISIBLE !-COMPLETED =
+* [ ] n8n pour publier sur le mattermost via le rss to tt-rss !  #dda466cd
 * [ ] Fix error : 16.622994] Support for cores revisions 0x17 and 0x18 disabled by module param allhwsupport=0. Try b43.allhwsupport=1  #262fe84a
+* [ ] vimb spécifique à certain usages ne doit pas dépendre de l'onglet i3web  #b99b57cc
+* [ ] b43: probe of bcma0:1 failed with error -524 see page https://wiki.archlinux.org/index.php/Broadcom_wireless#b43  #81e0ad3f
+* [ ] Pb de mémoire sur archpe; utilisé à +64% => alerte de mémoire insuffisante  #d5624c14
+* [ ] PB reseau avec gotify quand les 2 VPN activés  #d1020480
 [   16.623000] b43: probe of bcma0:1 failed with error -524
 see page https://wiki.archlinux.org/index.php/Broadcom_wireless#b43
-* [ ] Fix error : [    6.905329] systemd[1]: sysinit.target: Job systemd-update-done.service/start deleted to break ordering cycle starting with sysinit.target/start  #ee0c779f
+* [ ] Fix error : [    6.905329] systemd[1]: sysinit.target: Job systemd-update-done.service/start deleted to break ordering cycle starting with sysinit.target/start  #d3daa674
+* [ ] Docker service failed  #9de15063
+* [ ] Redshift service failed  #6fadf6eb
+* [ ] xdg-desktop-portal failed  #0ff8028c
+* [S] clipmenud crash on startup no way to start it after X11 see notes  #0e3f658f
 
 
-= TODO | project:archlinux -VISIBLE !-COMPLETED =
-* [X] Add a feature to make password menu generate a pass if it's not existing
-* [ ] Improve i3menu openvpn -> be sure the connection is initialized, put in orange when the connection is started but the sequence not yet fully initialized
-* [ ] improve delete on gmail account (TODO : mark message as d and $ to really delete -> mv to trash box)  #31500431
-* [ ] improve vimrc see https://github.com/pixelastic/oroshi/blob/master/config/vim/vimrc  #f8ad8a6c
-* [ ] vim : trouver une solution pour désactiver le XON/XOFF (ctl-q/ctl-s)  #8f06c95c
-* [ ] vimwiki : faire que le colonne des nombres affiche autremnent et autre chose que les numéros de ligne (par exemple les niveaux de replis)  #ac593720
+= TODO | project:archlinux +todo -mutt -i3 -image -vimb -vim -tw -VISIBLE !-COMPLETED =
 * [ ] vifm : faire un mode preview pour que les fichiers s'ouvrent dans un scratchpad  #9f9952c5
-* [ ] utiliser lr gpg comme agent  #4c1c0240
-* [ ] Vimb launch a pdf viewer instead of always download the file  #2b71946b
-* [ ] Imaginer un raccourci qui permetterai d'ouvrir une fenetre mail supplémentaire pour par exemple pouvoir écrire un mail en même temps que pouvoir aller sur la liste des mails  #e111a671
-* [ ] mutt : voir http://wcm1.web.rice.edu/mutt-tips.html pour le Format-flower  #dcc5a63f
-* [ ] mutt : améliorer la configuration voir http://www.titus-stahl.de/blog/2015/08/26/my-mutt-configuration/ et http://stevelosh.com/blog/2012/10/the-homely-mutt/#searching-email  #a046cca7
-* [ ] https://pwmt.org/ à tester : document viewer  #970d218d
-* [ ] i3 : faire que les layouts restent persistant entre chaque changement d'écran (peut-être via un backup auto du layouts rattachés à la fenêtre au moment de son changement  #451112bd
-* [ ] vimwiki : lors de l'ajout d'une entrée dans le journal, faire que l'enregistrement de l'entrée mette à jour l'index du journal  #973e2996
-* [ ] Faire un logger d'activiter avec dmenu => raccourci pour saisir du texte qui aura se mettre dans un fichier calendrier wiki avec un horodatage  #67e81bbd
-* [ ] i3 -> dossier share/bin -> lance autmotiquement dans une fentre nommée du nom de l'appli (suppression à terme du dosser i3 dans share/bin/i3)  #8d19843d
-* [ ] tester et voir si rofy peut remplacer dmenu  #0efead2d
-* [ ] vim plugins : https://github.com/tpope/vim-abolish avec https://github.com/tpope/vim-repeat tester la fonctionalité qui permet de passer en caméliser et inversement  #4a50a1d9
 * [ ] GTD easkwrrior http://taskwarrior.org/docs/start.html -> possibilité de le configurer avec mutt http://www.titus-stahl.de/blog/2015/08/13/a-better-taskwarrior-integration-for-mutt/  #685b007f
-* [ ] http://www.drumminhands.com/2014/06/15/raspberry-pi-photo-booth/  #864aff35
 * [ ] Acheter des noms de domaine avec des bitcoin : www.namecheap.com  #b06d6e46
-* [ ] vim dans tmux http://rhnh.net/2011/08/20/vim-and-tmux-on-osx  #0ea0391e
-* [ ] Des dessins sous vim http://www.thegeekstuff.com/2009/12/how-to-create-ascii-drawings-in-vim-editor-draw-boxes-lines-ellipses-arrows-inside-text-file/  #91abec59
 * [ ] pandoc pour faire les conversions de différents markup  #62b67889
-* [ ] Mettre de la couleur dans le terminal : https://unix.stackexchange.com/questions/148/colorizing-your-terminal-and-shell-environment  #d846568c
 * [ ] Organiser sa [[http://beets.radbox.org/|musique en ligne de commande]]  #bd79ae22
-* [ ] voir quelques plugin de https://github.com/connermcd/dotfiles/blob/master/.vimrc  #aa3b262e
-* [ ] Réussir à pouvoir mettre en hibernation  #62e40bfb
 * [ ] Remplacer Slim pour SDDM https://wiki.archlinux.fr/SDDM ou LighDM https://wiki.archlinux.fr/LightDM  #85550f40
-* [ ] mettre en place un vrai backup (voir https://www.sysnove.fr/blog/2016/06/backupninja-borg.html)  #bcfb3923
-* [ ] Régler le pb des polices de caractères  #cbbc46f3
+* [ ] voir s'il est possible de supprimer le curseur de la souris au démarrage  #b8a4ccc9
+* [ ] autre alternative à partir d'un fork de web-greeter refaire un greeter qui correspond au besoin  #5fb727fa
+* [ ] suivre le projet lightdm-mini-greeter pour voir si le multiuser et le positionement de la fenêtre seront intégrés  #a45ab037
+* [S] pouvoir avoir un flux local sur lequle ajouté des liens (par ex. des liens youtubes) pour les écouter plus tard  #88cf7fb7
+* [ ] Faire un profile VPN par machine (voir notes)  #88cc61f0
+* [ ] timer pour les vpn : travaille 8-18 / home 18-2  #80b0287c
+* [ ] archiveur  #52c6c3a6
+* [ ] faire un rsync du repo gemini pour pouvoir l'avoir en local sans être dépendant d'une connexion internet  #cb9489f6
+* [ ] Avoir une adresse mail pour les abonnements de newsletter magazine  #80bb8f9a
+* [ ] Documenter Gotify pour savoir comment recevoir les notifs sur un nouveau device (ordi ou tel)  #c9c9a6f6
+* [ ] mettre la sauvegarde du kidizoom touch sur creamy  #98136631
+* [ ] Faire un tracker de prix pour les matériaux de la maison  #45200cb8
+* [ ] Pb avec les emoticons  #5dc56e38
+* [ ] tester Galmap (logiciel de musique)  #6f33f72a
+
+== taskwarrior (tag: tw) | project:archlinux +tw ==
+* [ ] tester des plugins  #e1c1874a
+    * [X] https://github.com/Aerex/icaltask pour ajouter des taches dans une todo ios  #33267bd9
+    * [X] https://github.com/nasoym/task_tools tcal pour avoir les taches sur un calendrier  #11ddb5ad
+    * [X] https://github.com/jschlatow/taskopen pour lier une task à un lien ou fichier  #89a47a64
+    * [ ] https://github.com/Spredzy/ics2task pour importer un évenement ics  #19cbbbab
+    * [ ] https://github.com/theunraveler/taskwarrior-web pour une interface web auto hébergée  #fa435d68
+* [ ] Avoir un server taskd et une interface web pour ne plus dépendre d'un tiers  #c9a765c6
+* [ ] Remplacer le calendrier pal pour un équivalent qui utilisé taskwarrior comme backend  #543aa71c
+    * [X] ne permet pas de faire grand chose avec tw, importe tout sans distinction...  #20604790
+    * [X] voir si possible d'utiliser pal et de synchroniser...  #315e4fcb
+* [ ] Revoir le schéma des couleurs  #e06a510d
+* [ ] Tester les taches récurrentes https://taskwarrior.org/docs/recurrence/  #92cc0d96
+* [ ] Réoganiser les taches homes par projet  #41ba612a
+* [ ] ajout de notification pour les tache avec une due date  #ded65e1e
+* [ ] Faire des raccourcis pour alimenter taskwarrior  #80fbda00
+* [ ] Mettre en commun la conf de wingtask via share  #e9598b5c
+
+== vim | project:archlinux +vim ==
 * [ ] vimwiki : faire que la touche tab propose l'auto-complétion des mots, les flèches droite-gauche permenettent de naviguer entre les fautes et qu'on soit automatiquement en mode correction  #fca50eb6
-* [ ] Un système de backup (voir https://www.sysnove.fr/blog/2016/06/backupninja-borg.html)  #df639c5a
+* [ ] vim : trouver une solution pour désactiver le XON/XOFF (ctl-q/ctl-s)  #8f06c95c
+* [ ] vimwiki : lors de l'ajout d'une entrée dans le journal, faire que l'enregistrement de l'entrée mette à jour l'index du journal  #973e2996
+* [ ] vimwiki : faire que le colonne des nombres affiche autremnent et autre chose que les numéros de ligne (par exemple les niveaux de replis)  #ac593720
+* [ ] Des dessins sous vim http://www.thegeekstuff.com/2009/12/how-to-create-ascii-drawings-in-vim-editor-draw-boxes-lines-ellipses-arrows-inside-text-file/  #91abec59
+* [ ] vim dans tmux http://rhnh.net/2011/08/20/vim-and-tmux-on-osx  #0ea0391e
+* [ ] Fix emoticons : sur Gvim ok si la police de caractère se comporte bien avec des caractères 2 fois plus gros q'un caractère - A good start http:s://github.com/alacritty/alacritty/issues/153  #74bf6a64
+* [ ] Améliorer vim  #3215447e
+    * [ ] improve vimrc see https://github.com/pixelastic/oroshi/blob/master/config/vim/vimrc  #f8ad8a6c
+    * [ ] voir quelques plugin de https://github.com/connermcd/dotfiles/blob/master/.vimrc  #aa3b262e
+    * [ ] vim plugins : https://github.com/tpope/vim-abolish avec https://github.com/tpope/vim-repeat tester la fonctionalité qui permet de passer en caméliser et inversement  #4a50a1d9
+
+== vimb  | project:archlinux +vimb ==
+* [ ] vimb : ouvrir les pdf (ne plus les télécharger) -> tentavie avec `/usr/bin/inotifywait -m -q -e create !!!  #163833cd
+* [ ] optimizer l'historique, ajouter un archivage et dédoublonnage  #a3b4e0e3
+
+== image  | project:archlinux +image ==
+* [ ] faire de la doc sur la manipulation des images  #285194ec
+* [ ] faire de la doc sur la manipulation des images  #40c6e5a2
+* [ ] visualiseur  #3ca08399
+* [ ] avoir quelque chose de fonctionnel et maitriser pour la maniupaltion des images  #7043e940
+* [ ] programme de manipulation : gimp ou autre ?  #7d82f13c
+* [ ] gestion des photos perso, doc à faire  #17328086
+* [ ] faire de la doc sur la manipulation des images  #12c6c986
+
+== mutt  | project:archlinux +mutt ==
+* [ ] mutt : améliorer la configuration voir http://www.titus-stahl.de/blog/2015/08/26/my-mutt-configuration/ et http://stevelosh.com/blog/2012/10/the-homely-mutt/#searching-email  #a046cca7
+* [ ] improve delete on gmail account (TODO : mark message as d and $ to really delete -> mv to trash box)  #31500431
+* [ ] mutt : voir http://wcm1.web.rice.edu/mutt-tips.html pour le Format-flower  #dcc5a63f
+* [ ] Imaginer un raccourci qui permetterai d'ouvrir une fenetre mail supplémentaire pour par exemple pouvoir écrire un mail en même temps que pouvoir aller sur la liste des mails  #e111a671
 * [ ] Offline imap mail see http://blog.tshirtman.fr/2013/3/17/mutt-offlineimap-notmuch-nottoomuch  #7d8a0ee4
+* [ ] voir pour mutt comment fonctionne LBDB https://www.spinnaker.de/lbdb/  #8c98134c
+* [ ] Ajouter les notifs dunst à reception nvx mail  #b04825af
+* [ ] permettre la mise à jours avec un cache plus long pour le mot de passe  #ee9e3335
+
+== i3 | project:archlinux +i3 ==
+* [ ] ajouter les packages `perl-json-xs` et `perl-anyevent` pour pouvoir enregistrer des layout i3  #5e7cc6e6
+* [ ] command pour sauvegarder un layout `i3-save-tree  #27a3f458
+* [ ] Tracker de prix  #b56421bc
+* [ ] totest: remplacement de dmenu par j4-dmenu-desktop  #c2c9e9dc
+* [ ] avoir un dmenu pour les emojis  #a360708c
+* [ ] bug popup i3 les fenetres de la vue en cours se mettent dans la fenetre popup (avec taskwarior-tui)  #2409fcd2
+* [ ] Fix i3 status of OpenVpn when not connected and report ok status  #1dd1986a
+* [ ] Améliorer le dmenu copier/coller  #17dcd846
 
 == Ansible | +ansible ==
+* [X] faire que termite soir le terminal par défaut (avec i3-sensible-terminal)  #b4c1a45e
+* [X] Installer oh-my-zsh  #e7483098
 * [ ] voir pour mutt comment fonctionne LBDB https://www.spinnaker.de/lbdb/  #8c98134c
 * [ ] command pour sauvegarder un layout `i3-save-tree  #27a3f458
 * [ ] ajouter les packages `perl-json-xs` et `perl-anyevent` pour pouvoir enregistrer des layout i3  #5e7cc6e6
+* [ ] Régler le pb des polices de caractères  #cbbc46f3
+* [ ] Le déploiement VPN ne fonctionne pas sur archeepe : obligé de modifier les propriétaires des fichiers copiés dans /etc/openvpn/client pour le propriétaire openvpn  #7b946694
 
 == Hardware |+hardware ==
 * [ ] ameliorer la detection des ecrans http://superuser.com/questions/970024/system-doesnt-detect-hot-plugged-display-portthrough-thunderbolt-connector  #53035b75
 * [ ] thunderbolt en connexion a chaud (udevadm monitor) https://bbs.archlinux.org/viewtopic.php?id=170294  #4ee8c72a
-* [ ] i3 : dernier écran -> aller à l'écran précédant  #c656df9c
 * [ ] tester iphone tethering : https://wiki.archlinux.org/index.php/IPhone_tethering  #832bc9cf
 * [ ] Débug my-crypt-usbkey dans journalctl -xe après être sortie du mode veille  #80f666bc
+* [ ] Réussir à pouvoir mettre en hibernation  #62e40bfb
+* [ ] désactiver la touche wifi pour utiliser le menu à la place du switch wifi  #55624f8a
+* [ ] i3 : dernier écran -> aller à l'écran précédant  #1c44ce70
+* [ ] Utiliser MPRIS pour le controle audio  #2cb2f1a7
 
 
 == DONE | project:archlinux +COMPLETED ==
@@ -80,3 +145,14 @@ see page https://wiki.archlinux.org/index.php/Broadcom_wireless#b43
 * [X] Installer oh-my-zsh  #e7483098
 * [X] Supprimer ario et floola  #0a1a78c7
 * [X] voir pour utiliser gpg et automatiser le lancement de l'agent gpg ou ssh [[https://github.com/ervandew/dotfiles/blob/master/.xinitrc|example de conf]]  #4f4821a3
+* [X] Vpn seems te got the same ip for all computers... can't be more than one connected at a time...  #674c531a
+* [X] Fix taskwarrioir lists for personal projects !!!  #f5b3a682
+* [X] ne permet pas de faire grand chose avec tw, importe tout sans distinction...  #20604790
+* [X] voir si possible d'utiliser pal et de synchroniser...  #315e4fcb
+* [X] https://github.com/Aerex/icaltask pour ajouter des taches dans une todo ios  #33267bd9
+* [X] https://github.com/nasoym/task_tools tcal pour avoir les taches sur un calendrier  #11ddb5ad
+* [X] https://github.com/jschlatow/taskopen pour lier une task à un lien ou fichier  #89a47a64
+* [X] Pb de toolbar dans évolution (2 toolbars dont une dans le titre)  #5f4fb31d
+* [X] Pb de synchro avec wingtask  #732148c5
+* [X] Add a feature to make password menu generate a pass if it's not existing  #57b42e11
+* [X] Un système de backup (voir https://www.sysnove.fr/blog/2016/06/backupninja-borg.html)  #df639c5a

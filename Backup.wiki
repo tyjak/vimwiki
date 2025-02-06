@@ -1,0 +1,59 @@
+= Backup =
+
+Utilisation de rclone + borgmatic
+
+== Configuration de rclone ==
+
+suivre les instructions pour configurer rclone sur le site officiel
+pour pointer un autre dossier que le dossier racine, copier l'id du dossier cible via l'interface web de pcloud qui donne l'id du dossier dans l'url
+
+Montage via rclone : `rclone mount pcloud:/ backup --W`
+
+== Configuration de borgmatic ==
+
+voir ce lien pour faire marcher de concert rclone avec borg :
+https://github.com/rclone/rclone/issues/3641
+
+voir les liens dans le bookmark vimb
+
+renseigner : export BORG_PASSCOMMAND="pass show borg/archy" dans .xprofile
+
+# initier un repo borg
+borgmatic init encryption repokey
+
+# lister les archives
+bormatic list
+
+# monter une archive
+borgmatic mount --archive archlinux-2021-08-10T23:36:46.356600 --mount-point ~/mnt
+
+== Configuration test sur raspberry ==
+
+* configuration du service borgmatic
+* configuration de rclone lancé par borgmatic
+* installation d'un service usbpower.service
+* installation du montage du disque home-david-backup-data.mount
+* installation du service borgmatic borgmatic.service
+
+TODO:
+- [ ] revoir le repertoir backup
+    - [ ] faire un sous dossier backup/pcloud ?
+    - [ ] faire un sous dossier backup/restore ?
+- [ ] faire des sauvegardes si possible toutes les heures lorsque la passphrase est délocké
+    - [ ] trouver comment savoir si le passphrase est délocké ou non...
+    - [ ] faire les sauvegarde que sur un reseau wifi déterminé
+- [ ] faire un dmenu pour:
+    - [ ] lister et choisir une archive à monter
+    - [ ] lancer une sauvegarde
+- [ ] tester une configuration de sauvegarde à distance: Snapshots aren't backups. Even on separate hardware. You could do this though... Take host A as your actual host. Host S is where you want the snapshot. On Host S, create and export an iscsi voulme. Mount it on Host A, create a physical volume, add that physical volume to your voulme group. Create a snapshot on Host A of the voulme you want to back up, but specify the physicalvolume as your newly mounted iscsi voulme.
+Again I should emphasize, this is not a backup since on the main host I'm one command away from destroying the actual volume and the snapshot. https://www.reddit.com/r/linux/comments/hpyl4/can_rsnapshot_create_and_use_an_lvm_snapshot_on_a/
+- [ ] faire une sauvergarde pour les fichiers montées du téléphone
+
+== Backup pour un portable ==
+- [ ] Créér un service
+    - [ ] qui devra créer une snapshot LVM
+    - [ ] monté le disque distant de backup
+    - [ ] lancer la sauvegarde borgamtic
+- [ ] créer une configuration borgmatic
+    - [ ] qui sauvera également sur Pcloud
+

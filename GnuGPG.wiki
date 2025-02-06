@@ -1,4 +1,14 @@
-= HOWTO GnuGPG =
+= HOWTO GnuGPG || project:gpg +home =
+
+08-09-2024 WIP:
+* ajout d'une identité de travail
+* ajout d'une clé S et A pour le travail
+* ajout d'une clé E pour gérer le cryptage séparer des clé privé 2FA -> clé supprimé car derniere clé créé utilisé par défaut - voir comment dire à pass d'utiliser toujours la même sous-clé
+* voir : http://jacqu.in/gpg_and_subkeys.html
+* [ ] exporté la clé publique privé du travail  #f59905c8
+* [ ] gérer le nouvelle clé de cryptage  #a08c77fa
+* [ ] synchroniser la clé usb  #22dfa078
+* sur le pb d'export de clé privé : https://security.stackexchange.com/questions/9633/how-can-i-convert-my-encypted-pgp-secret-key-for-use-performing-ssh-authenticati et https://serverfault.com/questions/887769/export-private-ed25519-key-from-gnupg-for-use-in-ssh
 
 == Gestion d'une/des clé(s) ==
 
@@ -13,7 +23,11 @@ Les clés sont stockées dans le répertoire ~/.gnugpg
 - `uid {numéro à côté de l'adresse mails}` Pour séléctinoner un uid
 - `key {numéro à côté d'une clé}` Pour sélectionner une clé
 - `primary` Pour désigner l'uid sélectionner par défaut pour signer
-- exporter une seule clé privée : `gpg --export-secret-keys -a [KEYGRIP]!`
+- [[exporter]] une seule clé privée : `gpg --export-secret-keys -a [KEYGRIP]!`
+- renouvellement date :
+    - `key {index number}`
+    - `expiration`
+    - `gpg --keyserver pgp.mit.edu --send-keys {keygrip}`
 
 === GPG type flag ===
 
@@ -115,6 +129,23 @@ echo "UPDATESTARTUPTTY" | gpg-connect-agent > /dev/null 2&>1
 
 Pour plus de détail voir : https://linuxfr.org/users/spack/journaux/gnupg-et-authentification-ssh
 
+=== Utilisation de clés A de gnugpg pour ls ssh ===
+
+Créer le clé d'authent via la command `gpg --expert --edit-key {ID de la clé (mail)}`
+NOTE : --expert permet de pouvoir choisir le type de clé (A et/ou S, E ...)
+Dans gpg :
+{{{
+gpg> addkey
+...
+gpg> save
+}}}
+
+Exporter le clé publique : `gpg -o id_ed25519.pub --export-ssh-key {KEYGRIP}!`
+NOTE : le `!` est important pour forcer gnugpg à exporter la clé spécifier et pas celle par défaut
+
+source : https://serverfault.com/questions/887769/export-private-ed25519-key-from-gnupg-for-use-in-ssh
+
+
 === Ajout des clés privés SSH ===
 
 Possiblité d'ajouter ses clés privés SSH dans gnugpg: elles sont cryptées et protégées par mot de passe
@@ -166,10 +197,11 @@ les applications:
 
 === Password-store ===
 
-Créer une subkey unquement pour gérer l'encryptage des mots de passe, il est conseillé de reserver l'usage de cette clé uniqument pour le cryptage des mots de passe.
+Créer une subkey uniquement pour gérer l'encryptage des mots de passe, il est conseillé de reserver l'usage de cette clé uniqument pour le cryptage des mots de passe.
 
 Pour désigner la clé utilsée par pass, il suffit de mettre son identifiant dans :
-`.password-store/.gpg-id
+`.password-store/.gpg-id`
+NOTE : l'identifiant ne permert pas de svoir quel clé est utilisée à moin qu'il soit possible de désigné le keygrip directement ???
 
 === passforioss ===
 

@@ -12,6 +12,7 @@
 - Etherum
 - Polkadot
 - Algorand
+- Binance (use Firefox to login to Binance dex)
 
 === networks ===
 
