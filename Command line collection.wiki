@@ -1,6 +1,22 @@
 = Command line collection  =
 
+== Image manipulation ==
+* https://www.digitalocean.com/community/tutorials/workflow-resizing-images-with-imagemagick
+* `convert -resize 100x100^ source.png dest.png` # Resize keeping aspect ratio
+* `convert -resize 100x100^ -gravity center -extent 100x100 original.png new.png` # Resize, keep aspect ratio and canvas to match size
+* `convert -background none -density 1000 -resize 1000x compass.svg compass.png` # Resize an svg, density is to get 1000px for svg, 1000x resize to width 1000 and calculate the height auto
+* `convert -bordercolor none -border 10 origin.png dest.png` # Add a transparency border of 10px 
+
+== SSL ==
+
+* utiliser testssl.sh
+
 == curl ==
+
+* déclancher une action si le status change :
+`watch -g [ $(curl -o /dev/null -s -w "%{http_code}\n" https://candidat.pole-emploi.fr/metierscope/) = "200" ] && docker-compose up -d --build`
+
+
 
 * permet de tester un site sans pour autant que le nom soit dans un host ou un dns
 `curl -I --resolve [domain name]:80:[ip] [URL]`
@@ -108,3 +124,78 @@ manual : https://github.com/thestinger/termite
 `ctrl--` decrease font size
 `ctrl-=` reset font size to default
 
+
+== Fondamentaux linux ==
+
+Des commandes :
+* blkid
+* fuser -vm <fichier> => pour voir le lien fichier / process
+* file <fichier> => pour savoir si on est en 32bit ou 64bit
+* script stocké les commandes avec leur resultat
+* tac commande inverse de cat !!!
+
+Pour avoir les vraies stats de perf disque utiliser la commande dd
+
+Diff entre zip et tar => le zip ne sauvegarde pas les liens
+
+Les mots de passes : dans shadow => la première parties est le sel qui sera utilisé pour reconnaitre le mdp donné. Le sel est généré aléatoirement.
+
+Les jobs :
+
+kill -l #liste des différents kill
+kill -18 #met en suspend pareil que Ctrl-Z
+kill -19 #remet en march
+
+liste des jobs lancé par le user:
+jobs
+
+kill -3 %1 => quit le job 1 (3 => kill pour quitter proprement)
+
+
+Processus Zombie : si un parent est tué alors que son fils ne l'est pas
+
+for i in (seq 1 5); do ({quelque chose}); done
+
+/var/run ou /run ou /opt => dossier type tmpfs pour stocker le PID d'un exec entre autre
+
+Utilisation de foremost pour retrouver les fichiers effacé
+foremost all /dev/sda
+
+=== Création d'une image disk ===
+
+sudo dd if=/dev/zero of=/media/sf_partage/VHD.img bs=1M count=1200
+mkfs -t ext4 /media/sf_partage/VHD.img
+sudo mkdir /mnt/VHD/
+sudo mount -t auto -o loop /media/sf_partage/VHD.img /mnt/VHD/
+
+
+
+
+=== Linux Avancé ===
+
+Systeme de stockage HDFS => système distribué
+tune2fs -l /dev/sda1 pour voir tous le détail d'un disque
+
+Toutes les infos d'un processus => /proc/[num proc]/
+more /proc/1/
+
+Exemple pour vor pourquoi une appli plante :
+on lance une appli avec un kill -19, on regarde /proc/num appli PID/maps et on relance kill -18 et on voit où çà plante
+
+Fichier utiles maps et status
+
+Voir ce que contient l'intrd.img,
+L'initrd de démarage est un system monté en mémoire pour lancer le system.
+Il se trouve dans le boot.
+
+Exemple pour archlinux :
+1. on copie l'image initramfs-linux.img sur son home ou dossier temporaire
+2. avec un file on regarde ce que sait => file initramfs-linx.img
+3. sur arch c'est avec zstd donc zstd -d initramfs-linux.img
+4. zstd -o init_tmp -d initramfs-linux.img
+5. file init_tmp => type cpio archive (vielle archive pour stockage sur bande)
+6. cpio -imdF init_tmp
+7. vim init => le fichier d'initialisation 
+
+
+strace ls => pour savoir ce quand çà passe si çà plante (dernière ligne)

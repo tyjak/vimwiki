@@ -1,10 +1,29 @@
-= Taskwarrior =
+= Taskwarrior || project:archlinux +home =
 
 Lien utiles : /home/david/vimwiki/Taskwarrior.wiki
 
-== Synchro avec Teello ==
+== TODO | +todo and +tw ==
+* [ ] tester des plugins  #e1c1874a
+    * [X] https://github.com/Aerex/icaltask pour ajouter des taches dans une todo ios  #33267bd9
+    * [X] https://github.com/nasoym/task_tools tcal pour avoir les taches sur un calendrier  #11ddb5ad
+    * [X] https://github.com/jschlatow/taskopen pour lier une task à un lien ou fichier  #89a47a64
+    * [ ] https://github.com/Spredzy/ics2task pour importer un évenement ics  #19cbbbab
+    * [ ] https://github.com/theunraveler/taskwarrior-web pour une interface web auto hébergée  #fa435d68
+* [ ] Avoir un server taskd et une interface web pour ne plus dépendre d'un tiers  #c9a765c6
+* [ ] Revoir le schéma des couleurs  #e06a510d
+* [ ] Tester les taches récurrentes https://taskwarrior.org/docs/recurrence/  #92cc0d96
+* [ ] Réoganiser les taches homes par projet  #41ba612a
+* [o] Remplacer le calendrier pal pour un équivalent qui utilisé taskwarrior comme backend  #543aa71c
+    * [X] ne permet pas de faire grand chose avec tw, importe tout sans distinction...  #20604790
+    * [X] voir si possible d'utiliser pal et de synchroniser...  #315e4fcb
+* [ ] ajout de notification pour les tache avec une due date  #ded65e1e
+* [ ] Faire des raccourcis pour alimenter taskwarrior  #80fbda00
+* [ ] Mettre en commun la conf de wingtask via share  #e9598b5c
+
+== Synchro avec Trello ==
 
 voir https://github.com/ogarcia/trellowarrior
+NOTE: impossible se synchroniser un tableau qui nous nous appartient pas
 
 == Quelques commandes ==
 
@@ -37,3 +56,17 @@ voir https://github.com/ogarcia/trellowarrior
     * eoww 						Local date for the end of the work week, Friday night, with time 23:59:59.
     * 1st,2nd, ...              Local date for the next Nth day, with time 00:00:00.
 
+== Manupulation de dates ==
+    * `task calc eoww` pour évoluer une date
+    * `task calc due-2days` date moins 2 jours avec la due date
+    * `task XXXX due:eoww+7d` dernier jour de travail de la semaine + 7 jours
+
+== Taskwarrior-tui ==
+
+Quelques commandes utilse:
+* `A` pour mettre une annotation
+* `t` pour ajouter/enlever le tag 'next'
+
+== Autour de Taskwarrior ==
+    * vit interface avec raccourci vim
+    * Taskwarrior-tui

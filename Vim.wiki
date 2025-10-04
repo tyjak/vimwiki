@@ -1,11 +1,11 @@
-= Vim tips =
+= Vim tips || project:archlinux +home +vim =
 
 == Simple calc ==
 Visual seletion on the operation todo and :
 :'<,'>!bc
 
 == NEW ==
-* ,n pour supprimer le highlight de la recherche
+* ,/ pour supprimer le highlight de la recherche
 * <SPACE> pour ouvrir un fichier
 * ,<SPACE> pour faire une recheche du mot sous le cusreur (/)
 
@@ -58,6 +58,13 @@ Visual seletion on the operation todo and :
 |       | *       | Colle le registre *                          |
 |       | +       | Colle le registre +                          |
 
-=== TODO ===
-* [X] avoir la même presentation pour la limite du nombres de caractères dans la largeur : http://i.imgur.com/T00FgWu.png?1
-* [ ] Refaire la config en utiliser la structure des dossiers de configuration
+=== TODO | +todo ===
+* [X] avoir la même presentation pour la limite du nombres de caractères dans la largeur : http://i.imgur.com/T00FgWu.png?1  #b86a7411
+* [ ] Refaire la config en utiliser la structure des dossiers de configuration  #32223616
+* [ ] improve vimrc see https://github.com/pixelastic/oroshi/blob/master/config/vim/vimrc  #f8ad8a6c
+* [ ] vim : trouver une solution pour désactiver le XON/XOFF (ctl-q/ctl-s)  #8f06c95c
+* [ ] vimwiki : lors de l'ajout d'une entrée dans le journal, faire que l'enregistrement de l'entrée mette à jour l'index du journal  #973e2996
+* [ ] vimwiki : faire que le colonne des nombres affiche autremnent et autre chose que les numéros de ligne (par exemple les niveaux de replis)  #ac593720
+* [ ] vimwiki : faire que la touche tab propose l'auto-complétion des mots, les flèches droite-gauche permenettent de naviguer entre les fautes et qu'on soit automatiquement en mode correction  #fca50eb6
+* [ ] voir quelques plugin de https://github.com/connermcd/dotfiles/blob/master/.vimrc  #aa3b262e
+* [ ] Avoir un raccourci clavier pour switcher le theme en dark ou light  #a062b4db

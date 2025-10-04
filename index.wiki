@@ -18,6 +18,7 @@
     * [[Docker]]
     * [[LXC]]
     * [[Mutt]]
+    * [[Image]]
     * [[Taskwarrior]]
     * [[GnuGPG]]
     * [[Weechat]]
@@ -31,6 +32,7 @@
     * [[Misc]]
     * [[Blockchain]]
     * [[Backup]]
+    * [[3D]]
 
 == Scratchpad ==
 

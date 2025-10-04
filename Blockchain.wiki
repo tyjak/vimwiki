@@ -27,3 +27,9 @@
 == impots ==
 
 voir https://cryptoast.fr/erreurs-declaration-revenu-crypto/
+
+== Duniter ==
+
+Installation avec swarm => nécessite un ip static si stack recréée.
+
+Pour la conf duniter dans local et remote ip => mettre l'ip du conteneur (10.0.X.X)

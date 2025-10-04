@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 = Archlinux =
+||||||| parent of 4d06995 (Update docs)
+= Archlinu =
+=======
+= Archlinux || project:archlinux +home =
+>>>>>>> 4d06995 (Update docs)
 
 Mes notes sur l'installation d'Archlinux
 
@@ -99,11 +105,18 @@ INCONVENIANTS :
     * voir les paquets à réinstaller : `sudo ldconfig 2>&1 | cut -d' ' -f3 | xargs pacman -Qo`
     * réinstaller avec les dépendances si nécessiare : `pactree -d1 -u {nom du paquet} | sudo pacman -S --force -`
     * avec toutes les dépendances `pactree -u {nom du paquet} | sudo pacman -S --force -`
+    * utilisation de reflector pour la gestion des miroirs (voir https://forums.archlinux.fr/viewtopic.php?p=177607#p177607)
+       `pacman -S reflector`
+       `reflector --verbose --country France -l 5 -p https --sort rate --save /etc/pacman.d/mirrorlist`
 
 === En cas de conflit lors de l'upgrade du system ===
     * Si l'upgrade s'arrête à cause d'une erreur : fichier déjà présent dans le système
     * mettre de côté les fichiers qui pose pb avec un `tar -cvf -T liste-fichiers.txt`
     * supprimer les fichiers `cat liste-fichiers.txt | sudo rm`
+
+=== Installation sur un serveur vps OVH ===
+
+voir https://www.dimoulis.net/posts/install-arch-linux-on-ovh-vps/
 
 == Customisation ==
 
@@ -126,7 +139,7 @@ alors la solution : i
 === Note pour python ===
 
     Lors d'une mise à jour majeur de python, il est nécessaire de recompiler les packages pythons installés.
- * `yay -S $(pacman -Qqo /usr/lib/python3.7/)`
+ * `yay -S --rebuildall --noconfirm $(yay -Qqo /usr/lib/python3.8/)`
 
 === Les paquets indispensables ===
 
@@ -295,7 +308,12 @@ Installer le package `unclutter`  et ajouter dans `.xinitrc` :
 
 Note: l'option `-display :0` n'est utile que si l'on est execute la commande dans un terminal qui n'est pas sur l'écran ciblé
 
-=== I3 window manager ===
+=== I3 window manager | +todo +i3 ===
+* [ ] Tracker de prix  #b56421bc
+* [ ] totest: remplacement de dmenu par j4-dmenu-desktop  #c2c9e9dc
+* [ ] avoir un dmenu pour les emojis  #a360708c
+* [ ] Améliorer le dmenu copier/coller  #17dcd846
+* [ ] Régler le pb de centrage (cf annotation)  #7b47a386
 
  * i3pystatus-git pour des infos dans la barre de menu
 
@@ -368,16 +386,23 @@ Et rédémarrer le service `sudo systemctl reload systemd-resolved`
 
  * pour voir les horloges : `timedatectl`
  * pour régler UTC : ` sudo ntpd -qg`
+ * pour synchroniser l'horloge physique : `sudo hwclock --systohc`
+ * pour consulter l'horloge physique : `sudo hwclock --show`
  * `timedatectl set-local-rtc 1` # 0 pour la remettre sur UTC
  * plus d'info : https://wiki.archlinux.fr/Horloge
 
-=== Configuration du clavier ===
-
- * générer le fichier ~/.Xmodmap : `xmodmap -kpe > ~/.Xmodmap`
- * éditer le fichier ~/.Xmodmap pour modifier les touches par défaut
- * voir la fin du fichier pour voir comment modifier le comportement de la touche caps
- * `xmodmap ~/.Xmodmap` pour appliquer les changements
- * Pour ne pas éteindre directement via la touche power : dans `/etc/systemd/logind.conf` mettre `HandlePowerKey=ignore` puis assigner pour i3 la touche 124 dans .Xmodmap (voir https://wiki.archlinux.org/index.php/I3#Shutdown.2C_reboot.2C_lock_screen )
+=== Configuration du clavier | +todo and +keyboard ===
+* [ ] désactiver la touche wifi pour utiliser le menu à la place du switch wifi  #55624f8a
+* documentation [[https://wiki.archlinux.fr/Xmodmap|Xmodmap — ArchwikiFR]]
+* générer le fichier ~/.Xmodmap : `xmodmap -kpe > ~/.Xmodmap`
+* éditer le fichier ~/.Xmodmap pour modifier les touches par défaut
+* voir la fin du fichier pour voir comment modifier le comportement de la touche caps
+* `xmodmap ~/.Xmodmap` pour appliquer les changements
+* Pour ne pas éteindre directement via la touche power : dans `/etc/systemd/logind.conf` mettre `HandlePowerKey=ignore` puis assigner pour i3 la touche 124 dans .Xmodmap (voir https://wiki.archlinux.org/index.php/I3#Shutdown.2C_reboot.2C_lock_screen )
+* utiliser `xev` pour obtenir le code d'une touche `xev | grep keycode`
+* mettre les racourcis dans i3 ou .xbindkeysrc (plus facile dans i3 me ne permet pas de tous faire)
+* dans .xbindleysrc : m:0x40 <- touche de modification windows
+* Il semble que .xbindkey et prioritaire sur i3 (car exécuté avant)
 
 === Configuration de la souris ===
 
@@ -395,6 +420,8 @@ Et rédémarrer le service `sudo systemctl reload systemd-resolved`
  }}}
  * Voir https://wiki.archlinux.org/index.php/IMWheel pour l'installation
 
+=== Double moniteur ===
+* Si le deuxieme moniteur n'est HIDPI alors utiliser arandr pour l'activer et la commande xrandr -output DP1-1 -scale 1.33x1.33 pour ajuster
 === Ajout d'un résolution écran ===
 
  * `cvt 1280 1024`
@@ -523,6 +550,11 @@ Voir : https://wiki.archlinux.org/index.php/Systemd-resolved
  * http://www.embeddedpi.com/documentation/3g-4g-modems/raspberry-pi-sierra-wireless-mc7304-modem-qmi-interface-setup
  * https://forums.lenovo.com/t5/Linux-Discussion/Mobile-Broadband-X1-Ubuntu-16-04/td-p/3720487
  * Se demande de code PIN, pour desactiver : `mmcli --sim={num|path modem} --pin={pin code} --disable-pin`
+ * Pour voir si en fonction : `sudo mbimcli -d /dev/cdc-wdm0 -p --query-radio-state`
+ * Pour bloquer/débloquer : `sudo rfkill block wwan`
+ 
+==== Identification pb modem ====
+ * Le pb identifié : https://modemmanager.org/docs/modemmanager/fcc-unlock/
 
 === Connection iPhone ===
 
@@ -638,12 +670,13 @@ Il existe plein d'autres combinaisons sysrq, wikipedia en liste une bonne partie
     energy-full-design:  59,28 Wh
     energy-rate:         13,8244 W
     voltage:             7,488 V
-
+* NOTE remplacement batterie LENOVO energy-full 47Wh, energy-full-design: 54,15Wh
 
 ==== Hibernate ====
 
 TODO: résussir à faire fonctionner l'hibernation
 Le mode hibernate ne fonctionne pas. Peut-être à cause du fait que le fichier swap est sur la mémoire usb.
+A propos du swap, un bon thread ici : https://www.reddit.com/r/archlinux/comments/p1tcza/how_large_should_i_make_my_swap_file_if_i_have/
 
 Ci après l'installation pour le mode hibernate:
  * Utilisation du mode swapfile voir [[https://wiki.archlinux.org/index.php/Swap#Manually|doc]] 
@@ -722,6 +755,10 @@ lancer `pavucontrol` pour régler la sortie son.
 ==== troubleshooting ====
 il faut que le daemon avahi-daemon soit démarré sur l'appareil qui diffuse le son pour que les périphériques puissent être découvrables
 si le airplay ne s'affiche pas voir http://raspberrypi.stackexchange.com/questions/5508/redirect-audio-to-another-airplay-device
+
+* Pb quand pas de micro : https://unix.stackexchange.com/questions/293876/microphone-not-working-on-archlinux
+
+* 08-04-2021 pb de ventilateur : https://askubuntu.com/questions/1246163/fan-sporadically-maxed-on-wake-up-due-to-unavailable-sensor-temperature
 
 
 commandes utiles (obsolète pour la partie raop mais à vérifier):
@@ -842,15 +879,24 @@ Pour organiser sa librairie musicale, permet de tagger et ranger dans des dossie
 
 * `beet import {music folder}` -> va imorter dans l'emplacement de la libray la musique et la taguer correctement ainsi qu'importer l'image de la couv de l'album
 
-==== podcast ====
+==== podcast | +podcast and +todo ====
+* [X] pouvoir avoir un flux local sur lequle ajouté des liens (par ex. des liens youtubes) pour les écouter plus tard  #88cf7fb7
 * logiciel : gpodder
 * utilisé avec mplayer en mode slave (création d'un FIFO `mkfifo /tmp/mplayer` dans .xinitrc
 * commande pour lecture/pause etc. définie dans i3
+* Synchronisation du flux avec gpodder.org
 
 ==== iPod ====
 * installer le logiciel Rhythmbox et gvfs-afc
 * il faut avoir configurer également le montage pour hfsplus en écriture (voir plus haut)
+<<<<<<< HEAD
 * il est possible de synchroniser l'iPod via Rhythmbox
+||||||| parent of 4d06995 (Update docs)
+* il est possible de synchroniser l'iPod via Rhythmebox
+=======
+* il est possible de synchroniser l'iPod via Rhythmebox
+* TODO: essayer http://www.ipodlinux.org/Installation_from_Linux/
+>>>>>>> 4d06995 (Update docs)
 
 ==== mpsyt ====
 
@@ -884,23 +930,37 @@ Voir également pour le clé privé : https://martincarstenbach.wordpress.com/20
 
 Si pb de clavier alors dans pref de virt-manger autoriser edition XML et changer le clavier dans la conf XML pour "fr"
 
+==== Emulation Raspberry pi avec carte SD installé ====
+https://forums.raspberrypi.com/viewtopic.php?t=45118
+
 === [[TO test|TODO]] ===
 
-=== ANSIBLE TODO ===
-
+=== Ansible | +ansible and +todo ===
 * [X] faire que termite soir le terminal par défaut (avec i3-sensible-terminal)  #b4c1a45e
 * [X] Installer oh-my-zsh  #e7483098
 * [ ] Régler le pb des polices de caractères  #cbbc46f3
+* [ ] Le déploiement VPN ne fonctionne pas sur archeepe : obligé de modifier les propriétaires des fichiers copiés dans /etc/openvpn/client pour le propriétaire openvpn  #7b946694
 
-== Tips ==
 
+== Candidats pour remplacer macbook ==
+* https://www.asus.com/fr/laptops/for-home/zenbook/zenbook-s-13-oled-um5302-amd-ryzen-6000-series/
+
+== Tips | +tip and +todo ==
  * voir le process qui bouffe du disque : atop puis touche "d" colonne "wrdsk"
  * faire une screencast en gif : byzanz
  * visualisation de photos - images : `feh -. {rep photo}`
  * [ ] ameliorer la detection des ecrans http://superuser.com/questions/970024/system-doesnt-detect-hot-plugged-display-portthrough-thunderbolt-connector  #53035b75
  * avoir le model de l'ordinateur : `sudo dmidecode -s system-product-name`
  * les références du model de l'ordinateur : `sudo dmidecode | grep -A3 '^System Information'`
- 
+ * faire un ocr rapide : `tesseract -l fra Desktop/KEY.PNG -` (installer tesseract + tesseract-data-fr)
+ * `xprop` pour avoir les infos d'une fenetre
+ * Manipuler les images en ligne de commande
+     * `file myimage.png # pour obtenir la taille`
+     * `mogrify -resize 1080x620 -background white -gravity center myimage.png # mise à l'echelle`
+     * `mogrify -extent 1280x720 -background white -gravity center myimage.png # changemeent taille canvas`
+     * source : https://stackoverflow.com/a/60942329
+ * installer un packet provenent d'un archive : repérer la version sur https://archive.archlinux.org/ puis installer avec `sudo pacman -U {URL de l'archive}` 
+
 == Troubleshooting ==
 
 === Pb installation i3pystatus ===
@@ -941,14 +1001,45 @@ Ajouter les lignes suivantes :
  }}}
 2. On recharce la conf : `sudo systemctl daemon-reload`
 
+=== Pb disque TOSHIBA ===
+* utiliser `ntfsfix {partition}` pour pouvoir remonter le disque
+* ref : https://askubuntu.com/questions/727218/cannot-mount-usb-stick-errors-out-with-mftmirr-does-not-match-mft
+* TODO impossible pour autant de faire la sauvegarde, pb de montage auto et impossible de retrouver comment le montage du disque se fait avant que borgmatic se lance...
 
-== [[Backup]] ==
+=== Installation d'un pkg aur modifié ===
+* J'ai fait une PR pour i3pytstatus qui traine à être vélidée
+* Quand je fais la maj bien sure çà mete
+* Pour régler le pb
+    1. on met à jours la version qui pête (donc dernière version)
+    2. on modifie le PKGBUILD pour ajouter le patch qui n'a pas été validé (voir diff)
+    3. `makepkg -f` pour forcer le rebuild
+    4. `makepkg -i` pour installer la versio npatché
+* Le patch est ici ~/src/patch/i3pystatus.patch
 
-=== boot ===
-
-* Message d'erreur dans dmesg : `Support for cores revisions 0x17 and 0x18 disabled by module param allhwsupport=0. Try b43.allhwsupport=1`
+=== Finger print ===
+  * Il semble que le modéle de lecteur d'empreinte ne soit pas reconnu
+  * obligé d'installer/compiler validity-sensors-tools
+=== paquets ===
+  * si erreur `erreur : erreur GPGME : Pas de données` alors faire un `sudo rm /var/lib/pacman/sync/*` puis relancer `yay -Syyu`
+=== dmesg ===
+Message d'erreur dans dmesg : `Support for cores revisions 0x17 and 0x18 disabled by module param allhwsupport=0. Try b43.allhwsupport=1`
 pour le régler tenter : `Uncommented '#RuntimeWatchdogSec=0' in /etc/systemd/system.conf `
 voir : https://bbs.archlinux.org/viewtopic.php?id=170588
-
 * fstab corrompu ou avec la mauvaise entrée:
     ajouté aprés rw dans les argument passé au noyau au moment du démarrage : "init=/bin/bash" pour pouvoir éditer le fichier fstab et le corriger (dans grub au momen du démarrage appuyer sur e pour editer la configuration)
+=== screen saver ===
+L'écran ne s'éteint plus automatiquement.
+`xset -q`
+et regarder les valeur pour Screen Saver:
+{{{
+Screen Saver:
+  prefer blanking:  no    allow exposures:  no
+  timeout:  0    cycle:  0
+}}}
+faire un `xset s` pour reset avec les valeurs par défaut :
+{{{
+Screen Saver:
+  prefer blanking:  yes    allow exposures:  yes
+  timeout:  600    cycle:  600
+}}}
+

@@ -16,6 +16,10 @@ utiliser pip :
 
 # installation d'un environement de developpement
 `python -m venv venv`
+ou
+`mkvirtualenv {nom de de l'env}` 
+ou via l'utilitaire `pew` (`pip install pew`)
+A RE-TESTER mais non fonctionnel `pew new {nom} python=pythonX.X.X` (si besoin de spécifier la versoin de python)
 
 # activation de l'environement (pour pouvoir lancer les binaires de l'env)
 `source bin/activate`

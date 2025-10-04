@@ -1,0 +1,11 @@
+= Home Assistant || project:iot +home =
+
+== TODO ==
+* [ ] Installer Zigbee2MQTT ou voir is Home assistant prend en charge le Zigbee  #2f9ef924
+* [ ] Integrer la cam Action => https://github.com/guino/BazzDoorbell/issues/2  #0c8d8c19
+* [ ] Installation d'un borker MQTT => https://medium.com/@besnikbelegu/setting-up-an-mqtt-server-part-1-87b7bd7d30fd  #8163316d
+* [X] Installation de Home Assistant sur docker : https://www.influxdata.com/blog/getting-started-home-assistant-docker/  #58dda4d6
+
+== Tips ==
+* Use API to restart, check config, reload : https://community.home-assistant.io/t/solved-restarting-home-assistant-from-the-command-line-without-restarting-container-other-cmds-works-with-docker/122246
+

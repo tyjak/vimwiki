@@ -15,16 +15,13 @@ see page https://wiki.archlinux.org/index.php/Broadcom_wireless#b43
 
 
 = TODO | project:archlinux +todo -mutt -i3 -image -vimb -vim -tw -VISIBLE !-COMPLETED =
-* [ ] vifm : faire un mode preview pour que les fichiers s'ouvrent dans un scratchpad  #9f9952c5
 * [ ] GTD easkwrrior http://taskwarrior.org/docs/start.html -> possibilité de le configurer avec mutt http://www.titus-stahl.de/blog/2015/08/13/a-better-taskwarrior-integration-for-mutt/  #685b007f
-* [ ] Acheter des noms de domaine avec des bitcoin : www.namecheap.com  #b06d6e46
 * [ ] pandoc pour faire les conversions de différents markup  #62b67889
 * [ ] Organiser sa [[http://beets.radbox.org/|musique en ligne de commande]]  #bd79ae22
 * [ ] Remplacer Slim pour SDDM https://wiki.archlinux.fr/SDDM ou LighDM https://wiki.archlinux.fr/LightDM  #85550f40
 * [ ] voir s'il est possible de supprimer le curseur de la souris au démarrage  #b8a4ccc9
 * [ ] autre alternative à partir d'un fork de web-greeter refaire un greeter qui correspond au besoin  #5fb727fa
 * [ ] suivre le projet lightdm-mini-greeter pour voir si le multiuser et le positionement de la fenêtre seront intégrés  #a45ab037
-* [S] pouvoir avoir un flux local sur lequle ajouté des liens (par ex. des liens youtubes) pour les écouter plus tard  #88cf7fb7
 * [ ] Faire un profile VPN par machine (voir notes)  #88cc61f0
 * [ ] timer pour les vpn : travaille 8-18 / home 18-2  #80b0287c
 * [ ] archiveur  #52c6c3a6
@@ -35,6 +32,8 @@ see page https://wiki.archlinux.org/index.php/Broadcom_wireless#b43
 * [ ] Faire un tracker de prix pour les matériaux de la maison  #45200cb8
 * [ ] Pb avec les emoticons  #5dc56e38
 * [ ] tester Galmap (logiciel de musique)  #6f33f72a
+* [ ] Develop a Gemini indexer and pager  #dc2321f4
+* [ ] Pourvoir afficher les codes 2FA avec dmenu et dunst  #8a2668d5
 
 == taskwarrior (tag: tw) | project:archlinux +tw ==
 * [ ] tester des plugins  #e1c1874a
@@ -55,6 +54,7 @@ see page https://wiki.archlinux.org/index.php/Broadcom_wireless#b43
 * [ ] Mettre en commun la conf de wingtask via share  #e9598b5c
 
 == vim | project:archlinux +vim ==
+* [X] avoir la même presentation pour la limite du nombres de caractères dans la largeur : http://i.imgur.com/T00FgWu.png?1  #b86a7411
 * [ ] vimwiki : faire que la touche tab propose l'auto-complétion des mots, les flèches droite-gauche permenettent de naviguer entre les fautes et qu'on soit automatiquement en mode correction  #fca50eb6
 * [ ] vim : trouver une solution pour désactiver le XON/XOFF (ctl-q/ctl-s)  #8f06c95c
 * [ ] vimwiki : lors de l'ajout d'une entrée dans le journal, faire que l'enregistrement de l'entrée mette à jour l'index du journal  #973e2996
@@ -66,10 +66,14 @@ see page https://wiki.archlinux.org/index.php/Broadcom_wireless#b43
     * [ ] improve vimrc see https://github.com/pixelastic/oroshi/blob/master/config/vim/vimrc  #f8ad8a6c
     * [ ] voir quelques plugin de https://github.com/connermcd/dotfiles/blob/master/.vimrc  #aa3b262e
     * [ ] vim plugins : https://github.com/tpope/vim-abolish avec https://github.com/tpope/vim-repeat tester la fonctionalité qui permet de passer en caméliser et inversement  #4a50a1d9
+* [ ] Refaire la config en utiliser la structure des dossiers de configuration  #32223616
+* [ ] Avoir un raccourci clavier pour switcher le theme en dark ou light  #a062b4db
+* [ ] vimwiki : trouver un moyen pour consulter les notes sur iphone  #0573d6e3
 
 == vimb  | project:archlinux +vimb ==
-* [ ] vimb : ouvrir les pdf (ne plus les télécharger) -> tentavie avec `/usr/bin/inotifywait -m -q -e create !!!  #163833cd
+* [ ] vimb : ouvrir les pdf (ne plus les télécharger) -> tentavie avec `/usr/bin/inotifywait -m -q -e create  #163833cd
 * [ ] optimizer l'historique, ajouter un archivage et dédoublonnage  #a3b4e0e3
+* [ ] vimb freeze tried to set some env in share/bin/i3/vimb  #e59fbd85
 
 == image  | project:archlinux +image ==
 * [ ] faire de la doc sur la manipulation des images  #285194ec
@@ -99,15 +103,31 @@ see page https://wiki.archlinux.org/index.php/Broadcom_wireless#b43
 * [ ] bug popup i3 les fenetres de la vue en cours se mettent dans la fenetre popup (avec taskwarior-tui)  #2409fcd2
 * [ ] Fix i3 status of OpenVpn when not connected and report ok status  #1dd1986a
 * [ ] Améliorer le dmenu copier/coller  #17dcd846
+* [ ] ajouter une conf X11 de démarrage pour avoir le DISPLAU accessible dans systemd  #0e1dc40e
+* [ ] And different color for command line app window  #b6b4fc05
+* [ ] Régler le pb de centrage (cf annotation)  #7b47a386
 
 == Ansible | +ansible ==
 * [X] faire que termite soir le terminal par défaut (avec i3-sensible-terminal)  #b4c1a45e
 * [X] Installer oh-my-zsh  #e7483098
+* [X] Ajout bzip2  #34653d3b
+* [X] test machine aws pour le pb de mot de passe sudo  #5180b2a5
+* [X] Suppression de l'installation de docker-compose  #e07f48e7
+* [X] Atomatiser les générations du liste de services sur les machines transverse !! (2023-08-04 23:59)  #37554136
+* [X] Vérifier l'installation IPtables (2023-09-15)  #5aba5074
+* [X] Nettoyage User et droits d'acces pour Jérémy et Abdel  #cac611a7
+* [ ] Trouver un moyen pour donner accès aux tableaux des IPs aux internes PE (9999-12-30)  #02cf87cc
 * [ ] voir pour mutt comment fonctionne LBDB https://www.spinnaker.de/lbdb/  #8c98134c
 * [ ] command pour sauvegarder un layout `i3-save-tree  #27a3f458
 * [ ] ajouter les packages `perl-json-xs` et `perl-anyevent` pour pouvoir enregistrer des layout i3  #5e7cc6e6
 * [ ] Régler le pb des polices de caractères  #cbbc46f3
 * [ ] Le déploiement VPN ne fonctionne pas sur archeepe : obligé de modifier les propriétaires des fichiers copiés dans /etc/openvpn/client pour le propriétaire openvpn  #7b946694
+* [ ] ajouter une conf X11 de démarrage pour avoir le DISPLAU accessible dans systemd  #0e1dc40e
+* [ ] Ansible: ajouter script maj système  #55aa401e
+* [W] Ansible: paralléliser les tâches  #e239dfbd
+* [ ] Ansible: revoir le script sshfs (partie datalake manque création user ???)  #048cceb1
+    * [X] Ansible: mettre un prompt pour le sshfs pour confirmer que le user est bien mis dans le docker-compose (2023-07-28 23:59)  #bcc0c751
+* [ ] Ansible : voir https://git.beta.pole-emploi.fr/cto/ansible/-/issues/10  #1dec82b0
 
 == Hardware |+hardware ==
 * [ ] ameliorer la detection des ecrans http://superuser.com/questions/970024/system-doesnt-detect-hot-plugged-display-portthrough-thunderbolt-connector  #53035b75
@@ -118,6 +138,7 @@ see page https://wiki.archlinux.org/index.php/Broadcom_wireless#b43
 * [ ] désactiver la touche wifi pour utiliser le menu à la place du switch wifi  #55624f8a
 * [ ] i3 : dernier écran -> aller à l'écran précédant  #1c44ce70
 * [ ] Utiliser MPRIS pour le controle audio  #2cb2f1a7
+* [ ] Remplacement de batterie de la JBL Flip 3 - Tutoriel de réparation iFixit — Mozilla Firefox  #d6168cef
 
 
 == DONE | project:archlinux +COMPLETED ==
@@ -156,3 +177,11 @@ see page https://wiki.archlinux.org/index.php/Broadcom_wireless#b43
 * [X] Pb de synchro avec wingtask  #732148c5
 * [X] Add a feature to make password menu generate a pass if it's not existing  #57b42e11
 * [X] Un système de backup (voir https://www.sysnove.fr/blog/2016/06/backupninja-borg.html)  #df639c5a
+* [X] avoir la même presentation pour la limite du nombres de caractères dans la largeur : http://i.imgur.com/T00FgWu.png?1  #b86a7411
+* [X] File dialog : très lent  #bb28b20a
+* [X] Pouvoir faire des transferts de fichiers facile sur l'iphone  #c130beb6
+* [X] Vimb: libsoup3 symbols detected. Using libsoup2 and libsoup3 in the same process is not supported.  #721ae1e0
+* [X] i3 : launch program with pgrep does not work sometimes.  #f32ad66a
+* [X] pouvoir avoir un flux local sur lequle ajouté des liens (par ex. des liens youtubes) pour les écouter plus tard  #88cf7fb7
+* [X] fix alert batterie !!  #daf37aa5
+* [X] vifm : faire un mode preview pour que les fichiers s'ouvrent dans un scratchpad  #9f9952c5

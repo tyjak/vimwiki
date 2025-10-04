@@ -1,0 +1,13 @@
+= Image || project:archlinux +home +doc +image =
+
+== todo | +todo ==
+* [ ] avoir quelque chose de fonctionnel et maitriser pour la maniupaltion des images  #7043e940
+* [ ] visualiseur  #3ca08399
+* [ ] programme de manipulation : gimp ou autre ?  #7d82f13c
+* [ ] gestion des photos perso, doc à faire  #17328086
+
+== Outils ==
+
+=== Image svg ===
+svgo pour manipuler les svg : 
+ex: svgo --quiet --precision 1 couleur.svg -o couleur-c1.svg

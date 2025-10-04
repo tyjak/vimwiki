@@ -43,6 +43,7 @@ Créer un projet sur github et le tracker en local
     * `git update-index --assume-unchanged config/config.php` pour ne prendre en compte les modifs de config
     * `git stash apply` pour appliquer le dernier stash
     * `git merge v1.0 --no-commit --no-ff` merge sans auto-commit
+    * `git cherrypick -n {hash}` cherry pick le commit dans le dossier travail (working copy) sans le mettre dans l'arbe des commit
 
 === Avoir un fichier gitignore global ===
     * `git config --global core.excludesfile '~/.gitignore'`
@@ -95,6 +96,11 @@ Créer un projet sur github et le tracker en local
     * sélectionner la branche depuis laquelle prendre le commit souhaité
     * selectioner le commit désiré puis appuyer sur `P`
     * le commit sera mis sur la branche
+
+== Effacer un fichier de l'historique ==
+    
+    * installer git-extras
+    * lancer la commande : `git obliterate {path di fichier à supprimer}`
 
 == Git : historique plat avec rebase ==
 
@@ -237,6 +243,11 @@ Créer un projet sur github et le tracker en local
 
     # si trop de conflit alors annuler le rebase
     `git rebase --abort`
+
+== Divers ==
+
+    # les contributeurs
+    `git shortlog -sne`
 
 == Faire un patch et l'appliquer ==
 

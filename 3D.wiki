@@ -1,0 +1,9 @@
+= 3D =
+
+Testing:
+* solvespace
+* openscad see the tutorial : http://www.tridimake.com/2014/09/how-to-use-openscad-tricks-and-tips-to.html
+
+== Openscad ==
+* https://openscad.org/cheatsheet/
+* pas testé : https://github.com/JustinSDK/dotSCAD <- fonctions pour simplifier l'utilisation

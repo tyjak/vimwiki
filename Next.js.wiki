@@ -1,0 +1,18 @@
+= Next.js - React - Typescript =
+
+Documentation :
+* nextjs : https://nextjs.org/docs/getting-started
+* typescript: https://www.typescriptlang.org/docs/handbook/release-notes/overview.html
+* typescript notation type: https://2ality.com/2018/04/type-notation-typescript.html
+
+* Bootstraper une aplication :
+    `npx create-next-app@latest --typescript`
+* Lancer l'applicattion :
+    `npm run dev`
+
+== TODO ==
+
+* [o] Configurer vim
+    * [X] Installation plugins syntaxe
+    * [ ] Installation pour l'autocomplète (voir https://pragmaticpineapple.com/ultimate-vim-typescript-setup/ )
+

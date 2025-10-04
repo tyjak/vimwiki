@@ -54,4 +54,8 @@ synoservicecfg --hard-start <service>
 synoservice --restart <service>
 synoservicectl --restart <service>
 
+== packages ==
+
+* `synopkg list --name` # liste des packages
+* `synopkg restart {packname}` # rédémarrer un service
 
